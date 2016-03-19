@@ -33,7 +33,7 @@
 				 <c:set var="entityId" value="categoryId" scope="request"/>
 				 <c:set var="componentTitleKey" value="label.categories.title" scope="request"/>
 				 <c:set var="gridHeader" value="/pages/admin/categories/categories-gridHeader.jsp" scope="request"/>
-				 <c:set var="canRemoveEntry" value="true" scope="request"/>
+				 <c:set var="canRemoveEntry" value="false" scope="request"/>
 
             	 <jsp:include page="/pages/admin/components/list.jsp"></jsp:include> 
 				 <!-- End listing grid include -->

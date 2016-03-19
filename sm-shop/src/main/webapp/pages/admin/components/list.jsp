@@ -51,9 +51,9 @@
     								canRemoveRecords: <c:out value="${canRemoveEntry}" />,
     								autoFetchData: true,
     								showFilterEditor: true,
-    								filterOnKeypress: true,
+    								filterOnKeypress: false,
 									dataFetchMode:"paged",
-									canEdit:<c:choose><c:when test="${canEdit!=null}"><c:out value="${canEdit}" /></c:when><c:otherwise>true</c:otherwise></c:choose>,
+									canEdit:false,
 									editByCell: true,
 									editEvent: "click",
 									<c:if test="${showGridSummary!=null && showGridSummary!='' && showGridSummary=='true'}">
