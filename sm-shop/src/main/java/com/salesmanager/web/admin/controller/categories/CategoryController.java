@@ -287,7 +287,7 @@ public class CategoryController {
 				entry.put("code", category.getCode());
 				entry.put("visible", category.isVisible());
 				entry.put("sortOrder", category.getSortOrder());
-				entry.put("parentCategory", category.getParent().getDescription().getName());
+				entry.put("parentCategory",category.getParent()!=null? category.getParent().getDescription().getName():"");
 				resp.addDataEntry(entry);
 				
 				
