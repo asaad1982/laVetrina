@@ -96,7 +96,10 @@ public interface CategoryService extends SalesManagerEntityService<Long, Categor
 			Language language);
 
 
-	
+
+	List<Object[]> countProductsByCategories(MerchantStore store) throws ServiceException;
+
+	List<Object[]> categoryStockAvailability(MerchantStore store);
 	
 
 }

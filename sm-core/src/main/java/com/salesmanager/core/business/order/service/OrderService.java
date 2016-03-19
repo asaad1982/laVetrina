@@ -105,4 +105,13 @@ public interface OrderService extends SalesManagerEntityService<Long, Order> {
 	 */
 	boolean hasDownloadFiles(Order order) throws ServiceException;
 
+	
+	
+	List<Object[]> countOrderByCountry(MerchantStore store);
+	
+	List<Object[]> countOrderByStatus(MerchantStore store);
+	List<Object[]> countOrderByPaymentType(MerchantStore store);
+
+
+
 }

@@ -355,5 +355,34 @@
   	<definition name="reports" template="/layout/admin/layout.jsp">
   		<put-attribute name="body" value="/pages/admin/reports/reports.jsp" /> 
   	</definition>
+  	  	  	<definition name="admin-dashboards-product-catalog" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/orders/dashboards/product_catagory.jsp" /> 
+  	</definition>
   	
+  	  	<definition name="admin-dashboards-product-price" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/orders/dashboards/products_prices.jsp" /> 
+  	</definition>
+  	
+  	  	<definition name="admin-dashboards-deals" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/orders/dashboards/deals.jsp" /> 
+  	</definition>
+  	<definition name="admin-dashboards-soldVsInstock" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/orders/dashboards/soldVsInstock.jsp" /> 
+  	</definition>
+  	
+  	
+  	  	<definition name="admin-dashboards-sold-instock" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/orders/dashboards/sold_instock.jsp" /> 
+  	</definition>
+  	
+  	  	<definition name="admin-dashboards-sales-country" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/orders/dashboards/sales_country.jsp" /> 
+  	</definition>
+  	
+  	  	<definition name="admin-dashboards-sales-payment" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/orders/dashboards/sales_paymentMethod.jsp" /> 
+  	</definition>
+  	
+  	
+  
 </tiles-definitions>

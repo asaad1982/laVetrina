@@ -32,6 +32,8 @@ public class QCountry extends EntityPathBase<Country> {
 
     public final StringPath isoCode = createString("isoCode");
 
+    public final StringPath name = createString("name");
+
     //inherited
     public final BooleanPath new$ = _super.new$;
 

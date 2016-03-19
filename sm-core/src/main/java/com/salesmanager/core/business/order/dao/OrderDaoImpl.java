@@ -1,5 +1,8 @@
 package com.salesmanager.core.business.order.dao;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Query;
 
 import org.apache.commons.lang3.StringUtils;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.mysema.query.BooleanBuilder;
 import com.mysema.query.jpa.JPQLQuery;
 import com.mysema.query.jpa.impl.JPAQuery;
+import com.mysema.query.types.CollectionExpression;
 import com.salesmanager.core.business.common.model.CriteriaOrderBy;
 import com.salesmanager.core.business.generic.dao.SalesManagerEntityDaoImpl;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
@@ -66,6 +70,12 @@ public class OrderDaoImpl  extends SalesManagerEntityDaoImpl<Long, Order> implem
 		StringBuilder countBuilderWhere = new StringBuilder();
 		countBuilderWhere.append(" where o.merchant.id=:mId");
 
+		
+		if(!StringUtils.isBlank(criteria.getOrderId())) {
+			countBuilderWhere.append(" and o.id =:oId");
+		}
+		
+		
 		if(!StringUtils.isBlank(criteria.getCustomerName())) {
 			countBuilderWhere.append(" and o.billing.firstName like:nm");
 			countBuilderWhere.append(" or o.billing.lastName like:nm");
@@ -75,9 +85,27 @@ public class OrderDaoImpl  extends SalesManagerEntityDaoImpl<Long, Order> implem
 			countBuilderWhere.append(" and o.paymentModuleCode like:pm");
 		}
 		
+		if(!StringUtils.isBlank(criteria.getCustomerEmailAddress())) {
+			countBuilderWhere.append(" and o.customerEmailAddress like:em");
+		}
+		
+		
+		
 		if(criteria.getCustomerId()!=null) {
 			countBuilderWhere.append(" and o.customerId =:cid");
 		}
+
+		
+		if(!StringUtils.isBlank(criteria.getDate())) {
+			countBuilderWhere.append(" and o.datePurchased like:dt");
+		}
+		if(!StringUtils.isBlank(criteria.getStatus())) {
+			countBuilderWhere.append(" and o.status.value like:st");
+		}
+		if(!StringUtils.isBlank(criteria.getCountry())) {
+			countBuilderWhere.append(" and o.delivery.country.name like:cou");
+		}
+		
 
 		Query countQ = super.getEntityManager().createQuery(
 				countBuilderSelect.toString() + countBuilderWhere.toString());
@@ -92,11 +120,29 @@ public class OrderDaoImpl  extends SalesManagerEntityDaoImpl<Long, Order> implem
 			countQ.setParameter("pm",new StringBuilder().append("%").append(criteria.getPaymentMethod()).append("%").toString());
 		}
 		
+		if(!StringUtils.isBlank(criteria.getCustomerEmailAddress())) {
+			countQ.setParameter("em",new StringBuilder().append("%").append(criteria.getCustomerEmailAddress()).append("%").toString());
+		}
+		
 		if(criteria.getCustomerId()!=null) {
 			countQ.setParameter("cid", criteria.getCustomerId());
 		}
 		
 
+		if(criteria.getOrderId() !=null) {
+			countQ.setParameter("oId", Long.parseLong(criteria.getOrderId()));
+		}
+		
+		if(!StringUtils.isBlank(criteria.getCountry())) {
+			countQ.setParameter("cou",new StringBuilder().append("%").append(criteria.getCountry()).append("%").toString());
+		}
+		if(!StringUtils.isBlank(criteria.getStatus())) {
+			countQ.setParameter("st",new StringBuilder().append("%").append(criteria.getStatus()).append("%").toString());
+		}
+		if(!StringUtils.isBlank(criteria.getDate())) {
+			countQ.setParameter("dt",new StringBuilder().append("%").append(criteria.getDate()).append("%").toString());
+		}
+		
 
 		Number count = (Number) countQ.getSingleResult ();
 
@@ -135,6 +181,8 @@ public class OrderDaoImpl  extends SalesManagerEntityDaoImpl<Long, Order> implem
 					.or(qOrder.billing.lastName.like(new StringBuilder().append("%").append(criteria.getCustomerName()).append("%").toString())));
 		}
 		
+		
+		
 		if(!StringUtils.isBlank(criteria.getPaymentMethod())) {
 			if(pBuilder==null) {
 				pBuilder = new BooleanBuilder();
@@ -148,6 +196,58 @@ public class OrderDaoImpl  extends SalesManagerEntityDaoImpl<Long, Order> implem
 			}
 			pBuilder.and(qOrder.customerId.eq(criteria.getCustomerId()));
 		}
+		
+		
+		if(criteria.getOrderId()!=null) {
+			if(pBuilder==null) {
+				pBuilder = new BooleanBuilder();
+			}
+			pBuilder.and(qOrder.id.eq(Long.parseLong(criteria.getOrderId())));
+		}
+		
+		if(!StringUtils.isBlank(criteria.getCustomerEmailAddress())) {
+			if(pBuilder==null) {
+				pBuilder = new BooleanBuilder();
+			}			pBuilder.and(qOrder.customerEmailAddress.like(new StringBuilder().append("%").append(criteria.getCustomerEmailAddress()).append("%").toString())
+					);
+		}
+		
+		
+		
+		
+		
+		if(!StringUtils.isBlank(criteria.getCountry())) {
+			if(pBuilder==null) {
+				pBuilder = new BooleanBuilder();
+			}			pBuilder.and(qOrder.delivery.country.name.like(new StringBuilder().append("%").append(criteria.getCountry()).append("%").toString())
+					);
+		}
+		
+		
+		
+		if(!StringUtils.isBlank(criteria.getStatus())) {
+			if(pBuilder==null) {
+				pBuilder = new BooleanBuilder();
+			}			pBuilder.and(qOrder.status.stringValue().like(new StringBuilder().append("%").append(criteria.getStatus()).append("%").toString())
+					);
+		}
+		
+		
+//		if(!StringUtils.isBlank(criteria.getDate())) {
+//			if(pBuilder==null) {
+//				pBuilder = new BooleanBuilder();
+//			}			pBuilder.and(qOrder.datePurchased.eqAll(criteria.getDate()  )
+//					);
+//		}
+		
+	  
+	 
+		
+		
+		
+		
+		
+		
 		
 		if(pBuilder!=null) {
 			query.where(pBuilder);
@@ -164,10 +264,111 @@ public class OrderDaoImpl  extends SalesManagerEntityDaoImpl<Long, Order> implem
 			query.offset(criteria.getStartIndex());
 		}
 		
-		
+		//query.list(qOrder);
 		orderList.setOrders(query.list(qOrder));
 
 		return orderList;
+		
+	}
+	
+	
+	@Override
+	public List<Object[]> countOrderByCountry(MerchantStore store) {
+
+		
+		
+		
+ 
+		
+		StringBuilder qs = new StringBuilder();
+		qs.append("select o.delivery.country, count(o) from Order o ");
+ 
+		qs.append("where o.merchant.id=:md  ");
+ 
+		qs.append("group by o.delivery.country");
+		
+    	String hql = qs.toString();
+		Query q = super.getEntityManager().createQuery(hql);
+
+		q.setParameter("md", store.getId());
+  
+
+
+    	
+    	@SuppressWarnings("unchecked")
+		List<Object[]> counts =  q.getResultList();
+
+    	
+    	return counts;
+		
+		
+	}
+	
+	@Override
+	public List<Object[]> countOrderByStatus(MerchantStore store) {
+
+		
+		
+		
+ 
+		
+		StringBuilder qs = new StringBuilder();
+		qs.append("select o.status  , count(o) from Order o ");
+ 
+		qs.append("where o.merchant.id=:md  ");
+ 
+		qs.append("group by o.status");
+		
+    	String hql = qs.toString();
+		Query q = super.getEntityManager().createQuery(hql);
+
+		q.setParameter("md", store.getId());
+  
+
+
+    	
+    	@SuppressWarnings("unchecked")
+		List<Object[]> counts =  q.getResultList();
+
+    	
+    	return counts;
+		
+		
+	}
+	
+	
+	
+	
+	
+	@Override
+	public List<Object[]> countOrderByPaymentType(MerchantStore store) {
+
+		
+		
+		
+ 
+		
+		StringBuilder qs = new StringBuilder();
+		qs.append("select o.paymentType  , count(o) from Order o ");
+ 
+		qs.append("where o.merchant.id=:md  ");
+ 
+		qs.append("group by o.paymentType");
+		
+    	String hql = qs.toString();
+		Query q = super.getEntityManager().createQuery(hql);
+
+		q.setParameter("md", store.getId());
+  
+
+
+    	
+    	@SuppressWarnings("unchecked")
+		List<Object[]> counts =  q.getResultList();
+
+    	
+    	return counts;
+		
 		
 	}
 	

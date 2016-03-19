@@ -89,6 +89,17 @@ public interface ControllerConstants
             final String ordersTransactions="admin-orders-transactions";
         }
         
+        
+        interface Dashboeard{
+            final String dashboardsProductCatalog="admin-dashboards-product-catalog";
+            final String dashboardsProductPrice="admin-dashboards-product-price";
+            final String dashboardsDeals="admin-dashboards-deals";
+            final String dashboardsSoldInstock="admin-dashboards-sold-instock";
+            final String dashboardsSalesCountry="admin-dashboards-sales-country";
+            final String dashboardsSalesPayment="admin-dashboards-sales-payment";
+            final String dashboardssoldVsInstock="admin-dashboards-soldVsInstock";
+        }
+        
         interface Configuration{
             final String accounts="config-accounts";
             final String email="config-email";

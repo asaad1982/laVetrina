@@ -377,5 +377,73 @@ public class CategoryDaoImpl extends SalesManagerEntityDaoImpl<Long, Category> i
 				//listDistinct(qCategory);
 	}
 
+	@Override
+	public List<Object[]> countProductsByCategories(MerchantStore store) {
+
+		
+		StringBuilder qs = new StringBuilder();
+		qs.append("select categories, count(product.id) from Product product ");
+		qs.append("inner join product.categories categories ");
+	 
+		qs.append("where categories.merchantStore.id =:md and product.available=true and product.dateAvailable<=:dt ");
+		
+		//qs.append("where   product.available=true and product.dateAvailable<=:dt ");
+
+		qs.append("group by categories.id");
+		
+    	String hql = qs.toString();
+		Query q = super.getEntityManager().createQuery(hql);
+
+	q.setParameter("md", store.getId());
+    	q.setParameter("dt", new Date());
+
+
+    	
+    	@SuppressWarnings("unchecked")
+		List<Object[]> counts =  q.getResultList();
+
+    	
+    	return counts;
+		
+		
+	}
+	
+	@Override
+	public List<Object[]> categoryStockAvailability(MerchantStore store) {
+
+		
+		/**
+		 * Testing in debug mode takes a long time with this query
+		 * running in normal mode is fine
+		 */
+
+		
+		StringBuilder qs = new StringBuilder();
+		qs.append("SELECT pc.CATEGORY_ID, cd.NAME , count(pc.product_id)"
+				+ "  FROM product_category pc , category_description cd,product p "
+				+ "where P.MERCHANT_ID = :mid   "
+				+ "AND pc.CATEGORY_ID = cd.CATEGORY_ID "
+				+ "and pc.PRODUCT_ID = p.PRODUCT_ID"
+				+ " AND P.AVAILABLE = 1 "
+				+ "AND SYSDATE() >=  DATE_AVAILABLE  "
+				+ "group by pc.CATEGORY_ID ;");
+ 
+
+
+    	String hql = qs.toString();
+		Query q = super.getEntityManager().createNativeQuery(hql);
+
+    	q.setParameter("mid", store.getId());
+
+
+    	
+    	@SuppressWarnings("unchecked")
+    	List<Object[]> products =  q.getResultList();
+
+    	
+    	return products;
+		
+		
+	}
 
 }

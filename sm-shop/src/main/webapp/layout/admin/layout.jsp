@@ -390,7 +390,29 @@ response.setDateHeader ("Expires", -1);
 			$("#create-email-link").click(function() {
   				window.location='<c:url value="/admin/notification/addNotification.html" />';
 			});	
-
+			
+			$("#order-product-catalog-link").click(function() {
+  				window.location='<c:url value="/admin/orders/dashboardsProductCatalog.html" />';
+			});
+			$("#order-product-price-link").click(function() {
+  				window.location='<c:url value="/admin/orders/dashboardsProductPrice.html" />';
+			});
+			$("#order-deals-link").click(function() {
+  				window.location='<c:url value="/admin/orders/dashboardsDeals.html" />';
+			});
+			$("#order-sold-instock-link").click(function() {
+  				window.location='<c:url value="/admin/orders/dashboardsSoldInstock.html" />';
+			});
+			$("#order-sales-country-link").click(function() {
+  				window.location='<c:url value="/admin/orders/dashboardsSalesCountry.html" />';
+			});
+			$("#order-sales-instock-link").click(function() {
+  				window.location='<c:url value="/admin/orders/dashboardsSalesPayment.html" />';
+			});
+			
+			$("#order-soldVsInstock-link").click(function() {
+  				window.location='<c:url value="/admin/orders/soldVsInstock.html" />';
+			});
 		}); 
 		
 		

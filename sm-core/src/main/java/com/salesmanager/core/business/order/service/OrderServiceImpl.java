@@ -511,6 +511,24 @@ public class OrderServiceImpl  extends SalesManagerEntityServiceImpl<Long, Order
 		return hasDownloads;
 	}
 
+	@Override
+	public List<Object[]> countOrderByCountry(MerchantStore store) {
+		// TODO Auto-generated method stub
+		return orderDao.countOrderByCountry(store);
+	}
+
+	@Override
+	public List<Object[]> countOrderByStatus(MerchantStore store) {
+		// TODO Auto-generated method stub
+		return orderDao.countOrderByStatus(store);
+	}
+
+	@Override
+	public List<Object[]> countOrderByPaymentType(MerchantStore store) {
+		// TODO Auto-generated method stub
+		return orderDao.countOrderByPaymentType(store);
+	}
+	
 
 
 }
