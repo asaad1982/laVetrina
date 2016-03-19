@@ -992,7 +992,7 @@ public class ProductController {
 
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/products/addProductToCategories.html", method=RequestMethod.POST)
-	public String addProductToCategory(@RequestParam("productId") long productId, @RequestParam("id") long categoryId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String addProductToCategory(@RequestParam("productId") long productId, @RequestParam("id") String categoryId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		setMenu(model,request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
@@ -1012,9 +1012,9 @@ public class ProductController {
 		
 
 		//get parent categories
-		List<Category> categories = categoryService.listByStore(store,language);
+		List<Category> categories = categoryService.listActiveByStore(store,language);
 		
-		Category category = categoryService.getById(categoryId);
+		Category category = categoryService.getById(Long.parseLong(categoryId) );
 		
 		if(category==null) {
 			return "redirect:/admin/products/products.html";
