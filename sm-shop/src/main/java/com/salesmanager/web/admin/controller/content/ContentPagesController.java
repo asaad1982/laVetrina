@@ -48,8 +48,8 @@ public class ContentPagesController {
 	LanguageService languageService;
 	
 	
-	@PreAuthorize("hasRole('CONTENT')")
-	@RequestMapping(value="/admin/content/pages/list.html", method=RequestMethod.GET)
+//	@PreAuthorize("hasRole('CONTENT')")
+//	@RequestMapping(value="/admin/content/pages/list.html", method=RequestMethod.GET)
 	public String listContentPages(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		setMenu(model,request);

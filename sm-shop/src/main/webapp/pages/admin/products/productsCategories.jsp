@@ -11,9 +11,9 @@
            <div class="sm-ui-component">
            
            
-           			<c:if test="${promotion.id!=null && promotion.id>0}">
-						<c:set value="${product.id}" var="promotionId" scope="request"/>
-						<jsp:include page="/pages/admin/promotion/promotion-menu.jsp" />
+           			<c:if test="${product.id!=null && product.id>0}">
+						<c:set value="${product.id}" var="productId" scope="request"/>
+						<jsp:include page="/pages/admin/products/product-menu.jsp" />
 					</c:if>	
            
            
@@ -23,14 +23,14 @@
 				
 				
 			
-			<c:url var="addCategory" value="/admin/promotion/addPromotionToCategories.html" />
-			<form:form method="POST" enctype="multipart/form-data" commandName="promotion" action="${addCategory}">
+			<c:url var="addCategory" value="/admin/products/addProductToCategories.html" />
+			<form:form method="POST" enctype="multipart/form-data" commandName="product" action="${addCategory}">
 			<form:errors path="*" cssClass="alert alert-error" element="div" />
 			<div id="store.success" class="alert alert-success"	style="<c:choose><c:when test="${success!=null}">display:block;</c:when><c:otherwise>display:none;</c:otherwise></c:choose>">
 					<s:message code="message.success" text="Request successfull" />
 			</div>
 			<br/>
-			<strong><c:out value="${promotion.id}"/></strong>
+			<strong><c:out value="${product.sku}"/></strong>
 			<br/><br/>
 			
 			<div class="control-group">
@@ -44,7 +44,7 @@
 			</div>
 			
 
-			<input type="hidden" name="promotionId" value="${promotion.id}">
+			<input type="hidden" name="productId" value="${product.id}">
 			<div class="form-actions">
                   		<div class="pull-right">
                   			<button type="submit" class="btn btn-success"><s:message code="label.generic.add" text="Add"/></button>
@@ -57,9 +57,9 @@
 				
 				<br />
 				<!-- Listing grid include -->
-				<c:set value="/admin/promotion-categories/paging.html?promotionId=${promotion.id}" var="pagingUrl" scope="request" />
-				<c:set value="/admin/promotion-categories/remove.html?promotionId=${promotion.id}" var="removeUrl" scope="request" />
-				<c:set value="/admin/promotion/displayPromotionToCategories.html?id=${promotion.id}" var="refreshUrl" scope="request" />
+				<c:set value="/admin/product-categories/paging.html?productId=${product.id}" var="pagingUrl" scope="request" />
+				<c:set value="/admin/product-categories/remove.html?productId=${product.id}" var="removeUrl" scope="request" />
+				<c:set value="/admin/products/displayProductToCategories.html?id=${product.id}" var="refreshUrl" scope="request" />
 				<c:set var="entityId" value="categoryId" scope="request"/>
 				<c:set var="componentTitleKey" value="label.categories.title" scope="request" />
 				<c:set var="canRemoveEntry" value="true" scope="request" />
