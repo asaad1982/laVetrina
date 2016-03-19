@@ -112,7 +112,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 	                        </div>
 	                  	</div>
 	                  	<div class="control-group">
-                        	<label><s:message code="label.promotion.status" text="Manufacturer"/></label>
+                        	<label><s:message code="label.promotion.status" text="Brand"/></label>
                           	<div class="controls">
                           		      <form:select   path="status">
                           		      <form:option value="-1"><s:message code="label.promotion.select.status"/></form:option>
@@ -125,7 +125,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                     	</div>
                     	
                     	<div class="control-group">
-                        	<label><s:message code="label.promotion.target.gender" text="Manufacturer"/></label>
+                        	<label><s:message code="label.promotion.target.gender" text="Brand"/></label>
                           	<div class="controls">
                           		      <form:select   path="promotionRule.targetGender">
                           		      <form:option value="-1"><s:message code="label.promotion.target.select"/></form:option>
@@ -137,7 +137,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                           	</div>
                     	</div>
 	                  	<div class="control-group">
-                        	<label><s:message code="label.promotion.age" text="Manufacturer"/></label>
+                        	<label><s:message code="label.promotion.age" text="Brand"/></label>
                           	<div class="controls">
                           		      <form:select items="${promotionTragetAges}" itemValue="id" itemLabel="name"  path="promotionRule.promotionTragetAge.id"/> 
 	                                  <span class="help-inline"></span>
@@ -145,14 +145,14 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                     	</div>
 
 						<div class="control-group">
-                        	<label><s:message code="label.product.manufacturer" text="Manufacturer"/></label>
+                        	<label><s:message code="label.product.manufacturer" text="Brand"/></label>
                           	<div class="controls">
                           		      <form:select items="${promotionTypes}" itemValue="id" itemLabel="name"  path="promotionType.id"/> 
 	                                  <span class="help-inline"></span>
                           	</div>
                     	</div>
                     	<div class="control-group">
-                        	<label><s:message code="label.product.manufacturer" text="Manufacturer"/></label>
+                        	<label><s:message code="label.product.manufacturer" text="Brand"/></label>
                           	<div class="controls">
 						 		<form:select multiple="true" path="promotionRule.brands">
 		        					<form:options items="${manufacturers}"  />

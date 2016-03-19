@@ -18,7 +18,7 @@
 								
 								
 				<h3>
-						<s:message code="menu.manufacturer-list" text="Manufacturers" />
+						<s:message code="menu.manufacturer-list" text="Brands" />
 				</h3>	
 				<br/>	
 

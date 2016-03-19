@@ -151,7 +151,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 	                  	</div>
 	                  	
 	                  	<div class="control-group">
-                        	<label><s:message code="label.product.manufacturer" text="Manufacturer"/></label>
+                        	<label><s:message code="label.product.manufacturer" text="Brand"/></label>
                           	<div class="controls">
                           		      <form:select items="${manufacturers}" itemValue="id" itemLabel="descriptions[0].name"  path="product.manufacturer.id"/> 
 	                                  <span class="help-inline"></span>
