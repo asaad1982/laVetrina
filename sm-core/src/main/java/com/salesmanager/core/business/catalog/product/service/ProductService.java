@@ -61,6 +61,10 @@ public interface ProductService extends SalesManagerEntityService<Long, Product>
 
 	ByteArrayOutputStream createProductList(MerchantStore store,List<Product> products,
 			Language language) throws Exception;
+
+	List<Object[]> listByStoreGroupByPrices(MerchantStore store);
+	List<Object[]> listSoldInstoc(MerchantStore store);
+	List<Object[]> customersStatistics(MerchantStore store, String year, String month);
 	
 }
 	

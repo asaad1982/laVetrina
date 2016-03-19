@@ -398,6 +398,17 @@ public class CategoryServiceImpl extends SalesManagerEntityServiceImpl<Long, Cat
 	}
 	
 	
+	@Override
+	public List<Object[]> countProductsByCategories(MerchantStore store ) throws ServiceException {
+		
+		return categoryDao.countProductsByCategories(store);
+		
+	}
 
+	@Override
+	public List<Object[]> categoryStockAvailability(MerchantStore store) {
+		// TODO Auto-generated method stub
+		return categoryDao.categoryStockAvailability(store);
+	}
 
 }

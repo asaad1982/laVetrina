@@ -596,5 +596,23 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 
 	}
 
+	@Override
+	public List<Object[]> listByStoreGroupByPrices(MerchantStore store) {
+		// TODO Auto-generated method stub
+		return productDao.listByStoreGroupByPrices(store);
+	}
+
+	@Override
+	public List<Object[]> listSoldInstoc(MerchantStore store) {
+		// TODO Auto-generated method stub
+		return productDao.listSoldInstoc(store);
+	}
+
+	@Override
+	public List<Object[]> customersStatistics(MerchantStore store, String year, String month) {
+		// TODO Auto-generated method stub
+		return productDao.customersStatistics(store, year, month);
+	}
+	
 	
 }

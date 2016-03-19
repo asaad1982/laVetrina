@@ -46,5 +46,10 @@ public interface ProductDao extends SalesManagerEntityDao<Long, Product> {
 
 	Product getByCode(String productCode, Language language);
 	public List<SalesReport> getProductsSales(long languageId,String start ,String end);
-	
+		List<Object[]> listByStoreGroupByPrices(MerchantStore store);
+
+	List<Object[]> listSoldInstoc(MerchantStore store);
+
+	List<Object[]> customersStatistics(MerchantStore store, String year, String month);
+
 }

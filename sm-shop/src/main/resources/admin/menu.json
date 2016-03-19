@@ -367,6 +367,47 @@
 	
 ]
 }}
+
+,
+{
+"menu":{
+"code":"order-dashboard",
+"icon":"icon-shopping-cart", 
+"url":"/admin/orders/dashboardsProductCatalog.html", 
+"role":"PRODUCTS",
+"order":14,
+"menus":[
+ 
+			{"menu":{
+				"code":"order-product-catalog","url":"/admin/orders/dashboardsProductCatalog.html","role":"PRODUCTS","order":0
+			}},
+			{"menu":{
+				"code":"order-product-price","url":"/admin/orders/dashboardsProductPrice.html","role":"PRODUCTS","order":1
+			}},
+			{"menu":{
+				"code":"order-deals","url":"/admin/orders/dashboardsDeals.html","role":"PRODUCTS","order":2
+			}},
+			{"menu":{
+				"code":"order-sold-instock","url":"/admin/orders/dashboardsSoldInstock.html","role":"PRODUCTS","order":3
+			}},
+			{"menu":{
+				"code":"order-sales-country","url":"/admin/orders/dashboardsSalesCountry.html","role":"PRODUCTS","order":4
+			}},
+			{"menu":{
+				"code":"order-sales-instock","url":"/admin/orders/dashboardsSalesPayment.html","role":"PRODUCTS","order":5
+			}},
+			{"menu":{
+				"code":"order-soldVsInstock","url":"/admin/orders/soldVsInstock.html","role":"PRODUCTS","order":6
+			}}
+		 
+	 
+]
+}}
+
+
+
+
+
 ]}
 
 

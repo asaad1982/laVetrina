@@ -442,6 +442,78 @@ public class ProductDaoImpl extends SalesManagerEntityDaoImpl<Long, Product> imp
 		
 		
 	}
+	@Override
+	public List<Object[]> listByStoreGroupByPrices(MerchantStore store) {
+
+		
+		/**
+		 * Testing in debug mode takes a long time with this query
+		 * running in normal mode is fine
+		 */
+
+		
+		StringBuilder qs = new StringBuilder();
+		qs.append("SELECT pp.PRODUCT_PRICE_AMOUNT,count(p.PRODUCT_ID)"
+				+ " FROM product p ,product_price pp"
+				+ " where"
+				+ " p.MERCHANT_ID = :mid"
+				+ " and p.PRODUCT_ID = pp.PRODUCT_PRICE_ID"
+				+ " group by pp.PRODUCT_PRICE_AMOUNT "
+				+ " ");
+ 
+
+
+    	String hql = qs.toString();
+		Query q = super.getEntityManager().createNativeQuery(hql);
+
+    	q.setParameter("mid", store.getId());
+
+
+    	
+    	@SuppressWarnings("unchecked")
+    	List<Object[]> products =  q.getResultList();
+
+    	
+    	return products;
+		
+		
+	}
+	
+	@Override
+	public List<Object[]> listSoldInstoc(MerchantStore store) {
+
+		
+		/**
+		 * Testing in debug mode takes a long time with this query
+		 * running in normal mode is fine
+		 */
+
+		
+		StringBuilder qs = new StringBuilder();
+		qs.append("SELECT p.product_id,pd.name,pa.QUANTITY"
+				+ ",IFNULL(p.QUANTITY_ORDERED ,0) as QUANTITY_ORDERED "
+				+ "FROM product p,product_availability pa ,"
+				+ "product_description pd where "
+				+ "p.MERCHANT_ID =   :mid and p.available = 1 "
+				+ "and p.product_id = pa.PRODUCT_ID and pd.PRODUCT_ID = p.PRODUCT_ID  ;");
+ 
+
+
+    	String hql = qs.toString();
+		Query q = super.getEntityManager().createNativeQuery(hql);
+
+    	q.setParameter("mid", store.getId());
+
+
+    	
+    	@SuppressWarnings("unchecked")
+    	List<Object[]> products =  q.getResultList();
+
+    	
+    	return products;
+		
+		
+	}
 	
 	
 	/**
@@ -1004,6 +1076,56 @@ public class ProductDaoImpl extends SalesManagerEntityDaoImpl<Long, Product> imp
 		}
 		return salesReports;
 	}
+
+
+	
+	@Override
+	public List<Object[]> customersStatistics  (MerchantStore store,String year,String month) {
+
+		
+		/**
+		 * Testing in debug mode takes a long time with this query
+		 * running in normal mode is fine
+		 */
+
+		
+		StringBuilder qs = new StringBuilder();
+		qs.append("SELECT o.CUSTOMER_EMAIL_ADDRESS"
+				+ " ,sum(op.PRODUCT_QUANTITY) as "
+				+ "QUANTITY, sum(op.PRODUCT_QUANTITY*op.ONETIME_CHARGE) "
+				+ "as Amount FROM orders o "
+				+ ",order_product op where "
+				+ " o.ORDER_STATUS = 'DELIVERED'"
+				+ "  and op.ORDER_ID = o.ORDER_ID ");
+				
+		if(year != null && "".equals(year) && month != null && "".equals(month) ){		
+		qs.append( "and o.date_purchased "
+				+ "between  DATE_FORMAT( :yearMonth , '%Y-%m-01') "
+				+ "and LAST_DAY(DATE_FORMAT( :yearMonth , '%Y-%m-01')) " );
+				
+				
+				qs.append( " group by o.CUSTOMER_EMAIL_ADDRESS ;");
+ 
+
+		}
+    	String hql = qs.toString();
+		Query q = super.getEntityManager().createNativeQuery(hql);
+
+    	q.setParameter("mid", store.getId());
+
+    	if(year != null && "".equals(year) && month != null && "".equals(month) ) 
+    	q.setParameter("yearMonth", year+"-"+month);
+    	
+    	@SuppressWarnings("unchecked")
+    	List<Object[]> products =  q.getResultList();
+
+    	
+    	return products;
+		
+		
+	}
+	
+
 }
 
 
