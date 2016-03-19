@@ -1,0 +1,729 @@
+---- AspectJ Properties ---
+AspectJ Compiler 1.6.10 built on Friday Oct 22, 2010 at 03:50:26 GMT
+---- Dump Properties ---
+Dump file: ajcore.20160226.154728.914.txt
+Dump reason: org.aspectj.apache.bcel.classfile.ClassFormatException
+Dump on exception: true
+Dump at exit condition: abort
+---- Exception Information ---
+org.aspectj.apache.bcel.classfile.ClassFormatException: File: 'java/lang/CharSequence.class': Invalid byte tag in constant pool: 15
+	at org.aspectj.apache.bcel.classfile.ClassParser.readConstantPool(ClassParser.java:192)
+	at org.aspectj.apache.bcel.classfile.ClassParser.parse(ClassParser.java:131)
+	at org.aspectj.weaver.bcel.BcelWorld.lookupJavaClass(BcelWorld.java:424)
+	at org.aspectj.weaver.bcel.BcelWorld.resolveDelegate(BcelWorld.java:376)
+	at org.aspectj.weaver.World.resolveToReferenceType(World.java:461)
+	at org.aspectj.weaver.World.resolve(World.java:305)
+	at org.aspectj.weaver.World.resolve(World.java:218)
+	at org.aspectj.weaver.bcel.BcelObjectType.getDeclaredInterfaces(BcelObjectType.java:266)
+	at org.aspectj.weaver.ReferenceType.getDeclaredInterfaces(ReferenceType.java:624)
+	at org.aspectj.weaver.ResolvedType.getDirectSupertypes(ResolvedType.java:76)
+	at org.aspectj.weaver.ResolvedType.collectInterTypeMungers(ResolvedType.java:1390)
+	at org.aspectj.weaver.ResolvedType.getInterTypeMungersIncludingSupers(ResolvedType.java:1371)
+	at org.aspectj.weaver.ResolvedType.checkInterTypeMungers(ResolvedType.java:1442)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.weaveInterTypeDeclarations(AjLookupEnvironment.java:809)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.weaveInterTypeDeclarations(AjLookupEnvironment.java:652)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.doPendingWeaves(AjLookupEnvironment.java:427)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.completeTypeBindings(AjLookupEnvironment.java:213)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:616)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:357)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:371)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performCompilation(AjBuildManager.java:1021)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performBuild(AjBuildManager.java:268)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.batchBuild(AjBuildManager.java:181)
+	at org.aspectj.ajdt.ajc.AjdtCommand.doCommand(AjdtCommand.java:112)
+	at org.aspectj.ajdt.ajc.AjdtCommand.runCommand(AjdtCommand.java:60)
+	at org.aspectj.tools.ajc.Main.run(Main.java:371)
+	at org.aspectj.tools.ajc.Main.runMain(Main.java:248)
+	at org.codehaus.mojo.aspectj.AbstractAjcCompiler.execute(AbstractAjcCompiler.java:360)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:133)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:208)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:108)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:76)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:116)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:361)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:155)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:584)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:213)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:157)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+---- System Properties ---
+java.runtime.name=Java(TM) SE Runtime Environment
+sun.boot.library.path=C:\Program Files\Java\jdk1.8.0_74\jre\bin
+java.vm.version=25.74-b02
+java.vm.vendor=Oracle Corporation
+java.vendor.url=http://java.oracle.com/
+guice.disable.misplaced.annotation.check=true
+path.separator=;
+java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+file.encoding.pkg=sun.io
+user.country=US
+user.script=
+sun.java.launcher=SUN_STANDARD
+sun.os.patch.level=
+java.vm.specification.name=Java Virtual Machine Specification
+user.dir=D:\personal\shopizer\sm-shop
+java.runtime.version=1.8.0_74-b02
+java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment
+java.endorsed.dirs=C:\Program Files\Java\jdk1.8.0_74\jre\lib\endorsed
+os.arch=amd64
+java.io.tmpdir=C:\Users\ASMAAS~1\AppData\Local\Temp\
+line.separator=
+
+java.vm.specification.vendor=Oracle Corporation
+user.variant=
+os.name=Windows 8.1
+classworlds.conf=D:\personal\shopizer\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3578014866754538779.tmp
+sun.jnu.encoding=Cp1252
+java.library.path=C:\Program Files\Java\jdk1.8.0_74\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jdk1.8.0_74/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_74/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_74/bin/../jre/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Oracle\Middleware\Oracle_Home\oracle_common\jdk\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jre1.8.0_65\bin;;E:\sources\oepe-12.1.3.5-luna-distro-win32-x86_64;;.
+java.specification.name=Java Platform API Specification
+java.class.version=52.0
+sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+os.version=6.3
+user.home=C:\Users\Asmaa Saad
+user.timezone=Africa/Cairo
+java.awt.printerjob=sun.awt.windows.WPrinterJob
+file.encoding=Cp1252
+java.specification.version=1.8
+java.class.path=/E:/sources/oepe-12.1.3.5-luna-distro-win32-x86_64/plugins/org.eclipse.m2e.maven.runtime_1.5.1.20150109-1819/jars/plexus-classworlds-2.5.1.jar
+user.name=Asmaa Saad
+org.slf4j.simpleLogger.defaultLogLevel=info
+java.vm.specification.version=1.8
+sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher -B install
+java.home=C:\Program Files\Java\jdk1.8.0_74\jre
+sun.arch.data.model=64
+user.language=en
+java.specification.vendor=Oracle Corporation
+awt.toolkit=sun.awt.windows.WToolkit
+java.vm.info=mixed mode
+java.version=1.8.0_74
+java.ext.dirs=C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+sun.boot.class.path=C:\Program Files\Java\jdk1.8.0_74\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_74\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_74\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_74\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_74\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_74\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_74\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_74\jre\classes
+java.vendor=Oracle Corporation
+maven.home=D:\personal\shopizer\sm-shop\EMBEDDED
+file.separator=\
+java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+sun.io.unicode.encoding=UnicodeLittle
+sun.cpu.endian=little
+sun.desktop=windows
+sun.cpu.isalist=amd64
+---- Command Line ---
+-encoding
+UTF-8
+-outxml
+-source
+1.7
+-target
+1.7
+-classpath
+C:\Users\Asmaa Saad\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\Asmaa Saad\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\Asmaa Saad\.m2\repository\asm\asm\3.1\asm-3.1.jar;C:\Users\Asmaa Saad\.m2\repository\backport-util-concurrent\backport-util-concurrent\3.1\backport-util-concurrent-3.1.jar;C:\Users\Asmaa Saad\.m2\repository\c3p0\c3p0\0.9.1.2\c3p0-0.9.1.2.jar;C:\Users\Asmaa Saad\.m2\repository\cglib\cglib\2.2\cglib-2.2.jar;C:\Users\Asmaa Saad\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.2.3\jackson-annotations-2.2.3.jar;C:\Users\Asmaa Saad\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.2.3\jackson-core-2.2.3.jar;C:\Users\Asmaa Saad\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.2.3\jackson-databind-2.2.3.jar;C:\Users\Asmaa Saad\.m2\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;C:\Users\Asmaa Saad\.m2\repository\com\google\code\gson\gson\2.3.1\gson-2.3.1.jar;C:\Users\Asmaa Saad\.m2\repository\com\google\guava\guava\18.0\guava-18.0.jar;C:\Users\Asmaa Saad\.m2\repository\com\google\http-client\google-http-client\1.17.0-rc\google-http-client-1.17.0-rc.jar;C:\Users\Asmaa Saad\.m2\repository\com\google\maps\google-maps-services\0.1.6\google-maps-services-0.1.6.jar;C:\Users\Asmaa Saad\.m2\repository\com\googlecode\json-simple\json-simple\1.1.1\json-simple-1.1.1.jar;C:\Users\Asmaa Saad\.m2\repository\com\h2database\h2\1.3.152\h2-1.3.152.jar;C:\Users\Asmaa Saad\.m2\repository\com\infradna\tool\bridge-method-annotation\1.11\bridge-method-annotation-1.11.jar;C:\Users\Asmaa Saad\.m2\repository\com\itextpdf\itextpdf\5.5.6\itextpdf-5.5.6.jar;C:\Users\Asmaa Saad\.m2\repository\com\maxmind\db\maxmind-db\0.3.1\maxmind-db-0.3.1.jar;C:\Users\Asmaa Saad\.m2\repository\com\maxmind\geoip2\geoip2\0.7.0\geoip2-0.7.0.jar;C:\Users\Asmaa Saad\.m2\repository\com\mysema\commons\mysema-commons-lang\0.2.4\mysema-commons-lang-0.2.4.jar;C:\Users\Asmaa Saad\.m2\repository\com\mysema\querydsl\querydsl-core\3.4.2\querydsl-core-3.4.2.jar;C:\Users\Asmaa Saad\.m2\repository\com\mysema\querydsl\querydsl-jpa\3.4.2\querydsl-jpa-3.4.2.jar;C:\Users\Asmaa Saad\.m2\repository\com\paypal\sdk\merchantsdk\2.6.109\merchantsdk-2.6.109.jar;C:\Users\Asmaa Saad\.m2\repository\com\paypal\sdk\paypal-core\1.5.1\paypal-core-1.5.1.jar;C:\Users\Asmaa Saad\.m2\repository\com\shopizer\shopizer-shipping-canadapost-module\0.0.1\shopizer-shipping-canadapost-module-0.0.1.jar;C:\Users\Asmaa Saad\.m2\repository\com\shopizer\shopizer-shipping-distance-processor\2.0.3\shopizer-shipping-distance-processor-2.0.3.jar;C:\Users\Asmaa Saad\.m2\repository\com\shopizer\sm-core\2.0.3-SNAPSHOT\sm-core-2.0.3-SNAPSHOT.jar;C:\Users\Asmaa Saad\.m2\repository\com\shopizer\sm-core-model\2.0.3-SNAPSHOT\sm-core-model-2.0.3-SNAPSHOT.jar;C:\Users\Asmaa Saad\.m2\repository\com\shopizer\sm-core-modules\2.0.3-SNAPSHOT\sm-core-modules-2.0.3-SNAPSHOT.jar;C:\Users\Asmaa Saad\.m2\repository\com\shopizer\sm-search\0.0.5\sm-search-0.0.5.jar;C:\Users\Asmaa Saad\.m2\repository\com\spatial4j\spatial4j\0.4.1\spatial4j-0.4.1.jar;C:\Users\Asmaa Saad\.m2\repository\com\squareup\okhttp\okhttp\2.0.0\okhttp-2.0.0.jar;C:\Users\Asmaa Saad\.m2\repository\com\squareup\okio\okio\1.0.0\okio-1.0.0.jar;C:\Users\Asmaa Saad\.m2\repository\com\sun\jersey\jersey-bundle\1.19\jersey-bundle-1.19.jar;C:\Users\Asmaa Saad\.m2\repository\com\thoughtworks\xstream\xstream\1.4.1\xstream-1.4.1.jar;C:\Users\Asmaa Saad\.m2\repository\commons-beanutils\commons-beanutils\1.8.3\commons-beanutils-1.8.3.jar;C:\Users\Asmaa Saad\.m2\repository\commons-beanutils\commons-beanutils-core\1.8.0\commons-beanutils-core-1.8.0.jar;C:\Users\Asmaa Saad\.m2\repository\commons-codec\commons-codec\1.2\commons-codec-1.2.jar;C:\Users\Asmaa Saad\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\Users\Asmaa Saad\.m2\repository\commons-configuration\commons-configuration\1.6\commons-configuration-1.6.jar;C:\Users\Asmaa Saad\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;C:\Users\Asmaa Saad\.m2\repository\commons-fileupload\commons-fileupload\1.2.2\commons-fileupload-1.2.2.jar;C:\Users\Asmaa Saad\.m2\repository\commons-httpclient\commons-httpclient\3.1\commons-httpclient-3.1.jar;C:\Users\Asmaa Saad\.m2\repository\commons-io\commons-io\2.0.1\commons-io-2.0.1.jar;C:\Users\Asmaa Saad\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\Asmaa Saad\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;C:\Users\Asmaa Saad\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar;C:\Users\Asmaa Saad\.m2\repository\commons-validator\commons-validator\1.4.0\commons-validator-1.4.0.jar;C:\Users\Asmaa Saad\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\Users\Asmaa Saad\.m2\repository\io\searchbox\jest\0.1.5\jest-0.1.5.jar;C:\Users\Asmaa Saad\.m2\repository\io\searchbox\jest-common\0.1.5\jest-common-0.1.5.jar;C:\Users\Asmaa Saad\.m2\repository\javassist\javassist\3.3\javassist-3.3.jar;C:\Users\Asmaa Saad\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\Asmaa Saad\.m2\repository\javax\annotation\jsr250-api\1.0\jsr250-api-1.0.jar;C:\Users\Asmaa Saad\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar;C:\Users\Asmaa Saad\.m2\repository\javax\mail\mail\1.4.5\mail-1.4.5.jar;C:\Users\Asmaa Saad\.m2\repository\javax\servlet\jstl\1.2\jstl-1.2.jar;C:\Users\Asmaa Saad\.m2\repository\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar;C:\Users\Asmaa Saad\.m2\repository\javax\servlet\jsp\jsp-api\2.1\jsp-api-2.1.jar;C:\Users\Asmaa Saad\.m2\repository\javax\servlet\jsp\jstl\jstl-api\1.2\jstl-api-1.2.jar;C:\Users\Asmaa Saad\.m2\repository\javax\transaction\jta\1.1\jta-1.1.jar;C:\Users\Asmaa Saad\.m2\repository\javax\validation\validation-api\1.0.0.GA\validation-api-1.0.0.GA.jar;C:\Users\Asmaa Saad\.m2\repository\javax\ws\rs\jsr311-api\1.1.1\jsr311-api-1.1.1.jar;C:\Users\Asmaa Saad\.m2\repository\jdom\jdom\1.0\jdom-1.0.jar;C:\Users\Asmaa Saad\.m2\repository\jgroups\jgroups\2.6.13.GA\jgroups-2.6.13.GA.jar;C:\Users\Asmaa Saad\.m2\repository\joda-time\joda-time\2.0\joda-time-2.0.jar;C:\Users\Asmaa Saad\.m2\repository\junit\junit\4.8.2\junit-4.8.2.jar;C:\Users\Asmaa Saad\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\Asmaa Saad\.m2\repository\mysql\mysql-connector-java\5.1.31\mysql-connector-java-5.1.31.jar;C:\Users\Asmaa Saad\.m2\repository\net\java\dev\rome\rome\1.0.0\rome-1.0.0.jar;C:\Users\Asmaa Saad\.m2\repository\net\sf\ehcache\ehcache\1.5.0\ehcache-1.5.0.jar;C:\Users\Asmaa Saad\.m2\repository\net\sf\jsr107cache\jsr107cache\1.0\jsr107cache-1.0.jar;C:\Users\Asmaa Saad\.m2\repository\net\tanesha\recaptcha4j\recaptcha4j\0.0.7\recaptcha4j-0.0.7.jar;C:\Users\Asmaa Saad\.m2\repository\org\antlr\antlr\3.3\antlr-3.3.jar;C:\Users\Asmaa Saad\.m2\repository\org\antlr\antlr-runtime\3.5\antlr-runtime-3.5.jar;C:\Users\Asmaa Saad\.m2\repository\org\antlr\stringtemplate\3.2.1\stringtemplate-3.2.1.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\commons\commons-collections4\4.0\commons-collections4-4.0.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\commons\commons-lang3\3.0\commons-lang3-3.0.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\httpcomponents\httpasyncclient\4.0.2\httpasyncclient-4.0.2.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\httpcomponents\httpclient\4.4\httpclient-4.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\httpcomponents\httpcore\4.4\httpcore-4.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\httpcomponents\httpcore-nio\4.4\httpcore-nio-4.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-analyzers-common\4.10.4\lucene-analyzers-common-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-core\4.10.4\lucene-core-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-grouping\4.10.4\lucene-grouping-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-highlighter\4.10.4\lucene-highlighter-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-join\4.10.4\lucene-join-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-memory\4.10.4\lucene-memory-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-misc\4.10.4\lucene-misc-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-queries\4.10.4\lucene-queries-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-queryparser\4.10.4\lucene-queryparser-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-sandbox\4.10.4\lucene-sandbox-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-spatial\4.10.4\lucene-spatial-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-suggest\4.10.4\lucene-suggest-4.10.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\poi\poi\3.9\poi-3.9.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\poi\poi-ooxml\3.9\poi-ooxml-3.9.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\poi\poi-ooxml-schemas\3.9\poi-ooxml-schemas-3.9.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\tiles\tiles-api\2.1.2\tiles-api-2.1.2.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\tiles\tiles-core\2.1.2\tiles-core-2.1.2.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\tiles\tiles-jsp\2.1.2\tiles-jsp-2.1.2.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\tiles\tiles-servlet\2.1.2\tiles-servlet-2.1.2.jar;C:\Users\Asmaa Saad\.m2\repository\org\apache\xmlbeans\xmlbeans\2.3.0\xmlbeans-2.3.0.jar;C:\Users\Asmaa Saad\.m2\repository\org\aspectj\aspectjrt\1.6.10\aspectjrt-1.6.10.jar;C:\Users\Asmaa Saad\.m2\repository\org\aspectj\aspectjweaver\1.5.4\aspectjweaver-1.5.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\Asmaa Saad\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\Asmaa Saad\.m2\repository\org\codehaus\woodstox\stax2-api\3.1.1\stax2-api-3.1.1.jar;C:\Users\Asmaa Saad\.m2\repository\org\codehaus\woodstox\woodstox-core-asl\4.1.1\woodstox-core-asl-4.1.1.jar;C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-compiler\5.6.0.Final\drools-compiler-5.6.0.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-core\5.6.0.Final\drools-core-5.6.0.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-decisiontables\5.6.0.Final\drools-decisiontables-5.6.0.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-spring\5.6.0.Final\drools-spring-5.6.0.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-templates\5.6.0.Final\drools-templates-5.6.0.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\drools\knowledge-api\5.6.0.Final\knowledge-api-5.6.0.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\drools\knowledge-internal-api\5.6.0.Final\knowledge-internal-api-5.6.0.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\eclipse\jdt\core\compiler\ecj\3.5.1\ecj-3.5.1.jar;C:\Users\Asmaa Saad\.m2\repository\org\elasticsearch\elasticsearch\1.5.2\elasticsearch-1.5.2.jar;C:\Users\Asmaa Saad\.m2\repository\org\freemarker\freemarker\2.3.19\freemarker-2.3.19.jar;C:\Users\Asmaa Saad\.m2\repository\org\glassfish\web\jstl-impl\1.2\jstl-impl-1.2.jar;C:\Users\Asmaa Saad\.m2\repository\org\hibernate\hibernate-core\4.1.2\hibernate-core-4.1.2.jar;C:\Users\Asmaa Saad\.m2\repository\org\hibernate\hibernate-ehcache\3.5.1-Final\hibernate-ehcache-3.5.1-Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\hibernate\hibernate-entitymanager\4.1.2\hibernate-entitymanager-4.1.2.jar;C:\Users\Asmaa Saad\.m2\repository\org\hibernate\hibernate-validator\4.1.0.Final\hibernate-validator-4.1.0.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\hibernate\common\hibernate-commons-annotations\4.0.1.Final\hibernate-commons-annotations-4.0.1.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\hibernate\javax\persistence\hibernate-jpa-2.0-api\1.0.1.Final\hibernate-jpa-2.0-api-1.0.1.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\infinispan\infinispan-cachestore-jdbc\5.1.4.FINAL\infinispan-cachestore-jdbc-5.1.4.FINAL.jar;C:\Users\Asmaa Saad\.m2\repository\org\infinispan\infinispan-core\5.1.6.FINAL\infinispan-core-5.1.6.FINAL.jar;C:\Users\Asmaa Saad\.m2\repository\org\infinispan\infinispan-tree\5.1.6.FINAL\infinispan-tree-5.1.6.FINAL.jar;C:\Users\Asmaa Saad\.m2\repository\org\jadira\usertype\usertype.core\3.0.0.CR1\usertype.core-3.0.0.CR1.jar;C:\Users\Asmaa Saad\.m2\repository\org\jadira\usertype\usertype.spi\3.0.0.CR1\usertype.spi-3.0.0.CR1.jar;C:\Users\Asmaa Saad\.m2\repository\org\jboss\jboss-common-core\2.2.14.GA\jboss-common-core-2.2.14.GA.jar;C:\Users\Asmaa Saad\.m2\repository\org\jboss\cache\jbosscache-core\3.2.5.GA\jbosscache-core-3.2.5.GA.jar;C:\Users\Asmaa Saad\.m2\repository\org\jboss\javaee\jboss-transaction-api\1.0.1.GA\jboss-transaction-api-1.0.1.GA.jar;C:\Users\Asmaa Saad\.m2\repository\org\jboss\logging\jboss-logging\3.1.0.GA\jboss-logging-3.1.0.GA.jar;C:\Users\Asmaa Saad\.m2\repository\org\jboss\logging\jboss-logging-spi\2.0.5.GA\jboss-logging-spi-2.0.5.GA.jar;C:\Users\Asmaa Saad\.m2\repository\org\jboss\marshalling\jboss-marshalling\1.3.11.GA\jboss-marshalling-1.3.11.GA.jar;C:\Users\Asmaa Saad\.m2\repository\org\jboss\marshalling\jboss-marshalling-river\1.3.11.GA\jboss-marshalling-river-1.3.11.GA.jar;C:\Users\Asmaa Saad\.m2\repository\org\jboss\spec\javax\transaction\jboss-transaction-api_1.1_spec\1.0.0.Final\jboss-transaction-api_1.1_spec-1.0.0.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\jgroups\jgroups\3.0.11.Final\jgroups-3.0.11.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\joda\joda-money\0.6\joda-money-0.6.jar;C:\Users\Asmaa Saad\.m2\repository\org\jopendocument\jOpenDocument\1.3b1\jOpenDocument-1.3b1.jar;C:\Users\Asmaa Saad\.m2\repository\org\mvel\mvel2\2.1.8.Final\mvel2-2.1.8.Final.jar;C:\Users\Asmaa Saad\.m2\repository\org\ow2\asm\asm\4.1\asm-4.1.jar;C:\Users\Asmaa Saad\.m2\repository\org\ow2\asm\asm-commons\4.1\asm-commons-4.1.jar;C:\Users\Asmaa Saad\.m2\repository\org\rhq\helpers\rhq-pluginAnnotations\3.0.4\rhq-pluginAnnotations-3.0.4.jar;C:\Users\Asmaa Saad\.m2\repository\org\slf4j\jcl-over-slf4j\1.6.6\jcl-over-slf4j-1.6.6.jar;C:\Users\Asmaa Saad\.m2\repository\org\slf4j\slf4j-api\1.6.6\slf4j-api-1.6.6.jar;C:\Users\Asmaa Saad\.m2\repository\org\slf4j\slf4j-log4j12\1.6.6\slf4j-log4j12-1.6.6.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-aop\3.1.0.RELEASE\spring-aop-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-asm\3.1.0.RELEASE\spring-asm-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-aspects\3.1.0.RELEASE\spring-aspects-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-beans\3.1.0.RELEASE\spring-beans-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-context\3.1.0.RELEASE\spring-context-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-context-support\3.1.0.RELEASE\spring-context-support-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-core\3.1.0.RELEASE\spring-core-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-expression\3.1.0.RELEASE\spring-expression-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-jdbc\3.0.7.RELEASE\spring-jdbc-3.0.7.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-orm\3.1.0.RELEASE\spring-orm-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-test\3.1.0.RELEASE\spring-test-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-tx\3.1.0.RELEASE\spring-tx-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-web\3.1.0.RELEASE\spring-web-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-webmvc\3.1.0.RELEASE\spring-webmvc-3.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\mobile\spring-mobile-device\1.1.0.RELEASE\spring-mobile-device-1.1.0.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-acl\3.1.4.RELEASE\spring-security-acl-3.1.4.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-config\3.1.4.RELEASE\spring-security-config-3.1.4.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-core\3.1.4.RELEASE\spring-security-core-3.1.4.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-taglibs\3.1.4.RELEASE\spring-security-taglibs-3.1.4.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-web\3.1.4.RELEASE\spring-security-web-3.1.4.RELEASE.jar;C:\Users\Asmaa Saad\.m2\repository\stax\stax-api\1.0.1\stax-api-1.0.1.jar;C:\Users\Asmaa Saad\.m2\repository\xmlpull\xmlpull\1.1.3.1\xmlpull-1.1.3.1.jar;C:\Users\Asmaa Saad\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;D:\personal\shopizer\sm-shop\target\classes
+-d
+D:\personal\shopizer\sm-shop\target\classes
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shop\ContactForm.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\ProductOptionValue.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\secutity\Password.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\PersistableProductReviewPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\PersistableCustomer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\security\SecurityDataAccessException.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\ReadableProductPrice.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\AnonymousCustomer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shop\MerchantStoreEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\customer\attribute\CustomerAttributes.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\SessionUtil.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\content\ContentPagesController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\customers\CustomerController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\FieldMatchValidator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\CustomerBillingAddressPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\category\CategoryDescription.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\PersistableProductPrice.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\PersistableOrder.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\security\SecurityQuestion.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\PersistableOrderPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\ActiveLinkTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\CustomerOptionValueEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\model\search\AutoCompleteRequest.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\PersistableCustomerOption.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\search\SearchController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\configurations\CacheController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\ProductOptionValueDescription.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\PersistableProductReview.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\shoppingCart\ShoppingCartController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\FeaturedItemsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\user\SecurityController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shop\Breadcrumb.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\category\facade\CategoryFacade.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\ReadableProductReview.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shop\ReadableMerchantStore.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\CustomerOptionPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\Address.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\Order.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\CustomerOptionEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\customer\attribute\CustomerOption.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\content\ShopContentController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\CartModificationException.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\AdminAccessDeniedHandler.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\FilePathUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\customers\CustomerOptionsSetController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\services\controller\customer\CustomerRESTController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\model\filter\QueryFilterType.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\catalog\ProductPrice.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\ProductOptionValueEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\LanguageUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\PersistableImage.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\OrderProductDownloadUrlTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\FieldMatch.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\manufacturer\ManufacturerEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\ProductReviewController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\ProductPrice.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\manufacturer\ReadableManufacturerPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\manufacturer\PersistableManufacturer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\ProductPriceEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\CustomerAttributeEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\shipping\ShippingPackagingController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\OrderEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\PersistableCustomerOptionPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\services\security\CustomerServicesImpl.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\ProductKeywordsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\StoreFooterlTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\orders\Order.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\security\UserAuthenticationSuccessHandler.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\ReadableOrderProductDownloadPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\services\controller\product\ShopProductRESTController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\Entity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\user\PermissionController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\ReadableProductPricePopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\Customer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\category\facade\CategoryFacadeImpl.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\StoreBreadcrumbsTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\merchant\StoreBrandingController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\reference\Size.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\security\WebUserServices.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\init\data\InitData.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\configurations\ConfigurationController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\category\CategoryEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\constants\ApplicationConstants.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\category\Category.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\tax\TaxConfigurationController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\ReadableShippingSummaryPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shoppingcart\ShoppingCartItem.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\ReadableProduct.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\content\StaticContentController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\ShopOrder.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\ProductList.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\ReadableShopOrder.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shop\BreadcrumbItem.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\shoppingCart\facade\ShoppingCartFacadeImpl.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\ProductAttribute.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\ReadableOrderList.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\ReadableOrderProductPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\ReadableShippingSummary.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\files\FilesController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\shoppingCart\ShoppingCartDataPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\content\ProductImages.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\OrderTotal.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\ReadableShopOrderPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\ReadableOrderPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\UserUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\services\security\ServicesAuthenticationEntryPoint.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\CustomerEntityPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\catalog\Keyword.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\LabelUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\EmailUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shoppingcart\ShoppingCartData.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\security\UserServicesImpl.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\Product.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\model\catalog\Attribute.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\orders\OrdersController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\PersistableProductOptionValue.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\category\ShoppingCategoryController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\DigitalProductController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\configurations\SystemConfigurationController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\SecuredCustomer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\filter\StoreFilter.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\PersistableCategoryPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\ProductAttributeEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\orders\OrderActionsControler.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\MerchantUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\constants\Constants.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\model\paging\PaginationData.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\AdminProductDownloadUrlTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\customer\facade\CustomerFacade.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\ShopProductPriceFormatTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\category\PersistableCategory.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\ReadableFinalPricePopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\shoppingCart\facade\ShoppingCartFacade.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\model\catalog\AttributeValue.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\PersistableProductAttribute.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\ReadableProductReviewPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\orders\OrderControler.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\OrderProductPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\BreadcrumbsUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\CustomerOptionValueDescription.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\catalog\Product.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\CatalogEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\merchant\StoreLandingController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\product\facade\ProductFacade.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\content\ContentImageController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\PersistableCustomerOptionValuePopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\PersistableProduct.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\ManufacturerImageUrlTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\customer\CustomerRegistrationController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\ProductOptionDescription.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\merchant\StoreLandingDescription.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\PersistableCustomerBillingAddressPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\CustomerPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\CustomerOption.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\catalog\Manufacturer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\RelatedItemsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\ReadableOrderTotal.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\PersistableProductOptionPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\BeanUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\ProductOption.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\filter\AdminFilter.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\user\GroupsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\PersistableOrderProductPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\merchant\MerchantStoreController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\shipping\ShippingConfigsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\ReadableProductList.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\GeoLocationUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\shipping\CustomShippingMethodsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\ReadableOrderProduct.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\ShopProductImageUrlTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\PageBuilderUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\SecuredShopPersistableCustomer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\ReadableCustomerOption.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\ReadableCategoryPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\CustomerEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\ShopEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\merchant\StoreLanding.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\CustomerDeliveryAddressPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\ReadableOrderProductDownload.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\PersistableCustomerAttribute.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\LocaleUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\customer\CustomerAccountController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\ReadableProductAttribute.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\ProductImagesController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\order\facade\OrderFacade.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\OptionsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\AdminController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\ReadableOrderProductAttribute.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\order\ShoppingOrderDownloadController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\content\ContentBoxesController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\manufacturer\ReadableManufacturer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\RelatedProduct.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\product\ShopProductController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\ProductsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\CustomerAttribute.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\ReadableCustomerOptionValue.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\user\UserController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\reference\Weight.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\ProductDescription.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\customer\CustomerProductReviewController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\CustomerPassword.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\ShopProductRelationshipTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\ContentImageUrlTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\manufacturer\Manufacturer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\customer\CustomerOrdersController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\StoreLogoUrlTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\ReadableOrder.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\AbstractController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\content\ContentFiles.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\ProductEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\WebApplicationCacheUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\shipping\ShippingMethodsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\PersistableOrderProduct.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\ReadableProductPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\shoppingCart\MiniCartController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\product\facade\ProductFacadeImpl.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\PersistableCustomerShippingAddressPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\ProductAttributeController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\category\ReadableCategory.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\ProductReviewEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\ReadableCustomerPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\EmailTemplatesUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\customers\CustomerOptionsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\images\ImagesController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\services\controller\category\ShoppingCategoryRESTController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\web\ConfigListWrapper.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\customer\attribute\CustomerOptionValue.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\init\data\InitializationLoader.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\SearchProductList.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\ManufacturerController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\DateUtil.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\ControllerConstants.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\customer\CustomerLoginController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\ProductPriceController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\services\controller\store\StoreContactRESTController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\OrderProductEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\init\data\InitStoreData.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\PersistableProductOption.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\product\attribute\ProductOptionEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\ControllerConstants.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\reference\ReferenceController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\order\facade\OrderFacadeImpl.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\userpassword\UserReset.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\PersistableCustomerOptionValue.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\web\Menu.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\order\ShoppingOrderController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\order\ShoppingOrderPaymentController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\OptionsValueController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\PersistableProductPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\ServiceEntity.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\digital\ProductFiles.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\entity\orders\Refund.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\LandingController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\manufacturer\PersistableManufacturerPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\shoppingCart\ShoppingCartModelPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\ProductDescriptionUrlTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\tax\TaxRatesController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\AppConfiguration.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\ReadableOrderTotalPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\store\ContactController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\order\OrderProduct.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\CustomProductGroupsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\TokenizeTool.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\store\ReadableMerchantStorePopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\ReadableImage.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\ReadableCustomer.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\PageContentTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\utils\ImageFilePathUtils.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\CustomerOptionDescription.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shoppingcart\ShoppingCartAttribute.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\catalog\manufacturer\ManufacturerDescription.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\payments\PaymentsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\customer\PersistableCustomerPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\customer\CustomerDashboardController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\shipping\ShippingOriginController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\shipping\ShippingOptionsController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\services\controller\order\OrderRESTController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\constants\EmailConstants.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\customer\facade\CustomerFacadeImpl.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shop\BreadcrumbItemType.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\model\filter\QueryFilter.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\tags\ProductImageUrlTag.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\products\ProductController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\CustomerOptionValue.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\services\security\ServicesAuthenticationSuccessHandler.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\user\LoginController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\categories\CategoryController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\tax\TaxClassController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\shop\PageInformation.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\order\ShoppingCartItemPopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\services\controller\system\SystemRESTController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\entity\customer\attribute\ReadableCustomerAttribute.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\populator\catalog\PersistableProductOptionValuePopulator.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\admin\controller\customers\CustomerOptionsValueController.java
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\order\ShoppingOrderConfirmationController.java
+---- Full Classpath ---
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\resources.jar(3489258 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\rt.jar(63265893 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\sunrsasign.jar(missing)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\jsse.jar(631447 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\jce.jar(114950 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\charsets.jar(3088303 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\jfr.jar(560452 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\classes(missing)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\access-bridge-64.jar(187735 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\cldrdata.jar(3860522 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\dnsns.jar(8286 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\jaccess.jar(44516 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\jfxrt.jar(18158622 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\localedata.jar(2246691 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\nashorn.jar(2028225 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\sunec.jar(39771 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\sunjce_provider.jar(278718 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\sunmscapi.jar(32701 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\sunpkcs11.jar(250826 bytes)
+C:\Program Files\Java\jdk1.8.0_74\jre\lib\ext\zipfs.jar(68849 bytes)
+C:\Users\Asmaa Saad\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar(445288 bytes)
+C:\Users\Asmaa Saad\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar(4467 bytes)
+C:\Users\Asmaa Saad\.m2\repository\asm\asm\3.1\asm-3.1.jar(43033 bytes)
+C:\Users\Asmaa Saad\.m2\repository\backport-util-concurrent\backport-util-concurrent\3.1\backport-util-concurrent-3.1.jar(331716 bytes)
+C:\Users\Asmaa Saad\.m2\repository\c3p0\c3p0\0.9.1.2\c3p0-0.9.1.2.jar(610790 bytes)
+C:\Users\Asmaa Saad\.m2\repository\cglib\cglib\2.2\cglib-2.2.jar(278682 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.2.3\jackson-annotations-2.2.3.jar(33483 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.2.3\jackson-core-2.2.3.jar(192699 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.2.3\jackson-databind-2.2.3.jar(865838 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar(33015 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\google\code\gson\gson\2.3.1\gson-2.3.1.jar(210856 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\google\guava\guava\18.0\guava-18.0.jar(2256213 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\google\http-client\google-http-client\1.17.0-rc\google-http-client-1.17.0-rc.jar(270099 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\google\maps\google-maps-services\0.1.6\google-maps-services-0.1.6.jar(80459 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\googlecode\json-simple\json-simple\1.1.1\json-simple-1.1.1.jar(23931 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\h2database\h2\1.3.152\h2-1.3.152.jar(1227267 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\infradna\tool\bridge-method-annotation\1.11\bridge-method-annotation-1.11.jar(3159 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\itextpdf\itextpdf\5.5.6\itextpdf-5.5.6.jar(2265678 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\maxmind\db\maxmind-db\0.3.1\maxmind-db-0.3.1.jar(16703 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\maxmind\geoip2\geoip2\0.7.0\geoip2-0.7.0.jar(29663 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\mysema\commons\mysema-commons-lang\0.2.4\mysema-commons-lang-0.2.4.jar(12050 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\mysema\querydsl\querydsl-core\3.4.2\querydsl-core-3.4.2.jar(447933 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\mysema\querydsl\querydsl-jpa\3.4.2\querydsl-jpa-3.4.2.jar(105419 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\paypal\sdk\merchantsdk\2.6.109\merchantsdk-2.6.109.jar(609562 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\paypal\sdk\paypal-core\1.5.1\paypal-core-1.5.1.jar(124129 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\shopizer\shopizer-shipping-canadapost-module\0.0.1\shopizer-shipping-canadapost-module-0.0.1.jar(70488 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\shopizer\shopizer-shipping-distance-processor\2.0.3\shopizer-shipping-distance-processor-2.0.3.jar(6768 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\shopizer\sm-core\2.0.3-SNAPSHOT\sm-core-2.0.3-SNAPSHOT.jar(1372470 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\shopizer\sm-core-model\2.0.3-SNAPSHOT\sm-core-model-2.0.3-SNAPSHOT.jar(405103 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\shopizer\sm-core-modules\2.0.3-SNAPSHOT\sm-core-modules-2.0.3-SNAPSHOT.jar(13348 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\shopizer\sm-search\0.0.5\sm-search-0.0.5.jar(49921 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\spatial4j\spatial4j\0.4.1\spatial4j-0.4.1.jar(102177 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\squareup\okhttp\okhttp\2.0.0\okhttp-2.0.0.jar(260956 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\squareup\okio\okio\1.0.0\okio-1.0.0.jar(52131 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\sun\jersey\jersey-bundle\1.19\jersey-bundle-1.19.jar(1623690 bytes)
+C:\Users\Asmaa Saad\.m2\repository\com\thoughtworks\xstream\xstream\1.4.1\xstream-1.4.1.jar(495701 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-beanutils\commons-beanutils\1.8.3\commons-beanutils-1.8.3.jar(232019 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-beanutils\commons-beanutils-core\1.8.0\commons-beanutils-core-1.8.0.jar(206035 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-codec\commons-codec\1.2\commons-codec-1.2.jar(30085 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar(575389 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-configuration\commons-configuration\1.6\commons-configuration-1.6.jar(298829 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar(143602 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-fileupload\commons-fileupload\1.2.2\commons-fileupload-1.2.2.jar(59590 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-httpclient\commons-httpclient\3.1\commons-httpclient-3.1.jar(305001 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-io\commons-io\2.0.1\commons-io-2.0.1.jar(159509 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar(284220 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar(60686 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar(44598 bytes)
+C:\Users\Asmaa Saad\.m2\repository\commons-validator\commons-validator\1.4.0\commons-validator-1.4.0.jar(176897 bytes)
+C:\Users\Asmaa Saad\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar(313898 bytes)
+C:\Users\Asmaa Saad\.m2\repository\io\searchbox\jest\0.1.5\jest-0.1.5.jar(15921 bytes)
+C:\Users\Asmaa Saad\.m2\repository\io\searchbox\jest-common\0.1.5\jest-common-0.1.5.jar(158640 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javassist\javassist\3.3\javassist-3.3.jar(459663 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar(62983 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\annotation\jsr250-api\1.0\jsr250-api-1.0.jar(5848 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar(2497 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\mail\mail\1.4.5\mail-1.4.5.jar(508143 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\servlet\jstl\1.2\jstl-1.2.jar(414240 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar(105112 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\servlet\jsp\jsp-api\2.1\jsp-api-2.1.jar(100636 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\servlet\jsp\jstl\jstl-api\1.2\jstl-api-1.2.jar(30527 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\transaction\jta\1.1\jta-1.1.jar(15071 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\validation\validation-api\1.0.0.GA\validation-api-1.0.0.GA.jar(47433 bytes)
+C:\Users\Asmaa Saad\.m2\repository\javax\ws\rs\jsr311-api\1.1.1\jsr311-api-1.1.1.jar(46367 bytes)
+C:\Users\Asmaa Saad\.m2\repository\jdom\jdom\1.0\jdom-1.0.jar(153253 bytes)
+C:\Users\Asmaa Saad\.m2\repository\jgroups\jgroups\2.6.13.GA\jgroups-2.6.13.GA.jar(2123983 bytes)
+C:\Users\Asmaa Saad\.m2\repository\joda-time\joda-time\2.0\joda-time-2.0.jar(569231 bytes)
+C:\Users\Asmaa Saad\.m2\repository\junit\junit\4.8.2\junit-4.8.2.jar(237344 bytes)
+C:\Users\Asmaa Saad\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar(481535 bytes)
+C:\Users\Asmaa Saad\.m2\repository\mysql\mysql-connector-java\5.1.31\mysql-connector-java-5.1.31.jar(964879 bytes)
+C:\Users\Asmaa Saad\.m2\repository\net\java\dev\rome\rome\1.0.0\rome-1.0.0.jar(220277 bytes)
+C:\Users\Asmaa Saad\.m2\repository\net\sf\ehcache\ehcache\1.5.0\ehcache-1.5.0.jar(264400 bytes)
+C:\Users\Asmaa Saad\.m2\repository\net\sf\jsr107cache\jsr107cache\1.0\jsr107cache-1.0.jar(8277 bytes)
+C:\Users\Asmaa Saad\.m2\repository\net\tanesha\recaptcha4j\recaptcha4j\0.0.7\recaptcha4j-0.0.7.jar(10245 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\antlr\antlr\3.3\antlr-3.3.jar(897071 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\antlr\antlr-runtime\3.5\antlr-runtime-3.5.jar(167735 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\antlr\stringtemplate\3.2.1\stringtemplate-3.2.1.jar(148627 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\commons\commons-collections4\4.0\commons-collections4-4.0.jar(610259 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\commons\commons-lang3\3.0\commons-lang3-3.0.jar(306008 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\httpcomponents\httpasyncclient\4.0.2\httpasyncclient-4.0.2.jar(157851 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\httpcomponents\httpclient\4.4\httpclient-4.4.jar(719304 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\httpcomponents\httpcore\4.4\httpcore-4.4.jar(321639 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\httpcomponents\httpcore-nio\4.4\httpcore-nio-4.4.jar(355662 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-analyzers-common\4.10.4\lucene-analyzers-common-4.10.4.jar(1699875 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-core\4.10.4\lucene-core-4.10.4.jar(2563490 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-grouping\4.10.4\lucene-grouping-4.10.4.jar(107784 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-highlighter\4.10.4\lucene-highlighter-4.10.4.jar(138282 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-join\4.10.4\lucene-join-4.10.4.jar(64021 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-memory\4.10.4\lucene-memory-4.10.4.jar(36078 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-misc\4.10.4\lucene-misc-4.10.4.jar(97173 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-queries\4.10.4\lucene-queries-4.10.4.jar(213029 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-queryparser\4.10.4\lucene-queryparser-4.10.4.jar(391515 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-sandbox\4.10.4\lucene-sandbox-4.10.4.jar(119449 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-spatial\4.10.4\lucene-spatial-4.10.4.jar(126794 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\lucene\lucene-suggest\4.10.4\lucene-suggest-4.10.4.jar(179011 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\poi\poi\3.9\poi-3.9.jar(1869113 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\poi\poi-ooxml\3.9\poi-ooxml-3.9.jar(936648 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\poi\poi-ooxml-schemas\3.9\poi-ooxml-schemas-3.9.jar(4802621 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\tiles\tiles-api\2.1.2\tiles-api-2.1.2.jar(25891 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\tiles\tiles-core\2.1.2\tiles-core-2.1.2.jar(135084 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\tiles\tiles-jsp\2.1.2\tiles-jsp-2.1.2.jar(55071 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\tiles\tiles-servlet\2.1.2\tiles-servlet-2.1.2.jar(53051 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\apache\xmlbeans\xmlbeans\2.3.0\xmlbeans-2.3.0.jar(2666695 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\aspectj\aspectjrt\1.6.10\aspectjrt-1.6.10.jar(116226 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\aspectj\aspectjweaver\1.5.4\aspectjweaver-1.5.4.jar(1894165 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar(232248 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar(780664 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\codehaus\woodstox\stax2-api\3.1.1\stax2-api-3.1.1.jar(182112 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\codehaus\woodstox\woodstox-core-asl\4.1.1\woodstox-core-asl-4.1.1.jar(478446 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-compiler\5.6.0.Final\drools-compiler-5.6.0.Final.jar(1212410 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-core\5.6.0.Final\drools-core-5.6.0.Final.jar(3042927 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-decisiontables\5.6.0.Final\drools-decisiontables-5.6.0.Final.jar(58433 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-spring\5.6.0.Final\drools-spring-5.6.0.Final.jar(97024 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\drools\drools-templates\5.6.0.Final\drools-templates-5.6.0.Final.jar(54959 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\drools\knowledge-api\5.6.0.Final\knowledge-api-5.6.0.Final.jar(186690 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\drools\knowledge-internal-api\5.6.0.Final\knowledge-internal-api-5.6.0.Final.jar(9918 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\eclipse\jdt\core\compiler\ecj\3.5.1\ecj-3.5.1.jar(1674737 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\elasticsearch\elasticsearch\1.5.2\elasticsearch-1.5.2.jar(13774099 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\freemarker\freemarker\2.3.19\freemarker-2.3.19.jar(931168 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\glassfish\web\jstl-impl\1.2\jstl-impl-1.2.jar(391957 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\hibernate\hibernate-core\4.1.2\hibernate-core-4.1.2.jar(4401198 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\hibernate\hibernate-ehcache\3.5.1-Final\hibernate-ehcache-3.5.1-Final.jar(9478 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\hibernate\hibernate-entitymanager\4.1.2\hibernate-entitymanager-4.1.2.jar(478017 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\hibernate\hibernate-validator\4.1.0.Final\hibernate-validator-4.1.0.Final.jar(287706 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\hibernate\common\hibernate-commons-annotations\4.0.1.Final\hibernate-commons-annotations-4.0.1.Final.jar(81271 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\hibernate\javax\persistence\hibernate-jpa-2.0-api\1.0.1.Final\hibernate-jpa-2.0-api-1.0.1.Final.jar(102661 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\infinispan\infinispan-cachestore-jdbc\5.1.4.FINAL\infinispan-cachestore-jdbc-5.1.4.FINAL.jar(95493 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\infinispan\infinispan-core\5.1.6.FINAL\infinispan-core-5.1.6.FINAL.jar(2023331 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\infinispan\infinispan-tree\5.1.6.FINAL\infinispan-tree-5.1.6.FINAL.jar(66615 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jadira\usertype\usertype.core\3.0.0.CR1\usertype.core-3.0.0.CR1.jar(115449 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jadira\usertype\usertype.spi\3.0.0.CR1\usertype.spi-3.0.0.CR1.jar(33474 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jboss\jboss-common-core\2.2.14.GA\jboss-common-core-2.2.14.GA.jar(542693 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jboss\cache\jbosscache-core\3.2.5.GA\jbosscache-core-3.2.5.GA.jar(1169975 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jboss\javaee\jboss-transaction-api\1.0.1.GA\jboss-transaction-api-1.0.1.GA.jar(10899 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jboss\logging\jboss-logging\3.1.0.GA\jboss-logging-3.1.0.GA.jar(60768 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jboss\logging\jboss-logging-spi\2.0.5.GA\jboss-logging-spi-2.0.5.GA.jar(11924 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jboss\marshalling\jboss-marshalling\1.3.11.GA\jboss-marshalling-1.3.11.GA.jar(228015 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jboss\marshalling\jboss-marshalling-river\1.3.11.GA\jboss-marshalling-river-1.3.11.GA.jar(82100 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jboss\spec\javax\transaction\jboss-transaction-api_1.1_spec\1.0.0.Final\jboss-transaction-api_1.1_spec-1.0.0.Final.jar(11209 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jgroups\jgroups\3.0.11.Final\jgroups-3.0.11.Final.jar(1791476 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\joda\joda-money\0.6\joda-money-0.6.jar(53925 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\jopendocument\jOpenDocument\1.3b1\jOpenDocument-1.3b1.jar(2957693 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\mvel\mvel2\2.1.8.Final\mvel2-2.1.8.Final.jar(746671 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\ow2\asm\asm\4.1\asm-4.1.jar(47359 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\ow2\asm\asm-commons\4.1\asm-commons-4.1.jar(38090 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\rhq\helpers\rhq-pluginAnnotations\3.0.4\rhq-pluginAnnotations-3.0.4.jar(7616 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\slf4j\jcl-over-slf4j\1.6.6\jcl-over-slf4j-1.6.6.jar(17289 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\slf4j\slf4j-api\1.6.6\slf4j-api-1.6.6.jar(26176 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\slf4j\slf4j-log4j12\1.6.6\slf4j-log4j12-1.6.6.jar(9711 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-aop\3.1.0.RELEASE\spring-aop-3.1.0.RELEASE.jar(331474 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-asm\3.1.0.RELEASE\spring-asm-3.1.0.RELEASE.jar(53079 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-aspects\3.1.0.RELEASE\spring-aspects-3.1.0.RELEASE.jar(50621 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-beans\3.1.0.RELEASE\spring-beans-3.1.0.RELEASE.jar(589253 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-context\3.1.0.RELEASE\spring-context-3.1.0.RELEASE.jar(829601 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-context-support\3.1.0.RELEASE\spring-context-support-3.1.0.RELEASE.jar(106819 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-core\3.1.0.RELEASE\spring-core-3.1.0.RELEASE.jar(442400 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-expression\3.1.0.RELEASE\spring-expression-3.1.0.RELEASE.jar(176283 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-jdbc\3.0.7.RELEASE\spring-jdbc-3.0.7.RELEASE.jar(386083 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-orm\3.1.0.RELEASE\spring-orm-3.1.0.RELEASE.jar(378235 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-test\3.1.0.RELEASE\spring-test-3.1.0.RELEASE.jar(229729 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-tx\3.1.0.RELEASE\spring-tx-3.1.0.RELEASE.jar(246036 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-web\3.1.0.RELEASE\spring-web-3.1.0.RELEASE.jar(540819 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\spring-webmvc\3.1.0.RELEASE\spring-webmvc-3.1.0.RELEASE.jar(572266 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\mobile\spring-mobile-device\1.1.0.RELEASE\spring-mobile-device-1.1.0.RELEASE.jar(44096 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-acl\3.1.4.RELEASE\spring-security-acl-3.1.4.RELEASE.jar(79531 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-config\3.1.4.RELEASE\spring-security-config-3.1.4.RELEASE.jar(203691 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-core\3.1.4.RELEASE\spring-security-core-3.1.4.RELEASE.jar(340298 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-taglibs\3.1.4.RELEASE\spring-security-taglibs-3.1.4.RELEASE.jar(20980 bytes)
+C:\Users\Asmaa Saad\.m2\repository\org\springframework\security\spring-security-web\3.1.4.RELEASE\spring-security-web-3.1.4.RELEASE.jar(253827 bytes)
+C:\Users\Asmaa Saad\.m2\repository\stax\stax-api\1.0.1\stax-api-1.0.1.jar(26514 bytes)
+C:\Users\Asmaa Saad\.m2\repository\xmlpull\xmlpull\1.1.3.1\xmlpull-1.1.3.1.jar(7188 bytes)
+C:\Users\Asmaa Saad\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar(24956 bytes)
+D:\personal\shopizer\sm-shop\target\classes(1 entries)
+---- Compiler Messages ---
+info directory classpath entry does not exist: C:\Program Files\Java\jdk1.8.0_74\jre\lib\sunrsasign.jar
+info zipfile classpath entry does not exist: C:\Program Files\Java\jdk1.8.0_74\jre\classes
+info Pipelining compilation
+error at (no source information available)
+D:\personal\shopizer\sm-shop\src\main\java\com\salesmanager\web\shop\controller\order\ShoppingOrderConfirmationController.java:0::0 Internal compiler error
+org.aspectj.apache.bcel.classfile.ClassFormatException: File: 'java/lang/CharSequence.class': Invalid byte tag in constant pool: 15
+	at org.aspectj.apache.bcel.classfile.ClassParser.readConstantPool(ClassParser.java:192)
+	at org.aspectj.apache.bcel.classfile.ClassParser.parse(ClassParser.java:131)
+	at org.aspectj.weaver.bcel.BcelWorld.lookupJavaClass(BcelWorld.java:424)
+	at org.aspectj.weaver.bcel.BcelWorld.resolveDelegate(BcelWorld.java:376)
+	at org.aspectj.weaver.World.resolveToReferenceType(World.java:461)
+	at org.aspectj.weaver.World.resolve(World.java:305)
+	at org.aspectj.weaver.World.resolve(World.java:218)
+	at org.aspectj.weaver.bcel.BcelObjectType.getDeclaredInterfaces(BcelObjectType.java:266)
+	at org.aspectj.weaver.ReferenceType.getDeclaredInterfaces(ReferenceType.java:624)
+	at org.aspectj.weaver.ResolvedType.getDirectSupertypes(ResolvedType.java:76)
+	at org.aspectj.weaver.ResolvedType.collectInterTypeMungers(ResolvedType.java:1390)
+	at org.aspectj.weaver.ResolvedType.getInterTypeMungersIncludingSupers(ResolvedType.java:1371)
+	at org.aspectj.weaver.ResolvedType.checkInterTypeMungers(ResolvedType.java:1442)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.weaveInterTypeDeclarations(AjLookupEnvironment.java:809)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.weaveInterTypeDeclarations(AjLookupEnvironment.java:652)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.doPendingWeaves(AjLookupEnvironment.java:427)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.completeTypeBindings(AjLookupEnvironment.java:213)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:616)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:357)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:371)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performCompilation(AjBuildManager.java:1021)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performBuild(AjBuildManager.java:268)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.batchBuild(AjBuildManager.java:181)
+	at org.aspectj.ajdt.ajc.AjdtCommand.doCommand(AjdtCommand.java:112)
+	at org.aspectj.ajdt.ajc.AjdtCommand.runCommand(AjdtCommand.java:60)
+	at org.aspectj.tools.ajc.Main.run(Main.java:371)
+	at org.aspectj.tools.ajc.Main.runMain(Main.java:248)
+	at org.codehaus.mojo.aspectj.AbstractAjcCompiler.execute(AbstractAjcCompiler.java:360)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:133)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:208)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:108)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:76)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:116)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:361)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:155)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:584)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:213)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:157)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+
+abort ABORT -- (ClassFormatException) File: 'java/lang/CharSequence.class': Invalid byte tag in constant pool: 15
+File: 'java/lang/CharSequence.class': Invalid byte tag in constant pool: 15
+org.aspectj.apache.bcel.classfile.ClassFormatException: File: 'java/lang/CharSequence.class': Invalid byte tag in constant pool: 15
+	at org.aspectj.apache.bcel.classfile.ClassParser.readConstantPool(ClassParser.java:192)
+	at org.aspectj.apache.bcel.classfile.ClassParser.parse(ClassParser.java:131)
+	at org.aspectj.weaver.bcel.BcelWorld.lookupJavaClass(BcelWorld.java:424)
+	at org.aspectj.weaver.bcel.BcelWorld.resolveDelegate(BcelWorld.java:376)
+	at org.aspectj.weaver.World.resolveToReferenceType(World.java:461)
+	at org.aspectj.weaver.World.resolve(World.java:305)
+	at org.aspectj.weaver.World.resolve(World.java:218)
+	at org.aspectj.weaver.bcel.BcelObjectType.getDeclaredInterfaces(BcelObjectType.java:266)
+	at org.aspectj.weaver.ReferenceType.getDeclaredInterfaces(ReferenceType.java:624)
+	at org.aspectj.weaver.ResolvedType.getDirectSupertypes(ResolvedType.java:76)
+	at org.aspectj.weaver.ResolvedType.collectInterTypeMungers(ResolvedType.java:1390)
+	at org.aspectj.weaver.ResolvedType.getInterTypeMungersIncludingSupers(ResolvedType.java:1371)
+	at org.aspectj.weaver.ResolvedType.checkInterTypeMungers(ResolvedType.java:1442)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.weaveInterTypeDeclarations(AjLookupEnvironment.java:809)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.weaveInterTypeDeclarations(AjLookupEnvironment.java:652)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.doPendingWeaves(AjLookupEnvironment.java:427)
+	at org.aspectj.ajdt.internal.compiler.lookup.AjLookupEnvironment.completeTypeBindings(AjLookupEnvironment.java:213)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:616)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:357)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:371)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performCompilation(AjBuildManager.java:1021)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performBuild(AjBuildManager.java:268)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.batchBuild(AjBuildManager.java:181)
+	at org.aspectj.ajdt.ajc.AjdtCommand.doCommand(AjdtCommand.java:112)
+	at org.aspectj.ajdt.ajc.AjdtCommand.runCommand(AjdtCommand.java:60)
+	at org.aspectj.tools.ajc.Main.run(Main.java:371)
+	at org.aspectj.tools.ajc.Main.runMain(Main.java:248)
+	at org.codehaus.mojo.aspectj.AbstractAjcCompiler.execute(AbstractAjcCompiler.java:360)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:133)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:208)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:108)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:76)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:116)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:361)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:155)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:584)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:213)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:157)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+
