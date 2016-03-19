@@ -156,6 +156,17 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	@Pattern(regexp="^[a-zA-Z0-9_]*$")
 	@Column(name = "SKU")
 	private String sku;
+	
+	@Column(name = "video_link")
+	private String videoLink;
+
+	public String getVideoLink() {
+		return videoLink;
+	}
+
+	public void setVideoLink(String videoLink) {
+		this.videoLink = videoLink;
+	}
 
 	public Product() {
 	}

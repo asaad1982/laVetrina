@@ -379,7 +379,14 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                                     <span class="help-inline"><form:errors path="product.sortOrder" cssClass="error" /></span>
                         </div>
                   </div>                 
-
+					
+                  <div class="control-group">
+                        <label>Video Link</label>
+                        <div class="controls">
+                                    <form:input id="videoLink" cssClass="" path="product.videoLink"/>
+                                    <span class="help-inline"><form:errors path="product.videoLink" cssClass="error" /></span>
+                        </div>
+                  </div>  
 
                   <div class="control-group">
                         <label><s:message code="label.product.image" text="Image"/>&nbsp;<c:if test="${product.productImage.productImage!=null && product.productImage.productImage!=''}"><span id="imageControlRemove"> - <a href="#" onClick="removeImage('${product.productImage.id}')"><s:message code="label.generic.remove" text="Remove"/></a></span></c:if></label>
