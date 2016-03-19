@@ -36,9 +36,54 @@
 			<div class="control-group">
 				<label><s:message code="label.productedit.categoryname" text="Category"/></label>
 			  	<div class="controls">
-	                        		<form:select path="id">
-					  					<form:options items="${categories}" itemValue="id" itemLabel="descriptions[0].name"/>
-				       				</form:select>
+			  	
+			  	<script type="text/javascript">
+			  	
+			  	myTreeGrid=isc.TreeGrid.create({
+    								ID:"categoryTree",
+    								border:0,
+    								showResizeBar: false,
+    								position:"relative",
+    								data: isc.Tree.create({
+        								modelType: "parent",
+        								nameProperty: "Name",
+        								idField: "categoryId",
+        								parentIdField: "parentId",
+        								data: [
+										{categoryId:"-1", parentId:"0", Name:"<s:message code="label.category.root" text="Root" />", isFolder: true},
+										<c:forEach items="${categories}" var="category" varStatus="status">
+            								<c:choose><c:when test="${category.parent!=null && category.parent.visible}" >
+            								{categoryId:'<c:out value="${category.id}" />', parentId:'<c:choose><c:when test="${category.parent!=null}"><c:out value="${category.parent.id}" /></c:when><c:otherwise>-1</c:otherwise></c:choose>', Name:'<c:out value="${category.descriptions[0].name}" />', isFolder: true}
+            								<c:if test="${status.count<fn:length(categories)}">,</c:if></c:when>
+            								<c:when test="${category.parent==null}">
+            								{categoryId:'<c:out value="${category.id}" />', parentId:'<c:choose><c:when test="${category.parent!=null}"><c:out value="${category.parent.id}" /></c:when><c:otherwise>-1</c:otherwise></c:choose>', Name:'<c:out value="${category.descriptions[0].name}" />', isFolder: true}
+            								<c:if test="${status.count<fn:length(categories)}">,</c:if>
+            								</c:when></c:choose>
+            							</c:forEach>
+        								]
+    								}),
+
+
+    								
+    								showHeader:false,
+    								leaveScrollbarGap:false,
+    								animateFolders:true,
+    								canAcceptDroppedRecords:true,
+    								canReparentNodes:false,
+    								selectionType:"single",
+    								animateRowsMaxTime:750
+    								
+    								
+							  });
+							  myTreeGrid.openFolder = function (node) {
+                                    this.Super("openFolder", arguments);
+                                     
+                                     $('#categoryIdHidden').val(node.categoryId);
+                              }
+			  	
+			  	</script>
+	                        		<form:hidden path="id" id="categoryIdHidden"/>
+					  					
 	                                <span class="help-inline"><form:errors path="id" cssClass="error" /></span>
 				</div>
 			</div>
