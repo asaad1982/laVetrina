@@ -51,6 +51,8 @@ public interface CategoryDao extends SalesManagerEntityDao<Long, Category> {
 	List<Object[]> countProductsByCategories(MerchantStore store);
 
 	List<Object[]> categoryStockAvailability(MerchantStore store);
+
+	List<Category> listActiveByStore(MerchantStore store, Language language);
 	
 
 }

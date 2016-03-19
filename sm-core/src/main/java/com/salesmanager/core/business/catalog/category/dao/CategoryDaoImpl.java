@@ -447,4 +447,21 @@ public class CategoryDaoImpl extends SalesManagerEntityDaoImpl<Long, Category> i
 		
 	}
 
+	@Override
+	public List<Category> listActiveByStore(MerchantStore store,
+			Language language) {
+		QCategory qCategory = QCategory.category;
+		QCategoryDescription qDescription = QCategoryDescription.categoryDescription;
+		
+		JPQLQuery query = new JPAQuery (getEntityManager());
+		
+		query.from(qCategory)
+			.leftJoin(qCategory.descriptions, qDescription).fetch()
+			.leftJoin(qCategory.merchantStore).fetch()
+			.where(qCategory.merchantStore.id.eq(store.getId()).and(qCategory.visible.eq(true)))
+			.orderBy(qCategory.sortOrder.asc(),qCategory.id.asc());
+		
+		return query.distinct().list(qCategory);
+	}
+
 }

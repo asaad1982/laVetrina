@@ -811,7 +811,7 @@ public class ProductController {
 		
 
 		//get parent categories
-		List<Category> categories = categoryService.listByStore(store,language);
+		List<Category> categories = categoryService.listActiveByStore(store,language);
 		
 		model.addAttribute("product", product);
 		model.addAttribute("categories", categories);
