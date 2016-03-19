@@ -20,4 +20,6 @@ public interface ManufacturerDao extends SalesManagerEntityDao<Long, Manufacture
 	
 	Manufacturer getByCode(MerchantStore store, String code);
 
+	List<Manufacturer> listByStoreAvailable(MerchantStore store, Language language);
+
 }

@@ -36,5 +36,7 @@ public interface ManufacturerService extends SalesManagerEntityService<Long, Man
 	 */
 	List<Manufacturer> listByProductsByCategoriesId(MerchantStore store,
 			List<Long> ids, Language language) throws ServiceException;
+
+	List<Manufacturer> listByStoreAvailable(MerchantStore store, Language language) throws ServiceException;
 	
 }

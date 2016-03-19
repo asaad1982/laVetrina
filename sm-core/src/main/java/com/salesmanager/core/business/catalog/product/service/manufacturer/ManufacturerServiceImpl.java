@@ -58,6 +58,12 @@ public class ManufacturerServiceImpl extends
 		return manufacturerDao.listByStore(store, language);
 	}
 	
+	
+	@Override
+	public List<Manufacturer> listByStoreAvailable(MerchantStore store, Language language) throws ServiceException {
+		return manufacturerDao.listByStoreAvailable(store, language);
+	}
+	
 	@Override
 	public List<Manufacturer> listByStore(MerchantStore store) throws ServiceException {
 		return manufacturerDao.listByStore(store);

@@ -140,7 +140,7 @@ public class ManufacturerController {
 			}
 			
 			manufacturer.setManufacturer( dbManufacturer );
-		
+			//manufacturer.setAvailable(true);
 			manufacturer.setCode(dbManufacturer.getCode());
 			manufacturer.setOrder( dbManufacturer.getOrder() );
 			
@@ -274,7 +274,7 @@ public class ManufacturerController {
 		newManufacturer.setOrder( manufacturer.getOrder() );
 		newManufacturer.setMerchantStore(store);
 		newManufacturer.setCode(manufacturer.getCode());
-
+		newManufacturer.setAvailable(manufacturer.getManufacturer().isAvailable());
 
 //		if(manufacturer.getManufacturerImage()!=null && manufacturer.getManufacturerImage().getId() == null) {
 //			newManufacturer.setProductImage(null);

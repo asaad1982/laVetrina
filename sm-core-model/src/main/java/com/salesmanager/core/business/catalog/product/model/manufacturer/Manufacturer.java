@@ -55,6 +55,17 @@ public class Manufacturer extends SalesManagerEntity<Long, Manufacturer> impleme
 	@Column(name = "MANUFACTURER_IMAGE")
 	private String image;
 	
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+
+	@Column(name="AVAILABLE")
+	private boolean available = true;
+	
 	@Column(name="SORT_ORDER")
 	private Integer order = new Integer(0);
 

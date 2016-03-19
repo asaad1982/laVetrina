@@ -127,7 +127,7 @@ public class ProductController {
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
 
-		List<Manufacturer> manufacturers = manufacturerService.listByStore(store, language);
+		List<Manufacturer> manufacturers = manufacturerService.listByStoreAvailable(store, language);
 		
 		List<ProductType> productTypes = productTypeService.list();
 		

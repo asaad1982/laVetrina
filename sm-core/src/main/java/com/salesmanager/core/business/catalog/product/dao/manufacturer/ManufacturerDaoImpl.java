@@ -56,6 +56,27 @@ public class ManufacturerDaoImpl extends SalesManagerEntityDaoImpl<Long, Manufac
 		return manufacturers;
 	}
 	
+	
+	@Override
+	public List<Manufacturer> listByStoreAvailable(MerchantStore store, Language language) {
+		QManufacturer qManufacturer = QManufacturer.manufacturer;
+		QManufacturerDescription qManufacturerDescription = QManufacturerDescription.manufacturerDescription;
+		
+		JPQLQuery query = new JPAQuery (getEntityManager());
+		
+		query.from(qManufacturer)
+			.leftJoin(qManufacturer.descriptions, qManufacturerDescription).fetch()
+			.leftJoin(qManufacturer.merchantStore).fetch()
+			.where(qManufacturerDescription.language.id.eq(language.getId())
+			.and(qManufacturer.merchantStore.id.eq(store.getId())).and(qManufacturer.available.eq(true)));
+		
+
+		
+		List<Manufacturer> manufacturers = query.list(qManufacturer);
+		return manufacturers;
+	}
+	
+	
 	//TODO get by code %
 
 	public Manufacturer getById(Long id) {

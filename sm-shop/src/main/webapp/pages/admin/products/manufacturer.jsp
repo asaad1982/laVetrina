@@ -144,6 +144,16 @@
 	                                  <span  class="help-inline"><form:errors path="descriptions[${counter.index}].title" cssClass="error" /></span>
 	                        </div>
 	                  	</div> 
+	                  	
+	                  	
+	                  	<div class="control-group">
+                        	<label><s:message code="label.product.available" text="Status"/></label>
+                        	<div class="controls">
+                                    <form:checkbox path="manufacturer.available" />
+                        	</div>
+                  		</div>
+	                  	
+	                  	
 
  	                  	<div class="control-group">
 	                        <label><s:message code="label.manufactureredit.manufacturerurl" text="URL"/> (<c:out value="${description.language.code}"/>)</label>
