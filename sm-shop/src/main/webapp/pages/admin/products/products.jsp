@@ -105,7 +105,7 @@
     								canRemoveRecords: true,
     								autoFetchData: false,
     								showFilterEditor: true,
-    								filterOnKeypress: true,
+    								filterOnKeypress: false,
 									dataFetchMode:"paged",
 
 
@@ -116,7 +116,7 @@
 										{title:"<s:message code="label.entity.name" text="Name"/>", name:"name"},
 										{title:"<s:message code="label.product.sku" text="Sku"/>", name:"sku"},
 										{title:"<s:message code="label.product.available" text="Available"/>", name:"available",type:"boolean"},
-										{title:"<s:message code="label.generic.price" text="Quantity"/>", name:"price", canFilter:false},
+										{title:"<s:message code="label.generic.price" text="Quantity"/>", name:"price", canFilter:true},
 										{title:"<s:message code="label.entity.details" text="Details"/>", name: "buttonField", align: "center",canFilter:false,canSort:false, canReorder:false}  
 
 
