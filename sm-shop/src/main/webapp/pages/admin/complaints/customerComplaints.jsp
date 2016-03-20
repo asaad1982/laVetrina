@@ -21,7 +21,7 @@
 								<div class="sm-ui-component">
 								<h3><s:message code="label.complaints.title" text="Categories" /></h3>	
 								
-								
+							
 								
 								
 								
@@ -34,10 +34,10 @@
 				 <c:set var="componentTitleKey" value="label.complaints.title" scope="request"/>
 				 <c:set var="gridHeader" value="/pages/admin/complaints/customerComplaints-gridHeader.jsp" scope="request"/>
 				 <c:set var="canRemoveEntry" value="true" scope="request"/>
-
+				<c:set var="filterByDate" value="true" scope="request"/>
             	 <jsp:include page="/pages/admin/components/list.jsp"></jsp:include> 
 				 <!-- End listing grid include -->
-			      			     
+			      			   	 
 			      			     
       					</div>
       					

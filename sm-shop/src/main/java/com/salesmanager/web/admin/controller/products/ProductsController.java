@@ -2,6 +2,7 @@ package com.salesmanager.web.admin.controller.products;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -25,10 +26,12 @@ import com.salesmanager.core.business.catalog.category.service.CategoryService;
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.catalog.product.model.ProductCriteria;
 import com.salesmanager.core.business.catalog.product.model.ProductList;
+import com.salesmanager.core.business.catalog.product.model.availability.ProductAvailability;
 import com.salesmanager.core.business.catalog.product.model.description.ProductDescription;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
+import com.salesmanager.core.utils.ProductPriceUtils;
 import com.salesmanager.core.utils.ajax.AjaxPageableResponse;
 import com.salesmanager.core.utils.ajax.AjaxResponse;
 import com.salesmanager.web.admin.entity.web.Menu;
@@ -46,6 +49,8 @@ public class ProductsController {
 	
 	@Autowired
 	LabelUtils messages;
+	@Autowired
+	private ProductPriceUtils priceUtil;
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductsController.class);
 	
@@ -178,6 +183,13 @@ public class ProductsController {
 					entry.put("name", description.getName());
 					entry.put("sku", product.getSku());
 					entry.put("available", product.isAvailable());
+					for (Iterator iterator = product.getAvailabilities().iterator(); iterator.hasNext();) {
+						ProductAvailability productAvailability = (ProductAvailability) iterator.next();
+						
+						entry.put("price",priceUtil.getAdminFormatedAmountWithCurrency(store,productAvailability.defaultPrice().getProductPriceAmount()));
+						
+						
+					}
 					resp.addDataEntry(entry);
 					
 					
