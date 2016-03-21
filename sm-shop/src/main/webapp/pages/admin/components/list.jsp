@@ -130,7 +130,7 @@
                     width: 300,
                     operator: "and",
                     saveOnEnter: true,
-                    dataSource: worldDS,
+                    dataSource: dataSource,
                     submit: function () {
                         entityList.filterData(filterForm.getValuesAsCriteria());
                     },
