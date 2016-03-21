@@ -92,7 +92,7 @@ public class NotificationController {
 		for(Language language:languages){
 			EmailTemplate emailTemplate = null;
 			for(EmailTemplate desc : emailTemplates) {				
-				if(desc.getLanguage().getId()==language.getId()) {
+				if(desc.getLanguage().getCode().equals(language.getCode())) {
 					emailTemplate = desc;
 					
 					
