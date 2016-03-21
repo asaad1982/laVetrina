@@ -33,6 +33,7 @@
 				 <c:set var="entityId" value="id" scope="request"/>
 				 <c:set var="componentTitleKey" value="label.complaints.title" scope="request"/>
 				 <c:set var="gridHeader" value="/pages/admin/complaints/customerComplaints-gridHeader.jsp" scope="request"/>
+				 <c:set var="gridSearch" value="/pages/admin/complaints/customerComplaint-Search.jsp" scope="request"/>
 				 <c:set var="canRemoveEntry" value="true" scope="request"/>
 				<c:set var="filterByDate" value="true" scope="request"/>
             	 <jsp:include page="/pages/admin/components/list.jsp"></jsp:include> 

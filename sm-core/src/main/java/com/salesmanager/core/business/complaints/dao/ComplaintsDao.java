@@ -22,7 +22,7 @@ public interface ComplaintsDao extends SalesManagerEntityDao<Long, CustomerCompl
 	
 
 	public List<CustomerComplaint> getByName(String note, String status,
-			String customerMail, String reason, String date);
+			String customerMail, String reason, String date,String endDate);
 
 	
 }

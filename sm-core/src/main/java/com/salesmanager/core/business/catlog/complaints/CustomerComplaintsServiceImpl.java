@@ -62,10 +62,10 @@ public class CustomerComplaintsServiceImpl extends SalesManagerEntityServiceImpl
 
 	@Override
 	public List<CustomerComplaint> getByName(String note, String status,
-			String customerMail, String reason, String date) throws ServiceException {
+			String customerMail, String reason, String date,String endDate) throws ServiceException {
 		// TODO Auto-generated method stub
 		try {
-		return complaintsDao.getByName(note,status,customerMail,reason,date);
+		return complaintsDao.getByName(note,status,customerMail,reason,date, endDate);
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}

@@ -65,6 +65,9 @@
     						      fields:[
     						      		<jsp:include page="${gridHeader}"></jsp:include>
     							],
+    							autoFitData: "vertical",
+    							showFilterEditor: true,
+                                autoFitMaxRecords: 10,
     							selectionType: "multiple",
 								removeData: function () {
 									if (confirm('<s:message code="label.entity.remove.confirm" text="Do you really want to remove this record ?" />')) {
@@ -124,10 +127,11 @@
 								});
 								
 								
-
+<c:if test="${gridSearch!=null}">
  isc.DynamicForm.create({
                     ID: "filterForm",
                     width: 300,
+                    position:"relative",
                     operator: "and",
                     saveOnEnter: true,
                     dataSource: dataSource,
@@ -135,37 +139,19 @@
                         entityList.filterData(filterForm.getValuesAsCriteria());
                     },
                     fields: [
-                        {name: "countryName",
-                         title: "Country Name contains",
-                         type: "text"
-                        },
-                        {type: "blurb",
-                         defaultValue: "<b>AND</b>"
-                        },
-                        {name: "population",
-                         title: "Population smaller than",
-                         type: "number",
-                         operator: "lessThan"
-                        },
-                        {type: "blurb",
-                         defaultValue: "<b>AND</b>"
-                        },
-                        {name: "independence",
-                         title: "Nationhood later than",
-                         type: "date",
-                         useTextField: true,
-                         operator: "greaterThan"
-                        }
+                    <jsp:include page="${gridSearch}"></jsp:include>
+                        
                     ]
                 });
                 isc.IButton.create({
                     title: "Filter",
+                    position:"relative",
                     click: function () {
                         filterForm.submit();
                     }
                 });
           
-
+</c:if>
 
 // Define application layout
 // ---------------------------------------------------------------------

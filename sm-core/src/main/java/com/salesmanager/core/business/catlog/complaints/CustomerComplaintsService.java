@@ -15,7 +15,7 @@ public interface CustomerComplaintsService extends SalesManagerEntityService<Lon
 	List<CustomerComplaint> getByName(String note,String status) throws ServiceException;
 
 	List<CustomerComplaint> getByName(String note, String parameter,
-			String customerMail, String reason, String date) throws ServiceException;
+			String customerMail, String reason, String date,String endDate) throws ServiceException;
 
 
 }
