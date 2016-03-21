@@ -141,8 +141,8 @@
                               <div class="controls">
                               		 
                               		 
-                              	     <textarea cols="30" id="emailTemplates${status.index}.emailTemplate" name="emailTemplates[${status.index}].emailTemplate">
-                        				<c:out value="${emailTemplates[status.index].emailTemplate}"/>
+                              	     <textarea cols="30" id="emailTemplates${status.index}.id" name="emailTemplates[${status.index}].id">
+                        				<c:out value="${description.emailTemplate}"/>
                         			 </textarea>
                               </div>
                               
@@ -151,7 +151,7 @@
                         <script type="text/javascript">
 						//<![CDATA[
 
-							CKEDITOR.replace('emailTemplates[${status.index}].emailTemplate',
+							CKEDITOR.replace('emailTemplates[${status.index}].id',
 							{
 								skin : 'office2003',
 								toolbar : 
@@ -201,7 +201,16 @@
 
                   </c:forEach>
                   <form:hidden path="id" />
-			
+					<c:set value="/admin/notificatin/customers/paging.html?id=${emailId}" var="pagingUrl" scope="request"/>
+				 			<c:set value="/admin/notificatin/customers/update.html?id=${emailId }" var="updateUrl" scope="request"/>
+				 			<c:set value="/admin/shipping/shippingConfigs.html" var="refreshUrl" scope="request"/>
+				 			<c:set var="entityId" value="code" scope="request"/>
+							<c:set var="componentTitleKey" value="label.shipping.countries" scope="request"/>
+				 			<c:set var="gridHeader" value="/pages/admin/promotion/promotion-customers-gridHeader.jsp" scope="request"/>
+							<c:set var="canRemoveEntry" value="false" scope="request"/>
+
+            	 			<jsp:include page="/pages/admin/components/list.jsp"></jsp:include> 
+				 			<!-- End listing grid include -->
 			      <div class="form-actions">
 
                   		<div class="pull-right">
@@ -213,16 +222,7 @@
 
             	 </div>
             	 <!-- Listing grid include -->
-				 			<c:set value="/admin/notificatin/customers/paging.html?id=${emailId}" var="pagingUrl" scope="request"/>
-				 			<c:set value="/admin/notificatin/customers/update.html?id=${emailId }" var="updateUrl" scope="request"/>
-				 			<c:set value="/admin/shipping/shippingConfigs.html" var="refreshUrl" scope="request"/>
-				 			<c:set var="entityId" value="code" scope="request"/>
-							<c:set var="componentTitleKey" value="label.shipping.countries" scope="request"/>
-				 			<c:set var="gridHeader" value="/pages/admin/promotion/promotion-customers-gridHeader.jsp" scope="request"/>
-							<c:set var="canRemoveEntry" value="false" scope="request"/>
-
-            	 			<jsp:include page="/pages/admin/components/list.jsp"></jsp:include> 
-				 			<!-- End listing grid include -->
+				 		
  
             	 </form:form>
 	      			     
