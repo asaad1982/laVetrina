@@ -19,45 +19,26 @@ import javax.persistence.Transient;
 
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
 import com.salesmanager.core.business.reference.geozone.model.GeoZone;
+import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.core.business.reference.zone.model.Zone;
 import com.salesmanager.core.constants.SchemaConstant;
 
 @Entity
-@Table(name = "COUNTRY", schema="lavetrina")
+@Table(name = "CITY", schema="lavetrina")
 @Cacheable
-public class Country extends SalesManagerEntity<Integer, Country> {
+public class City extends SalesManagerEntity<Integer, City> {
 	private static final long serialVersionUID = -7388011537255588035L;
 
 	@Id
-	@Column(name="COUNTRY_ID")
+	@Column(name="CITY_ID")
 	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT",
-	pkColumnValue = "COUNTRY_SEQ_NEXT_VAL")
+	pkColumnValue = "CITY_SEQ_NEXT_VAL")
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
 	private Integer id;
 	
-	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
-	private List<CountryDescription> descriptions = new ArrayList<CountryDescription>();
-	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-	private List<City> citys = new ArrayList<City>();
-	@OneToMany(mappedBy = "country")
-	private List<Zone> zones = new ArrayList<Zone>();
+ 
 	
-	@ManyToOne(targetEntity = GeoZone.class)
-	@JoinColumn(name = "GEOZONE_ID")
-	private GeoZone geoZone;
-	
-	public List<City> getCitys() {
-		return citys;
-	}
-
-	public void setCitys(List<City> citys) {
-		this.citys = citys;
-	}
-
-	@Column(name = "COUNTRY_SUPPORTED")
-	private boolean supported = true;
-	
-	@Column(name = "COUNTRY_ISOCODE", unique=true, nullable = false)
+	@Column(name = "CITY_ISOCODE", unique=true, nullable = false)
 	private String isoCode;
 	
 	@Transient
@@ -71,20 +52,14 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 		this.name = name;
 	}
 
-	public Country() {
+	public City() {
 	}
 	
-	public Country(String isoCode) {
+	public City(String isoCode) {
 		this.setIsoCode(isoCode);
 	}
 	
-	public boolean getSupported() {
-		return supported;
-	}
-
-	public void setSupported(boolean supported) {
-		this.supported = supported;
-	}
+ 
 
 	public String getIsoCode() {
 		return isoCode;
@@ -105,30 +80,24 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 		this.id = id;
 	}
 
-	public List<Zone> getZones() {
-		return zones;
+ 
+
+ 
+
+
+	@ManyToOne(targetEntity = Country.class)
+	@JoinColumn(name = "COUNTRY_ID", nullable = false)
+	private Country country;
+	
+ 
+	public Country getCountry() {
+		return country;
 	}
 
-	public void setZones(List<Zone> zones) {
-		this.zones = zones;
+	public void setCountry(Country country) {
+		this.country = country;
 	}
-
-	public List<CountryDescription> getDescriptions() {
-		return descriptions;
-	}
-
-	public void setDescriptions(List<CountryDescription> descriptions) {
-		this.descriptions = descriptions;
-	}
-
-	public GeoZone getGeoZone() {
-		return geoZone;
-	}
-
-	public void setGeoZone(GeoZone geoZone) {
-		this.geoZone = geoZone;
-	}
-
+	
 	
 	
 
