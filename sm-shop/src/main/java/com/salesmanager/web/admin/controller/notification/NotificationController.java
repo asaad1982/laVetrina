@@ -88,14 +88,13 @@ public class NotificationController {
 		}
 		model.addAttribute("notificationId", notificationId);
 		List<Language> languages = store.getLanguages();
+		List<EmailTemplate> emailTemplates=emailNotification.getEmailTemplates();
 		for(Language language:languages){
 			EmailTemplate emailTemplate = null;
-			for(EmailTemplate desc : emailNotification.getEmailTemplates()) {
-				
-				
-				if(desc.getLanguage().equals(language)) {
+			for(EmailTemplate desc : emailTemplates) {				
+				if(desc.getLanguage().getId()==language.getId()) {
 					emailTemplate = desc;
-					emailNotification.getEmailTemplates().add(emailTemplate);
+					
 					
 				}
 		}
@@ -105,7 +104,7 @@ public class NotificationController {
 				emailTemplate.setEmailNotification(emailNotification);
 				emailNotification.getEmailTemplates().add(emailTemplate);
 			}
-
+			
 			
 			
 		}

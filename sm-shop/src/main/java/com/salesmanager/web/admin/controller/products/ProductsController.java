@@ -273,7 +273,9 @@ public class ProductsController {
 				e.printStackTrace();
 			}
 
-	        return "import/importDone";
+	        model.addAttribute("success","success");
+			
+			return "admin-products";
 	    }
 	private void setMenu(Model model, HttpServletRequest request) throws Exception {
 		
