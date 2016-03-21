@@ -78,7 +78,7 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductServiceImpl.class);
 	
-	private final static String PRODUCT_TEMPLATE = "templates/product/Invoice";
+	private final static String PRODUCT_TEMPLATE = "templates/product/Import_Products";
 	private final static String INVOICE_TEMPLATE_EXTENSION = ".ods";
 	private final static String TEMP_INVOICE_SUFFIX_NAME = "_product.ods";
 	
@@ -480,40 +480,35 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 			Sheet sheet = spreadSheet.getSheet(0);
 			
 			int i=0;
-			sheet.setValueAt("Product Name", 0, 0);
-			sheet.setValueAt("Item#", 1, 0);
-			sheet.setValueAt("Category", 2, 0);
-			sheet.setValueAt("Brand", 3, 0);
-			sheet.setValueAt("Price", 4, 0);
-			sheet.setValueAt("Stock Quantity", 5, 0);
+			
 			for (Product product : products) {
 				
 			Product product2=getById(product.getId());
 			if(product2!=null){
 				i++;
-			sheet.setValueAt(product2.getProductDescription()!=null?product2.getProductDescription().getName():"", 0, i);
-			sheet.setValueAt(product2.getSku(), 1, i);
+			sheet.setValueAt(product2.getProductDescription()!=null?product2.getProductDescription().getName():"", 2, i);
+			sheet.setValueAt(product2.getProductDescription()!=null?product2.getProductDescription().getDescription():"", 3, i);
+			sheet.setValueAt(product2.getProductWeight(), 7, i);
+			sheet.setValueAt(product2.isAvailable()==true?"Available":"N/A", 8, i);
+			sheet.setValueAt(product2.getSku(), 5, i);
 			for (Iterator iterator = product2.getCategories().iterator(); iterator.hasNext();) {
 				Category category = (Category) iterator.next();
-				sheet.setValueAt(category.getDescription().getName(), 2, i);
+				sheet.setValueAt(category.getDescription().getName(), 0, i);
 				
 			}
 			for (Iterator iterator = product2.getManufacturer().getDescriptions().iterator(); iterator.hasNext();) {
 				ManufacturerDescription manufacturerDescription = (ManufacturerDescription) iterator.next();
-				sheet.setValueAt(manufacturerDescription.getName(), 3, i);
+				sheet.setValueAt(manufacturerDescription.getName(), 1, i);
 				
 			}
 			 
-				for (Iterator iterator = product2.getAttributes().iterator(); iterator.hasNext();) {
-					ProductAttribute productAttribute = (ProductAttribute) iterator.next();
-					sheet.setValueAt(productAttribute.getProductAttributePrice(), 4, i);
-					
-					
-				}
+				
 				for (Iterator iterator = product2.getAvailabilities().iterator(); iterator.hasNext();) {
 					ProductAvailability productAvailability = (ProductAvailability) iterator.next();
 					
-					sheet.setValueAt(priceUtil.getAdminFormatedAmountWithCurrency(store,productAvailability.defaultPrice().getProductPriceAmount()), 5, i);
+					sheet.setValueAt(priceUtil.getAdminFormatedAmountWithCurrency(store,productAvailability.defaultPrice().getProductPriceAmount()), 6, i);
+					sheet.setValueAt(productAvailability.getProductQuantity(), 4, i);
+					
 					
 					
 				}
@@ -528,7 +523,7 @@ public class ProductServiceImpl extends SalesManagerEntityServiceImpl<Long, Prod
 			
 			//generate invoice file
 			StringBuilder tempProductName = new StringBuilder();
-			tempProductName.append("Product").append(new Date()).append(TEMP_INVOICE_SUFFIX_NAME);
+			tempProductName.append("Product").append(TEMP_INVOICE_SUFFIX_NAME);
 			File outputFile = new File(tempProductName.toString());
 			OOUtils.open(sheet.getSpreadSheet().saveAs(outputFile));
 			

@@ -25,7 +25,11 @@
 
 								<div class="sm-ui-component">
 								
-      							
+      							<form:form modelAttribute="fileBean" method="post" enctype="multipart/form-data" action="/sm-shop/admin/products/upload.html">
+        <form:label for="fileData" path="fileData">Select file</form:label><br/><br/>
+        <form:input path="fileData" type="file"/>
+        <input type="submit" />
+    </form:form>
 			      			     <script>
 
 ///isc.showConsole();
