@@ -11,5 +11,7 @@
         			{title:"<s:message code="label.generic.email" text="Email"/>", name:"email",canEdit:false},
         			{title:"<s:message code="label.entity.reason" text="Customer Name"/>", name:"complaintReason",canEdit:false},
         			{title:"<s:message code="label.entity.status" text="status"/>", name:"status", valueMap:{under:"Under Processing", closed:"Closed"},canEdit:false},
-        			{title:"<s:message code="label.entity.date" text="date"/>", name:"complaintDate", type: "datetime",canFilter:true,canEdit:false},
+        			{title:"<s:message code="label.entity.date" text="date"/>", name:"complaintDate", type: "datetime", showTitle: false,left: 200, top: 200,
+        			
+    editorType: "DateRangeItem",canFilter:true,canEdit:false},
         			{title:"<s:message code="label.entity.details" text="Details"/>", name: "buttonField", align: "center",canFilter:false,canSort:false, canReorder:false}

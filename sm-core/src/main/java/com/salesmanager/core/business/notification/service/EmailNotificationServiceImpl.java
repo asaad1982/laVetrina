@@ -11,6 +11,7 @@ import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityService;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
 import com.salesmanager.core.business.notification.EmailNotification;
+import com.salesmanager.core.business.notification.EmailTemplate;
 import com.salesmanager.core.business.notification.dao.EmailNotificationDao;
 import com.salesmanager.core.business.reference.language.model.Language;
 @Service("emailNotificationService")
@@ -27,12 +28,17 @@ public class EmailNotificationServiceImpl extends SalesManagerEntityServiceImpl<
 	public void saveOrUpdate(EmailNotification emailNotification)
 			throws ServiceException {
 		if(emailNotification.getId()!=null && emailNotification.getId()>0) {
-
+			
 			super.update(emailNotification);
 			
 		} else {
-			
+			List<EmailTemplate> emailTemplates=emailNotification.getEmailTemplates();
+			emailNotification.setEmailTemplates(null);
 			super.save(emailNotification);
+			for(EmailTemplate emailTemplate:emailTemplates){
+				emailTemplate.setEmailNotification(emailNotification);
+			}
+			emailNotification.setEmailTemplates(emailTemplates);
 			
 		}
 
