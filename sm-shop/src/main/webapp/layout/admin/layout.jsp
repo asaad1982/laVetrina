@@ -413,6 +413,10 @@ response.setDateHeader ("Expires", -1);
 			$("#order-soldVsInstock-link").click(function() {
   				window.location='<c:url value="/admin/orders/soldVsInstock.html" />';
 			});
+			$("#sales-Report-link").click(function() {
+  				window.location='<c:url value="/admin/report/reports.html" />';
+			});
+			
 		}); 
 		
 		

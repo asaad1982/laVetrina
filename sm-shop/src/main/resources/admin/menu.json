@@ -363,6 +363,9 @@
 			}},
 			{"menu":{
 				"code":"order-soldVsInstock","url":"/admin/orders/soldVsInstock.html","role":"PRODUCTS","order":6
+			}},
+			{"menu":{
+				"code":"sales-Report","url":"/admin/report/reports.html","role":"PRODUCTS","order":7
 			}}
 		 
 	 

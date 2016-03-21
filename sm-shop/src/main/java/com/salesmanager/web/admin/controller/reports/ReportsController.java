@@ -68,7 +68,7 @@ public class ReportsController {
 	@RequestMapping(value="/admin/report/reports.html", method=RequestMethod.GET)
 	public String displayreport(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		setMenu(model,request);
+		setMenu(model,request,"sales-Report");
 		String startDate = request.getParameter("startDate");        
         String endDate =request.getParameter("endDate");
 		model.addAttribute("startDate", startDate);
@@ -121,17 +121,19 @@ public class ReportsController {
 	}
 	
 
-private void setMenu(Model model, HttpServletRequest request) throws Exception {
+private void setMenu(Model model, HttpServletRequest request,String menu) throws Exception {
 		
 		//display menu
 		Map<String,String> activeMenus = new HashMap<String,String>();
+	
+		activeMenus.put("order-dashboard", "order-dashboard");
+		activeMenus.put(menu, menu);
 		
-		activeMenus.put("report", "EmailConfig");
-		
+
 		@SuppressWarnings("unchecked")
 		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
 		
-		Menu currentMenu = (Menu)menus.get("reports");
+		Menu currentMenu = (Menu)menus.get("order-dashboard");
 		model.addAttribute("currentMenu",currentMenu);
 		model.addAttribute("activeMenus",activeMenus);
 		//
