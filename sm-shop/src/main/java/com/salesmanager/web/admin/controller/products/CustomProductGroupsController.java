@@ -42,7 +42,7 @@ import com.salesmanager.web.constants.Constants;
 import com.salesmanager.web.utils.LabelUtils;
 
 
-@Controller
+
 public class CustomProductGroupsController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(CustomProductGroupsController.class);

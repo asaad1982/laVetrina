@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,7 +30,10 @@ import com.salesmanager.core.business.catalog.product.model.ProductCriteria;
 import com.salesmanager.core.business.catalog.product.model.ProductList;
 import com.salesmanager.core.business.catalog.product.model.availability.ProductAvailability;
 import com.salesmanager.core.business.catalog.product.model.description.ProductDescription;
+import com.salesmanager.core.business.catalog.product.service.FileBean;
+import com.salesmanager.core.business.catalog.product.service.ImportService;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
+import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.core.utils.ProductPriceUtils;
@@ -67,6 +72,7 @@ public class ProductsController {
 		List<Category> categories = categoryService.listByStore(store, language);
 		
 		model.addAttribute("categories", categories);
+		model.addAttribute("fileBean", new FileBean());
 		
 		return "admin-products";
 		
@@ -84,7 +90,7 @@ public class ProductsController {
 		String categoryId = request.getParameter("categoryId");
 		String sku = request.getParameter("sku");
 		String available = request.getParameter("available");
-		String searchTerm = request.getParameter("searchTerm");
+		String price = request.getParameter("price");
 		String name = request.getParameter("name");
 		
 		AjaxPageableResponse resp = new AjaxPageableResponse();
@@ -252,7 +258,23 @@ public class ProductsController {
 		return returnString;
 	}
 	
-	
+	@Autowired
+	ImportService importService; 
+	@PreAuthorize("hasRole('PRODUCTS')")
+	@RequestMapping(value="/admin/products/upload.html",method = RequestMethod.POST)
+	    public String upload(@ModelAttribute("fileBean") FileBean uploadItem, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
+		 Language language = (Language)request.getAttribute("LANGUAGE");
+			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+			
+	        try {
+				importService.importFile(uploadItem,store,language);
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+	        return "import/importDone";
+	    }
 	private void setMenu(Model model, HttpServletRequest request) throws Exception {
 		
 		//display menu
