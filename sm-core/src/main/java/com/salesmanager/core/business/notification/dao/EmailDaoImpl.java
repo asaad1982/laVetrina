@@ -18,15 +18,15 @@ public class EmailDaoImpl extends SalesManagerEntityDaoImpl<Long, EmailNotificat
 
 	@Override
 	public List<EmailNotification> listNotifications(String eventName,
-			String eventDate) {
+			String eventDate,String endDate) {
 		StringBuilder qs = new StringBuilder();
 		qs.append("select distinct em from EmailNotification as em ");
 		 if(eventName!=null && eventDate!=null)
-				qs.append("where em.eventName like (:eventName) and em.eventDate=:evenDate");
+				qs.append("where em.eventName like (:eventName) and em.eventDate between :eventDate and :endDate");
 		 else if(eventName!=null)
 		qs.append("where em.eventName like (:eventName)");
 		 if(eventDate!=null)
-				qs.append("where em.eventDate like (:eventDate)");
+				qs.append("where em.eventDate between :eventDate and :endDate");
 
 
     	String hql = qs.toString();
@@ -36,13 +36,16 @@ public class EmailDaoImpl extends SalesManagerEntityDaoImpl<Long, EmailNotificat
 		if(eventDate!=null){
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Date compDate=new Date();
+			Date end=new Date();
 			try {
 				compDate = formatter.parse(eventDate);
+				end=formatter.parse(endDate);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			q.setParameter("eventDate", compDate);
+			q.setParameter("endDate", end);
 		}
 
     	

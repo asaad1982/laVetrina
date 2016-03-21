@@ -136,8 +136,8 @@ public class NotificationController {
 		String eventName = request.getParameter("eventName");
 		
         
-        String eventDate =request.getParameter("eventDate");
-        
+        String eventDate =request.getParameter("startDate");
+        String endDate=request.getParameter("endDate");
 
 
 		AjaxResponse resp = new AjaxResponse();
@@ -155,7 +155,7 @@ public class NotificationController {
 			if(!StringUtils.isBlank(eventDate) || !StringUtils.isBlank(eventName) ) {
 //				
 //				
-				emailNotifications = emailNotificationService.listNotification(language, eventName,eventDate);
+				emailNotifications = emailNotificationService.listNotification(language, eventName,eventDate,endDate);
 //				
 			} else  {
 //				

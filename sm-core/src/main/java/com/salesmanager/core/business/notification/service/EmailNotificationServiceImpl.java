@@ -46,9 +46,9 @@ public class EmailNotificationServiceImpl extends SalesManagerEntityServiceImpl<
 	}
 	@Override
 	public List<EmailNotification> listNotification(Language language,
-			String eventName, String eventDate) throws ServiceException {
+			String eventName, String eventDate,String endDate) throws ServiceException {
 		// TODO Auto-generated method stub
-		return emailNotificationDao.listNotifications(eventName,eventDate);
+		return emailNotificationDao.listNotifications(eventName,eventDate,endDate);
 	}
 
 }

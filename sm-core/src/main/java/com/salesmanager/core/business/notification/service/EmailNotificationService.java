@@ -13,5 +13,5 @@ public interface EmailNotificationService extends SalesManagerEntityService<Long
 	void saveOrUpdate(EmailNotification emailNotification) throws ServiceException;
 
 	List<EmailNotification> listNotification(Language language,
-			String eventName, String eventDate)throws ServiceException;
+			String eventName, String eventDate,String endDate)throws ServiceException;
 }

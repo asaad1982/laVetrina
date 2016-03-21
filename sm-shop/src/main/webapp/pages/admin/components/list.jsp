@@ -50,7 +50,7 @@
     								showRecordComponentsByCell: true,
     								canRemoveRecords: <c:out value="${canRemoveEntry}" />,
     								autoFetchData: true,
-    								showFilterEditor: true,
+    								showFilterEditor: ${gridSearch==null?true:false},
     								filterOnKeypress: false,
 									dataFetchMode:"paged",
 									canEdit:true,
