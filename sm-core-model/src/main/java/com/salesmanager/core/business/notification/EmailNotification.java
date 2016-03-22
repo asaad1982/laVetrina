@@ -23,6 +23,7 @@ import javax.persistence.TableGenerator;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -78,7 +79,7 @@ public class EmailNotification extends SalesManagerEntity<Long, EmailNotificatio
 		this.emailTemplates = emailTemplates;
 	}
 	@Temporal(TemporalType.DATE)
-	
+	@NotNull
 	private Date eventDate;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy="emailNotification")
 	private List<EmailTemplate> emailTemplates;

@@ -59,7 +59,7 @@ public class EmailTemplate extends SalesManagerEntity<Long, EmailTemplate>{
 		this.emailTemplate = emailTemplate;
 	}
 	@Lob
-	@NotEmpty
+	
 	@Column(unique=true)
 	private String emailTemplate;
 	
