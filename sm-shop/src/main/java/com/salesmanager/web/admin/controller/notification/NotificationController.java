@@ -207,7 +207,10 @@ public class NotificationController {
 		if (result.hasErrors()) {
 			return "notification";
 		}
-		
+		EmailNotification emailNotification2=(EmailNotification) request.getSession().getAttribute("emailNotification");
+		if(emailNotification2!=null){
+			emailNotification.setCustomers(emailNotification2.getCustomers());
+		}
 		emailNotificationService.saveOrUpdate(emailNotification);
 		model.addAttribute("success","success");
 		return "notification";

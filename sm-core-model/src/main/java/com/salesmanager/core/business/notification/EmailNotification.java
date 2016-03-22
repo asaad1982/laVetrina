@@ -85,8 +85,8 @@ public class EmailNotification extends SalesManagerEntity<Long, EmailNotificatio
 	private List<EmailTemplate> emailTemplates;
 	
 	@ManyToMany(fetch=FetchType.EAGER, cascade = {CascadeType.REFRESH})
-	@JoinTable(name = "PROMOTION_CUSTOMER", schema="lavetrina", joinColumns = { 
-			@JoinColumn(name = "PROMOTION_ID", nullable = false, updatable = false) }
+	@JoinTable(name = "NOTIFICATION_CUSTOMER", schema="lavetrina", joinColumns = { 
+			@JoinColumn(name = "email_notification_ID", nullable = false, updatable = false) }
 			, 
 			inverseJoinColumns = { @JoinColumn(name = "CUSTOMER_ID", 
 					nullable = false, updatable = false) })
