@@ -50,7 +50,7 @@
     								showRecordComponentsByCell: true,
     								canRemoveRecords: <c:out value="${canRemoveEntry}" />,
     								autoFetchData: true,
-    								showFilterEditor: ${gridSearch==null?true:false},
+    								showFilterEditor: true,
     								filterOnKeypress: false,
 									dataFetchMode:"paged",
 									canEdit:true,
@@ -76,6 +76,9 @@
 								},
 								fetchData: function () {
 									return this.Super("fetchData", arguments);
+								},
+								updateData: function () {
+									return this.Super("updateData", arguments);
 								},
 								
 								<c:if test="${expandDetails!=null && expandDetails!=''}">
