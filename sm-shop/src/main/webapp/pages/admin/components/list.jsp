@@ -55,6 +55,7 @@
 									dataFetchMode:"paged",
 									canEdit:false,
 									editByCell: true,
+									
 									editEvent: "click",
 									<c:if test="${showGridSummary!=null && showGridSummary!='' && showGridSummary=='true'}">
 									showGridSummary:true,
@@ -158,6 +159,8 @@
           
 </c:if>
 
+
+
 // Define application layout
 // ---------------------------------------------------------------------
 
@@ -179,6 +182,8 @@ isc.HLayout.create({
 });
 
 isc.Page.setEvent("load", "pageLayout.draw()");
+
 			      			     
 			 </script>
+			
 	      			     
