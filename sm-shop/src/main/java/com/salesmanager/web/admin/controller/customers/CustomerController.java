@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.salesmanager.core.business.catalog.product.service.FileBean;
 import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.customer.model.CustomerCriteria;
 import com.salesmanager.core.business.customer.model.CustomerList;
@@ -519,6 +520,9 @@ public class CustomerController {
 		
 		this.setMenu(model, request);
 	
+		
+		model.addAttribute("fileBean", new FileBean());
+		
 		return "admin-customers";
 		
 		
