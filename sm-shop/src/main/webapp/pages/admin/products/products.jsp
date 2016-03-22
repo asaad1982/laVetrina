@@ -26,9 +26,12 @@
 								<div class="sm-ui-component">
 								
       							<form:form modelAttribute="fileBean" method="post" enctype="multipart/form-data" action="/sm-shop/admin/products/upload.html">
+					         <div id="store.success" class="alert alert-success" style="<c:choose><c:when test="${success!=null}">display:block;</c:when><c:otherwise>display:none;</c:otherwise></c:choose>"><s:message code="message.success" text="Request successfull"/></div>   
+                            <div id="store.error" class="alert alert-error" style="display:none;"><s:message code="message.error" text="An error occured"/></div>
+					        
 					        <form:label for="fileData" path="fileData">Select file</form:label><br/><br/>
 					        <form:input path="fileData" type="file"/>
-        <input type="submit" />
+        <button type="submit" class="btn btn-success">Import</button>
     </form:form>
     <div class="btn-group" style="z-index:400000;">
     <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Export  ... <span class="caret"></span></button>
@@ -123,7 +126,7 @@
 										
 										{title:"<s:message code="label.entity.name" text="Name"/>", name:"name"},
 										{title:"<s:message code="label.product.sku" text="Sku"/>", name:"sku"},
-										{title:"<s:message code="label.product.available" text="Available"/>", name:"available",type:"boolean"},
+										{title:"<s:message code="label.product.available" text="Available"/>", name:"available",type:"boolean",canEdit:true},
 										{title:"<s:message code="label.generic.price" text="Quantity"/>", name:"price", canFilter:true},
 										{title:"<s:message code="label.entity.details" text="Details"/>", name: "buttonField", align: "center",canFilter:false,canSort:false, canReorder:false}  
 

@@ -262,16 +262,15 @@ public class ProductsController {
 	ImportService importService; 
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/products/upload.html",method = RequestMethod.POST)
-	    public String upload(@ModelAttribute("fileBean") FileBean uploadItem, BindingResult result, Model model, HttpServletRequest request, Locale locale) {
-		 Language language = (Language)request.getAttribute("LANGUAGE");
+	    public String upload(@ModelAttribute("fileBean") FileBean uploadItem, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+		
+		Language language = (Language)request.getAttribute("LANGUAGE");
 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 			
-	        try {
-				importService.importFile(uploadItem,store,language);
-			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	       
+	        setMenu(model, request);
+		    importService.importFile(uploadItem,store,language);
+			
 
 	        model.addAttribute("success","success");
 			
