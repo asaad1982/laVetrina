@@ -342,7 +342,10 @@ if(!StringUtils.isBlank(firstName)||!StringUtils.isBlank(lastName) || !StringUti
 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 			
 			EmailNotification emailNotification=(EmailNotification) request.getSession().getAttribute("emailNotification");
-		
+			if(emailNotification.getCustomers()==null){
+				emailNotification.setCustomers(new ArrayList<Customer>() );
+				
+			}
 			
 			if(!StringUtils.isBlank(supported)) {
 				if("true".equals(supported)) {
