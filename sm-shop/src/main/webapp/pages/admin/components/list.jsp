@@ -67,6 +67,7 @@
     							],
     							autoFitData: "vertical",
     							showFilterEditor: true,
+    							alternateRecordStyles:true,
                                 autoFitMaxRecords: 10,
     							selectionType: "multiple",
 								removeData: function () {
@@ -100,8 +101,9 @@
 
     							createRecordComponent : function (record, colNum) {  
         							var fieldName = this.getFieldName(colNum);
+        							
         							if (fieldName == "buttonField") {  
-
+									
 	        						
 	           						var button = isc.IButton.create({
 	                						height: 18,
