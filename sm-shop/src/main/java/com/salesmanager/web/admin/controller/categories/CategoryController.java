@@ -265,7 +265,7 @@ public class CategoryController {
 				
 			} else if(!StringUtils.isBlank(categoryCode)) {
 				
-				categoryService.listByCodes(store, new ArrayList<String>(Arrays.asList(categoryCode)), language);
+				categories = categoryService.listByCodes(store, new ArrayList<String>(Arrays.asList(categoryCode)), language);
 			
 			} else {
 				

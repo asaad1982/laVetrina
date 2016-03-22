@@ -53,7 +53,7 @@
     								showFilterEditor: true,
     								filterOnKeypress: false,
 									dataFetchMode:"paged",
-									canEdit:true,
+									canEdit:false,
 									editByCell: true,
 									editEvent: "click",
 									<c:if test="${showGridSummary!=null && showGridSummary!='' && showGridSummary=='true'}">

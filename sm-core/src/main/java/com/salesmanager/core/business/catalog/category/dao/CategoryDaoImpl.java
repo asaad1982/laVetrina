@@ -33,7 +33,7 @@ public class CategoryDaoImpl extends SalesManagerEntityDaoImpl<Long, Category> i
 		query.from(qCategory)
 			.leftJoin(qCategory.descriptions, qDescription).fetch()
 			.leftJoin(qCategory.merchantStore).fetch()
-			.where(qDescription.name.like("%" + name + "%")
+			.where(qDescription.name.upper().like("%" + name.toUpperCase() + "%")
 			.and(qDescription.language.id.eq(language.getId()))
 			.and(qCategory.merchantStore.id.eq(store.getId())))
 			.orderBy(qCategory.sortOrder.asc());
