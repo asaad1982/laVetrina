@@ -246,7 +246,15 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	@RequestMapping(value="/admin/complaints/Customercomplaints.html", method=RequestMethod.GET)
 	public String displayCustomerComplaints(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//display menu
-			setMenu(model, request);
+		Map<String,String> activeMenus = new HashMap<String,String>();
+		activeMenus.put("complaints", "complaints");
+		activeMenus.put("customer-complaints", "customer-complaints");
+		@SuppressWarnings("unchecked")
+		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
+		
+		Menu currentMenu = (Menu)menus.get("Complaints");
+		model.addAttribute("currentMenu",currentMenu);
+		model.addAttribute("activeMenus",activeMenus);
 		
 		
 		return "customer-complaints";
@@ -326,8 +334,8 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 		String categoryCode = request.getParameter("status");
         String customerMail =request.getParameter("email");
         String reason =request.getParameter("complaintReason");
-        String date=request.getParameter("complaintDate");
-        
+        String date=request.getParameter("startDate");
+        String endDate=request.getParameter("endDate");
 		AjaxResponse resp = new AjaxResponse();
 
 		
@@ -340,7 +348,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 			if(!StringUtils.isBlank(note)||!StringUtils.isBlank(categoryCode) || !StringUtils.isBlank(customerMail) || !StringUtils.isBlank(reason)|| !StringUtils.isBlank(date)) {
 				
 				
-				complaints = customerComplaintsService.getByName( note,request.getParameter("status"),customerMail,reason,date);
+				complaints = customerComplaintsService.getByName( note,request.getParameter("status"),customerMail,reason,date,endDate);
 				
 			} else if(!StringUtils.isBlank(categoryCode)) {
 				

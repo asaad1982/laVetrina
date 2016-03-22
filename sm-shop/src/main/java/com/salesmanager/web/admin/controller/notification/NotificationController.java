@@ -82,7 +82,11 @@ public class NotificationController {
 		
 		
 		if( notificationId!=0) {
-			emailNotification=emailNotificationService.getById(notificationId);
+			if(request.getSession().getAttribute("notification")==null){
+				emailNotification=emailNotificationService.getById(notificationId);
+			}else{
+				emailNotification=(EmailNotification) request.getSession().getAttribute("promotion");
+			}
 		}else{
 			emailNotification.setEmailTemplates(new ArrayList<EmailTemplate>());
 		}
@@ -136,8 +140,8 @@ public class NotificationController {
 		String eventName = request.getParameter("eventName");
 		
         
-        String eventDate =request.getParameter("eventDate");
-        
+        String eventDate =request.getParameter("startDate");
+        String endDate=request.getParameter("endDate");
 
 
 		AjaxResponse resp = new AjaxResponse();
@@ -155,7 +159,7 @@ public class NotificationController {
 			if(!StringUtils.isBlank(eventDate) || !StringUtils.isBlank(eventName) ) {
 //				
 //				
-				emailNotifications = emailNotificationService.listNotification(language, eventName,eventDate);
+				emailNotifications = emailNotificationService.listNotification(language, eventName,eventDate,endDate);
 //				
 			} else  {
 //				
@@ -203,7 +207,10 @@ public class NotificationController {
 		if (result.hasErrors()) {
 			return "notification";
 		}
-		
+		EmailNotification emailNotification2=(EmailNotification) request.getSession().getAttribute("emailNotification");
+		if(emailNotification2!=null){
+			emailNotification.setCustomers(emailNotification2.getCustomers());
+		}
 		emailNotificationService.saveOrUpdate(emailNotification);
 		model.addAttribute("success","success");
 		return "notification";
@@ -338,7 +345,10 @@ if(!StringUtils.isBlank(firstName)||!StringUtils.isBlank(lastName) || !StringUti
 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 			
 			EmailNotification emailNotification=(EmailNotification) request.getSession().getAttribute("emailNotification");
-		
+			if(emailNotification.getCustomers()==null){
+				emailNotification.setCustomers(new ArrayList<Customer>() );
+				
+			}
 			
 			if(!StringUtils.isBlank(supported)) {
 				if("true".equals(supported)) {

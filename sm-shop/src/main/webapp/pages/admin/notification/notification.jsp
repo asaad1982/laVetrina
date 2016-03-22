@@ -124,24 +124,13 @@
 	                  	</div>
                   
               		 <c:forEach items="${emailNotification.emailTemplates}" var="description" varStatus="status">
-
-                 
-
+						<div class="control-group">
                         
-
-                      
-                        
-                       
-
-                       
-
-
-                        <div class="control-group">
-                              <label class="required"><s:message code="label.promotion.promotiondesc" text="Product description"/> (<c:out value="${description.language.code}"/>)</label>
+                              <label class="required"><s:message code="label.notification.desc" text="Product description"/> (<c:out value="${description.language.code}"/>)</label>
                               <div class="controls">
                               		 
                               		 
-                              	     <textarea cols="30" id="emailTemplates${status.index}.id" name="emailTemplates[${status.index}].id">
+                              	     <textarea cols="30" id="emailTemplates${status.index}.emailTemplate" name="emailTemplates[${status.index}].emailTemplate">
                         				<c:out value="${description.emailTemplate}"/>
                         			 </textarea>
                               </div>
@@ -151,7 +140,7 @@
                         <script type="text/javascript">
 						//<![CDATA[
 
-							CKEDITOR.replace('emailTemplates[${status.index}].id',
+							CKEDITOR.replace('emailTemplates[${status.index}].emailTemplate',
 							{
 								skin : 'office2003',
 								toolbar : 
@@ -203,9 +192,9 @@
                   <form:hidden path="id" />
 					<c:set value="/admin/notificatin/customers/paging.html?id=${emailId}" var="pagingUrl" scope="request"/>
 				 			<c:set value="/admin/notificatin/customers/update.html?id=${emailId }" var="updateUrl" scope="request"/>
-				 			<c:set value="/admin/shipping/shippingConfigs.html" var="refreshUrl" scope="request"/>
+				 			
 				 			<c:set var="entityId" value="code" scope="request"/>
-							<c:set var="componentTitleKey" value="label.shipping.countries" scope="request"/>
+							<c:set var="componentTitleKey" value="menu.customer" scope="request"/>
 				 			<c:set var="gridHeader" value="/pages/admin/promotion/promotion-customers-gridHeader.jsp" scope="request"/>
 							<c:set var="canRemoveEntry" value="false" scope="request"/>
 

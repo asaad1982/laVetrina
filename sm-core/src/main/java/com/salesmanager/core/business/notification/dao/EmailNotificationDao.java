@@ -8,6 +8,6 @@ import com.salesmanager.core.business.notification.EmailNotification;
 
 public interface EmailNotificationDao extends SalesManagerEntityDao<Long, EmailNotification>{
 
-	List<EmailNotification> listNotifications(String eventName, String eventDate);
+	List<EmailNotification> listNotifications(String eventName, String eventDate,String endDate);
 
 }

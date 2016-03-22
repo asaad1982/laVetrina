@@ -75,7 +75,7 @@ public class ComplaintsDaoImpl extends SalesManagerEntityDaoImpl<Long, CustomerC
 
 	@Override
 	public List<CustomerComplaint> getByName(String note, String status,
-			String customerMail, String reason, String date) {
+			String customerMail, String reason, String date,String enddate) {
 		QCustomerComplaint qCustomerComplaint = QCustomerComplaint.customerComplaint;
 		QCustomer qCustomer=QCustomer.customer;
 		
@@ -101,16 +101,18 @@ public class ComplaintsDaoImpl extends SalesManagerEntityDaoImpl<Long, CustomerC
 		}if(!StringUtils.isBlank(date)){
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Date compDate=new Date();
+			Date end=new Date();
 			try {
 				compDate = formatter.parse(date);
+				end=formatter.parse(enddate);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if(predicate!=null)
-			predicate.and(qCustomerComplaint.complaintsDate.between(compDate, new Date()));
+			predicate.and(qCustomerComplaint.complaintsDate.between(compDate, end));
 			else
-				predicate=	qCustomerComplaint.complaintsDate.between(compDate, new Date());
+				predicate=	qCustomerComplaint.complaintsDate.between(compDate, end);
 		}
 		query.from(qCustomerComplaint).
 		innerJoin(qCustomerComplaint.customer, qCustomer).fetch()
