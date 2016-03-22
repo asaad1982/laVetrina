@@ -26,10 +26,14 @@
 								<div class="sm-ui-component">
 								
       							<form:form modelAttribute="fileBean" method="post" enctype="multipart/form-data" action="/sm-shop/admin/products/upload.html">
-        <form:label for="fileData" path="fileData">Select file</form:label><br/><br/>
-        <form:input path="fileData" type="file"/>
+					        <form:label for="fileData" path="fileData">Select file</form:label><br/><br/>
+					        <form:input path="fileData" type="file"/>
         <input type="submit" />
     </form:form>
+    <div class="btn-group" style="z-index:400000;">
+    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Export  ... <span class="caret"></span></button>
+    	 <ul class="dropdown-menu"><li><a href="<c:url value="/admin/products/printProducts.html"/>" />Export</a></li></ul>
+    </div><br/>
 			      			     <script>
 
 ///isc.showConsole();
