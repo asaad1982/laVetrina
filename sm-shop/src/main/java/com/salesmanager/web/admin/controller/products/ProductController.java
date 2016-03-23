@@ -821,7 +821,7 @@ public class ProductController {
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/products/printProducts.html", method=RequestMethod.GET, produces="application/json")
-	public void printInvoice(HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+	public String printInvoice(Model model,HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		try {		
 		List<Product> products = productService.list();
 		
@@ -847,7 +847,9 @@ public class ProductController {
 		} catch(Exception e) {
 			LOGGER.error("Error while printing a report",e);
 		}
-			
+		model.addAttribute("success","success");
+		
+		return "admin-products";	
 		
 	}
 	

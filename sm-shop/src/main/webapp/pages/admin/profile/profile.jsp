@@ -183,7 +183,7 @@
                   </div>
                   
                   <div class="control-group">
-                      <label><s:message code="security.question1" text="Question 2"/> </label>
+                      <label><s:message code="security.question2" text="Question 2"/> </label>
                       <div class="controls">
                       	  <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question2" cssStyle="width:270px;"/>
                           <form:input cssClass="input-large" path="answer2"/>

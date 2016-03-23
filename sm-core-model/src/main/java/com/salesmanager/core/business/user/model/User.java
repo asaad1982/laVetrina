@@ -60,7 +60,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 	
 	@NotEmpty
-	@Column(name="ADMIN_NAME", length=100, unique=true)
+	@Column(name="ADMIN_NAME", length=100, unique=true, columnDefinition = "VARCHAR(100) COLLATE latin1_general_cs")
 	private String adminName;
 	
 	@ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.REFRESH})
@@ -81,7 +81,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	
 	@NotEmpty
 	@Email
-	@Column(name="ADMIN_EMAIL")
+	@Column(name="ADMIN_EMAIL",unique=true,length=100)
 	private String adminEmail;
 	
 	@NotEmpty
