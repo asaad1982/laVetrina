@@ -572,7 +572,10 @@ public class UserController {
 		}
 
 		
-		List<Group> newGroups = groupService.listGroupByIds(ids);
+		List<Group> newGroups = null;
+			if(ids!=null && ids.size()>0){	
+		     newGroups=groupService.listGroupByIds(ids);
+			}
 
 		//set actual user groups
 		user.setGroups(newGroups);
