@@ -21,6 +21,7 @@
 	function validateCode() {
 		$('#checkCodeStatus').html('<img src="<c:url value="/resources/img/ajax-loader.gif" />');
 		$('#checkCodeStatus').show();
+		$('#adminName.errors').hide();
 		var adminName = $("#adminName").val();
 		if(adminName==""){
 			$('#checkCodeStatus').html('<font color="red"><s:message code="message.username.empty" text="This code is available"/></font>');
@@ -111,7 +112,7 @@
                   <div class="control-group">
 	                  <label><s:message code="label.user.email" text="Email"/></label>
 	                  <div class="controls">
-                   		  <form:input cssClass="input-large highlight" path="adminEmail"/>
+                   		  <form:input cssClass="input-large highlight" path="adminEmail" maxlength="100"/>
                              <span class="help-inline"><form:errors path="adminEmail" cssClass="error" /></span>
 	                  </div>
 	       		  </div>
@@ -120,7 +121,7 @@
                   <div class="control-group">
 	                  <label><s:message code="label.user.password" text="Password"/></label>
 	                  <div class="controls">
-                   		  <form:password cssClass="input-large highlight" path="adminPassword"/>
+                   		  <form:password cssClass="input-large highlight" path="adminPassword" maxlength="50"/>
                              <span class="help-inline"><form:errors path="adminPassword" cssClass="error" /></span>
 	                  </div>
 
@@ -131,7 +132,7 @@
                   <div class="control-group">
                       <label><s:message code="label.user.firstName" text="First name"/> </label>
                       <div class="controls">
-                          <form:input cssClass="input-large" path="firstName"/>
+                          <form:input cssClass="input-large" path="firstName" maxlength="100"/>
                               <span class="help-inline"><form:errors path="firstName" cssClass="error" /></span>
                       </div>
                   </div>
@@ -139,7 +140,7 @@
                   <div class="control-group">
                       <label><s:message code="label.user.lastName" text="Last name"/> </label>
                       <div class="controls">
-                          <form:input cssClass="input-large" path="lastName"/>
+                          <form:input cssClass="input-large" path="lastName" maxlength="100"/>
                               <span class="help-inline"><form:errors path="lastName" cssClass="error" /></span>
                       </div>
                   </div>

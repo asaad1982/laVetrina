@@ -508,10 +508,11 @@ public class UserController {
 
 		List<Group> submitedGroups = user.getGroups();
 		Set<Integer> ids = new HashSet<Integer>();
+		if(submitedGroups!=null){
 		for(Group group : submitedGroups) {
 			ids.add(Integer.parseInt(group.getGroupName()));
 		}
-		
+		}
 
 		
 		//validate security questions not empty
