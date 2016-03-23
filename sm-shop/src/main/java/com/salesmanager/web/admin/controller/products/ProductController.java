@@ -47,6 +47,7 @@ import com.salesmanager.core.business.catalog.product.model.price.ProductPrice;
 import com.salesmanager.core.business.catalog.product.model.price.ProductPriceDescription;
 import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationship;
 import com.salesmanager.core.business.catalog.product.model.type.ProductType;
+import com.salesmanager.core.business.catalog.product.service.FileBean;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.catalog.product.service.image.ProductImageService;
 import com.salesmanager.core.business.catalog.product.service.manufacturer.ManufacturerService;
@@ -847,6 +848,7 @@ public class ProductController {
 		} catch(Exception e) {
 			LOGGER.error("Error while printing a report",e);
 		}
+		model.addAttribute("fileBean", new FileBean());
 		model.addAttribute("success","success");
 		
 		return "admin-products";	
