@@ -451,6 +451,8 @@ response.setDateHeader ("Expires", -1);
     <script type="text/javascript">
  $(document).ready(function () {
  	entityList.sort('${entityId}','ASC');
+ 	isc.Canvas.addClassProperties({neverUsePNGWorkaround:true});
+ 	
  });
 </script>  	
          
