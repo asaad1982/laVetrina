@@ -30,7 +30,7 @@
 				 <c:set value="/admin/categories/remove.html" var="removeUrl" scope="request"/>
 				 <c:set value="/admin/categories/editCategory.html" var="editUrl" scope="request"/>
 				 <c:set value="/admin/categories/categories.html" var="afterRemoveUrl" scope="request"/>
-				 <c:set var="entityId" value="categoryId" scope="request"/>
+				 <c:set var="entityId" value="name" scope="request"/>
 				 <c:set var="componentTitleKey" value="label.categories.title" scope="request"/>
 				 <c:set var="gridHeader" value="/pages/admin/categories/categories-gridHeader.jsp" scope="request"/>
 				 <c:set var="canRemoveEntry" value="false" scope="request"/>
