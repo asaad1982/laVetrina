@@ -848,6 +848,16 @@ public class ProductController {
 		} catch(Exception e) {
 			LOGGER.error("Error while printing a report",e);
 		}
+		Map<String,String> activeMenus = new HashMap<String,String>();
+		activeMenus.put("catalogue", "catalogue");
+		activeMenus.put("catalogue-products", "catalogue-products");
+		
+		@SuppressWarnings("unchecked")
+		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
+		
+		Menu currentMenu = (Menu)menus.get("catalogue");
+		model.addAttribute("currentMenu",currentMenu);
+		model.addAttribute("activeMenus",activeMenus);
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
