@@ -22,8 +22,13 @@
 		$('#checkCodeStatus').html('<img src="<c:url value="/resources/img/ajax-loader.gif" />');
 		$('#checkCodeStatus').show();
 		var adminName = $("#adminName").val();
+		if(adminName==""){
+			$('#checkCodeStatus').html('<font color="red"><s:message code="message.username.empty" text="This code is available"/></font>');
+			$('#checkCodeStatus').show();
+		}else{
 		var id = $("#id").val();
 		checkCode(adminName,id,'<c:url value="/admin/users/checkUserCode.html" />');
+		}
 	}
 	
 	function callBackCheckCode(msg,code) {
@@ -33,13 +38,13 @@
 		}
 		if(code==9999) {
 
-			$('#checkCodeStatus').html('<font color="green"><s:message code="message.code.available" text="This code is available"/></font>');
+			$('#checkCodeStatus').html('<font color="green"><s:message code="message.username.available" text="This code is available"/></font>');
 			$('#checkCodeStatus').show();
 			$('.btn').removeClass('disabled');
 		}
 		if(code==9998) {
 
-			$('#checkCodeStatus').html('<font color="red"><s:message code="message.code.exist" text="This code already exist"/></font>');
+			$('#checkCodeStatus').html('<font color="red"><s:message code="message.username.exist" text="This code already exist"/></font>');
 			$('#checkCodeStatus').show();
 			$('.btn').addClass('disabled');
 		}
@@ -202,7 +207,7 @@
 			      <div class="form-actions">
 
                   		<div class="pull-right">
-                  			<button type="submit" class="btn btn-success"><s:message code="button.label.submit" text="Submit"/></button>
+                  			<button type="submit" class="btn btn-success" onclick="validateCode();"><s:message code="button.label.submit" text="Submit"/></button>
                   		</div>
 
             	 </div>
