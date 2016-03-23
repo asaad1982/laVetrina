@@ -848,6 +848,12 @@ public class ProductController {
 		} catch(Exception e) {
 			LOGGER.error("Error while printing a report",e);
 		}
+		Language language = (Language)request.getAttribute("LANGUAGE");
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		
+		List<Category> categories = categoryService.listByStore(store, language);
+		
+		model.addAttribute("categories", categories);
 		model.addAttribute("fileBean", new FileBean());
 		model.addAttribute("success","success");
 		
