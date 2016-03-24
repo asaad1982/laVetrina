@@ -20,6 +20,12 @@ response.setDateHeader ("Expires", -1);
   
  <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+ <%
+ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setDateHeader("Expires", 0); // Proxies.
+  %>
   
  <c:set var="lang" scope="request" value="${requestScope.locale.language}"/> 
  
@@ -62,7 +68,7 @@ response.setDateHeader ("Expires", -1);
 
   			<a class="logo" href="#"> <span class="logo-mini"><b>A</b>LT</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>La</b>Vetrina</span></a>
+          <span class="logo-lg"><b>Le</b>Vetrina</span></a>
 
   			<nav class="navbar navbar-static-top" role="navigation">
 
