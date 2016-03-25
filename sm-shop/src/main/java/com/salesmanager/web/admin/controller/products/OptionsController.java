@@ -170,13 +170,13 @@ public class OptionsController {
 			if(dbEntity==null) {
 				return "redirect:/admin/options/options.html";
 			}
-		}
-		
-		//validate if it contains an existing code
+		}		
+		else if(option.getId() ==0){ 
 		ProductOption byCode = productOptionService.getByCode(store, option.getCode());
 		if(byCode!=null) {
 			ObjectError error = new ObjectError("code",messages.getMessage("message.code.exist", locale));
 			result.addError(error);
+		}
 		}
 
 			

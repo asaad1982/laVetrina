@@ -35,6 +35,8 @@
 			
 			<div class="control-group">
 				<label><s:message code="label.productedit.categoryname" text="Category"/></label>
+				
+				<br/><br/>
 			  	<div class="controls">
 			  	
 			  	<script type="text/javascript">
@@ -42,6 +44,7 @@
 			  	myTreeGrid=isc.TreeGrid.create({
     								ID:"categoryTree",
     								border:0,
+    								height:400,
     								showResizeBar: false,
     								position:"relative",
     								data: isc.Tree.create({
