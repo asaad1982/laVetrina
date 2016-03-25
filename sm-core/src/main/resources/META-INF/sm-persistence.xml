@@ -4,6 +4,7 @@
 	<persistence-unit name="sm-unit">
 	    <class>com.salesmanager.core.business.merchant.model.MerchantStore</class>
 		<class>com.salesmanager.core.business.reference.country.model.Country</class>
+		<class>com.salesmanager.core.business.reference.country.model.City</class>		
 		<class>com.salesmanager.core.business.reference.country.model.CountryDescription</class>
 		<class>com.salesmanager.core.business.reference.zone.model.Zone</class>
 		<class>com.salesmanager.core.business.reference.zone.model.ZoneDescription</class>

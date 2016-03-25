@@ -150,7 +150,7 @@
                     ]
                 });
                 isc.IButton.create({
-                    title: "Filter",
+                    title: "Search",
                     position:"relative",
                     click: function () {
                         filterForm.submit();
