@@ -176,8 +176,8 @@
                   <div class="control-group">
                       <label><s:message code="security.question1" text="Question 1"/> </label>
                       <div class="controls">
-                          <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question1" cssStyle="width:270px;"/>
-                          <form:input cssClass="input-large" path="answer1"/>
+                          <form:select cssClass="highlight" items="${questions}" itemValue="label" itemLabel="label" path="question1" cssStyle="width:270px;"/>
+                          <form:input cssClass="input-large highlight" path="answer1"/>
                               <span class="help-inline"><form:errors path="answer1" cssClass="error" /></span>
                       </div>
                   </div>
@@ -185,8 +185,8 @@
                   <div class="control-group">
                       <label><s:message code="security.question2" text="Question 2"/> </label>
                       <div class="controls">
-                      	  <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question2" cssStyle="width:270px;"/>
-                          <form:input cssClass="input-large" path="answer2"/>
+                      	  <form:select cssClass="highlight" items="${questions}" itemValue="label" itemLabel="label" path="question2" cssStyle="width:270px;"/>
+                          <form:input cssClass="input-large highlight" path="answer2"/>
                               <span class="help-inline"><form:errors path="answer2" cssClass="error" /></span>
                       </div>
                   </div>
@@ -194,8 +194,8 @@
                   <div class="control-group">
                       <label><s:message code="security.question3" text="Question 3"/> </label>
                       <div class="controls">
-                      	  <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question3" cssStyle="width:270px;"/>
-                          <form:input cssClass="input-large" path="answer3"/>
+                      	  <form:select cssClass="highlight" items="${questions}" itemValue="label" itemLabel="label" path="question3" cssStyle="width:270px;"/>
+                          <form:input cssClass="input-large highlight" path="answer3"/>
                               <span class="help-inline"><form:errors path="answer3" cssClass="error" /></span>
                       </div>
                   </div>
