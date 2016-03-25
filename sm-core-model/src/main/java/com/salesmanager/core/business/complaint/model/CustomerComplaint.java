@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.customer.model.Customer;
@@ -55,6 +56,7 @@ public class CustomerComplaint extends SalesManagerEntity<Long, CustomerComplain
 	}
 	
 	private Date complaintsDate;
+	@NotNull	
 	private Date closingDate;
 	
 	private String closingReason;

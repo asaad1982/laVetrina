@@ -70,7 +70,7 @@ public class PromotionController {
 	@InitBinder     
 	public void initBinder(WebDataBinder binder){
 	     binder.registerCustomEditor(       Date.class,     
-	                         new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));   
+	                         new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), false, 10));   
 	}
 	@Autowired
 	PromotionService promotionService;
@@ -198,7 +198,7 @@ public class PromotionController {
 	}
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/promotion/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/promotion/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pagecomplaints(HttpServletRequest request, HttpServletResponse response) {
 		String name = request.getParameter("name");
 		String status = request.getParameter("status");
@@ -284,7 +284,7 @@ public class PromotionController {
 	}
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/promotion/countries/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/promotion/countries/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pageCountries(@RequestParam("id") long promotionId,HttpServletRequest request, HttpServletResponse response) {
 		String countryName = request.getParameter("name");
 		AjaxResponse resp = new AjaxResponse();
@@ -342,7 +342,7 @@ public class PromotionController {
 		return returnString;
 	}
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/promotion/countries/update.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/promotion/countries/update.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String updateCountry(HttpServletRequest request, HttpServletResponse response) {
 		String values = request.getParameter("_oldValues");
 		String supported = request.getParameter("supported");
@@ -420,7 +420,7 @@ public class PromotionController {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/promotion/featured/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/promotion/featured/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pageProducts(@RequestParam("id")long id,HttpServletRequest request, HttpServletResponse response) {
 		
 		
@@ -475,7 +475,7 @@ public class PromotionController {
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/promotion/featured/addItem.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/promotion/featured/addItem.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String addItem(HttpServletRequest request, HttpServletResponse response) {
 		
 		String productId = request.getParameter("productId");
@@ -525,7 +525,7 @@ public class PromotionController {
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/promotion/featured/removeItem.html&removeEntity=FEATURED", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/promotion/featured/removeItem.html&removeEntity=FEATURED", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String removeItem(HttpServletRequest request, HttpServletResponse response) {
 		
 		String productId = request.getParameter("productId");
@@ -591,7 +591,7 @@ public class PromotionController {
 	}
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/promotion/customers/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/promotion/customers/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pageCustomers(@RequestParam("id") long promotionId,HttpServletRequest request, HttpServletResponse response) {
 		
 		AjaxResponse resp = new AjaxResponse();
@@ -651,7 +651,7 @@ public class PromotionController {
 		return returnString;
 	}
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/promotion/customers/update.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/promotion/customers/update.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String updateCustomers(HttpServletRequest request, HttpServletResponse response) {
 		String values = request.getParameter("_oldValues");
 		String supported = request.getParameter("supported");
@@ -737,7 +737,7 @@ public String displayAddPromotionToCategories(@RequestParam("id") long promotion
  */
 @SuppressWarnings({ "rawtypes", "unchecked" })
 @PreAuthorize("hasRole('PRODUCTS')")
-@RequestMapping(value="/admin/promotion-categories/paging.html", method=RequestMethod.POST, produces="application/json")
+@RequestMapping(value="/admin/promotion-categories/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 public @ResponseBody String pagePromotionCategories(@RequestParam("id") long promotionId,HttpServletRequest request, HttpServletResponse response) {
 
 	
@@ -803,7 +803,7 @@ public @ResponseBody String pagePromotionCategories(@RequestParam("id") long pro
 
 
 @PreAuthorize("hasRole('PRODUCTS')")
-@RequestMapping(value="/admin/promotion/categories/update.html", method=RequestMethod.POST, produces="application/json")
+@RequestMapping(value="/admin/promotion/categories/update.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 public @ResponseBody String updateCategories(HttpServletRequest request, HttpServletResponse response) {
 	String values = request.getParameter("_oldValues");
 	String supported = request.getParameter("supported");

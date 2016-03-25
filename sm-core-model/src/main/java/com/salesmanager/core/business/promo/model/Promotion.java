@@ -5,8 +5,10 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
+import com.salesmanager.core.modules.constants.Constants;
 
 import java.util.Date;
 import java.util.List;
@@ -28,10 +30,12 @@ public class Promotion extends SalesManagerEntity<Long, Promotion> implements Se
 	private Long id;
 
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@NotEmpty
 	private Date endate;
 
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@NotEmpty
 	private Date startDate;
 	@NotEmpty

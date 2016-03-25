@@ -82,7 +82,7 @@ public class ReportsController {
 	
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/report/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/report/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pagereport(HttpServletRequest request, HttpServletResponse response) {
 		String startDate = request.getParameter("startDate");        
         String endDate =request.getParameter("endDate");

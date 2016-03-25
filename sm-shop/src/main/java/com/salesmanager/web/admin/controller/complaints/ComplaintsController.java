@@ -166,12 +166,14 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 
 	
 	CustomerComplaint currentComplaint = customerComplaintsService.getById(customerComplaint.getId());
-	if (result.hasErrors()) {
-		return "customercomplaint";
-	}
 	customerComplaint.setCustomerComplaintReason(currentComplaint.getCustomerComplaintReason());
 	customerComplaint.setComplaintsDate(currentComplaint.getComplaintsDate());
 	customerComplaint.setCustomer(currentComplaint.getCustomer());
+	model.addAttribute("customerComplaint", customerComplaint);
+	if (result.hasErrors()) {
+		return "customercomplaint";
+	}
+	
 	customerComplaintsService.saveOrUpdate(customerComplaint);
 	model.addAttribute("success","success");
 	return "customercomplaint";
@@ -262,7 +264,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value="/admin/complaints/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/complaints/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pagecomplaints(HttpServletRequest request, HttpServletResponse response) {
 		String categoryName = request.getParameter("name");
 		String categoryCode = request.getParameter("code");
@@ -306,7 +308,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 				
 				
 				entry.put("name", category.getEnglishName());
-				
+				entry.put("nameAr", category.getArabicName());
 				resp.addDataEntry(entry);
 				
 				
@@ -320,6 +322,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 			LOGGER.error("Error while paging complaints", e);
 			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 		}
+		response.setCharacterEncoding("UTF-8");
 		
 		String returnString = resp.toJSONString();
 		
@@ -328,7 +331,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value="/admin/customercomplaints/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/customercomplaints/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pageCustomerComplaints(HttpServletRequest request, HttpServletResponse response) {
 		String note = request.getParameter("note");
 		String categoryCode = request.getParameter("status");
@@ -425,7 +428,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	
 	
 	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value="/admin/complaints/remove.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/complaints/remove.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String deleteCategory(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 		String sid = request.getParameter("id");
 

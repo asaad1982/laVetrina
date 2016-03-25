@@ -54,7 +54,7 @@ public class CacheController {
 	
 	
 	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value="/admin/cache/clear.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/cache/clear.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String clearCache(HttpServletRequest request, HttpServletResponse response) {
 		String cacheKey = request.getParameter("cacheKey");
 
