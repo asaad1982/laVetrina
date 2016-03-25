@@ -170,7 +170,7 @@
 
 isc.HLayout.create({
     ID:"pageLayout",
-    width: "700",
+    width: "980",
     height: "600",
     position:"relative",
     members:[
@@ -187,6 +187,7 @@ isc.HLayout.create({
         isc.SectionStack.create({
             ID:"rightSideLayout",
             visibilityMode:"multiple",
+            
             animateSections:true,
             sections:[
                 {title:"<s:message code="menu.catalogue-products" text="Products" />", autoShow:true, items:[itemList]}
