@@ -47,6 +47,7 @@ import com.salesmanager.core.business.catalog.product.model.price.ProductPrice;
 import com.salesmanager.core.business.catalog.product.model.price.ProductPriceDescription;
 import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationship;
 import com.salesmanager.core.business.catalog.product.model.type.ProductType;
+import com.salesmanager.core.business.catalog.product.service.FileBean;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.catalog.product.service.image.ProductImageService;
 import com.salesmanager.core.business.catalog.product.service.manufacturer.ManufacturerService;
@@ -821,7 +822,7 @@ public class ProductController {
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/products/printProducts.html", method=RequestMethod.GET, produces="application/json")
-	public void printInvoice(HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+	public String printInvoice(Model model,HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		try {		
 		List<Product> products = productService.list();
 		
@@ -847,7 +848,26 @@ public class ProductController {
 		} catch(Exception e) {
 			LOGGER.error("Error while printing a report",e);
 		}
-			
+		Map<String,String> activeMenus = new HashMap<String,String>();
+		activeMenus.put("catalogue", "catalogue");
+		activeMenus.put("catalogue-products", "catalogue-products");
+		
+		@SuppressWarnings("unchecked")
+		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
+		
+		Menu currentMenu = (Menu)menus.get("catalogue");
+		model.addAttribute("currentMenu",currentMenu);
+		model.addAttribute("activeMenus",activeMenus);
+		Language language = (Language)request.getAttribute("LANGUAGE");
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		
+		List<Category> categories = categoryService.listByStore(store, language);
+		
+		model.addAttribute("categories", categories);
+		model.addAttribute("fileBean", new FileBean());
+		model.addAttribute("success","success");
+		
+		return "admin-products";	
 		
 	}
 	

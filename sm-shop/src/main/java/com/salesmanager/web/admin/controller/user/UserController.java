@@ -476,7 +476,14 @@ public class UserController {
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 
-		
+		if(result.hasErrors()){
+			this.populateUserObjects(user, store, model, locale);
+			model.addAttribute("user", user);
+			
+			
+
+			return ControllerConstants.Tiles.User.profile;
+		}
 		this.populateUserObjects(user, store, model, locale);
 		
 		Language language = user.getDefaultLanguage();
@@ -501,10 +508,11 @@ public class UserController {
 
 		List<Group> submitedGroups = user.getGroups();
 		Set<Integer> ids = new HashSet<Integer>();
+		if(submitedGroups!=null){
 		for(Group group : submitedGroups) {
 			ids.add(Integer.parseInt(group.getGroupName()));
 		}
-		
+		}
 
 		
 		//validate security questions not empty
@@ -564,7 +572,10 @@ public class UserController {
 		}
 
 		
-		List<Group> newGroups = groupService.listGroupByIds(ids);
+		List<Group> newGroups = null;
+			if(ids!=null && ids.size()>0){	
+		     newGroups=groupService.listGroupByIds(ids);
+			}
 
 		//set actual user groups
 		user.setGroups(newGroups);

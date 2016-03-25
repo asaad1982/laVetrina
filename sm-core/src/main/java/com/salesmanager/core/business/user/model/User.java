@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.Email;
@@ -60,7 +61,7 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	}
 	
 	@NotEmpty
-	@Column(name="ADMIN_NAME", length=100, unique=true)
+	@Column(name="ADMIN_NAME", length=100, unique=true, columnDefinition = "VARCHAR(100) COLLATE latin1_general_cs")
 	private String adminName;
 	
 	@ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.REFRESH})
@@ -81,7 +82,8 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	
 	@NotEmpty
 	@Email
-	@Column(name="ADMIN_EMAIL")
+	
+	@Column(name="ADMIN_EMAIL",unique=true,length=100)
 	private String adminEmail;
 	
 	@NotEmpty
@@ -93,14 +95,14 @@ public class User extends SalesManagerEntity<Long, User> implements Auditable {
 	private MerchantStore merchantStore;
 	
 	
-	@Column(name="ADMIN_FIRST_NAME")
+	@Column(name="ADMIN_FIRST_NAME",length=100)
 	private String firstName;
 	
 	@Column(name="ACTIVE")
 	private boolean active = true;
 	
 	
-	@Column(name="ADMIN_LAST_NAME")
+	@Column(name="ADMIN_LAST_NAME",length=100)
 	private String lastName;
 	
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Language.class)

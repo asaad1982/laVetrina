@@ -2347,12 +2347,12 @@
 .sm .btn-success.active,
 .sm .btn-success.disabled,
 .sm .btn-success[disabled] {
-  background-color: #51a351;
-  *background-color: #499249;
+  background-color: #3c8dbc;
+  *background-color: #3c8dbc;
 }
 .sm .btn-success:active,
 .sm .btn-success.active {
-  background-color: #408140 \9;
+  background-color: #3c8dbc;
 }
 .sm .btn-info {
   background-color: #49afcd;

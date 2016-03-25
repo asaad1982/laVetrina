@@ -186,14 +186,18 @@ public class OptionsController {
 		List<ProductOptionDescription> descriptions = option.getDescriptionsList();
 		
 		if(descriptions!=null) {
-				
+				int i=0;
 				for(ProductOptionDescription description : descriptions) {
 					
 					String code = description.getLanguage().getCode();
 					Language l = langs.get(code);
 					description.setLanguage(l);
 					description.setProductOption(option);
-	
+					if(description.getName()==null || "".equalsIgnoreCase(description.getName())){
+						ObjectError error = new ObjectError("descriptionsSettoList["+i+"].name","Option name("+l.getCode()+") is Required");
+						result.addError(error);
+					}
+					i++;
 				}
 				
 		}

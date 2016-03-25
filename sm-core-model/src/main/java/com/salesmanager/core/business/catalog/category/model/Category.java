@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -81,6 +82,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
 	private String lineage;
 	
 	@NotEmpty
+	@Pattern(regexp="[A-Za-z0-9]")
 	@Column(name="CODE", length=100, nullable=false)
 	private String code;
 

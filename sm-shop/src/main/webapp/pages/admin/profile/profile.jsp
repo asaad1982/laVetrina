@@ -21,9 +21,15 @@
 	function validateCode() {
 		$('#checkCodeStatus').html('<img src="<c:url value="/resources/img/ajax-loader.gif" />');
 		$('#checkCodeStatus').show();
+		$('#adminName.errors').hide();
 		var adminName = $("#adminName").val();
+		if(adminName==""){
+			$('#checkCodeStatus').html('<font color="red"><s:message code="message.username.empty" text="This code is available"/></font>');
+			$('#checkCodeStatus').show();
+		}else{
 		var id = $("#id").val();
 		checkCode(adminName,id,'<c:url value="/admin/users/checkUserCode.html" />');
+		}
 	}
 	
 	function callBackCheckCode(msg,code) {
@@ -33,13 +39,13 @@
 		}
 		if(code==9999) {
 
-			$('#checkCodeStatus').html('<font color="green"><s:message code="message.code.available" text="This code is available"/></font>');
+			$('#checkCodeStatus').html('<font color="green"><s:message code="message.username.available" text="This code is available"/></font>');
 			$('#checkCodeStatus').show();
 			$('.btn').removeClass('disabled');
 		}
 		if(code==9998) {
 
-			$('#checkCodeStatus').html('<font color="red"><s:message code="message.code.exist" text="This code already exist"/></font>');
+			$('#checkCodeStatus').html('<font color="red"><s:message code="message.username.exist" text="This code already exist"/></font>');
 			$('#checkCodeStatus').show();
 			$('.btn').addClass('disabled');
 		}
@@ -106,7 +112,7 @@
                   <div class="control-group">
 	                  <label><s:message code="label.user.email" text="Email"/></label>
 	                  <div class="controls">
-                   		  <form:input cssClass="input-large highlight" path="adminEmail"/>
+                   		  <form:input cssClass="input-large highlight" path="adminEmail" maxlength="100" autocomplete="off"/>
                              <span class="help-inline"><form:errors path="adminEmail" cssClass="error" /></span>
 	                  </div>
 	       		  </div>
@@ -115,7 +121,7 @@
                   <div class="control-group">
 	                  <label><s:message code="label.user.password" text="Password"/></label>
 	                  <div class="controls">
-                   		  <form:password cssClass="input-large highlight" path="adminPassword"/>
+                   		  <form:password cssClass="input-large highlight" path="adminPassword" maxlength="50" autocomplete="off"/>
                              <span class="help-inline"><form:errors path="adminPassword" cssClass="error" /></span>
 	                  </div>
 
@@ -126,7 +132,7 @@
                   <div class="control-group">
                       <label><s:message code="label.user.firstName" text="First name"/> </label>
                       <div class="controls">
-                          <form:input cssClass="input-large" path="firstName"/>
+                          <form:input cssClass="input-large" path="firstName" maxlength="100"/>
                               <span class="help-inline"><form:errors path="firstName" cssClass="error" /></span>
                       </div>
                   </div>
@@ -134,7 +140,7 @@
                   <div class="control-group">
                       <label><s:message code="label.user.lastName" text="Last name"/> </label>
                       <div class="controls">
-                          <form:input cssClass="input-large" path="lastName"/>
+                          <form:input cssClass="input-large" path="lastName" maxlength="100"/>
                               <span class="help-inline"><form:errors path="lastName" cssClass="error" /></span>
                       </div>
                   </div>
@@ -170,16 +176,16 @@
                   <div class="control-group">
                       <label><s:message code="security.question1" text="Question 1"/> </label>
                       <div class="controls">
-                          <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question1"/>
+                          <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question1" cssStyle="width:270px;"/>
                           <form:input cssClass="input-large" path="answer1"/>
                               <span class="help-inline"><form:errors path="answer1" cssClass="error" /></span>
                       </div>
                   </div>
                   
                   <div class="control-group">
-                      <label><s:message code="security.question1" text="Question 2"/> </label>
+                      <label><s:message code="security.question2" text="Question 2"/> </label>
                       <div class="controls">
-                      	  <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question2"/>
+                      	  <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question2" cssStyle="width:270px;"/>
                           <form:input cssClass="input-large" path="answer2"/>
                               <span class="help-inline"><form:errors path="answer2" cssClass="error" /></span>
                       </div>
@@ -188,7 +194,7 @@
                   <div class="control-group">
                       <label><s:message code="security.question3" text="Question 3"/> </label>
                       <div class="controls">
-                      	  <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question3"/>
+                      	  <form:select cssClass="" items="${questions}" itemValue="label" itemLabel="label" path="question3" cssStyle="width:270px;"/>
                           <form:input cssClass="input-large" path="answer3"/>
                               <span class="help-inline"><form:errors path="answer3" cssClass="error" /></span>
                       </div>
@@ -202,7 +208,7 @@
 			      <div class="form-actions">
 
                   		<div class="pull-right">
-                  			<button type="submit" class="btn btn-success"><s:message code="button.label.submit" text="Submit"/></button>
+                  			<button type="submit" class="btn btn-success" onclick="validateCode();"><s:message code="button.label.submit" text="Submit"/></button>
                   		</div>
 
             	 </div>
