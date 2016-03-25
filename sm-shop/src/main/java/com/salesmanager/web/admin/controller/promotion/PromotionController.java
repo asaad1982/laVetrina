@@ -855,6 +855,42 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 
 	setMenu(model, request);
 	Promotion currPromotion=promotionService.getById(promotion.getId());
+	
+	
+	MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+	
+	
+	
+	List<PromotionTragetAge> promotionTragetAges=productAgeRangeSerivce.list();
+	List<PromotionType> promotionTypes=promotionTypeService.list();
+	List<Language> languages = store.getLanguages();
+	for(Language language:languages){
+		PromotionDescription promotionDescription = null;
+		for(PromotionDescription desc : promotion.getPromotionDescriptions()) {
+			
+			
+			if(desc.getLanguageId()==language.getId()) {
+				promotionDescription = desc;
+				promotionDescription.setLanguageName(language.getCode());
+			}
+	}
+		if(promotionDescription==null) {
+			promotionDescription = new PromotionDescription();
+			promotionDescription.setLanguageId(language.getId());
+			promotionDescription.setLanguageName(language.getCode());
+			promotion.getPromotionDescriptions().add(promotionDescription);
+		}
+
+		
+		
+	}
+	List<Manufacturer> manufacturers=mnufacturerService.listByStore(store);
+	
+	model.addAttribute("languages",languages);
+	model.addAttribute("promotion", promotion);
+	model.addAttribute("promotionTragetAges", promotionTragetAges);
+	model.addAttribute("promotionTypes", promotionTypes);
+	model.addAttribute("manufacturers",manufacturers);
 	if (result.hasErrors()) {
 		return "promotion";
 	}

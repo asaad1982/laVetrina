@@ -27,11 +27,11 @@ public class Promotion extends SalesManagerEntity<Long, Promotion> implements Se
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
 	private Long id;
 
-	@Temporal(TemporalType.DATE)
+	
 	@NotEmpty
 	private Date endate;
 
-	@Temporal(TemporalType.DATE)
+	
 	@NotEmpty
 	private Date startDate;
 	@NotEmpty

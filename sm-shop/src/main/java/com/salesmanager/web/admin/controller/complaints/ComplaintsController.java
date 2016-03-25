@@ -61,14 +61,14 @@ public class ComplaintsController {
 	@Autowired
 	LabelUtils messages;
 
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/complaints/editCategory.html", method=RequestMethod.GET)
 	public String displayCategoryEdit(@RequestParam("id") long categoryId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return displayCategory(categoryId,model,request,response);
 
 	}
 	
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/complaints/createCategory.html", method=RequestMethod.GET)
 	public String displayCategoryCreate(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return displayCategory(null,model,request,response);
@@ -77,7 +77,7 @@ public class ComplaintsController {
 	
 	
 	
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/customercomplaints/editComplaint.html", method=RequestMethod.GET)
 	public String displayComplaintEdit(@RequestParam("id") long categoryId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return displayComplaint(categoryId,model,request,response);
@@ -160,7 +160,7 @@ private String displayComplaint(Long complaintId, Model model, HttpServletReques
 		return "customercomplaint";
 	}
 
-@PreAuthorize("hasRole('PRODUCTS')")
+@PreAuthorize("hasRole('AUTH')")
 @RequestMapping(value="/admin/customercomplaints/save.html", method=RequestMethod.POST)
 public String saveComplaints(@Valid @ModelAttribute("customerComplaint") CustomerComplaint customerComplaint, BindingResult result, Model model, HttpServletRequest request) throws Exception {
 
@@ -177,7 +177,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	return "customercomplaint";
 }
 	
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/complaints/save.html", method=RequestMethod.POST)
 	public String saveCategory(@Valid @ModelAttribute("category") ComplaintsReason category, BindingResult result, Model model, HttpServletRequest request) throws Exception {
 
@@ -228,7 +228,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	
 	
 	//category list
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/complaints/complaints.html", method=RequestMethod.GET)
 	public String displaycomplaints(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -242,7 +242,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 		return "catalogue-complaints";
 	}
 	
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/complaints/Customercomplaints.html", method=RequestMethod.GET)
 	public String displayCustomerComplaints(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//display menu
@@ -261,7 +261,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	}
 	
 	@SuppressWarnings({ "unchecked"})
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/complaints/paging.html", method=RequestMethod.POST, produces="application/json")
 	public @ResponseBody String pagecomplaints(HttpServletRequest request, HttpServletResponse response) {
 		String categoryName = request.getParameter("name");
@@ -327,7 +327,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	}
 	
 	@SuppressWarnings({ "unchecked"})
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/customercomplaints/paging.html", method=RequestMethod.POST, produces="application/json")
 	public @ResponseBody String pageCustomerComplaints(HttpServletRequest request, HttpServletResponse response) {
 		String note = request.getParameter("note");
@@ -394,7 +394,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 		return returnString;
 	}
 
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value = "/admin/customercomplaints/remove.html", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody String deleteComplaints(HttpServletRequest request,
 			HttpServletResponse response, Locale locale) {
@@ -424,7 +424,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	}
 	
 	
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/complaints/remove.html", method=RequestMethod.POST, produces="application/json")
 	public @ResponseBody String deleteCategory(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 		String sid = request.getParameter("id");
