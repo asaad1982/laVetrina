@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.metamodel.SingularAttribute;
 
+import org.springframework.dao.DataIntegrityViolationException;
+
 import com.salesmanager.core.business.generic.dao.SalesManagerEntityDao;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
@@ -55,17 +57,29 @@ public abstract class SalesManagerEntityServiceImpl<K extends Serializable & Com
 	
 	
 	public void save(E entity) throws ServiceException {
+		try{
 		genericDao.save(entity);
+		}catch(DataIntegrityViolationException dataIntegrityViolationException){
+			throw new ServiceException("manfacture.code.alreadyExist");
+		}
 	}
 	
 	
 	public void create(E entity) throws ServiceException {
+		try{
 		createEntity(entity);
+	}catch(DataIntegrityViolationException dataIntegrityViolationException){
+		throw new ServiceException("manfacture.code.alreadyExist");
+	}
 	}
 	
 	
 	protected void createEntity(E entity) throws ServiceException {
+		try{
 		save(entity);
+		}catch(DataIntegrityViolationException dataIntegrityViolationException){
+			throw new ServiceException("manfacture.code.alreadyExist");
+		}
 	}
 	
 	

@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.salesmanager.core.business.catalog.product.model.manufacturer.Manufacturer;
 import com.salesmanager.core.business.catalog.product.model.manufacturer.ManufacturerDescription;
 import com.salesmanager.core.business.catalog.product.service.manufacturer.ManufacturerService;
+import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.core.business.reference.language.service.LanguageService;
@@ -171,7 +172,7 @@ public class ManufacturerController {
 
 		this.setMenu(model, request);
 		//save or edit a manufacturer
-
+		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		List<Language> languages = languageService.getLanguages();
 
@@ -315,12 +316,17 @@ public class ManufacturerController {
 
 
 		} else {
-
+			try{
 			manufacturerService.saveOrUpdate(newManufacturer);
+			}catch(ServiceException e){
+				ObjectError error = new ObjectError("code",messages.getMessage(e.getMessageCode(), locale));
+				result.addError(error);
+			}
 		}
 
 		model.addAttribute("manufacturer", manufacturer);
 		model.addAttribute("languages",languages);
+		if(!result.hasErrors())
 		model.addAttribute("success","success");
 
 		return ControllerConstants.Tiles.Product.manufacturerDetails;
