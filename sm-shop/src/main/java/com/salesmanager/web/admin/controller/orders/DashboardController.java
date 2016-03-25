@@ -372,7 +372,7 @@ model.addAttribute("totalQuantity_ordered", totalQuantity_ordered);
 	
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('ORDER')")
-	@RequestMapping(value="/admin/orders/customersStatistics/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/orders/customersStatistics/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String customersStatisticspaging(HttpServletRequest request, HttpServletResponse response) {
 		String dateInString = request.getParameter("startDate");        
 		String year =null;
@@ -472,7 +472,7 @@ model.addAttribute("totalQuantity_ordered", totalQuantity_ordered);
 	
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('ORDER')")
-	@RequestMapping(value="/admin/orders/availabilityCategory/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/orders/availabilityCategory/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String availabilityCategorypaging(HttpServletRequest request, HttpServletResponse response) {
 		String dateInString = request.getParameter("startDate");        
 		String year =null;
