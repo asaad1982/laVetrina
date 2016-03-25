@@ -13,7 +13,7 @@ public class StoreLandingDescription implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@NotEmpty
+	@NotEmpty(message="notEmpty.store.title")
 	private String title;
 	private String description;
 	private String keywords;
