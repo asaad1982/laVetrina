@@ -112,7 +112,7 @@
                   <div class="control-group">
 	                  <label><s:message code="label.user.email" text="Email"/></label>
 	                  <div class="controls">
-                   		  <form:input cssClass="input-large highlight" path="adminEmail" maxlength="100"/>
+                   		  <form:input cssClass="input-large highlight" path="adminEmail" maxlength="100" autocomplete="off"/>
                              <span class="help-inline"><form:errors path="adminEmail" cssClass="error" /></span>
 	                  </div>
 	       		  </div>
@@ -121,7 +121,7 @@
                   <div class="control-group">
 	                  <label><s:message code="label.user.password" text="Password"/></label>
 	                  <div class="controls">
-                   		  <form:password cssClass="input-large highlight" path="adminPassword" maxlength="50"/>
+                   		  <form:password cssClass="input-large highlight" path="adminPassword" maxlength="50" autocomplete="off"/>
                              <span class="help-inline"><form:errors path="adminPassword" cssClass="error" /></span>
 	                  </div>
 

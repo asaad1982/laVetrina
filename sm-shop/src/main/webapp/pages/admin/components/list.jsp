@@ -53,7 +53,7 @@
     								showFilterEditor: true,
     								filterOnKeypress: false,
 									dataFetchMode:"paged",
-									canEdit:false,
+									canEdit:true,
 									editByCell: true,
 									
 									editEvent: "click",

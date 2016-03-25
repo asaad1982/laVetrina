@@ -214,7 +214,8 @@ response.setDateHeader("Expires", 0); // Proxies.
      <script>
 	
 		$(document).ready(function(){ 
-			
+			$('#adminPassword').attr("autocomplete", "off");
+			setTimeout('$("#adminPassword").val("");', 2000);
 
 			$("#catalogue-products-create-link").click(function() {
 				window.location='<c:url value="/admin/products/createProduct.html" />';
@@ -453,6 +454,9 @@ response.setDateHeader("Expires", 0); // Proxies.
 			
 		}
 	
+
+
+
 </script>	
     <script type="text/javascript">
  $(document).ready(function () {
