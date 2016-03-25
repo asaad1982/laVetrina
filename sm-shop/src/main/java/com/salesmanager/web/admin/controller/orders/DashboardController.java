@@ -2,7 +2,11 @@ package com.salesmanager.web.admin.controller.orders;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -26,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.salesmanager.core.business.catalog.category.model.Category;
 import com.salesmanager.core.business.catalog.category.service.CategoryService;
+import com.salesmanager.core.business.catalog.product.model.SalesReport;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.order.model.Order;
@@ -116,27 +121,7 @@ public class DashboardController {
 		model.addAttribute("map", map);
 		model.addAttribute("total", total);
 		
-		
-		List<Object[]> categoryStockAvailability = categoryService.categoryStockAvailability(store);
-		
-		 Map<String, Long> stockAvailability = new HashMap<String, Long>();
-		
-	
-			for(Object[] counts : categoryStockAvailability) {
-				 
-				stockAvailability.put((String)counts[1], ((BigInteger)counts[2]).longValue());
-				 
 
-			}
-			
-		 
-		 
-		 model.addAttribute("stockAvailability", stockAvailability);
- 		
-		
-		
-		
-		
 		
 		return ControllerConstants.Tiles.Dashboeard.dashboardsProductCatalog;
 		
@@ -362,6 +347,185 @@ model.addAttribute("totalQuantity_ordered", totalQuantity_ordered);
 		
 		
 	}
+	
+	
+	
+	@PreAuthorize("hasRole('ORDER')")
+	@RequestMapping(value="/admin/orders/customersStatistics.html", method=RequestMethod.GET)
+	public String customersStatistics(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		
+		setMenu(model,request,"dash-board-customersStatistics");
+
+		//the list of orders is from page method
+		
+		String startDate = request.getParameter("startDate");        
+       
+		model.addAttribute("startDate", startDate);
+	
+	
+		return ControllerConstants.Tiles.Dashboeard.dashboardscustomerStatsitics;
+		
+		
+	}
+	
+	
+	@SuppressWarnings({ "unchecked"})
+	@PreAuthorize("hasRole('ORDER')")
+	@RequestMapping(value="/admin/orders/customersStatistics/paging.html", method=RequestMethod.POST, produces="application/json")
+	public @ResponseBody String customersStatisticspaging(HttpServletRequest request, HttpServletResponse response) {
+		String dateInString = request.getParameter("startDate");        
+		String year =null;
+		String month = null;
+		
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		 
+ 
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		 
+		Date date = null;
+		try {
+
+			{if(dateInString != null && !"".equals(dateInString))
+			
+			  date = formatter.parse(dateInString);
+	
+			Calendar calendar = new GregorianCalendar();
+			calendar.setTime(date);
+			
+			int year1 = calendar.get(Calendar.YEAR);
+			//Add one to month {0 - 11}
+			int month1 = calendar.get(Calendar.MONTH) + 1;
+			year=year1+"";
+			month = month1+"";
+			
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+ 
+		
+        AjaxResponse resp = new AjaxResponse();		
+		try {			
+			//Language language = (Language)request.getAttribute("LANGUAGE");
+		
+					List<Object[]> list = 	productService.customersStatistics(store, year, month);
+				
+					
+			for(Object[] lst : list) {				
+				@SuppressWarnings("rawtypes")
+				Map entry = new HashMap();
+				entry.put("buyerName", ((String)lst[0]));				
+				entry.put("quantityName", ((BigDecimal)lst[1]).longValue());
+				entry.put("amountName", ((BigDecimal)lst[2]).longValue());
+				 
+				resp.addDataEntry(entry);
+				
+				
+			}
+			
+			
+	 
+			
+			
+			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			
+
+		
+		} catch (Exception e) {
+			LOGGER.error("Error while paging sales report", e);
+			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+		}
+		
+		String returnString = resp.toJSONString();
+		
+		return returnString;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@PreAuthorize("hasRole('ORDER')")
+	@RequestMapping(value="/admin/orders/availabilityCategory.html", method=RequestMethod.GET)
+	public String availabilityCategory(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		
+		setMenu(model,request,"dash-board-availabilityCategory");
+
+		//the list of orders is from page method
+
+		return ControllerConstants.Tiles.Dashboeard.dashboardsavailabilityCategory;
+		
+		
+	}
+	
+	
+	@SuppressWarnings({ "unchecked"})
+	@PreAuthorize("hasRole('ORDER')")
+	@RequestMapping(value="/admin/orders/availabilityCategory/paging.html", method=RequestMethod.POST, produces="application/json")
+	public @ResponseBody String availabilityCategorypaging(HttpServletRequest request, HttpServletResponse response) {
+		String dateInString = request.getParameter("startDate");        
+		String year =null;
+		String month = null;
+		
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		 
+ 
+		
+	 
+		
+		
+ 
+		
+        AjaxResponse resp = new AjaxResponse();		
+		try {			
+			//Language language = (Language)request.getAttribute("LANGUAGE");
+		
+					List<Object[]> list = 	categoryService.categoryStockAvailability(store);
+				
+					
+			for(Object[] lst : list) {				
+				@SuppressWarnings("rawtypes")
+				Map entry = new HashMap();
+				entry.put("subCategory", ((String)lst[1]));				
+				entry.put("instock", ((BigInteger)lst[2]).longValue());
+ 				 
+				resp.addDataEntry(entry);
+				
+				
+			}
+			
+ 
+	 
+			
+			
+			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+			
+
+		
+		} catch (Exception e) {
+			LOGGER.error("Error while paging sales report", e);
+			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+		}
+		
+		String returnString = resp.toJSONString();
+		
+		return returnString;
+	}
+	
+	
+	
+	
 	
 	
 	private void setMenu(Model model, HttpServletRequest request,String menu) throws Exception {

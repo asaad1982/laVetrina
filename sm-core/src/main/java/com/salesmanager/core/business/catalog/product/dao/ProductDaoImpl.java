@@ -1095,26 +1095,28 @@ public class ProductDaoImpl extends SalesManagerEntityDaoImpl<Long, Product> imp
 				+ "QUANTITY, sum(op.PRODUCT_QUANTITY*op.ONETIME_CHARGE) "
 				+ "as Amount FROM orders o "
 				+ ",order_product op where "
+				
+				+ " o.MERCHANTID = :mid  and "
 				+ " o.ORDER_STATUS = 'DELIVERED'"
 				+ "  and op.ORDER_ID = o.ORDER_ID ");
 				
-		if(year != null && "".equals(year) && month != null && "".equals(month) ){		
+		if(year != null && !"".equals(year) && month != null && !"".equals(month) ){		
 		qs.append( "and o.date_purchased "
 				+ "between  DATE_FORMAT( :yearMonth , '%Y-%m-01') "
 				+ "and LAST_DAY(DATE_FORMAT( :yearMonth , '%Y-%m-01')) " );
 				
-				
+		}
 				qs.append( " group by o.CUSTOMER_EMAIL_ADDRESS ;");
  
 
-		}
+		
     	String hql = qs.toString();
 		Query q = super.getEntityManager().createNativeQuery(hql);
 
     	q.setParameter("mid", store.getId());
 
-    	if(year != null && "".equals(year) && month != null && "".equals(month) ) 
-    	q.setParameter("yearMonth", year+"-"+month);
+    	if(year != null && !"".equals(year) && month != null && !"".equals(month) ) 
+    	q.setParameter("yearMonth", year+"-"+month+"-01");
     	
     	@SuppressWarnings("unchecked")
     	List<Object[]> products =  q.getResultList();

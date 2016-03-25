@@ -22,6 +22,7 @@ import com.salesmanager.core.business.order.model.QOrder;
 import com.salesmanager.core.business.order.model.QOrderTotal;
 import com.salesmanager.core.business.order.model.orderproduct.QOrderProduct;
 import com.salesmanager.core.business.order.model.orderproduct.QOrderProductAttribute;
+import com.salesmanager.core.business.order.model.orderstatus.OrderStatus;
 import com.salesmanager.core.business.order.model.orderstatus.QOrderStatusHistory;
 
 @Repository("orderDao")
@@ -100,7 +101,7 @@ public class OrderDaoImpl  extends SalesManagerEntityDaoImpl<Long, Order> implem
 			countBuilderWhere.append(" and o.datePurchased like:dt");
 		}
 		if(!StringUtils.isBlank(criteria.getStatus())) {
-			countBuilderWhere.append(" and o.status.value like:st");
+			countBuilderWhere.append(" and o.status like:st");
 		}
 		if(!StringUtils.isBlank(criteria.getCountry())) {
 			countBuilderWhere.append(" and o.delivery.country.name like:cou");
@@ -137,7 +138,7 @@ public class OrderDaoImpl  extends SalesManagerEntityDaoImpl<Long, Order> implem
 			countQ.setParameter("cou",new StringBuilder().append("%").append(criteria.getCountry()).append("%").toString());
 		}
 		if(!StringUtils.isBlank(criteria.getStatus())) {
-			countQ.setParameter("st",new StringBuilder().append("%").append(criteria.getStatus()).append("%").toString());
+			countQ.setParameter("st",new StringBuilder().append(OrderStatus.valueOf(criteria.getStatus())));
 		}
 		if(!StringUtils.isBlank(criteria.getDate())) {
 			countQ.setParameter("dt",new StringBuilder().append("%").append(criteria.getDate()).append("%").toString());

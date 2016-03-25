@@ -424,6 +424,16 @@ response.setDateHeader("Expires", 0); // Proxies.
   				window.location='<c:url value="/admin/report/reports.html" />';
 			});
 			
+			$("#dash-board-customersStatistics-link").click(function() {
+  				window.location='<c:url value="/admin/orders/customersStatistics.html" />';
+			});
+			
+			
+			$("#dash-board-availabilityCategory-link").click(function() {
+  				window.location='<c:url value="/admin/orders/availabilityCategory.html" />';
+			});
+			
+			
 		}); 
 		
 		

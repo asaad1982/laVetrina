@@ -367,6 +367,16 @@
 			{"menu":{
 				"code":"sales-Report","url":"/admin/report/reports.html","role":"PRODUCTS","order":7
 			}}
+			,
+			{"menu":{
+				"code":"dash-board-customersStatistics","url":"/admin/orders/customersStatistics.html","role":"PRODUCTS","order":8
+			}}
+		 
+		 ,
+			{"menu":{
+				"code":"dash-board-availabilityCategory","url":"/admin/orders/availabilityCategory.html","role":"PRODUCTS","order":9
+			}}
+		 
 		 
 	 
 ]

@@ -98,6 +98,9 @@ public interface ControllerConstants
             final String dashboardsSalesCountry="admin-dashboards-sales-country";
             final String dashboardsSalesPayment="admin-dashboards-sales-payment";
             final String dashboardssoldVsInstock="admin-dashboards-soldVsInstock";
+            final String dashboardscustomerStatsitics="admin-dashboards-customerStatsitics";
+            final String dashboardsavailabilityCategory="admin-dashboards-availabilityCategory";
+            
         }
         
         interface Configuration{

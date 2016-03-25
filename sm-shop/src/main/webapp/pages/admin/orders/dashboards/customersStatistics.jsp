@@ -17,10 +17,23 @@
 	
 	$(document).ready(function(e) {
 	
-	
+		$(function() {
+			$('#startDate').datepicker( {
+			    changeMonth: true,
+			    changeYear: true,
+			    showButtonPanel: true,
+			    dateFormat: 'MM yy',
+			    onClose: function(dateText, inst) { 
+			        var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+			        var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+			        $(this).datepicker('setDate', new Date(year, month, 1));
+			    }
+			});
+			});
 	
 	$('#submit').click(function(event){
-		url="/sm-shop/admin/report/reports.html?startDate="+$('#startDate').val()+"&endDate="+$('#endate').val();
+		url="/sm-shop/admin/orders/customersStatistics.html?startDate="+$('#startDate').val();
+		
 		
     	window.location = url;
      });
@@ -28,50 +41,9 @@
 	val=$(this).val();
 	var curr = new Date();
     day = curr.getDay();
-    if(val==1){
-		var startDay = 0; 
-	     
-	    $("#startDate").val( curr.getTime().toISOString());
-	     $("#endate").val( curr.getTime().toISOString());
-	}
-	else if(val==2){
-		var startDay = 0; 
-	    var weekStart = new Date(curr.getTime() - 60*60*24* day*1000); 
-	    var weekEnd = new Date(curr.getTime() + 60 * 60 *24 * 6 * 1000); 
-	    $("#startDate").val( weekStart.toISOString());
-	     $("#endate").val( weekEnd.toISOString());
-	}else if(val==3){
-		var date = new Date();
-        var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-	    $("#startDate").val( firstDay.toISOString());
-	     $("#endate").val( lastDay.toISOString());
-	}else if(val==4){
-		var thisYear = (new Date()).getFullYear();    
-        var start = new Date("1/1/" + thisYear);
-        var end = new Date("31/12/" + thisYear);
-	    $("#startDate").val( start.toISOString());
-	     $("#endate").val( end.toISOString());
-	}
-	if(val==6){
-		var startDay = 0; 
-	    var weekStart = new Date(curr.getTime() - 60*60*24* day*1000); 
-	    var weekEnd = new Date(curr.getTime() + 60 * 60 *24 * 6 * 1000); 
-	    $("#startDate").val( weekStart.toISOString());
-	     $("#endate").val( weekEnd.toISOString());
-	}else if(val==7){
-		var date = new Date();
-        var firstDay = new Date(date.getFullYear(), date.getMonth()-1, 1);
-        var lastDay = new Date(date.getFullYear(), date.getMonth() , 0);
-	    $("#startDate").val( firstDay.toISOString());
-	     $("#endate").val( lastDay.toISOString());
-	}else if(val==8){
-		var prevYear = (new Date()).getFullYear()-1;    
-        var prevstart = new Date("1/1/" + prevYear);
-        var prevend = new Date("1/1/" + (new Date()).getFullYear());
-	    $("#startDate").val( prevstart.toISOString());
-	     $("#endate").val( prevend.toISOString());
-	}
+   
+ 
+	 
 	});
 	});
 	function getLastWeek(){
@@ -93,51 +65,29 @@
 								<div class="sm-ui-component">
 								<h3><s:message code="label.sales.title" text="Categories" /></h3>	
 								<br/>
-								<div class="control-group">
-	                        <label><s:message code="label.promotion.endDate" text="Date available"/></label>
-	                        <div class="controls">
-	                        		 <select id="filter">
-	                        		 <option value="1">This Day</option>
-	                        		 <option value="2">This Week</option>
-	                        		 <option value="3">This Month</option>
-	                        		 <option value="4">This Year</option>
-	                        		 <option value="-1">------------------</option>
-	                        		 <option value="5">Yesterday</option>
-	                        		 <option value="6">Previous Week</option>
-	                        		 <option value="7">Previous Month</option>
-	                        		 <option value="8">Previous Year</option>
-	                        		
-	                        		 
-	                        		 </select>
-	                       		
-	                                
-	                        </div>
-	                  	</div>
+							 
 								
 					<div class="control-group">
 	                        <label><s:message code="label.promotion.endDate" text="Date available"/></label>
 	                        <div class="controls">
-	                        		 <input id="startDate" name="startDate" value="${startDate}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
-	                                 <script type="text/javascript">
-	                                 $('#startDate').datepicker();
-	                                 </script>
-	                                 
-	                       			-
-	                        		 <input id="endate" name="endate"  class="small" value="${endDate}" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
-	                                 <script type="text/javascript">
-	                                 $('#endate').datepicker();
-	                                 </script>
-	                                
+	                        		 <input id="startDate" name="startDate" value="${startDate}" class="small" type="text"  > 
+	                            
+	                       
 	                        </div>
 	                  	</div>
 	                  	<div class="form-actions">
                             <div class="pull-right">
                                     <button type="submit" class="btn btn-success" id="submit"><s:message code="label.generic.search" text="Submit"/></button>
                             </div>
+                              <br></br>
+                    <br></br><br></br>
                    </div>	
+                   
+                   
+                  
 								
 				 <!-- Listing grid include -->
-				 <c:set value="/admin/report/paging.html?startDate=${startDate}&endDate=${endDate}" var="pagingUrl" scope="request"/>
+				 <c:set value="/admin/orders/customersStatistics/paging.html?startDate=${startDate}" var="pagingUrl" scope="request"/>
 				
 				
 				

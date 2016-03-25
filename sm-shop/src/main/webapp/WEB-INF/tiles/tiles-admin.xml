@@ -383,6 +383,15 @@
   		<put-attribute name="body" value="/pages/admin/orders/dashboards/sales_paymentMethod.jsp" /> 
   	</definition>
   	
+  	  	<definition name="admin-dashboards-customerStatsitics" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/orders/dashboards/customersStatistics.jsp" /> 
+  	</definition>
+  	
+  	
+  	 	<definition name="admin-dashboards-availabilityCategory" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/orders/dashboards/availabilityCategory.jsp" /> 
+  	</definition>
+  	
   	
   
 </tiles-definitions>

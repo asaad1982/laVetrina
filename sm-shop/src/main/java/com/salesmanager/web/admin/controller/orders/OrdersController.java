@@ -24,6 +24,8 @@ import com.salesmanager.core.business.order.model.Order;
 import com.salesmanager.core.business.order.model.OrderCriteria;
 import com.salesmanager.core.business.order.model.OrderList;
 import com.salesmanager.core.business.order.service.OrderService;
+import com.salesmanager.core.business.reference.country.model.Country;
+import com.salesmanager.core.business.reference.country.service.CountryService;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.core.business.system.model.IntegrationModule;
 import com.salesmanager.core.business.system.service.ModuleConfigurationService;
@@ -51,6 +53,9 @@ public class OrdersController {
 	
 	@Autowired
 	LabelUtils messages;
+	
+	@Autowired
+	CountryService countryService;
 	
 	@Autowired
 	private ProductPriceUtils priceUtil;
@@ -88,10 +93,21 @@ public class OrdersController {
 		
 		try {
 			
+			
+			Language language = (Language)request.getAttribute("LANGUAGE");
+			List<Country> countries = countryService.getCountries(language);
+			
 			int startRow = Integer.parseInt(request.getParameter("_startRow"));
 			int endRow = Integer.parseInt(request.getParameter("_endRow"));
 			String	paymentModule = request.getParameter("paymentModule");
 			String customerName = request.getParameter("customer");
+			String customerEmail = request.getParameter("customerEmail");
+			
+			String	orderId = request.getParameter("orderId");
+		 
+			String	date = request.getParameter("date");
+			String	country = request.getParameter("country");
+			String	status = request.getParameter("status");
 			
 			OrderCriteria criteria = new OrderCriteria();
 			criteria.setStartIndex(startRow);
@@ -100,12 +116,33 @@ public class OrdersController {
 				criteria.setPaymentMethod(paymentModule);
 			}
 			
+			
+			
+		 
+			if(!StringUtils.isBlank(date)) {
+				criteria.setDate(date);
+			}
+			if(!StringUtils.isBlank(country)) {
+				criteria.setCountry(country); 
+			}
+			if(!StringUtils.isBlank(orderId)) {
+				criteria.setOrderId(orderId); 
+			}
+			if(!StringUtils.isBlank(status)) {
+				criteria.setStatus(status); 
+			}
+			
+			
+			
 			if(!StringUtils.isBlank(customerName)) {
 				criteria.setCustomerName(customerName);
 			}
 			
-			Language language = (Language)request.getAttribute("LANGUAGE");
-			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+			if(!StringUtils.isBlank(customerEmail)) {
+				criteria.setCustomerEmailAddress(customerEmail);
+			}
+			
+ 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 			List<IntegrationModule> paymentModules = moduleConfigurationService.getIntegrationModules( "PAYMENT" );
 
 
@@ -122,6 +159,21 @@ public class OrdersController {
 					entry.put("amount", priceUtil.getAdminFormatedAmountWithCurrency(store,order.getTotal()));//todo format total
 					entry.put("date", DateUtil.formatDate(order.getDatePurchased()));
 					entry.put("status", order.getStatus().name());
+					entry.put("customerEmail", order.getCustomerEmailAddress());
+					
+					
+					
+					
+					for(Country contry:countries)
+					{
+						if(contry.getId().intValue() ==order.getDelivery().getCountry().getId().intValue() )
+						{	entry.put("country", contry.getDescriptions().get(0).getName());
+						break;}
+					}
+					 
+					
+					
+					
 					
 					
 					if ( paymentModules!= null && paymentModules.size() > 0 ) 
@@ -137,7 +189,7 @@ public class OrdersController {
 	
 					}
 	
-					entry.put("paymentModule", paymentModule );
+					entry.put("paymentModule", order.getPaymentType().toString() );
 					resp.addDataEntry(entry);				
 					
 				}
