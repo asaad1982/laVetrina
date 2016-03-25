@@ -16,6 +16,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.TableGenerator;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.salesmanager.core.business.common.model.audit.AuditListener;
@@ -43,6 +44,7 @@ public class Description implements Auditable, Serializable {
 	private Language language;
 	
 	@NotEmpty
+	@NotBlank
 	@Column(name="NAME", nullable = false, length=120)
 	private String name;
 	

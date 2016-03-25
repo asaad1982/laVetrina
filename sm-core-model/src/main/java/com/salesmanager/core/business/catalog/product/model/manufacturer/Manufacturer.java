@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.salesmanager.core.business.common.model.audit.AuditListener;
@@ -74,6 +75,7 @@ public class Manufacturer extends SalesManagerEntity<Long, Manufacturer> impleme
 	private MerchantStore merchantStore;
 	
 	@NotEmpty
+	@NotBlank
 	@Column(name="CODE", length=100, nullable=false)
 	private String code;
 
