@@ -164,7 +164,7 @@ private String displayComplaint(Long complaintId, Model model, HttpServletReques
 @RequestMapping(value="/admin/customercomplaints/save.html", method=RequestMethod.POST)
 public String saveComplaints(@Valid @ModelAttribute("customerComplaint") CustomerComplaint customerComplaint, BindingResult result, Model model, HttpServletRequest request) throws Exception {
 
-	
+	setMenu(model, request);
 	CustomerComplaint currentComplaint = customerComplaintsService.getById(customerComplaint.getId());
 	customerComplaint.setCustomerComplaintReason(currentComplaint.getCustomerComplaintReason());
 	customerComplaint.setComplaintsDate(currentComplaint.getComplaintsDate());
