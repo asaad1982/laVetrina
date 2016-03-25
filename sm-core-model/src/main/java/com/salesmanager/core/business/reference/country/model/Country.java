@@ -39,8 +39,8 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
 	private List<CountryDescription> descriptions = new ArrayList<CountryDescription>();
 	
-/*	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-	private List<City> citys = new ArrayList<City>();*/
+ 	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+	private List<City> citys = new ArrayList<City>();
 	
 	@OneToMany(mappedBy = "country")
 	private List<Zone> zones = new ArrayList<Zone>();
@@ -49,14 +49,14 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 	@JoinColumn(name = "GEOZONE_ID")
 	private GeoZone geoZone;
 	
-/*	public List<City> getCitys() {
+	public List<City> getCitys() {
 		return citys;
 	}
 
 	public void setCitys(List<City> citys) {
 		this.citys = citys;
 	}
-*/
+ 
 	@Column(name = "COUNTRY_SUPPORTED")
 	private boolean supported = true;
 	

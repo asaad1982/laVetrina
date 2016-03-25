@@ -77,14 +77,17 @@ public class City extends SalesManagerEntity<Integer, City> {
 	}
 
  
-
+/*
  
 
 
 	@ManyToOne(targetEntity = Country.class)
 	@JoinColumn(name = "COUNTRY_ID", nullable = false)
 	private Country country;
-	
+	*/
+	@ManyToOne(targetEntity = Country.class)
+	@JoinColumn(name = "COUNTRY_ID", nullable = false)
+	private Country country;
  
 	public Country getCountry() {
 		return country;
@@ -97,11 +100,5 @@ public class City extends SalesManagerEntity<Integer, City> {
 	
 	
 
-/*	public GeoZone getGeoZone() {
-		return geoZone;
-	}
-
-	public void setGeoZone(GeoZone geoZone) {
-		this.geoZone = geoZone;
-	}*/
+	 
 }
