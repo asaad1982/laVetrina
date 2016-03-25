@@ -596,7 +596,12 @@ public class UserController {
 		if(user.getId()==null || user.getId().longValue()==0) {
 			
 			//save or update user
+			try{
 			userService.saveOrUpdate(user);
+			}catch(ServiceException e){
+				ObjectError error = new ObjectError(e.getMessageCode(),messages.getMessage(e.getMessage(), locale));
+				result.addError(error);
+			}
 			
 			try {
 
@@ -641,7 +646,7 @@ public class UserController {
 			//save or update user
 			userService.saveOrUpdate(user);
 		}
-
+		if(result.hasErrors())
 		model.addAttribute("success","success");
 		return ControllerConstants.Tiles.User.profile;
 	}

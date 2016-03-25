@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.salesmanager.core.business.catalog.product.model.manufacturer.Manufacturer;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
@@ -65,7 +66,14 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User>
 	
 	@Override
 	public void saveOrUpdate(User user) throws ServiceException {
-		
+		User user2=getByUserName(user.getAdminName());
+		if(user2!=null){
+			throw new ServiceException("adminName","user.userName.alreadyExist");
+		}
+		user2=userDao.getByEmail(user.getAdminName());
+		if(user2!=null){
+			throw new ServiceException("adminMail","user.email.alreadyExist");
+		}
 		if(user.getId()==null || user.getId().longValue()==0) {
 			userDao.save(user);
 		} else {
