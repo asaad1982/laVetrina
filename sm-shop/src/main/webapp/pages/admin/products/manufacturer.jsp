@@ -122,7 +122,7 @@
 		            <div class="control-group">
                             <label><s:message code="label.entity.code" text="Code"/></label>
 	                        <div class="controls">
-	                        		<form:input cssClass="input-large highlight" path="code" onblur="validateCode()"/>
+	                        		<form:input cssClass="input-large highlight" path="code" onblur="validateCode()" maxlength="100"/>
 	                                <span class="help-inline"><div id="checkCodeStatus" style="display:none;"></div><form:errors path="code" cssClass="error" /></span>
 	                        </div>
                  	</div>
@@ -132,7 +132,7 @@
 						<div class="control-group">
 	                        <label class="required"><s:message code="label.manufactureredit.manufacturername" text="Manufacturer Name"/> (<c:out value="${description.language.code}"/>)</label>
 	                        <div class="controls">
-	                                  <form:input cssClass="input-large highlight" id="name${counter.index}" path="descriptions[${counter.index}].name"/>
+	                                  <form:input cssClass="input-large highlight" id="name${counter.index}" path="descriptions[${counter.index}].name" maxlength="100"/>
 	                                  <span  class="help-inline"><form:errors path="descriptions[${counter.index}].name" cssClass="error" /></span>
 	                        </div>
 	                  	</div> 
@@ -225,7 +225,7 @@
                  	<div class="control-group">
                         <label><s:message code="label.manufactureredit.manufacturerorder" text="Order"/></label>
                         <div class="controls">
-                                  <form:input id="order" cssClass="input-large" path="order"/>
+                                  <form:input id="order" cssClass="input-large" path="order" maxlength="10"/>
                                   <span  class="help-inline"><form:errors path="order" cssClass="error" /></span>
                         </div>
                   	</div> 	        
