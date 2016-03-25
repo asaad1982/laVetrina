@@ -165,18 +165,28 @@ public class OptionsController {
 
 		if(option.getId() != null && option.getId() >0) { //edit entry
 			//get from DB
+			if(option.getCode()!=null && option.getCode().trim().length()==0){
+				ObjectError error = new ObjectError("code",messages.getMessage("message.code.exist", locale));
+				result.addError(error);
+			}else{
 			dbEntity = productOptionService.getById(option.getId());
 			
 			if(dbEntity==null) {
 				return "redirect:/admin/options/options.html";
 			}
+			}
 		}		
-		else if(option.getId() ==0){ 
-		ProductOption byCode = productOptionService.getByCode(store, option.getCode());
-		if(byCode!=null) {
-			ObjectError error = new ObjectError("code",messages.getMessage("message.code.exist", locale));
-			result.addError(error);
-		}
+		else { 
+			if(option.getCode()!=null && option.getCode().trim().length()==0){
+				ObjectError error = new ObjectError("code",messages.getMessage("message.code.exist", locale));
+				result.addError(error);
+			}else{
+			ProductOption byCode = productOptionService.getByCode(store, option.getCode());
+			if(byCode!=null) {
+				ObjectError error = new ObjectError("code",messages.getMessage("message.code.exist", locale));
+				result.addError(error);
+			}
+				}
 		}
 
 			
