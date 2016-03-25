@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.salesmanager.core.business.catalog.product.model.image.ProductImage;
@@ -33,6 +34,7 @@ public class Manufacturer implements Serializable {
 	private Integer order = new Integer(0);
 	private MultipartFile image = null;
 	@NotNull
+	@NotEmpty
 	private String code;
 	public String getCode() {
 		return code;

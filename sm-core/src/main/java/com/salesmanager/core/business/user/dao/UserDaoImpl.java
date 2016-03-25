@@ -38,6 +38,26 @@ public class UserDaoImpl extends SalesManagerEntityDaoImpl<Long, User> implement
 	}
 	
 	@Override
+	public User getByEmail(String email) {
+		
+		
+		QUser qUser = QUser.user;
+		QGroup qGroup = QGroup.group;
+		
+		JPQLQuery query = new JPAQuery (getEntityManager());
+		
+		query.from(qUser)
+			.innerJoin(qUser.groups, qGroup).fetch()
+			.innerJoin(qUser.merchantStore).fetch()
+			.leftJoin(qUser.defaultLanguage).fetch()
+			.where(qUser.adminEmail.eq(email));
+		
+		
+
+		User user = query.uniqueResult(qUser);
+		return user;
+	}
+	@Override
 	public User getById(Long id) {
 		
 		

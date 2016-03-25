@@ -411,7 +411,7 @@ public class UserController {
 	}
 	
 	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value="/admin/users/checkUserCode.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/users/checkUserCode.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String checkUserCode(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 		String code = request.getParameter("code");
 		String id = request.getParameter("id");
@@ -596,7 +596,12 @@ public class UserController {
 		if(user.getId()==null || user.getId().longValue()==0) {
 			
 			//save or update user
+			try{
 			userService.saveOrUpdate(user);
+			}catch(ServiceException e){
+				ObjectError error = new ObjectError(e.getMessageCode(),messages.getMessage(e.getMessage(), locale));
+				result.addError(error);
+			}
 			
 			try {
 
@@ -641,13 +646,13 @@ public class UserController {
 			//save or update user
 			userService.saveOrUpdate(user);
 		}
-
+		if(result.hasErrors())
 		model.addAttribute("success","success");
 		return ControllerConstants.Tiles.User.profile;
 	}
 	
 	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value="/admin/users/remove.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/users/remove.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String removeUser(HttpServletRequest request, Locale locale) throws Exception {
 		
 		//do not remove super admin
@@ -734,7 +739,7 @@ public class UserController {
 	}
 	
 	//password reset functionality  ---  Sajid Shajahan  
-	@RequestMapping(value="/admin/users/resetPassword.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/users/resetPassword.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String resetPassword(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 		
 		AjaxResponse resp = new AjaxResponse();
@@ -788,7 +793,7 @@ public class UserController {
 		return returnString;
 	}
 	//password reset functionality  ---  Sajid Shajahan
-	@RequestMapping(value="/admin/users/resetPasswordSecurityQtn.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/users/resetPasswordSecurityQtn.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String resetPasswordSecurityQtn(@ModelAttribute(value="userReset") UserReset userReset,HttpServletRequest request, HttpServletResponse response, Locale locale) {
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);

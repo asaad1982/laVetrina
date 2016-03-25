@@ -282,7 +282,7 @@
 "code":"Offers",
 "icon":"icon-th", 
 "url":"/admin/promotion/promotions.html", 
-"role":"AUTH",
+"role":"PRODUCTS",
 "order":12,
 "menus":[
 {"menu":{

@@ -5,8 +5,10 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
+import com.salesmanager.core.modules.constants.Constants;
 
 import java.util.Date;
 import java.util.List;
@@ -27,11 +29,13 @@ public class Promotion extends SalesManagerEntity<Long, Promotion> implements Se
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
 	private Long id;
 
-	@Temporal(TemporalType.DATE)
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@NotEmpty
 	private Date endate;
 
-	@Temporal(TemporalType.DATE)
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@NotEmpty
 	private Date startDate;
 	@NotEmpty

@@ -135,7 +135,7 @@ public class NotificationController {
 	}
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/notification/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/notification/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pageNotification(HttpServletRequest request, HttpServletResponse response) {
 		String eventName = request.getParameter("eventName");
 		
@@ -247,7 +247,7 @@ public class NotificationController {
 	
 	@SuppressWarnings({ "unchecked"})
 	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value="/admin/notificatin/customers/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/notificatin/customers/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pageCustomers(@RequestParam("id") long notificationId,HttpServletRequest request, HttpServletResponse response) {
 		
 		AjaxResponse resp = new AjaxResponse();
@@ -322,7 +322,7 @@ if(!StringUtils.isBlank(firstName)||!StringUtils.isBlank(lastName) || !StringUti
 		return returnString;
 	}
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/notificatin/customers/update.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/notificatin/customers/update.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String updateCustomers(HttpServletRequest request, HttpServletResponse response) {
 		String values = request.getParameter("_oldValues");
 		String supported = request.getParameter("supported");

@@ -7,6 +7,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.salesmanager.core.business.catalog.product.dao.manufacturer.ManufacturerDao;
@@ -92,13 +93,21 @@ public class ManufacturerServiceImpl extends
 	public void saveOrUpdate(Manufacturer manufacturer) throws ServiceException {
 
 		LOGGER.debug("Creating Manufacturer");
-		
+		try{
+		Manufacturer manufacturer2=getByCode(manufacturer.getMerchantStore(), manufacturer.getCode());
+		if(manufacturer2!=null){
+			throw new ServiceException("manfacture.code.alreadyExist");
+		}
 		if(manufacturer.getId()!=null && manufacturer.getId()>0) {
+			
 		   super.update(manufacturer);  
 			
 		} else {						
 		   super.create(manufacturer);
 
+		}
+		}catch(DataIntegrityViolationException dataIntegrityViolationException){
+			throw new ServiceException("manfacture.code.alreadyExist");
 		}
 	}
 

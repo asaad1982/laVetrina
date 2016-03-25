@@ -13,6 +13,7 @@ public interface UserDao extends SalesManagerEntityDao<Long, User> {
 	List<User> listUser();
 
 	List<User> listUserByStore(MerchantStore store);
+	public User getByEmail(String email);
 
 
 

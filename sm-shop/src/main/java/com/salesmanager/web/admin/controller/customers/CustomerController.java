@@ -377,7 +377,7 @@ public class CustomerController {
 	 * @throws Exception
 	 */
 	@PreAuthorize("hasRole('CUSTOMER')")
-	@RequestMapping(value={"/admin/customers/attributes/save.html"}, method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value={"/admin/customers/attributes/save.html"}, method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String saveCustomerAttributes(HttpServletRequest request, Locale locale) throws Exception {
 		
 
@@ -532,7 +532,7 @@ public class CustomerController {
 	
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/admin/customers/page.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/customers/page.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pageCustomers(HttpServletRequest request,HttpServletResponse response) {
 
@@ -616,7 +616,7 @@ public class CustomerController {
 	
 	
 	@PreAuthorize("hasRole('CUSTOMER')")
-	@RequestMapping(value="/admin/customers/resetPassword.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/customers/resetPassword.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String resetPassword(HttpServletRequest request,HttpServletResponse response) {
 		

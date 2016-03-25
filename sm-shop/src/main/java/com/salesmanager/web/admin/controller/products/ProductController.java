@@ -742,7 +742,7 @@ public class ProductController {
 	 * @return
 	 */
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/products/product/removeImage.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/products/product/removeImage.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String removeImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 		String iid = request.getParameter("imageId");
 
@@ -821,7 +821,7 @@ public class ProductController {
 	}
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/products/printProducts.html", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/admin/products/printProducts.html", method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	public String printInvoice(Model model,HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		try {		
 		List<Product> products = productService.list();
@@ -880,7 +880,7 @@ public class ProductController {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/product-categories/paging.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/product-categories/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String pageProductCategories(HttpServletRequest request, HttpServletResponse response) {
 
 		String sProductId = request.getParameter("productId");
@@ -959,7 +959,7 @@ public class ProductController {
 	
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/product-categories/remove.html", method=RequestMethod.POST, produces="application/json")
+	@RequestMapping(value="/admin/product-categories/remove.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String deleteProductFromCategory(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 		String sCategoryid = request.getParameter("categoryId");
 		String sProductId = request.getParameter("productId");

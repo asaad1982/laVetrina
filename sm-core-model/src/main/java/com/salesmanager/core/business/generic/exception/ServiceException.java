@@ -55,6 +55,11 @@ public class ServiceException extends Exception {
 		this.messageCode = messageCode;
 		this.exceptionType = exceptionType;
 	}
+	public ServiceException(  String messageCode,String message) {
+		super(message);
+		this.messageCode = messageCode;
+		
+	}
 	
 	public int getExceptionType() {
 		return exceptionType;

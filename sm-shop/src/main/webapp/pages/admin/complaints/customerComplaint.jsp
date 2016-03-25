@@ -154,7 +154,7 @@
                         <label>Closing Reason </label>
                         <div class="controls">
                         			<form:textarea path="closingReason" />
-                        	<span class="help-inline"><form:errors path="closingDate" cssClass="error" /></span>		
+                        	<span class="help-inline"><form:errors path="closingReason" cssClass="error" /></span>		
                         </div>
                   </div>
                   
