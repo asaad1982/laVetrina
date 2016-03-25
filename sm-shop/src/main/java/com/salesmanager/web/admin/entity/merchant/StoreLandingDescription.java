@@ -2,6 +2,8 @@ package com.salesmanager.web.admin.entity.merchant;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.salesmanager.core.business.reference.language.model.Language;
 
 public class StoreLandingDescription implements Serializable {
@@ -11,6 +13,7 @@ public class StoreLandingDescription implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@NotEmpty
 	private String title;
 	private String description;
 	private String keywords;
