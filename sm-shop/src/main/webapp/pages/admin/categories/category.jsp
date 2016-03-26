@@ -149,7 +149,7 @@
                   <div class="control-group">
                         <label><s:message code="label.sefurl" text="SEF Url"/> (<c:out value="${description.language.code}"/>)</label>
                         <div class="controls">
-                        			<form:input cssClass="" id="seUrl${counter.index}" path="descriptions[${counter.index}].seUrl"/>
+                        			<form:input cssClass="" id="seUrl${counter.index}" path="descriptions[${counter.index}].seUrl" maxlength="100"/>
                         			<span class="help-inline"><form:errors path="descriptions[${counter.index}].seUrl" cssClass="error" /></span>
                         </div>
 
