@@ -127,7 +127,9 @@
 
 	       		  </div>
                   </c:if>
-
+				 <c:if test="${user.id!=null && user.id>0}">
+				 <form:hidden cssClass="input-large highlight" path="adminPassword" maxlength="50" autocomplete="off"/>
+				 </c:if>
                   
                   <div class="control-group">
                       <label><s:message code="label.user.firstName" text="First name"/> </label>

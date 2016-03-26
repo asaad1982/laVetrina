@@ -649,7 +649,7 @@ public class UserController {
 			//save or update user
 			userService.saveOrUpdate(user);
 		}
-		if(result.hasErrors())
+		if(!result.hasErrors())
 		model.addAttribute("success","success");
 		return ControllerConstants.Tiles.User.profile;
 	}
