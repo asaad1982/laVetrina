@@ -203,7 +203,7 @@
                   <div class="control-group">
                         <label><s:message code="label.category.title" text="Metatag title"/> (<c:out value="${description.language.code}"/>)</label>
                         <div class="controls">
-                        			<form:input path="descriptions[${counter.index}].metatagTitle"/>
+                        			<form:input path="descriptions[${counter.index}].metatagTitle" maxlength="120"/>
                         			<span class="help-inline"><form:errors path="descriptions[${counter.index}].metatagTitle" cssClass="error" /></span>
                         </div>
                   </div>
