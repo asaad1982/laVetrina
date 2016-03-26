@@ -601,6 +601,9 @@ public class UserController {
 			}catch(ServiceException e){
 				ObjectError error = new ObjectError(e.getMessageCode(),messages.getMessage(e.getMessage(), locale));
 				result.addError(error);
+				
+				return ControllerConstants.Tiles.User.profile;
+				
 			}
 			
 			try {
