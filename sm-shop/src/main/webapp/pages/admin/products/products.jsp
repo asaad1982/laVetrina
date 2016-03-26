@@ -26,11 +26,13 @@
 								<div class="sm-ui-component">
 								
       							<form:form modelAttribute="fileBean" method="post" enctype="multipart/form-data" action="/sm-shop/admin/products/upload.html">
+					        <form:errors path="*" cssClass="alert alert-error" element="div" />
 					         <div id="store.success" class="alert alert-success" style="<c:choose><c:when test="${success!=null}">display:block;</c:when><c:otherwise>display:none;</c:otherwise></c:choose>"><s:message code="message.success" text="Request successfull"/></div>   
                             <div id="store.error" class="alert alert-error" style="display:none;"><s:message code="message.error" text="An error occured"/></div>
 					        
 					        <form:label for="fileData" path="fileData">Select file</form:label><br/><br/>
-					        <form:input path="fileData" type="file"/>
+					        <form:input path="fileData" type="file"/><form:errors path="fileData"/>
+					        
         <button type="submit" class="btn btn-success">Import</button>
     </form:form>
     <div class="btn-group" style="z-index:400000;">
