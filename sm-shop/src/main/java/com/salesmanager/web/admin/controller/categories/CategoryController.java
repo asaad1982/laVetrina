@@ -384,22 +384,23 @@ public class CategoryController {
 			
 			Category child = categoryService.getById(childId);
 			Category parent = categoryService.getById(parentId);
-			
+			if(child.getParent()!=null){
 			if(child.getParent().getId()==parentId) {
 				resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
 				return resp.toJSONString();
 			}
+			}
 
 			if(parentId!=1) {
 			
-				if(child==null || parent==null || child.getMerchantStore().getId()!=store.getId() || parent.getMerchantStore().getId()!=store.getId()) {
+				if(child==null || parent==null || !child.getMerchantStore().getId().equals(store.getId()) || !parent.getMerchantStore().getId().equals(store.getId())) {
 					resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-					
+						
 					resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 					return resp.toJSONString();
 				}
 				
-				if(child.getMerchantStore().getId()!=store.getId() || parent.getMerchantStore().getId()!=store.getId()) {
+				if(!child.getMerchantStore().getId().equals(store.getId()) || !parent.getMerchantStore().getId().equals(store.getId())) {
 					resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
 					resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 					return resp.toJSONString();
