@@ -130,7 +130,7 @@ public class ProductsController {
 				
 					Category category = categoryService.getById(lcategoryId);
 	
-					if(category==null || category.getMerchantStore().getId()!=store.getId()) {
+					if(category==null || !category.getMerchantStore().getId().equals(store.getId())) {
 						resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 						String returnString = resp.toJSONString();
 						return returnString;
@@ -235,7 +235,7 @@ public class ProductsController {
 			
 			Product product = productService.getById(id);
 
-			if(product==null || product.getMerchantStore().getId()!=store.getId()) {
+			if(product==null || !product.getMerchantStore().getId().equals(store.getId())) {
 
 				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
 				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			

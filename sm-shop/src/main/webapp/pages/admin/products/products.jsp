@@ -135,6 +135,8 @@
 
     							   ],
 	       						   selectionType: "single",
+	       						   canRemoveRecords: false,
+	       						   
 								   removeData: function () {
 										if (confirm('<s:message code="label.entity.remove.confirm" text="Do you really want to remove this record ?" />')) {
 											return this.Super("removeData", arguments);
