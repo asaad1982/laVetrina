@@ -70,7 +70,7 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User>
 		if(user2!=null){
 			throw new ServiceException("adminName","user.userName.alreadyExist");
 		}
-		user2=userDao.getByEmail(user.getAdminName());
+		user2=userDao.getByEmail(user.getAdminEmail());
 		if(user2!=null){
 			throw new ServiceException("adminMail","user.email.alreadyExist");
 		}
