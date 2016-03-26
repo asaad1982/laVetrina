@@ -11,6 +11,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -64,9 +65,11 @@ public class ImportServiceImpl implements ImportService {
 	                  ProductAvailability productAvailability =new ProductAvailability();
 	                  while (cellIterator.hasNext()) {
 	                      Cell cell = cellIterator.next();
+	                      DataFormatter formatter = new DataFormatter(); //creating formatter using the default locale
+	                      String cellVal=formatter.formatCellValue(cell);
 	                      if(cell.getCellType() != Cell.CELL_TYPE_BLANK){
 	                      if(cell.getColumnIndex()==0){
-	                    	  List< Category> categories=categoryService.getByName(store, cell.getStringCellValue(), language) ;
+	                    	  List< Category> categories=categoryService.getByName(store, cellVal, language) ;
 	                    	  product.setCategories(new HashSet<Category>(categories));
 	                      }else if(cell.getColumnIndex()==1){
 	                    	 for(Manufacturer manufacturer:manufacturers){
@@ -80,15 +83,15 @@ public class ImportServiceImpl implements ImportService {
 								
 							}else if(cell.getColumnIndex()==2){	
 								
-								description.setName(cell.getStringCellValue());
+								description.setName(cellVal);
 								
 										
 							}else if(cell.getColumnIndex()==3){						
-								description.setDescription(cell.getStringCellValue());								
+								description.setDescription(cellVal);								
 							}
 							else if(cell.getColumnIndex()==4){
 								
-								productAvailability.setProductQuantity((int) cell.getNumericCellValue());
+								productAvailability.setProductQuantity(Integer.parseInt(cellVal) );
 	                    	  
 	                      }else if(cell.getColumnIndex()==6){
 								
@@ -98,11 +101,20 @@ public class ImportServiceImpl implements ImportService {
 								productAvailability.getPrices().add(productPrice);
 	                    	  
 	                      }else if(cell.getColumnIndex()==5){
-	                    	  product.setSku(cell.getStringCellValue());
+	                    	  product.setSku(cellVal);
 	                      }else if(cell.getColumnIndex()==7){
 	                    	  product.setProductWeight(new BigDecimal(cell.getNumericCellValue()));
 	                      }else  if(cell.getColumnIndex()==8){
-	                    	  product.setAvailable(cell.getBooleanCellValue());
+	                    	  boolean b =false;
+	                    	  try{
+	                    	  int i= Integer.parseInt(cellVal);
+	                    	   b = (i != 0);
+	                    	  }catch (Exception e){
+	                    		  e.printStackTrace();
+	                    		  b=cell.getBooleanCellValue();
+	                    	  }
+	                    	  
+	                    	  product.setAvailable(b);
 	                      }
 	                  }
 	                  }
