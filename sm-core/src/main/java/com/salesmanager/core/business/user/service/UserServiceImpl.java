@@ -66,15 +66,16 @@ public class UserServiceImpl extends SalesManagerEntityServiceImpl<Long, User>
 	
 	@Override
 	public void saveOrUpdate(User user) throws ServiceException {
-		User user2=getByUserName(user.getAdminName());
-		if(user2!=null){
-			throw new ServiceException("adminName","user.userName.alreadyExist");
-		}
-		user2=userDao.getByEmail(user.getAdminName());
-		if(user2!=null){
-			throw new ServiceException("adminMail","user.email.alreadyExist");
-		}
+		
 		if(user.getId()==null || user.getId().longValue()==0) {
+			User user2=getByUserName(user.getAdminName());
+			if(user2!=null){
+				throw new ServiceException("adminName","user.userName.alreadyExist");
+			}
+			user2=userDao.getByEmail(user.getAdminEmail());
+			if(user2!=null){
+				throw new ServiceException("adminMail","user.email.alreadyExist");
+			}
 			userDao.save(user);
 		} else {
 			userDao.update(user);

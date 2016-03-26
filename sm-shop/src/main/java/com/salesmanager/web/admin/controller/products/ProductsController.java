@@ -18,6 +18,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -129,7 +130,7 @@ public class ProductsController {
 				
 					Category category = categoryService.getById(lcategoryId);
 	
-					if(category==null || category.getMerchantStore().getId()!=store.getId()) {
+					if(category==null || !category.getMerchantStore().getId().equals(store.getId())) {
 						resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
 						String returnString = resp.toJSONString();
 						return returnString;
@@ -234,7 +235,7 @@ public class ProductsController {
 			
 			Product product = productService.getById(id);
 
-			if(product==null || product.getMerchantStore().getId()!=store.getId()) {
+			if(product==null || !product.getMerchantStore().getId().equals(store.getId())) {
 
 				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
 				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
@@ -269,6 +270,14 @@ public class ProductsController {
 			
 	       
 	        setMenu(model, request);
+	        if(  uploadItem==null || uploadItem.getFileData()==null || uploadItem.getFileData().getSize()==0  ){
+	        	result.addError( new ObjectError("fileData",messages.getMessage("fileImport.importFile", locale)) );
+	        	
+	        }
+
+	        if(result.hasErrors()){
+	            return "admin-products";
+	        }
 		    importService.importFile(uploadItem,store,language);
 			
 
