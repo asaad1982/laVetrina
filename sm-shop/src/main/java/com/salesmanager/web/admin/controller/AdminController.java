@@ -32,6 +32,12 @@ public class AdminController {
 	@Autowired
 	UserService userService;
 	
+	@RequestMapping(value="/pageNotFound.html")
+    public String handlePageNotFound() {
+		return "redirect://admin/home.html";
+        
+    }
+	
 	@RequestMapping(value={"/admin/home.html","/admin/","/admin"}, method=RequestMethod.GET)
 	public String displayDashboard(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Language language = (Language)request.getAttribute("LANGUAGE");
