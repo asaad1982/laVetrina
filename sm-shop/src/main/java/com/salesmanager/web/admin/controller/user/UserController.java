@@ -579,11 +579,6 @@ public class UserController {
 
 		//set actual user groups
 		user.setGroups(newGroups);
-		
-		if (result.hasErrors()) {
-			return ControllerConstants.Tiles.User.profile;
-		}
-		
 		String decodedPassword = user.getAdminPassword();
 		if(user.getId()!=null && user.getId()>0) {
 			user.setAdminPassword(dbUser.getAdminPassword());
@@ -591,6 +586,11 @@ public class UserController {
 			String encoded = passwordEncoder.encodePassword(user.getAdminPassword(),null);
 			user.setAdminPassword(encoded);
 		}
+		if (result.hasErrors()) {
+			return ControllerConstants.Tiles.User.profile;
+		}
+		
+		
 		
 		
 		if(user.getId()==null || user.getId().longValue()==0) {
