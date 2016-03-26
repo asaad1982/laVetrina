@@ -270,7 +270,7 @@ public class ProductsController {
 			
 	       
 	        setMenu(model, request);
-	        if(  uploadItem==null || uploadItem.getFileData()!=null || uploadItem.getFileData().getSize()!=0  ){
+	        if(  uploadItem==null || uploadItem.getFileData()==null || uploadItem.getFileData().getSize()==0  ){
 	        	result.addError( new ObjectError("fileData",messages.getMessage("fileImport.importFile", locale)) );
 	        	
 	        }
