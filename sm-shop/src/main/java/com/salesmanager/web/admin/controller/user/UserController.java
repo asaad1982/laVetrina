@@ -481,16 +481,11 @@ public class UserController {
 		for(Group group : submitedGroups) {
 			ids.add(Integer.parseInt(group.getGroupName()));
 		}
+		}else{
+			result.addError(new ObjectError("groups",messages.getMessage("message.group.required", locale)));
 		}
 		user.setGroups(submitedGroups);
-		if(result.hasErrors()){
-			this.populateUserObjects(user, store, model, locale);
-			model.addAttribute("user", user);
-			
-			
-
-			return ControllerConstants.Tiles.User.profile;
-		}
+		
 		this.populateUserObjects(user, store, model, locale);
 		
 		Language language = user.getDefaultLanguage();
@@ -506,8 +501,13 @@ public class UserController {
 		User dbUser = null;
 		
 		//edit mode, need to get original user important information
-		if(user.getId()!=null) {
+		if(user.getId()!=null && !StringUtils.isBlank(user.getAdminName())) {
 			dbUser = userService.getByUserName(user.getAdminName());
+			if(dbUser==null) {
+				return "redirect://admin/users/displayUser.html";
+			}
+		}else if(user.getId()!=null){
+			dbUser=userService.getById(user.getId());
 			if(dbUser==null) {
 				return "redirect://admin/users/displayUser.html";
 			}
@@ -547,7 +547,7 @@ public class UserController {
 		Group superAdmin = null;
 		
 		if(user.getId()!=null && user.getId()>0) {
-			if(user.getId().longValue()!=dbUser.getId().longValue()) {
+			if(dbUser!=null && user.getId().longValue()!=dbUser.getId().longValue()  ) {
 				return "redirect://admin/users/displayUser.html";
 			}
 			
