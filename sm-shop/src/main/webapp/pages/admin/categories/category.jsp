@@ -232,7 +232,7 @@
                   <div class="control-group">
                         <label><s:message code="label.entity.order" text="Sort order"/></label>
                         <div class="controls">
-                                    <form:input id="order" cssClass="" path="sortOrder"/>
+                                    <form:input id="order" cssClass="" path="sortOrder" maxlength="10"/>
                                     <span class="help-inline"><form:errors path="sortOrder" cssClass="error" /></span>
                         </div>
                   </div>  
