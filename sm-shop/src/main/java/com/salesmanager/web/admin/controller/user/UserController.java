@@ -107,7 +107,7 @@ public class UserController {
 	 */
 	@SuppressWarnings("unchecked")
 	@PreAuthorize("hasRole('STORE_ADMIN')")
-	@RequestMapping(value = "/admin/users/paging.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/users/paging.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pageUsers(HttpServletRequest request,
 			HttpServletResponse response) {

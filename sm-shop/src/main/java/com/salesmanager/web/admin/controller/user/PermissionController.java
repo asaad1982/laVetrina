@@ -61,7 +61,7 @@ public class PermissionController {
 
 	@SuppressWarnings("unchecked")
 	@PreAuthorize("hasRole('STORE_ADMIN')")
-	@RequestMapping(value = "/admin/permissions/paging.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/permissions/paging.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pagePermissions(HttpServletRequest request,
 			HttpServletResponse response) {
