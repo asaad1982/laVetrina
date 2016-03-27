@@ -133,7 +133,7 @@
                  <div class="control-group">
                         <label><s:message code="label.productedit.categoryname" text="Category name"/> (<c:out value="${description.language.code}"/>)</label>
                         <div class="controls">
-                        			<form:input cssClass="input-large highlight" id="name${counter.index}" path="descriptions[${counter.index}].name"/>
+                        			<form:input cssClass="input-large highlight" id="name${counter.index}" path="descriptions[${counter.index}].name" maxlength="120"/>
                         			<span class="help-inline"><form:errors path="descriptions[${counter.index}].name" cssClass="error" /></span>
                         </div>
                   </div>
@@ -141,7 +141,7 @@
                   <div class="control-group">
                         <label><s:message code="label.category.highlight" text="Category highlight"/> (<c:out value="${description.language.code}"/>)</label>
                         <div class="controls">
-                        			<form:input cssClass="input-large" id="categoryHighlight${counter.index}" path="descriptions[${counter.index}].categoryHighlight"/>
+                        			<form:input cssClass="input-large" id="categoryHighlight${counter.index}" path="descriptions[${counter.index}].categoryHighlight" maxlength="100"/>
                         			<span class="help-inline"><form:errors path="descriptions[${counter.index}].categoryHighlight" cssClass="error" /></span>
                         </div>
                   </div>
@@ -149,7 +149,7 @@
                   <div class="control-group">
                         <label><s:message code="label.sefurl" text="SEF Url"/> (<c:out value="${description.language.code}"/>)</label>
                         <div class="controls">
-                        			<form:input cssClass="" id="seUrl${counter.index}" path="descriptions[${counter.index}].seUrl" maxlength="100"/>
+                        			<form:input cssClass="" id="seUrl${counter.index}" path="descriptions[${counter.index}].seUrl" maxlength="120"/>
                         			<span class="help-inline"><form:errors path="descriptions[${counter.index}].seUrl" cssClass="error" /></span>
                         </div>
 
