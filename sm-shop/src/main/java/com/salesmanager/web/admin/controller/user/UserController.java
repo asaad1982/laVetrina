@@ -475,7 +475,14 @@ public class UserController {
 		setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-
+		List<Group> submitedGroups = user.getGroups();
+		Set<Integer> ids = new HashSet<Integer>();
+		if(submitedGroups!=null){
+		for(Group group : submitedGroups) {
+			ids.add(Integer.parseInt(group.getGroupName()));
+		}
+		}
+		user.setGroups(submitedGroups);
 		if(result.hasErrors()){
 			this.populateUserObjects(user, store, model, locale);
 			model.addAttribute("user", user);
@@ -505,14 +512,9 @@ public class UserController {
 				return "redirect://admin/users/displayUser.html";
 			}
 		}
+		
 
-		List<Group> submitedGroups = user.getGroups();
-		Set<Integer> ids = new HashSet<Integer>();
-		if(submitedGroups!=null){
-		for(Group group : submitedGroups) {
-			ids.add(Integer.parseInt(group.getGroupName()));
-		}
-		}
+		
 
 		
 		//validate security questions not empty
