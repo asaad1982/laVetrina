@@ -86,7 +86,9 @@ function getZones(countryCode){
 	});
 }
 
+function resetData(){
 
+}
 
 </script>
 
@@ -168,10 +170,15 @@ function getZones(countryCode){
 				      <div class="form-actions">
 	                  		<div class="pull-right">
 	                  			<button type="submit" class="btn btn-success"><s:message code="button.label.submit2" text="Submit"/></button>
+	                  			
 	                  		</div>
+	                  		 <div class="pull-left">
+			                                    <button type="reset" >Reset</button>
+			                            </div>
+	                  		
 	            	 </div>
 
-
+								
       					
 				</form:form>
 				
@@ -184,6 +191,7 @@ function getZones(countryCode){
 			                            <div class="pull-right">
 			                                    <button type="submit" class="btn-danger"><i class="icon-trash icon-large"></i><s:message code="label.generic.remove" text="Remove"/></button>
 			                            </div>
+			                           
 			                   		</div>
 		
 		         </form:form>				
