@@ -68,7 +68,10 @@
   </welcome-file-list>
   
   
-
+<error-page>
+    <error-code>405</error-code>
+    <location>/pageNotFound.html</location>
+</error-page>
   
 
   

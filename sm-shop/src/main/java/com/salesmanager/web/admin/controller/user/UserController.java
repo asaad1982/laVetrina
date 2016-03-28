@@ -107,7 +107,7 @@ public class UserController {
 	 */
 	@SuppressWarnings("unchecked")
 	@PreAuthorize("hasRole('STORE_ADMIN')")
-	@RequestMapping(value = "/admin/users/paging.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/users/paging.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pageUsers(HttpServletRequest request,
 			HttpServletResponse response) {
@@ -475,15 +475,17 @@ public class UserController {
 		setMenu(model,request);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-
-		if(result.hasErrors()){
-			this.populateUserObjects(user, store, model, locale);
-			model.addAttribute("user", user);
-			
-			
-
-			return ControllerConstants.Tiles.User.profile;
+		List<Group> submitedGroups = user.getGroups();
+		Set<Integer> ids = new HashSet<Integer>();
+		if(submitedGroups!=null){
+		for(Group group : submitedGroups) {
+			ids.add(Integer.parseInt(group.getGroupName()));
 		}
+		}else{
+			result.addError(new ObjectError("groups",messages.getMessage("message.group.required", locale)));
+		}
+		user.setGroups(submitedGroups);
+		
 		this.populateUserObjects(user, store, model, locale);
 		
 		Language language = user.getDefaultLanguage();
@@ -499,20 +501,20 @@ public class UserController {
 		User dbUser = null;
 		
 		//edit mode, need to get original user important information
-		if(user.getId()!=null) {
+		if(user.getId()!=null && !StringUtils.isBlank(user.getAdminName())) {
 			dbUser = userService.getByUserName(user.getAdminName());
 			if(dbUser==null) {
 				return "redirect://admin/users/displayUser.html";
 			}
+		}else if(user.getId()!=null){
+			dbUser=userService.getById(user.getId());
+			if(dbUser==null) {
+				return "redirect://admin/users/displayUser.html";
+			}
 		}
+		
 
-		List<Group> submitedGroups = user.getGroups();
-		Set<Integer> ids = new HashSet<Integer>();
-		if(submitedGroups!=null){
-		for(Group group : submitedGroups) {
-			ids.add(Integer.parseInt(group.getGroupName()));
-		}
-		}
+		
 
 		
 		//validate security questions not empty
@@ -545,7 +547,7 @@ public class UserController {
 		Group superAdmin = null;
 		
 		if(user.getId()!=null && user.getId()>0) {
-			if(user.getId().longValue()!=dbUser.getId().longValue()) {
+			if(dbUser!=null && user.getId().longValue()!=dbUser.getId().longValue()  ) {
 				return "redirect://admin/users/displayUser.html";
 			}
 			
@@ -601,6 +603,9 @@ public class UserController {
 			}catch(ServiceException e){
 				ObjectError error = new ObjectError(e.getMessageCode(),messages.getMessage(e.getMessage(), locale));
 				result.addError(error);
+				
+				return ControllerConstants.Tiles.User.profile;
+				
 			}
 			
 			try {
@@ -646,7 +651,7 @@ public class UserController {
 			//save or update user
 			userService.saveOrUpdate(user);
 		}
-		if(result.hasErrors())
+		if(!result.hasErrors())
 		model.addAttribute("success","success");
 		return ControllerConstants.Tiles.User.profile;
 	}

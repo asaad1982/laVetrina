@@ -64,7 +64,7 @@ public class TaxClassController {
 	
 	
 	@PreAuthorize("hasRole('TAX')")
-	@RequestMapping(value = "/admin/tax/taxclass/paging.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/tax/taxclass/paging.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pageTaxClasses(HttpServletRequest request,
 			HttpServletResponse response, Locale locale) {

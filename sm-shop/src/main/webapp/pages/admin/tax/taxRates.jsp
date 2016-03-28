@@ -148,7 +148,7 @@ function getZones(countryCode){
 				                        <label><s:message code="label.storezone" text="Store state / province"/></label>
 				                        <div class="controls">
 				                        					<form:select cssClass="zone-list " path="zone.id"/>
-				                        					<input type="text" class="input-large" id="stateProvince" name="stateProvince" /> 
+				                        					<input type="text" class="input-large" id="stateProvince" name="stateProvince" maxlength="100"/> 
 				                                   			<span class="help-inline"><form:errors path="zone.code" cssClass="error" /></span>
 				                        </div>
 	                  				</div>

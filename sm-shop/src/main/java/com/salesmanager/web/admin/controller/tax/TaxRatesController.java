@@ -101,7 +101,7 @@ public class TaxRatesController {
 	}
 	
 	@PreAuthorize("hasRole('TAX')")
-	@RequestMapping(value = "/admin/tax/taxrates/page.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/tax/taxrates/page.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pageTaxRates(HttpServletRequest request,
 			HttpServletResponse response) {

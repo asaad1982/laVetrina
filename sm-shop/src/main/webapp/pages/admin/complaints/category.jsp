@@ -99,7 +99,7 @@
                   <div class="control-group">
                         <label>English Name </label>
                         <div class="controls">
-                        			<form:input path="englishName"/>
+                        			<form:input path="englishName" cssClass="highlight" maxlength="100"/>
                         			<span class="help-inline"><form:errors path="englishName" cssClass="error" /></span>
                         </div>
                   </div>
@@ -107,7 +107,7 @@
                   <div class="control-group">
                         <label>Arabic Name </label>
                         <div class="controls">
-                        			<form:input path="arabicName" />
+                        			<form:input path="arabicName" cssClass="highlight" maxlength="100"/>
                         			<span class="help-inline"><form:errors path="arabicName" cssClass="error" /></span>
                         </div>
                   </div>

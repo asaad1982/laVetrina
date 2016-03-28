@@ -96,8 +96,13 @@
                   <div class="control-group">
                         <label><s:message code="label.user.name" text="User name"/></label>
 	                        <div class="controls">
+	                         <c:if test="${user.id==null || user.id==0}">
 	                        		<form:input cssClass="input-large highlight" path="adminName" onblur="validateCode()"/>
 	                                <span class="help-inline"><div id="checkCodeStatus" style="display:none;"></div><form:errors path="adminName" cssClass="error" /></span>
+	                        </c:if>
+	                         <c:if test="${user.id!=null && user.id>0}">
+	                         	${user.adminName}<form:hidden path="adminName"/>
+	                         </c:if>
 	                        </div>
                   </div>
                   
@@ -127,7 +132,9 @@
 
 	       		  </div>
                   </c:if>
-
+				 <c:if test="${user.id!=null && user.id>0}">
+				 <form:hidden cssClass="input-large highlight" path="adminPassword" maxlength="50" autocomplete="off"/>
+				 </c:if>
                   
                   <div class="control-group">
                       <label><s:message code="label.user.firstName" text="First name"/> </label>

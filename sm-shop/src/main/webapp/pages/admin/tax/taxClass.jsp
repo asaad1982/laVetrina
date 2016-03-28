@@ -33,14 +33,14 @@
 				                    <div class="control-group">
 				                        <label class="required"><s:message code="label.tax.taxclass" text="Tax class"/></label>
 					                        <div class="controls">
-					                        		<form:input cssClass="input-large" path="code" />
+					                        		<form:input cssClass="input-large highlight" path="code" maxlength="10"/>
 					                        </div>
 				                    </div>
 				                    
 				                    <div class="control-group">
 				                        <label class="required"><s:message code="label.tax.taxclass.name" text="Tax class name"/></label>
 					                        <div class="controls">
-					                        		<form:input cssClass="input-large" path="title" />
+					                        		<form:input cssClass="input-large highlight" path="title" maxlength="32"/>
 					                        </div>
 				                    </div>
 				                  

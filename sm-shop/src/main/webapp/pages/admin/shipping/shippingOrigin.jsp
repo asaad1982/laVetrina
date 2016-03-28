@@ -122,7 +122,7 @@ function getZones(countryCode){
 	                  <div class="control-group">
 	                        <label><s:message code="label.generic.address" text="Address"/></label>
 	                        <div class="controls">
-	                                    <form:input cssClass="input-large highlight" path="address" />
+	                                    <form:input cssClass="input-large highlight" path="address" maxlength="256"/>
 	                                    <span class="help-inline"><form:errors path="address" cssClass="error" /></span>
 	                        </div>
 	                  </div>
@@ -131,7 +131,7 @@ function getZones(countryCode){
 	                  <div class="control-group">
 	                        <label><s:message code="label.generic.city" text="City"/></label>
 	                        <div class="controls">
-	                                    <form:input cssClass="input-large highlight" path="city" />
+	                                    <form:input cssClass="input-large highlight" path="city" maxlength="100"/>
 	                                    <span class="help-inline"><form:errors path="city" cssClass="error" /></span>
 	                        </div>
 	                  </div>
@@ -160,7 +160,7 @@ function getZones(countryCode){
 	                  <div class="control-group">
 	                        <label><s:message code="label.generic.postalcode" text="Postal code"/></label>
 	                        <div class="controls">
-	                                    <form:input cssClass="input-large highlight" path="postalCode" />
+	                                    <form:input cssClass="input-large highlight" path="postalCode" maxlength="20"/>
 	                                    <span class="help-inline"><form:errors path="postalCode" cssClass="error" /></span>
 	                        </div>
 	                  </div>

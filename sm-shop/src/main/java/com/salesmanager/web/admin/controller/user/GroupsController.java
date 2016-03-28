@@ -84,7 +84,7 @@ public class GroupsController {
 
 	
 	@PreAuthorize("hasRole('STORE_ADMIN')")
-	@RequestMapping(value = "/admin/groups/paging.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/groups/paging.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pageGroups(HttpServletRequest request,
 			HttpServletResponse response, Locale locale) {

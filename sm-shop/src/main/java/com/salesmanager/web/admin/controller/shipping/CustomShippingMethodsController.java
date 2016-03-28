@@ -409,7 +409,7 @@ public class CustomShippingMethodsController {
 	}
 	
 	@PreAuthorize("hasRole('SHIPPING')")
-	@RequestMapping(value = "/admin/shipping/weightBased/page.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/shipping/weightBased/page.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pageCustomShipping(HttpServletRequest request,
 			HttpServletResponse response) {
@@ -491,7 +491,7 @@ public class CustomShippingMethodsController {
 	
 	
 	@PreAuthorize("hasRole('SHIPPING')")
-	@RequestMapping(value = "/admin/shipping/weightBasedDetails/page.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/shipping/weightBasedDetails/page.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pageCustomShippingDetails(HttpServletRequest request,
 			HttpServletResponse response) {

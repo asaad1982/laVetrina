@@ -472,8 +472,8 @@ response.setDateHeader("Expires", 0); // Proxies.
  $(document).ready(function () {
  	
  	entityList.sort('${entityId}','ASC');
+ 	entityList.sort('name','ASC');
  	
- 	isc.Canvas.addClassProperties({neverUsePNGWorkaround:true});
  	
  });
 </script>  	

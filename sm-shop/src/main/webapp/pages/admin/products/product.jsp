@@ -375,7 +375,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                   <div class="control-group">
                         <label><s:message code="label.entity.order" text="Sort order"/></label>
                         <div class="controls">
-                                    <form:input id="order" cssClass="" path="product.sortOrder"/>
+                                    <form:input id="order" cssClass="" path="product.sortOrder" maxlength="9"/>
                                     <span class="help-inline"><form:errors path="product.sortOrder" cssClass="error" /></span>
                         </div>
                   </div>                 

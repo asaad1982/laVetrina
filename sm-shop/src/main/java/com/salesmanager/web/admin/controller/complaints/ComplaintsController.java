@@ -146,6 +146,7 @@ private String displayComplaint(Long complaintId, Model model, HttpServletReques
 			if(customerComplaint==null ) {
 				return "customer-complaints";
 			}
+			
 		}
 		
 		
@@ -398,7 +399,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	}
 
 	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value = "/admin/customercomplaints/remove.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/customercomplaints/remove.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String deleteComplaints(HttpServletRequest request,
 			HttpServletResponse response, Locale locale) {
 		String sid = request.getParameter("id");

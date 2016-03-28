@@ -40,8 +40,19 @@ public class ComplaintsReason extends SalesManagerEntity<Long, ComplaintsReason>
 	private String englishName;
 	
 	@NotEmpty
-	@Column(name="name_ar", length=100, nullable=false)
+	@Column(name="name_ar", length=200, nullable=false)
 	private String arabicName;
+	
+	@Column(name="AVAILABLE")
+	private boolean available = true;
+
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
 
 	public Long getId() {
 		return id;

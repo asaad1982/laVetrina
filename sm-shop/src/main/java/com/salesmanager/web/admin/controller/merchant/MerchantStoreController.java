@@ -95,7 +95,7 @@ public class MerchantStoreController {
 	}
 	
 	@PreAuthorize("hasRole('STORE_ADMIN')")
-	@RequestMapping(value = "/admin/store/paging.html", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/admin/store/paging.html", method = RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody
 	String pageStores(HttpServletRequest request,
 			HttpServletResponse response) {
