@@ -15,12 +15,13 @@
 			      					1- <label class="required"><s:message code="label.shipping.addregion" text="Add region" /></label>
 			      					<input type="text" class="span3" name="region" id="region"><!-- must be unique -->  
 			      					<span class="help-inline"><div id="checkCodeStatus" style="display:none;"></div></span>
+			      					
+			      					<button type="submit" class="btn btn-success"><s:message code="label.shipping.addregion" text="Add region"/></button>
 			      					<span class="help-inline">
 	                        			<c:if test="${errorMessage!=null}">
 	                        				<span id="identifiererrors" class="error"><c:out value="${errorMessage}"/></span>
 	                        			</c:if>
 	                        		</span>
-			      					<button type="submit" class="btn btn-success"><s:message code="label.shipping.addregion" text="Add region"/></button>
 			      				</form>	
 								<br/>
 								
@@ -41,14 +42,15 @@
 		                        					<form:select path="countries[0]">
 						  								<form:options items="${shippingCountries}" itemValue="isoCode" itemLabel="name"/>
 					       							</form:select>
-			      							<span class="help-inline">
+			      							
+		                 			
+	                        		 
+                  							<button type="submit" class="btn btn-success"><s:message code="label.generic.add" text="Add"/></button>
+                  							<span class="help-inline">
 	                        					<c:if test="${errorMessageAssociation!=null}">
 	                        						<span id="identifiererrors" class="error"><c:out value="${errorMessageAssociation}"/></span>
 	                        					</c:if>
 	                        				</span>
-		                 			
-	                        		 
-                  							<button type="submit" class="btn btn-success"><s:message code="label.generic.add" text="Add"/></button>
 
 			      				</form:form>	
 			      				
