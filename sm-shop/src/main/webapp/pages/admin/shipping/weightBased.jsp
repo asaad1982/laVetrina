@@ -43,7 +43,7 @@
 					       							</form:select>
 			      							<span class="help-inline">
 	                        					<c:if test="${errorMessageAssociation!=null}">
-	                        						<span id="identifiererrors" class="error"><c:out value="${errorMessage}"/></span>
+	                        						<span id="identifiererrors" class="error"><c:out value="${errorMessageAssociation}"/></span>
 	                        					</c:if>
 	                        				</span>
 		                 			
