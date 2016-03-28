@@ -102,7 +102,7 @@ public class CustomShippingMethodsController {
 		
 		for(CustomShippingQuotesRegion customRegion : regions) {
 			if(customRegion.getCustomRegionName().equals(region)) {
-				model.addAttribute("errorMessage",messages.getMessage("message.region.null", locale));
+				model.addAttribute("errorMessage",messages.getMessage("message.region.exists", locale));
 				ObjectError error = new ObjectError("region",messages.getMessage("message.region.exists", locale));
 				result.addError(error);
 				break;
