@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.salesmanager.core.business.catalog.product.service.FileBean;
+import com.salesmanager.core.business.catalog.product.service.ImportService;
 import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.customer.model.CustomerCriteria;
 import com.salesmanager.core.business.customer.model.CustomerList;
@@ -157,6 +158,7 @@ public class CustomerController {
 		model.addAttribute("zones", zones);
 		model.addAttribute("countries", countries);
 		model.addAttribute("customer", customer);
+		//model.addAttribute("citys", countries.);
 		return "admin-customer";	
 		
 	}
@@ -705,6 +707,35 @@ public class CustomerController {
 		
 		
 	}
+	
+	@Autowired
+	ImportService importService; 
+	@PreAuthorize("hasRole('PRODUCTS')")
+	@RequestMapping(value="/admin/customer/upload.html",method = RequestMethod.POST)
+	    public String upload(@ModelAttribute("fileBean") FileBean uploadItem, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+		
+		Language language = (Language)request.getAttribute("LANGUAGE");
+			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+			
+	       
+	        setMenu(model, request);
+	        if(  uploadItem==null || uploadItem.getFileData()==null || uploadItem.getFileData().getSize()==0  ){
+	        	result.addError( new ObjectError("fileData",messages.getMessage("fileImport.importFile", locale)) );
+	        	
+	        }
+
+	        if(result.hasErrors()){
+	            return "admin-customers";
+	        }
+		    importService.importFile(uploadItem,store,language);
+			
+
+	        model.addAttribute("success","success");
+			
+			return "admin-customers";
+	    }
+	
+	
 	
 	private void setMenu(Model model, HttpServletRequest request) throws Exception {
 		

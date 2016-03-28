@@ -39,7 +39,16 @@ public class City extends SalesManagerEntity<Integer, City> {
 	
 	 
 	private String name;
+	private String arName;
 	
+	public String getArName() {
+		return arName;
+	}
+
+	public void setArName(String arName) {
+		this.arName = arName;
+	}
+
 	public String getName() {
 		return name;
 	}

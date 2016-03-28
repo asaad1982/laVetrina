@@ -7,6 +7,7 @@ import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,7 +40,7 @@ public class Country extends SalesManagerEntity<Integer, Country> {
 	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
 	private List<CountryDescription> descriptions = new ArrayList<CountryDescription>();
 	
- 	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+ 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "country", cascade = CascadeType.ALL)
 	private List<City> citys = new ArrayList<City>();
 	
 	@OneToMany(mappedBy = "country")
