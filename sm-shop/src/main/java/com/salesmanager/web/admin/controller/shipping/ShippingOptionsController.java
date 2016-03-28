@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -104,7 +105,7 @@ public class ShippingOptionsController {
 	 */
 	@PreAuthorize("hasRole('SHIPPING')")
 	@RequestMapping(value="/admin/shipping/saveShippingOptions.html", method=RequestMethod.POST)
-	public String saveShippingOptions(@ModelAttribute("configuration") ShippingConfiguration configuration, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+	public String saveShippingOptions(@Valid@ModelAttribute("configuration") ShippingConfiguration configuration, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
 
 		this.setMenu(model, request);
@@ -126,6 +127,9 @@ public class ShippingOptionsController {
 				ObjectError error = new ObjectError("orderTotalFreeShippingText",messages.getMessage("message.invalid.price", locale));
 				result.addError(error);
 			}
+		}else{
+			ObjectError error = new ObjectError("orderTotalFreeShippingText",messages.getMessage("message.invalid.price", locale));
+			result.addError(error);
 		}
 		
 		BigDecimal submitedHandlingPrice = null;
@@ -137,6 +141,9 @@ public class ShippingOptionsController {
 				ObjectError error = new ObjectError("handlingFeesText",messages.getMessage("message.invalid.price", locale));
 				result.addError(error);
 			}
+		}else{
+			ObjectError error = new ObjectError("handlingFeesText",messages.getMessage("message.invalid.price", locale));
+			result.addError(error);
 		}
 		
 		shippingConfiguration.setFreeShippingEnabled(configuration.isFreeShippingEnabled());
@@ -149,6 +156,7 @@ public class ShippingOptionsController {
 		shippingService.saveShippingConfiguration(shippingConfiguration, store);
 		
 		model.addAttribute("configuration", configuration);
+		if(!result.hasErrors())
 		model.addAttribute("success","success");
 		return ControllerConstants.Tiles.Shipping.shippingOptions;
 		

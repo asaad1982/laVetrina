@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,7 +86,7 @@ public class ShippingPackagingController {
 	 */
 	@PreAuthorize("hasRole('SHIPPING')")
 	@RequestMapping(value="/admin/shipping/saveShippingPackaging.html", method=RequestMethod.POST)
-	public String saveShippingPackaging(@ModelAttribute("configuration") ShippingConfiguration configuration, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+	public String saveShippingPackaging(@Valid@ModelAttribute("configuration") ShippingConfiguration configuration, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 
 
 		this.setMenu(model, request);
@@ -97,23 +98,24 @@ public class ShippingPackagingController {
 		if(shippingConfiguration==null) {
 			shippingConfiguration = new ShippingConfiguration();
 		}
-		
-		DecimalFormat df = new DecimalFormat("#.##");
-		String sweight = df.format(configuration.getBoxWeight());
-		double weight = Double.parseDouble(sweight);
-		
-		shippingConfiguration.setBoxHeight(configuration.getBoxHeight());
-		shippingConfiguration.setBoxLength(configuration.getBoxLength());
-		shippingConfiguration.setBoxWeight(weight);
-		shippingConfiguration.setBoxWidth(configuration.getBoxWidth());
-		
-		shippingConfiguration.setShipPackageType(configuration.getShipPackageType());
-		
-
-		shippingService.saveShippingConfiguration(shippingConfiguration, store);
-		
-		model.addAttribute("configuration", configuration);
-		model.addAttribute("success","success");
+		if(!result.hasErrors()){
+			DecimalFormat df = new DecimalFormat("#.##");
+			String sweight = df.format(configuration.getBoxWeight());
+			double weight = Double.parseDouble(sweight);
+			
+			shippingConfiguration.setBoxHeight(configuration.getBoxHeight());
+			shippingConfiguration.setBoxLength(configuration.getBoxLength());
+			shippingConfiguration.setBoxWeight(weight);
+			shippingConfiguration.setBoxWidth(configuration.getBoxWidth());
+			
+			shippingConfiguration.setShipPackageType(configuration.getShipPackageType());
+			
+	
+			shippingService.saveShippingConfiguration(shippingConfiguration, store);
+			
+			model.addAttribute("configuration", configuration);
+			model.addAttribute("success","success");
+		}
 		return ControllerConstants.Tiles.Shipping.shippingPackaging;
 		
 		

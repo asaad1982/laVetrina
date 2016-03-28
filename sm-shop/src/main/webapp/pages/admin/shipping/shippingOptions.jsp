@@ -48,7 +48,7 @@ $(document).ready(function() {
 		})
 	.bind('decimalsEntered', function(e, cents) {
 		if (String(cents).length > 2) {
-			var errorMsg = priceFormatMessage + ' (0.' + cents + ')';
+			var errorMsg = priceFormatMessage;
 			$('#help-orderTotalFreeShippingText').html(errorMsg);
 		}
 	});
@@ -131,6 +131,7 @@ $(document).ready(function() {
                                     		<form:radiobutton id="shipFreeType" path="shipFreeType" value="NATIONAL"/>&nbsp;<s:message code="label.shipping.national" text="National" /><br/>			
 											<form:radiobutton id="shipFreeType" path="shipFreeType" value="INTERNATIONAL"/>&nbsp;<s:message code="label.generic.all" text="All" /><br/>
 											<form:input cssClass="input-large" id="orderTotalFreeShippingText" path="orderTotalFreeShippingText" />&nbsp;<s:message code="label.shipping.freeshippingamount" text="Order total over" />
+											
                         				</div>
                         				<span id="help-orderTotalFreeShippingText" class="help-inline"><form:errors path="orderTotalFreeShippingText" cssClass="error" /></span>
                   					</div>
