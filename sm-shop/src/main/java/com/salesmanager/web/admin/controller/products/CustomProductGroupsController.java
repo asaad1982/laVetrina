@@ -217,7 +217,7 @@ public class CustomProductGroupsController {
 			List<ProductRelationship> groups = productRelationshipService.getGroups(store);
 			
 			for(ProductRelationship relation : groups) {
-				if(relation.getCode().equals(groupCode)) {
+				if(relation.getCode().equals(groupCode) &&(!"FEATURED_ITEM".equals(relation.getCode()))) {
 					if("true".equals(active)) {
 						relation.setActive(true);
 					} else {

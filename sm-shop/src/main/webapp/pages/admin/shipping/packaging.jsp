@@ -59,14 +59,14 @@
                   					<div class="control-group">
                         				<label><s:message code="label.shipping.packaging.box.width" text="Box width"/></label>
                         				<div class="controls">
-											<form:input cssClass="input-small" id="boxWidth" path="boxWidth" />
+											<form:input cssClass="input-small" id="boxWidth" path="boxWidth" maxlength="10"/>
                         				</div>
                         				<span class="help-inline"><form:errors path="boxWidth" cssClass="error" /></span>
                   					</div>
                   					<div class="control-group">
                         				<label><s:message code="label.shipping.packaging.box.height" text="Box height"/></label>
                         				<div class="controls">
-											<form:input cssClass="input-small" id="boxHeight" path="boxHeight" />
+											<form:input cssClass="input-small" id="boxHeight" path="boxHeight" maxlength="10"/>
                         				</div>
                         				<span class="help-inline"><form:errors path="boxHeight" cssClass="error" /></span>
                   					</div>
@@ -75,7 +75,7 @@
                   					 <div class="control-group">
                         				<label><s:message code="label.shipping.packaging.box.length" text="Box length"/></label>
                         				<div class="controls">
-											<form:input cssClass="input-small" id="boxLength" path="boxLength" />
+											<form:input cssClass="input-small" id="boxLength" path="boxLength" maxlength="10"/>
                         				</div>
                         				<span class="help-inline"><form:errors path="boxLength" cssClass="error" /></span>
                   					</div>
@@ -83,7 +83,7 @@
                   					<div class="control-group">
                         				<label><s:message code="label.shipping.packaging.box.weight" text="Box weight"/></label>
                         				<div class="controls">
-											<form:input cssClass="input-small" id="boxWeight" path="boxWeight" />
+											<form:input cssClass="input-small" id="boxWeight" path="boxWeight" maxlength="10"/>
                         				</div>
                         				<span class="help-inline"><form:errors path="boxWeight" cssClass="error" /></span>
                   					</div>                   					
