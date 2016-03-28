@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -83,14 +84,14 @@ public class ShippingOriginController {
 	
 	@PreAuthorize("hasRole('SHIPPING')")
 	@RequestMapping(value="/admin/shipping/origin/post.html", method=RequestMethod.POST)
-	public String saveShippingOrigin(@Valid @ModelAttribute("origin") ShippingOrigin origin, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+	public String saveShippingOrigin(@Valid @ModelAttribute("origin") ShippingOrigin origin,BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
 		
 		this.setMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");	
 		List<Country> countries = countryService.getCountries(language);
-		
+		if(!result.hasErrors()){
 		ShippingOrigin shippingOrigin =  shippingOriginService.getByStore(store);
 		if(shippingOrigin!=null) {
 			origin.setId(shippingOrigin.getId());
@@ -114,7 +115,9 @@ public class ShippingOriginController {
 
 		model.addAttribute("countries", countries);
 		model.addAttribute("origin", origin);
+		if(!result.hasErrors())
 		model.addAttribute("success","success");
+		}
 		return "shipping-origin";
 		
 	}
