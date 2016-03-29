@@ -37,6 +37,10 @@ public class ProductRelationshipServiceImpl extends
 			this.update(relationship);
 			
 		} else {
+			List<ProductRelationship> productRelationships=productRelationshipDao.checkRelatedExist(relationship.getStore(),relationship.getCode(),relationship.getRelatedProduct());
+			if(productRelationships.size()>0){
+				throw new ServiceException("product.already.exist");
+			}
 			this.create(relationship);
 		}
 		

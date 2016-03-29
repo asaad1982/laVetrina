@@ -25,6 +25,7 @@ public interface ProductRelationshipDao extends SalesManagerEntityDao<Long, Prod
 	List<ProductRelationship> getGroups(MerchantStore store);
 
 	List<ProductRelationship> getByGroup(MerchantStore store, String group);
+	public List<ProductRelationship> checkRelatedExist(MerchantStore store, String type, Product product);
 
 
 

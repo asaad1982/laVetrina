@@ -56,6 +56,7 @@ public class ProductRelationshipDaoImpl extends SalesManagerEntityDaoImpl<Long, 
 
 	}
 	
+	
 	@Override
 	public List<ProductRelationship> getByType(MerchantStore store, String type, Language language) {
 		//QDSL cannot interpret the following query, that is why it is in native format
@@ -293,7 +294,50 @@ public class ProductRelationshipDaoImpl extends SalesManagerEntityDaoImpl<Long, 
 
 	}
 
-	
+	public List<ProductRelationship> checkRelatedExist(MerchantStore store, String type, Product product) {
+		//QDSL cannot interpret the following query, that is why it is in native format
+		
+		
+		StringBuilder qs = new StringBuilder();
+		
+		qs.append("select distinct pr from ProductRelationship as pr ");
+		qs.append("left join fetch pr.product p ");
+		qs.append("left join fetch pr.relatedProduct rp ");
+		
+		qs.append("left join fetch rp.attributes pattr ");
+		qs.append("left join fetch rp.descriptions rpd ");
+		qs.append("left join fetch rp.images pd ");
+		qs.append("left join fetch rp.merchantStore rpm ");
+		qs.append("left join fetch rpm.currency rpmc ");
+		qs.append("left join fetch rp.availabilities pa ");
+		qs.append("left join fetch pa.prices pap ");
+		qs.append("left join fetch pap.descriptions papd ");
+		
+		qs.append("left join fetch rp.manufacturer manuf ");
+		qs.append("left join fetch manuf.descriptions manufd ");
+		qs.append("left join fetch rp.type type ");
+
+		qs.append("where pr.code=:code ");
+		qs.append("and rp.id=:pId");
+
+
+
+
+    	String hql = qs.toString();
+		Query q = super.getEntityManager().createQuery(hql);
+
+    	q.setParameter("code", type);
+    	q.setParameter("pId", product.getId());
+
+
+		@SuppressWarnings("unchecked")
+		List<ProductRelationship> relations =  q.getResultList();
+
+    	
+    	return relations;
+		
+
+	}
 
 
 }

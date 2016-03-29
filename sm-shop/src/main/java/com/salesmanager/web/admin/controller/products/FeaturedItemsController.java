@@ -2,6 +2,7 @@ package com.salesmanager.web.admin.controller.products;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,12 +27,14 @@ import com.salesmanager.core.business.catalog.product.model.relationship.Product
 import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationshipType;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.catalog.product.service.relationship.ProductRelationshipService;
+import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.core.utils.ajax.AjaxPageableResponse;
 import com.salesmanager.core.utils.ajax.AjaxResponse;
 import com.salesmanager.web.admin.entity.web.Menu;
 import com.salesmanager.web.constants.Constants;
+import com.salesmanager.web.utils.LabelUtils;
 
 
 @Controller
@@ -47,6 +50,8 @@ public class FeaturedItemsController {
 	
 	@Autowired
 	ProductRelationshipService productRelationshipService;
+	@Autowired
+	LabelUtils messages;
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/catalogue/featured/list.html", method=RequestMethod.GET)
@@ -123,7 +128,7 @@ public class FeaturedItemsController {
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/catalogue/featured/addItem.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
-	public @ResponseBody String addItem(HttpServletRequest request, HttpServletResponse response) {
+	public @ResponseBody String addItem(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 		
 		String productId = request.getParameter("productId");
 		AjaxResponse resp = new AjaxResponse();
@@ -163,6 +168,10 @@ public class FeaturedItemsController {
 			LOGGER.error("Error while paging products", e);
 			resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_FAIURE);
 			resp.setErrorMessage(e);
+			if(e instanceof ServiceException){
+			  ServiceException se=(ServiceException)e;
+			  resp.setStatusMessage(messages.getMessage(se.getMessageCode(), locale));
+			}
 		}
 		
 		String returnString = resp.toJSONString();
