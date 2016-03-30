@@ -50,7 +50,7 @@ public class ImportServiceImpl implements ImportService {
 	            } else if (fileBean.getFileData().getOriginalFilename().endsWith("xlsx")) {
 	                workbook = new XSSFWorkbook(bis);
 	            } else {
-	                throw new IllegalArgumentException("Received file does not have a standard excel extension.");
+	                throw new ServiceException("upload.error.message");
 	            }
 	            List<Manufacturer> manufacturers=manufacturerService.listByStore(store, language);
 	            Sheet sheet=workbook.getSheetAt(0);

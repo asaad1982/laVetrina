@@ -278,7 +278,13 @@ public class ProductsController {
 	        if(result.hasErrors()){
 	            return "admin-products";
 	        }
+	        try{
 		    importService.importFile(uploadItem,store,language);
+	        }catch (ServiceException se){
+	        	model.addAttribute("error","error");
+	        	result.addError( new ObjectError("fileData",messages.getMessage(se.getMessageCode(), locale)) );
+				return "admin-products";
+	        }
 			
 
 	        model.addAttribute("success","success");
