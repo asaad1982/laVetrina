@@ -82,11 +82,12 @@ public class NotificationController {
 		
 		
 		if( notificationId!=0) {
-			if(request.getSession().getAttribute("notification")==null){
+			if(request.getSession().getAttribute("emailNotification")==null){
 				emailNotification=emailNotificationService.getById(notificationId);
 			}else{
-				emailNotification=(EmailNotification) request.getSession().getAttribute("promotion");
+				emailNotification=(EmailNotification) request.getSession().getAttribute("emailNotification");
 			}
+			
 		}else{
 			emailNotification.setEmailTemplates(new ArrayList<EmailTemplate>());
 		}
@@ -267,10 +268,10 @@ public class NotificationController {
 	        String gender=request.getParameter("gender");
 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 			EmailNotification emailNotification=null;
-			if(request.getSession().getAttribute("notification")==null){
+			if(request.getSession().getAttribute("emailNotification")==null){
 				emailNotification=emailNotificationService.getById(notificationId);
 			}else{
-				emailNotification=(EmailNotification) request.getSession().getAttribute("promotion");
+				emailNotification=(EmailNotification) request.getSession().getAttribute("emailNotification");
 			}
 			if(emailNotification==null){
 				emailNotification=new EmailNotification();

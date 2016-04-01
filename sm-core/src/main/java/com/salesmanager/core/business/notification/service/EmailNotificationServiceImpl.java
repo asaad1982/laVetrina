@@ -34,11 +34,13 @@ public class EmailNotificationServiceImpl extends SalesManagerEntityServiceImpl<
 		} else {
 			List<EmailTemplate> emailTemplates=emailNotification.getEmailTemplates();
 			emailNotification.setEmailTemplates(null);
+			
 			super.save(emailNotification);
 			for(EmailTemplate emailTemplate:emailTemplates){
 				emailTemplate.setEmailNotification(emailNotification);
 			}
 			emailNotification.setEmailTemplates(emailTemplates);
+			super.update(emailNotification);
 			
 		}
 
