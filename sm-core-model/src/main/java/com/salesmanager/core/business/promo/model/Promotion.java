@@ -30,13 +30,13 @@ public class Promotion extends SalesManagerEntity<Long, Promotion> implements Se
 	private Long id;
 
 	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@NotEmpty
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date endate;
 
 	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@NotEmpty
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDate;
 	@NotEmpty
 	private String status;

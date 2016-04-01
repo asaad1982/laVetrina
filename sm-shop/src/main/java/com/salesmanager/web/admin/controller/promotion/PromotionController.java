@@ -854,7 +854,6 @@ public @ResponseBody String updateCategories(HttpServletRequest request, HttpSer
 public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promotion, BindingResult result, Model model, HttpServletRequest request) throws Exception {
 
 	setMenu(model, request);
-	Promotion currPromotion=promotionService.getById(promotion.getId());
 	
 	
 	MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
@@ -894,11 +893,15 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 	if (result.hasErrors()) {
 		return "promotion";
 	}
+	if(promotion.getId()!=null && promotion.getId()>0){
+		Promotion currPromotion=promotionService.getById(promotion.getId());
+		
 	if(currPromotion!=null){
 		PromotionRule promotionRule=promotion.getPromotionRule();
 		promotion.setPromotionRule(currPromotion.getPromotionRule());
 		promotion.getPromotionRule().setTargetGender(promotionRule.getTargetGender());
 		promotion.getPromotionRule().setPromotionTragetAge(promotionRule.getPromotionTragetAge());
+	}
 	}
 	promotionService.saveOrUpdate(promotion);
 	model.addAttribute("success","success");

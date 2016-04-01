@@ -282,6 +282,11 @@ public class ProductsController {
 		    importService.importFile(uploadItem,store,language);
 	        }catch (ServiceException se){
 	        	model.addAttribute("error","error");
+	        	if(se.getMessageCodes()!=null && se.getMessageCodes().size()>0){
+	        		for (int i = 0; i < se.getMessageCodes().size(); i++) {
+	        			result.addError( new ObjectError("fileData",se.getMessageCodes().get(i)) );
+					}
+	        	}else
 	        	result.addError( new ObjectError("fileData",messages.getMessage(se.getMessageCode(), locale)) );
 				return "admin-products";
 	        }

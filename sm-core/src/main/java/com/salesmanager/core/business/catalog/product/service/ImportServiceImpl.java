@@ -3,12 +3,14 @@ package com.salesmanager.core.business.catalog.product.service;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -54,6 +56,7 @@ public class ImportServiceImpl implements ImportService {
 	            }
 	            List<Manufacturer> manufacturers=manufacturerService.listByStore(store, language);
 	            Sheet sheet=workbook.getSheetAt(0);
+	            List<String> errors=new ArrayList<String>();
 	            for (Row row : sheet) {
 	            	if(row.getRowNum()!=0){
 	            	if(containsValue(row,0,8)){
@@ -65,8 +68,9 @@ public class ImportServiceImpl implements ImportService {
 	                  ProductAvailability productAvailability =new ProductAvailability();
 	                  while (cellIterator.hasNext()) {
 	                      Cell cell = cellIterator.next();
-	                      DataFormatter formatter = new DataFormatter(); //creating formatter using the default locale
-	                      String cellVal=formatter.formatCellValue(cell);
+	                      
+	                     // DataFormatter formatter = new DataFormatter(); //creating formatter using the default locale
+	                      String cellVal=cellToString(cell);
 	                      if(cell.getCellType() != Cell.CELL_TYPE_BLANK){
 	                      if(cell.getColumnIndex()==0){
 	                    	  List< Category> categories=categoryService.getByName(store, cellVal, language) ;
@@ -90,20 +94,32 @@ public class ImportServiceImpl implements ImportService {
 								description.setDescription(cellVal);								
 							}
 							else if(cell.getColumnIndex()==4){
+								try{
 								
-								productAvailability.setProductQuantity(Integer.parseInt(cellVal) );
+								productAvailability.setProductQuantity((int) Double.parseDouble(cellVal) );
+								}catch(NumberFormatException numberFormatException){
+									errors.add("Product Quantity is number only");
+								}
 	                    	  
 	                      }else if(cell.getColumnIndex()==6){
 								
 								productAvailability.setPrices(new HashSet<ProductPrice>());
 								ProductPrice productPrice=new ProductPrice();
-								productPrice.setProductPriceAmount(new BigDecimal(cell.getNumericCellValue()));
+								try{
+								productPrice.setProductPriceAmount(new BigDecimal(Double.parseDouble(cellVal)));
+								}catch(NumberFormatException nfe){
+	                    			errors.add("Product Price Amount is number only");
+	                    		}
 								productAvailability.getPrices().add(productPrice);
 	                    	  
 	                      }else if(cell.getColumnIndex()==5){
 	                    	  product.setSku(cellVal);
 	                      }else if(cell.getColumnIndex()==7){
-	                    	  product.setProductWeight(new BigDecimal(cell.getNumericCellValue()));
+	                    		try{									
+	                    			product.setProductWeight(new BigDecimal(Double.parseDouble(cellVal)));
+	                    		}catch(NumberFormatException nfe){
+	                    			errors.add("Product Weight is number only");
+	                    		}
 	                      }else  if(cell.getColumnIndex()==8){
 	                    	  boolean b =false;
 	                    	  try{
@@ -111,7 +127,11 @@ public class ImportServiceImpl implements ImportService {
 	                    	   b = (i != 0);
 	                    	  }catch (Exception e){
 	                    		  e.printStackTrace();
+	                    		  try{
 	                    		  b=cell.getBooleanCellValue();
+	                    		  }catch(Exception ex){
+	                    			  errors.add("Invalid Status for product");
+	                    		  }
 	                    	  }
 	                    	  
 	                    	  product.setAvailable(b);
@@ -126,12 +146,16 @@ public class ImportServiceImpl implements ImportService {
 	                  product.setAvailabilities(new HashSet<ProductAvailability>());
 	                  product.getAvailabilities().add(productAvailability);
 	                  productAvailability.setProduct(product);
+	                  if(errors.size()==0){
 	                  productService.update(product);
+	                  }
 	            	}
 	            
 	            }
 	            }
-
+                if(errors.size()>0){
+                	throw new ServiceException(errors);
+                }
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
@@ -151,6 +175,32 @@ public class ImportServiceImpl implements ImportService {
 	        }
 	    }
 	        return flag;
+	}
+	private  String cellToString(Cell cell) throws ServiceException{  
+	    int type;
+	    Object result=null;
+	    type = cell.getCellType();
+
+	    switch (type) {
+
+	        case Cell.CELL_TYPE_NUMERIC: // numeric value in Excel
+	        case Cell.CELL_TYPE_FORMULA: // precomputed value based on formula
+	            result = cell.getNumericCellValue();
+	            break;
+	        case Cell.CELL_TYPE_STRING: // String Value in Excel 
+	            result = cell.getStringCellValue();
+	            break;
+	        case Cell.CELL_TYPE_BLANK:
+	            result = "";
+	        case Cell.CELL_TYPE_BOOLEAN: //boolean value 
+	            result: cell.getBooleanCellValue();
+	            break;
+	        case Cell.CELL_TYPE_ERROR:
+	        default:  
+	            throw new ServiceException("There is no support for this type of cell");                        
+	    }
+
+	    return result.toString();
 	}
 
 }

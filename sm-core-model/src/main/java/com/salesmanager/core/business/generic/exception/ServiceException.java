@@ -1,5 +1,7 @@
 package com.salesmanager.core.business.generic.exception;
 
+import java.util.List;
+
 /**
  * <p>Exception générée par les services de l'application.</p>
  */
@@ -16,8 +18,16 @@ public class ServiceException extends Exception {
 	public final static int EXCEPTION_TRANSACTION_DECLINED = 101;
 	
 	private String messageCode = null;
+	private List<String>messageCodes;
 
 
+	public List<String> getMessageCodes() {
+		return messageCodes;
+	}
+
+	public void setMessageCodes(List<String> messageCodes) {
+		this.messageCodes = messageCodes;
+	}
 
 	public void setMessageCode(String messageCode) {
 		this.messageCode = messageCode;
@@ -26,7 +36,11 @@ public class ServiceException extends Exception {
 	public ServiceException() {
 		super();
 	}
-	
+	public ServiceException(List<String> messageCodes) {
+		super();
+		this.messageCodes = messageCodes;
+	}
+
 	public ServiceException(String messageCode) {
 		super();
 		this.messageCode = messageCode;

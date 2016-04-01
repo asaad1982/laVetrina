@@ -11,6 +11,7 @@ import com.salesmanager.core.business.generic.dao.SalesManagerEntityDao;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
 import com.salesmanager.core.business.promo.model.Promotion;
+import com.salesmanager.core.business.promo.model.PromotionRule;
 import com.salesmanager.core.business.promotion.dao.PromotionDao;
 import com.salesmanager.core.business.reference.language.model.Language;
 @Service
@@ -64,8 +65,11 @@ public class PromotionServiceImpl extends SalesManagerEntityServiceImpl<Long, Pr
 					super.update(promotion);
 					
 				} else {
-					
+					PromotionRule promotionRule=promotion.getPromotionRule();
+					promotion.setPromotionRule(null);
 					super.save(promotion);
+					promotion.setPromotionRule(promotionRule);
+					super.update(promotion);
 					
 				}
 		
