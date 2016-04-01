@@ -70,7 +70,7 @@ public class PromotionController {
 	@InitBinder     
 	public void initBinder(WebDataBinder binder){
 	     binder.registerCustomEditor(       Date.class,     
-	                         new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), false, 10));   
+	                         new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));   
 	}
 	@Autowired
 	PromotionService promotionService;

@@ -102,7 +102,7 @@
                   <div class="control-group">
                         <label>Event Name </label>
                         <div class="controls">
-                        			<form:textarea path="eventName" cssClass="highlight"/>
+                        			<form:textarea path="eventName" cssClass="highlight" />
                         			<span class="help-inline"><form:errors path="eventName" cssClass="error" /></span>
                         </div>
                   </div>
@@ -118,6 +118,7 @@
 	                        		 <input id="eventDate" name="eventDate" value="${emailNotification.eventDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">
 	                                 $('#eventDate').datepicker();
+	                                 $( "#eventDate" ).datepicker( "option", "dateFormat", "ISO 8601 - yy-mm-dd" );
 	                                 </script>
 	                                 <span class="help-inline"><form:errors path="eventDate" cssClass="error" /></span>
 	                        </div>
