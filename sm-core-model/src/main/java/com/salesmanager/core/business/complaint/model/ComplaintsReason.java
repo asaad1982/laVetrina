@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +11,10 @@ import javax.persistence.Table;
 
 
 import javax.persistence.TableGenerator;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
 
 
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
@@ -37,9 +38,11 @@ public class ComplaintsReason extends SalesManagerEntity<Long, ComplaintsReason>
 
 	@NotEmpty
 	@Column(name="name_en", length=100, nullable=false)
+	@Pattern(regexp="^[a-zA-Z0-9]*$")
 	private String englishName;
 	
 	@NotEmpty
+	@Pattern(regexp="^[\u0621-\u064A\u0660-\u0669 ]+$")
 	@Column(name="name_ar", length=200, nullable=false)
 	private String arabicName;
 	

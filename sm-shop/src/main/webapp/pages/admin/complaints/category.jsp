@@ -13,6 +13,13 @@
 	
 
 	
+$('#englishName').keypress(function (e) {
+        if (e.which !== 0 &&
+            !e.ctrlKey && !e.metaKey && !e.altKey) {
+            alert(String.fromCharCode(e.which));
+        }
+    });
+
 	
 	
 	
@@ -65,10 +72,10 @@
 				<h3>
 					<c:choose>
 						<c:when test="${category.id!=null && category.id>0}">
-								<s:message code="label.complaints.editcategory" text="Edit category" /> <c:out value="${category.id}"/>
+								<s:message code="edit.complaints" text="Edit category" /> <c:out value="${category.id}"/>
 						</c:when>
 						<c:otherwise>
-								<s:message code="label.complaints.createcategory" text="Create category" />
+								<s:message code="add.complaints" text="Create category" />
 						</c:otherwise>
 					</c:choose>
 					
@@ -112,7 +119,13 @@
                         </div>
                   </div>
                   
-                 
+                 <div class="control-group">
+                        <label>Status</label>
+                        <div class="controls">
+                        			<form:checkbox path="available" cssClass="highlight" maxlength="100"/>
+                        			<span class="help-inline"><form:errors path="available" cssClass="error" /></span>
+                        </div>
+                  </div>
                  
                   
                   
