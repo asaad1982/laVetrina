@@ -12,7 +12,7 @@ import com.salesmanager.core.business.promo.model.PromotionTragetAge;
 import com.salesmanager.core.business.promotion.dao.PromotionTargetAgeDao;
 @Service("productAgeRangeSerivce")
 public class PromotionAgeRangeServiceImpl extends
-		SalesManagerEntityServiceImpl<Long, PromotionTragetAge> implements ProductAgeRangeSerivce {
+		SalesManagerEntityServiceImpl<Integer, PromotionTragetAge> implements ProductAgeRangeSerivce {
 	private PromotionTargetAgeDao promotionTargetAgeDao;
 	@Autowired
 	public PromotionAgeRangeServiceImpl(

@@ -11,18 +11,18 @@ import javax.persistence.TableGenerator;
 
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
 @Entity
-public class PromotionTragetAge extends SalesManagerEntity<Long, PromotionTragetAge> implements Serializable{
+public class PromotionTragetAge extends SalesManagerEntity<Integer, PromotionTragetAge> implements Serializable{
 	@Id
 	@Column(unique=true,nullable=false)
 	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "PromotionTragetAge_SEQ_NEXT_VAL")
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
+	private int id;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	private String name;

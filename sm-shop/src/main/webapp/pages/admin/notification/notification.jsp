@@ -66,11 +66,11 @@
 				<h3>
 					<c:choose>
 						<c:when test="${emailNotification.id!=null && emailNotification.id>0}">
-								<s:message code="label.complaints.editcategory" text="Edit category" /> <c:out value="${emailNotification.id}"/>
+								<s:message code="label.notification.editNotification" text="Edit category" /> <c:out value="${emailNotification.eventName}"/>
 								<c:set value="${emailNotification.id}" var="emailId" />
 						</c:when>
 						<c:otherwise>
-								<s:message code="label.complaints.createcategory" text="Create category" />
+								<s:message code="label.notification.addNotification" text="Create category" />
 								<c:set value="0" var="emailId"/>
 						</c:otherwise>
 					</c:choose>

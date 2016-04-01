@@ -212,6 +212,11 @@ public class NotificationController {
 			emailNotification.setCustomers(emailNotification2.getCustomers());
 		}
 		emailNotificationService.saveOrUpdate(emailNotification);
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		List<Language> languages = store.getLanguages();
+		
+		model.addAttribute("languages",languages);
+		model.addAttribute("emailNotification", emailNotification);
 		model.addAttribute("success","success");
 		return "notification";
 	}
