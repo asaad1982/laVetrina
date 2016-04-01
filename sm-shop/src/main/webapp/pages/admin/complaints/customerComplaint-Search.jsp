@@ -1,5 +1,5 @@
 {name: "note",
-                         title: "Complaint",
+                         title: "Customer Name",
                          type: "text"
                         },
                         {type: "blurb",
@@ -14,23 +14,32 @@
                          defaultValue: "<b>AND</b>"
                         },
                         {name: "startDate",
-                         title: "From Date",
+                         title: "Date From",
                          type: "date",
                          useTextField: true
+                        },
+                        {type: "blurb",
+                         defaultValue: "<b>AND</b>"
                         },
                          {name: "endDate",
-                         title: "to Date",
+                         title: "Date To",
                          type: "date",
                          useTextField: true
                         },
+                        {type: "blurb",
+                         defaultValue: "<b>AND</b>"
+                        },
                         {
-        					name: "status", title: "Select Item", editorType: "SelectItem", 
+        					name: "status", title: "<b>Complaint Reason</b>", editorType: "SelectItem",
                             
                            valueMap:{under:"Under Processing", closed:"Closed"}     
         
 					        
     					},
+                        {type: "blurb",
+                         defaultValue: "<b>AND</b>"
+                        },
     					{name: "reason",
-                         title: "Complaint Reason",
+                         title: "Complaint",
                          type: "text"
                         }

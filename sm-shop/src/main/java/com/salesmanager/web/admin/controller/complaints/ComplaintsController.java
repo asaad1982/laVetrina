@@ -379,6 +379,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 				entry.put("complaintReason", customerComplaint.getCustomerComplaintReason().getEnglishName());
 				entry.put("status", customerComplaint.getStatus());
 				entry.put("complaintDate", DateUtil.formatDate(customerComplaint.getComplaintsDate()) );
+				entry.put("customer", customerComplaint.getCustomer().getBilling().getFirstName());
 				resp.addDataEntry(entry);
 				
 				

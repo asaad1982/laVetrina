@@ -7,6 +7,7 @@
 
 
 					{title:"<s:message code="label.entity.id" text="Id"/>", name:"id", canFilter:false},
+					{title:"Customer Name", name:"customer", canFilter:false},
         			{title:"<s:message code="label.entity.complaints" text="Complaints "/>", name:"note",canEdit:false,canFilter:false},
         			{title:"<s:message code="label.generic.email" text="Email"/>", name:"email",canEdit:false,canFilter:false},
         			{title:"<s:message code="label.entity.reason" text="Customer Name"/>", name:"complaintReason",canFilter:false,canEdit:false},

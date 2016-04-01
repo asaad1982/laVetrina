@@ -136,7 +136,7 @@
 <c:if test="${gridSearch!=null}">
  isc.DynamicForm.create({
                     ID: "filterForm",
-                    width: 300,
+                    width: "80%",
                     position:"relative",
                     operator: "and",
                     saveOnEnter: true,
@@ -152,10 +152,12 @@
                 isc.IButton.create({
                     title: "Search",
                     position:"relative",
+                    
                     click: function () {
                         filterForm.submit();
                     }
                 });
+                
           
 </c:if>
 
@@ -166,7 +168,7 @@
 
 isc.HLayout.create({
     ID:"pageLayout",
-    width: "980",
+    width: "80%",
     height: "600",
     position:"relative",
     members:[

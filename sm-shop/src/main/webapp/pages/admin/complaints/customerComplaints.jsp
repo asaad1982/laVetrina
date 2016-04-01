@@ -19,7 +19,7 @@
 
 
 								<div class="sm-ui-component">
-								<h3><s:message code="label.complaints.title" text="Categories" /></h3>	
+								<h3><s:message code="label.customerComplaints.title" text="Categories" /></h3>	
 								
 							
 								
@@ -31,7 +31,7 @@
 				 <c:set value="/admin/customercomplaints/editComplaint.html" var="editUrl" scope="request"/>
 				 <c:set value="/admin/complaints/Customercomplaints.html" var="afterRemoveUrl" scope="request"/>
 				 <c:set var="entityId" value="id" scope="request"/>
-				 <c:set var="componentTitleKey" value="label.complaints.title" scope="request"/>
+				 <c:set var="componentTitleKey" value="label.customerComplaints.title" scope="request"/>
 				 <c:set var="gridHeader" value="/pages/admin/complaints/customerComplaints-gridHeader.jsp" scope="request"/>
 				 <c:set var="gridSearch" value="/pages/admin/complaints/customerComplaint-Search.jsp" scope="request"/>
 				 <c:set var="canRemoveEntry" value="true" scope="request"/>
