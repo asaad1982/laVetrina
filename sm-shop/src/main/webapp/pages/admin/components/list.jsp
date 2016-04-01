@@ -157,6 +157,7 @@
                         filterForm.submit();
                     }
                 });
+                '<br/><br/>'
                 
           
 </c:if>
@@ -172,6 +173,7 @@ isc.HLayout.create({
     height: "600",
     position:"relative",
     members:[
+
         isc.SectionStack.create({
             ID:"mainLayout",
             visibilityMode:"multiple",
