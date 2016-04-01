@@ -69,7 +69,7 @@ public class PromotionRule extends SalesManagerEntity<Long, PromotionRule> imple
 	public void setPromotionTragetAge(PromotionTragetAge promotionTragetAge) {
 		this.promotionTragetAge = promotionTragetAge;
 	}
-	@Column(length=4)
+	
 	private String targetGender;
 
 	public String getTargetGender() {
