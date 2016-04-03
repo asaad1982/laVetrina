@@ -28,6 +28,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
@@ -79,6 +81,7 @@ public class EmailNotification extends SalesManagerEntity<Long, EmailNotificatio
 		this.emailTemplates = emailTemplates;
 	}
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull
 	private Date eventDate;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy="emailNotification")

@@ -114,6 +114,21 @@
 
 
 				<script language="javascript">
+				 function disableButtonsDown(e) {
+                    if ((e.which || e.keyCode) == 116)
+                        e.preventDefault();
+                         else if(e.keyCode == 13)
+                        { 
+                            if(document.getElementById('formSubmitButton') !=null){
+                                 document.getElementById('formSubmitButton').click();
+                            return false; 
+                            }
+                            else{
+                                e.preventDefault();
+                            }
+                        }
+                };
+                $(document).on("keydown", disableButtonsDown);
 				
 				function getUserInformation() {
 					 // get the form values 
@@ -364,7 +379,7 @@
 												<br/>
 												<a href="#" id="changePassword"><s:message code="label.logonform.forgotpassword" text="Forgot Password"/>?</a>
 										</label>
-										<a href="#" class="btn" id="formSubmitButton"> <s:message
+										<a href="#" class="btn" id="formSubmitButton" id="loginId"> <s:message
 												code="button.label.logon" text="button.label.submit2" /> </a>
 									</div>
 								</div>

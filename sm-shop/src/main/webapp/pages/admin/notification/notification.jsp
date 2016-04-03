@@ -12,8 +12,11 @@
 
 	<script type="text/javascript">
 	
-
-	
+	$(document).ready(function(){ 
+		var eveDate=$('#eventDate').val();
+		var dateFormat=new Date(eveDate);
+	    $("#eventDate").val(dateFormat.toISOString());
+	});
 	
 	
 	
@@ -115,10 +118,12 @@
                    <div class="control-group">
 	                        <label>Event Date</label>
 	                        <div class="controls">
-	                        		 <input id="eventDate" name="eventDate" value="${emailNotification.eventDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                        		 <input id="eventDate" name="eventDate" 
+	                        		 
+	                        		 value="${emailNotification.eventDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">
 	                                 $('#eventDate').datepicker();
-	                                 $( "#eventDate" ).datepicker( "option", "dateFormat", "ISO 8601 - yy-mm-dd" );
+	                                 
 	                                 </script>
 	                                 <span class="help-inline"><form:errors path="eventDate" cssClass="error" /></span>
 	                        </div>
@@ -131,7 +136,7 @@
                               <div class="controls">
                               		 
                               		 
-                              	     <textarea cols="30" id="emailTemplates${status.index}.emailTemplate" name="emailTemplates[${status.index}].emailTemplate">
+                              	     <textarea cols="30" id="emailTemplates${status.index}.emailTemplate"  name="emailTemplates[${status.index}].emailTemplate">
                         				<c:out value="${description.emailTemplate}"/>
                         			 </textarea>
                               </div>

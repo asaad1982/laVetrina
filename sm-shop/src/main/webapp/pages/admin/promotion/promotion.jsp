@@ -145,7 +145,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                     	</div>
 
 						<div class="control-group">
-                        	<label><s:message code="label.product.manufacturer" text="Manufacturer"/></label>
+                        	<label><s:message code="label.promotion.type" text="Manufacturer"/></label>
                           	<div class="controls">
                           		      <form:select items="${promotionTypes}" itemValue="id" itemLabel="name"  path="promotionType.id"/> 
 	                                  <span class="help-inline"></span>
@@ -154,9 +154,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                     	<div class="control-group">
                         	<label><s:message code="label.product.manufacturer" text="Manufacturer"/></label>
                           	<div class="controls">
-						 		<form:select multiple="true" path="promotionRule.brands">
-		        					<form:options items="${manufacturers}"  />
-		    					</form:select> <span class="help-inline"></span>
+						 		<form:select items="${manufacturers}" itemValue="id" itemLabel="descriptions[0].name"  path="promotionRule.brands"/> <span class="help-inline"></span>
                           	</div>
                     	</div>
 

@@ -52,14 +52,12 @@ import com.salesmanager.web.utils.DateUtil;
 
 @Controller
 public class NotificationController {
+	
+	
 	@Autowired
 	CustomerService customerService;
 	private static final Logger LOGGER = LoggerFactory.getLogger(NotificationController.class);	
-	@InitBinder     
-	public void initBinder(WebDataBinder binder){
-	     binder.registerCustomEditor(       Date.class,     
-	                         new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));   
-	}
+	
 	@Autowired
 	EmailNotificationService emailNotificationService;
 	@PreAuthorize("hasRole('PRODUCTS')")
@@ -205,6 +203,23 @@ public class NotificationController {
 
 		setMenu(model, request);
 		//EmailNotification currNotification=emailNotificationService.getById(emailNotification.getId());
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		List<Language> languages = store.getLanguages();
+		
+		model.addAttribute("languages",languages);
+		List<EmailTemplate> emailTemplates=emailNotification.getEmailTemplates();
+		for(Language language:languages){
+			
+			for(EmailTemplate desc : emailTemplates) {				
+				if(desc.getLanguage().getId().equals(language.getId())) {
+					
+					desc.setLanguage(language);
+					
+				}
+		}
+		}
+		
+		model.addAttribute("emailNotification", emailNotification);
 		if (result.hasErrors()) {
 			return "notification";
 		}
@@ -213,11 +228,7 @@ public class NotificationController {
 			emailNotification.setCustomers(emailNotification2.getCustomers());
 		}
 		emailNotificationService.saveOrUpdate(emailNotification);
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		List<Language> languages = store.getLanguages();
 		
-		model.addAttribute("languages",languages);
-		model.addAttribute("emailNotification", emailNotification);
 		model.addAttribute("success","success");
 		return "notification";
 	}
