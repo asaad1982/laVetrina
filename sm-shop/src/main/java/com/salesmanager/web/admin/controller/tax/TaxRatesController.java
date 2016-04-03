@@ -286,7 +286,10 @@ public class TaxRatesController {
 		String taxRateCode = taxRate.getCode();
 		TaxRate tr = taxRateService.getByCode(taxRateCode, store);
 		if(tr!=null) {
-			if(tr.getId().longValue()!=taxRate.getId().longValue()){
+			if(taxRate.getId()!=null && tr.getId().longValue()!=taxRate.getId().longValue()){
+				FieldError error = new FieldError("taxRate","code",messages.getMessage("NotEmpty.taxRate.unique.code", locale));
+				result.addError(error);
+			}else if(tr.getId().longValue()>0){
 				FieldError error = new FieldError("taxRate","code",messages.getMessage("NotEmpty.taxRate.unique.code", locale));
 				result.addError(error);
 			}
