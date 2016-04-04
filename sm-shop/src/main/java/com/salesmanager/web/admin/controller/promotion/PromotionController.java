@@ -22,6 +22,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -69,8 +70,9 @@ public class PromotionController {
 	
 	@InitBinder     
 	public void initBinder(WebDataBinder binder){
-	     binder.registerCustomEditor(       Date.class,     
-	                         new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));   
+		 SimpleDateFormat dateFormat = new SimpleDateFormat(com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT);
+		    dateFormat.setLenient(false);
+		    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
 	}
 	@Autowired
 	PromotionService promotionService;
@@ -851,7 +853,7 @@ public @ResponseBody String updateCategories(HttpServletRequest request, HttpSer
 
 @PreAuthorize("hasRole('PRODUCTS')")
 @RequestMapping(value="/admin/promotion/save.html", method=RequestMethod.POST)
-public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promotion, BindingResult result, Model model, HttpServletRequest request) throws Exception {
+public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promotion, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
 
 	setMenu(model, request);
 	
@@ -863,24 +865,33 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 	List<PromotionTragetAge> promotionTragetAges=productAgeRangeSerivce.list();
 	List<PromotionType> promotionTypes=promotionTypeService.list();
 	List<Language> languages = store.getLanguages();
+	int i=0;
 	for(Language language:languages){
+		
 		PromotionDescription promotionDescription = null;
 		for(PromotionDescription desc : promotion.getPromotionDescriptions()) {
 			
 			
 			if(desc.getLanguageId()==language.getId()) {
+				if(desc.getName()==null || "".equals(desc.getName())){
+					ObjectError error = new ObjectError("promotionDescriptions["+i+"].name",messages.getMessage("NotEmpty.promotion.promotionDescriptions[0].name", locale));
+					result.addError(error);
+				}
 				promotionDescription = desc;
 				promotionDescription.setLanguageName(language.getCode());
 			}
 	}
 		if(promotionDescription==null) {
+			
+			
+			
 			promotionDescription = new PromotionDescription();
 			promotionDescription.setLanguageId(language.getId());
 			promotionDescription.setLanguageName(language.getCode());
 			promotion.getPromotionDescriptions().add(promotionDescription);
 		}
 
-		
+		i++;
 		
 	}
 	List<Manufacturer> manufacturers=mnufacturerService.listByStore(store);

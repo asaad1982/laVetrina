@@ -22,6 +22,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -182,7 +183,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 	
 	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/complaints/save.html", method=RequestMethod.POST)
-	public String saveCategory(@Valid @ModelAttribute("category") ComplaintsReason category, BindingResult result, Model model, HttpServletRequest request) throws Exception {
+	public String saveCategory(@Valid @ModelAttribute("category") ComplaintsReason category, BindingResult result, Model model, HttpServletRequest request,Locale locale) throws Exception {
 
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
@@ -203,8 +204,13 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 		}
 
 			
-			
-			
+			List<ComplaintsReason> complaintsReason=complaintsService.getByName(category.getEnglishName(), language);
+			if(complaintsReason!=null && complaintsReason.size()>0){
+				if(category.getId()==null && category.getId().longValue()==0){
+					ObjectError error = new ObjectError("englishName",messages.getMessage("complaint.name", locale));
+					result.addError(error);
+				}
+			}
 			
 		
 		if (result.hasErrors()) {
