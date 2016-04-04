@@ -93,7 +93,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                   		<div class="control-group">
 	                        <label><s:message code="label.promotion.startDate" text="Date available"/></label>
 	                        <div class="controls">
-	                        		 <input id="startDate" name="startDate" value="${promotion.startDate}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                        		 <input id="startDate" name="startDate" value="${promotion.startDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">
 	                                 $('#startDate').datepicker();
 	                                 </script>
@@ -104,7 +104,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 	                  	<div class="control-group">
 	                        <label><s:message code="label.promotion.endDate" text="Date available"/></label>
 	                        <div class="controls">
-	                        		 <input id="endate" name="endate" value="${promotion.endate}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                        		 <input id="endate" name="endate" value="${promotion.endate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">
 	                                 $('#endate').datepicker();
 	                                 </script>

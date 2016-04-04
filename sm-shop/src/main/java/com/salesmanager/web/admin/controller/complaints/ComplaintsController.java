@@ -206,7 +206,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 			
 			List<ComplaintsReason> complaintsReason=complaintsService.getByName(category.getEnglishName(), language);
 			if(complaintsReason!=null && complaintsReason.size()>0){
-				if(category.getId()==null && category.getId().longValue()==0){
+				if(category.getId()==null ){
 					ObjectError error = new ObjectError("englishName",messages.getMessage("complaint.name", locale));
 					result.addError(error);
 				}
