@@ -3,6 +3,7 @@ package com.salesmanager.core.business.tax.model.taxclass;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -64,7 +65,7 @@ public class TaxClass extends SalesManagerEntity<Long, TaxClass> {
 					nullable = false) })
 	private Set<MerchantStore> stores = new HashSet<MerchantStore>();*/
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
 	@JoinColumn(name="MERCHANT_ID", nullable=true)
 	private MerchantStore merchantStore;
 

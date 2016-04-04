@@ -46,7 +46,7 @@
 				                  
 				                  
 				                  	<form:hidden path="id" />
-				                  	<form:hidden path="merchantStore.id" value="${requestScope.store.id}" />
+				                  	<form:hidden path="merchantStore.id"  />
 							
 							        <div class="form-actions">
 				                  		<div class="pull-right">

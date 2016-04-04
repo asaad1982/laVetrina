@@ -55,7 +55,7 @@
 									dataFetchMode:"paged",
 									canEdit:true,
 									editByCell: true,
-									
+									canReorderRecords:true,
 									editEvent: "click",
 									<c:if test="${showGridSummary!=null && showGridSummary!='' && showGridSummary=='true'}">
 									showGridSummary:true,

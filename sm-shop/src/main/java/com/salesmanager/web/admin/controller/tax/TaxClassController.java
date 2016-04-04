@@ -126,10 +126,14 @@ public class TaxClassController {
 		if (result.hasErrors()) {
 			return com.salesmanager.web.admin.controller.ControllerConstants.Tiles.Tax.taxClasses;
 		}
-		
+		taxClass.setMerchantStore(store);
 		taxClassService.create(taxClass);
 		
 		model.addAttribute("success","success");
+		TaxClass taxClassNew = new TaxClass();
+		taxClass.setMerchantStore(store);
+		
+		model.addAttribute("taxClass",taxClassNew);
 		
 		return com.salesmanager.web.admin.controller.ControllerConstants.Tiles.Tax.taxClasses;
 		
