@@ -70,6 +70,7 @@ public class PromotionController {
 	
 	@InitBinder     
 	public void initBinder(WebDataBinder binder){
+	
 		 SimpleDateFormat dateFormat = new SimpleDateFormat(com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT);
 		    dateFormat.setLenient(false);
 		    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
