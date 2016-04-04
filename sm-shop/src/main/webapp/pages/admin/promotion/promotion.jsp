@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="/WEB-INF/shopizer-tags.tld" prefix="sm" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page session="false" %>			
 <script type="text/javascript">
@@ -93,7 +94,8 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                   		<div class="control-group">
 	                        <label><s:message code="label.promotion.startDate" text="Date available"/></label>
 	                        <div class="controls">
-	                        		 <input id="startDate" name="startDate" value="${promotion.startDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                         <fmt:formatDate value="${promotion.startDate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="startFormattedDate" />
+	                        		 <input id="startDate" name="startDate" value="${startFormattedDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">
 	                                 $('#startDate').datepicker();
 	                                 </script>
@@ -104,7 +106,8 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 	                  	<div class="control-group">
 	                        <label><s:message code="label.promotion.endDate" text="Date available"/></label>
 	                        <div class="controls">
-	                        		 <input id="endate" name="endate" value="${promotion.endate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                        <fmt:formatDate value="${promotion.endate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="formattedDate" />
+	                        		 <input id="endate" name="endate" value="${ formattedDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">
 	                                 $('#endate').datepicker();
 	                                 </script>
@@ -139,7 +142,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 	                  	<div class="control-group">
                         	<label><s:message code="label.promotion.age" text="Manufacturer"/></label>
                           	<div class="controls">
-                          		      <form:select items="${promotionTragetAges}" itemValue="id" itemLabel="name"  path="promotionRule.promotionTragetAge.id"/> 
+                          		      <form:select items="${promotionTragetAges}" itemValue="id" itemLabel="name"  path="promotionRule.promotionTragetAge"/> 
 	                                  <span class="help-inline"></span>
                           	</div>
                     	</div>

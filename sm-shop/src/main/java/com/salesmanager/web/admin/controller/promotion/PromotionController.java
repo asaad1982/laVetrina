@@ -68,13 +68,7 @@ public class PromotionController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PromotionController.class);	
 	
 	
-	@InitBinder     
-	public void initBinder(WebDataBinder binder){
 	
-		 SimpleDateFormat dateFormat = new SimpleDateFormat(com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT);
-		    dateFormat.setLenient(false);
-		    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   
-	}
 	@Autowired
 	PromotionService promotionService;
 	
@@ -902,6 +896,7 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 	model.addAttribute("promotionTragetAges", promotionTragetAges);
 	model.addAttribute("promotionTypes", promotionTypes);
 	model.addAttribute("manufacturers",manufacturers);
+	
 	if (result.hasErrors()) {
 		return "promotion";
 	}
@@ -913,6 +908,8 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 		promotion.setPromotionRule(currPromotion.getPromotionRule());
 		promotion.getPromotionRule().setTargetGender(promotionRule.getTargetGender());
 		promotion.getPromotionRule().setPromotionTragetAge(promotionRule.getPromotionTragetAge());
+	}else{
+		
 	}
 	}
 	promotionService.saveOrUpdate(promotion);

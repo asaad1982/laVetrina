@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.TableGenerator;
 
 import org.hibernate.annotations.Cascade;
@@ -60,13 +61,13 @@ public class PromotionRule extends SalesManagerEntity<Long, PromotionRule> imple
 		this.customers = customers;
 	}
 	
-	private PromotionTragetAge promotionTragetAge;
+	private int promotionTragetAge;
 
-	public PromotionTragetAge getPromotionTragetAge() {
+	public int getPromotionTragetAge() {
 		return promotionTragetAge;
 	}
 
-	public void setPromotionTragetAge(PromotionTragetAge promotionTragetAge) {
+	public void setPromotionTragetAge(int promotionTragetAge) {
 		this.promotionTragetAge = promotionTragetAge;
 	}
 	

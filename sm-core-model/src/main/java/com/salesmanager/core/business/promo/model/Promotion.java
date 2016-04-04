@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
 import com.salesmanager.core.modules.constants.Constants;
@@ -31,12 +32,12 @@ public class Promotion extends SalesManagerEntity<Long, Promotion> implements Se
 
 	
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(iso=ISO.DATE)
 	private Date endate;
 
 	
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(iso=ISO.DATE)
 	private Date startDate;
 	@NotEmpty
 	private String status;

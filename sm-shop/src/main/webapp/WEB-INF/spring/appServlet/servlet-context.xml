@@ -86,6 +86,8 @@
 	
 	<beans:bean id="messages" class="com.salesmanager.web.utils.LabelUtils">
 	</beans:bean>
+	
+	
 
 
 	<beans:import resource="controllers.xml" />
