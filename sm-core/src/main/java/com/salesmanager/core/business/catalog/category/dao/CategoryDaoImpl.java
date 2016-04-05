@@ -421,11 +421,11 @@ public class CategoryDaoImpl extends SalesManagerEntityDaoImpl<Long, Category> i
 		
 		StringBuilder qs = new StringBuilder();
 		qs.append("SELECT pc.CATEGORY_ID, cd.NAME , count(pc.product_id)"
-				+ "  FROM product_category pc , category_description cd,product p "
-				+ "where P.MERCHANT_ID = :mid   "
+				+ "  FROM PRODUCT_CATEGORY pc , CATEGORY_DESCRIPTION cd,PRODUCT p "
+				+ "where p.MERCHANT_ID = :mid   "
 				+ "AND pc.CATEGORY_ID = cd.CATEGORY_ID "
 				+ "and pc.PRODUCT_ID = p.PRODUCT_ID"
-				+ " AND P.AVAILABLE = 1 "
+				+ " AND p.AVAILABLE = 1 "
 				+ "AND SYSDATE() >=  DATE_AVAILABLE  "
 				+ "group by pc.CATEGORY_ID ;");
  
