@@ -20,9 +20,32 @@
 		}
 		<c:forEach items="${category.descriptions}" var="description" varStatus="counter">		
 			$("#name${counter.index}").friendurl({id : 'seUrl${counter.index}'});
+			
+			
 		</c:forEach>
 	});
-	
+	$(document).ready(function(){ 
+	<c:forEach items="${category.descriptions}" var="description" varStatus="counter">	
+	$("#seUrl${counter.index}").on("keypress", function(event) {
+			
+			 var englishAlphabetAndWhiteSpace = /[A-Za-z 0-9]/g;
+   
+		    // Retrieving the key from the char code passed in event.which
+		    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
+				    var key = String.fromCharCode(event.which);
+				      if (event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || englishAlphabetAndWhiteSpace.test(key)) {
+		        return true;
+		    }
+
+		    // If we got this far, just return false because a disallowed key was typed.
+		    return false;
+		});
+			$('#seUrl${counter.index}').on("paste",function(e)
+			{
+			    e.preventDefault();
+			});
+	</c:forEach>
+	});
 	
 	function validateCode() {
 		$('#checkCodeStatus').html('<img src="<c:url value="/resources/img/ajax-loader.gif" />');
