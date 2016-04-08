@@ -454,7 +454,7 @@ public class ProductDaoImpl extends SalesManagerEntityDaoImpl<Long, Product> imp
 		
 		StringBuilder qs = new StringBuilder();
 		qs.append("SELECT pp.PRODUCT_PRICE_AMOUNT,count(p.PRODUCT_ID)"
-				+ " FROM product p ,product_price pp"
+				+ " FROM PRODUCT p ,PRODUCT_PRICE pp"
 				+ " where"
 				+ " p.MERCHANT_ID = :mid"
 				+ " and p.PRODUCT_ID = pp.PRODUCT_PRICE_ID"
@@ -492,8 +492,8 @@ public class ProductDaoImpl extends SalesManagerEntityDaoImpl<Long, Product> imp
 		StringBuilder qs = new StringBuilder();
 		qs.append("SELECT p.product_id,pd.name,pa.QUANTITY"
 				+ ",IFNULL(p.QUANTITY_ORDERED ,0) as QUANTITY_ORDERED "
-				+ "FROM product p,product_availability pa ,"
-				+ "product_description pd where "
+				+ "FROM PRODUCT p,PRODUCT_AVAILABILITY pa ,"
+				+ "PRODUCT_DESCRIPTION pd where "
 				+ "p.MERCHANT_ID =   :mid and p.available = 1 "
 				+ "and p.product_id = pa.PRODUCT_ID and pd.PRODUCT_ID = p.PRODUCT_ID  ;");
  
@@ -1057,7 +1057,7 @@ public class ProductDaoImpl extends SalesManagerEntityDaoImpl<Long, Product> imp
 	}
 	
 	public List<SalesReport> getProductsSales(long languageId,String start ,String end){
-		Query q = super.getEntityManager().createNativeQuery("SELECT p.sku, cd.name,cd.category_id,sum(opp.product_price),pd.NAME,MONTH(o.ORDER_DATE_FINISHED) FROM Product p join product_description pd on p.PRODUCT_ID =pd.PRODUCT_ID and pd.LANGUAGE_ID=:languageId  join product_category pc on p.product_id= pc.product_id  join category_description cd on pc.category_id=cd.category_id and cd.language_id=:languageId  join order_product op on p.sku=op.product_sku join orders o on o.ORDER_ID=op.ORDER_ID  join order_product_price opp on op.order_product_id=opp.order_product_id  where o.ORDER_DATE_FINISHED between :start and :end  group by p.sku");
+		Query q = super.getEntityManager().createNativeQuery("SELECT p.sku, cd.name,cd.category_id,sum(opp.product_price),pd.NAME,MONTH(o.ORDER_DATE_FINISHED) FROM PRODUCT p join PRODUCT_DESCRIPTION pd on p.PRODUCT_ID =pd.PRODUCT_ID and pd.LANGUAGE_ID=:languageId  join PRODUCT_CATEGORY pc on p.product_id= pc.product_id  join CATEGORY_DESCRIPTION cd on pc.category_id=cd.category_id and cd.language_id=:languageId  join ORDER_PRODUCT op on p.sku=op.product_sku join ORDERS o on o.ORDER_ID=op.ORDER_ID  join ORDER_PRODUCT_PRICE opp on op.order_product_id=opp.order_product_id  where o.ORDER_DATE_FINISHED between :start and :end  group by p.sku");
 		q.setParameter("languageId", languageId);
 		q.setParameter("start", start);
 		q.setParameter("end", end);
@@ -1093,8 +1093,8 @@ public class ProductDaoImpl extends SalesManagerEntityDaoImpl<Long, Product> imp
 		qs.append("SELECT o.CUSTOMER_EMAIL_ADDRESS"
 				+ " ,sum(op.PRODUCT_QUANTITY) as "
 				+ "QUANTITY, sum(op.PRODUCT_QUANTITY*op.ONETIME_CHARGE) "
-				+ "as Amount FROM orders o "
-				+ ",order_product op where "
+				+ "as Amount FROM ORDERS o "
+				+ ",ORDER_PRODUCT op where "
 				
 				+ " o.MERCHANTID = :mid  and "
 				+ " o.ORDER_STATUS = 'DELIVERED'"
