@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 import com.salesmanager.core.business.catalog.category.model.Category;
 import com.salesmanager.core.business.catalog.category.model.CategoryDescription;
 import com.salesmanager.core.business.catalog.category.service.CategoryService;
@@ -382,6 +383,7 @@ public class ProductController {
 			}
 			
 			//copy properties
+			
 			newProduct.setSku(product.getProduct().getSku());
 			newProduct.setAvailable(product.getProduct().isAvailable());
 			newProduct.setDateAvailable(date);
@@ -426,6 +428,14 @@ public class ProductController {
 				if(image.isDefaultImage()) {
 					product.setProductImage(image);
 				}
+			}
+		}else{
+			Product product2= productService.getByCode(product.getProduct().getSku(), language);
+			if(product2!=null){
+				
+				ObjectError error = new ObjectError("product.sku",messages.getMessage("product.already.exist", locale));
+				result.addError(error);
+				return "admin-products-edit";
 			}
 		}
 		
