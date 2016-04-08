@@ -17,12 +17,14 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -916,5 +918,8 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 	model.addAttribute("success","success");
 	return "promotion";
 }
-
+@InitBinder     
+protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
+	binder.registerCustomEditor(List.class, "brands", new CustomCollectionEditor(List.class));
+}
 }

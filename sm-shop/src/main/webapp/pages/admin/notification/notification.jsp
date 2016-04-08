@@ -118,9 +118,11 @@
                    <div class="control-group">
 	                        <label>Event Date</label>
 	                        <div class="controls">
+	                          <fmt:formatDate value="${emailNotification.eventDate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="startFormattedDate" />
+	                       
 	                        		 <input id="eventDate" name="eventDate" 
 	                        		 
-	                        		 value="${emailNotification.eventDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                        		 value="${startFormattedDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">
 	                                 $('#eventDate').datepicker();
 	                                 

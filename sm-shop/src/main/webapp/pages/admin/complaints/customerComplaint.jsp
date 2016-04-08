@@ -124,7 +124,9 @@
                   <div class="control-group">
 	                        <label>Complaint Date</label>
 	                        <div class="controls">
-	                        		${customerComplaint.complaintsDate}
+	                        <fmt:formatDate value="${customerComplaint.complaintsDate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="startFormattedDate" />
+	                       
+	                        		${startFormattedDate}
 	                        </div>
 	                  	</div>
                   
@@ -142,7 +144,9 @@
                    <div class="control-group">
 	                        <label>Closing Date</label>
 	                        <div class="controls">
-	                        		 <input id="closingDate" name="closingDate" value="${customerComplaint.closingDate}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                        <fmt:formatDate value="${customerComplaint.closingDate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="closingDate" />
+	                       
+	                        		 <input id="closingDate" name="closingDate" value="${closingDate}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">
 	                                 $('#closingDate').datepicker();
 	                                 </script>
