@@ -13,13 +13,43 @@
 	
 
 	
-$('#englishName').keypress(function (e) {
-        if (e.which !== 0 &&
-            !e.ctrlKey && !e.metaKey && !e.altKey) {
-            alert(String.fromCharCode(e.which));
-        }
-    });
+$(document).ready(function(){ 
+$("#englishName").on("keypress", function(event) {
+ var englishAlphabetAndWhiteSpace = /[A-Za-z ]/g;
+   
+    // Retrieving the key from the char code passed in event.which
+    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
+    var key = String.fromCharCode(event.which);
+      if (event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || englishAlphabetAndWhiteSpace.test(key)) {
+        return true;
+    }
 
+    // If we got this far, just return false because a disallowed key was typed.
+    return false;
+});
+$('#englishName').on("paste",function(e)
+{
+    e.preventDefault();
+});
+
+$("#arabicName").on("keypress", function(event) {
+ var englishAlphabetAndWhiteSpace = /[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FF ]/g;
+   
+    // Retrieving the key from the char code passed in event.which
+    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
+    var key = String.fromCharCode(event.which);
+      if (event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39 || englishAlphabetAndWhiteSpace.test(key)) {
+        return true;
+    }
+
+    // If we got this far, just return false because a disallowed key was typed.
+    return false;
+});
+$('#arabicName').on("paste",function(e)
+{
+    e.preventDefault();
+});
+});
 	
 	
 	

@@ -65,7 +65,10 @@
 	 <mvc:annotation-driven conversion-service="conversionService"/>
 
     <bean id="conversionService"
-          class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+          
+        
+          </bean>
 
 
 	
