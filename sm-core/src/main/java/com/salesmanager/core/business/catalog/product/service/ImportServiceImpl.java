@@ -102,7 +102,7 @@ public class ImportServiceImpl implements ImportService {
 								
 								productAvailability.setProductQuantity((int) Double.parseDouble(cellVal) );
 								}catch(NumberFormatException numberFormatException){
-									errors.add("Product Quantity is number only");
+									errors.add("Product Quantity is number only on row"+row.getRowNum());
 								}
 	                    	  
 	                      }else if(cell.getColumnIndex()==6){
@@ -112,7 +112,7 @@ public class ImportServiceImpl implements ImportService {
 								try{
 								productPrice.setProductPriceAmount(new BigDecimal(Double.parseDouble(cellVal)));
 								}catch(NumberFormatException nfe){
-	                    			errors.add("Product Price Amount is number only");
+	                    			errors.add("Product Price Amount is number only on row"+row.getRowNum());
 	                    		}
 								productAvailability.getPrices().add(productPrice);
 	                    	  
@@ -122,7 +122,7 @@ public class ImportServiceImpl implements ImportService {
 	                    		try{									
 	                    			product.setProductWeight(new BigDecimal(Double.parseDouble(cellVal)));
 	                    		}catch(NumberFormatException nfe){
-	                    			errors.add("Product Weight is number only");
+	                    			errors.add("Product Weight is number only on row"+row.getRowNum());
 	                    		}
 	                      }else  if(cell.getColumnIndex()==8){
 	                    	  boolean b =false;
@@ -134,7 +134,7 @@ public class ImportServiceImpl implements ImportService {
 	                    		  try{
 	                    		  b=cell.getBooleanCellValue();
 	                    		  }catch(Exception ex){
-	                    			  errors.add("Invalid Status for product");
+	                    			  errors.add("Invalid Status for product on row"+row.getRowNum());
 	                    		  }
 	                    	  }
 	                    	  
