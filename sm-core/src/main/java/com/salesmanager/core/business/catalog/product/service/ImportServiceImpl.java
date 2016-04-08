@@ -138,6 +138,7 @@ public class ImportServiceImpl implements ImportService {
 	                      }
 	                  }
 	                  }
+	                  if(errors.size()==0){
 	                  product.setMerchantStore(store);
 	                  productService.save(product);
 	                  product.setDescriptions(new HashSet<ProductDescription>());
@@ -146,7 +147,7 @@ public class ImportServiceImpl implements ImportService {
 	                  product.setAvailabilities(new HashSet<ProductAvailability>());
 	                  product.getAvailabilities().add(productAvailability);
 	                  productAvailability.setProduct(product);
-	                  if(errors.size()==0){
+	                  
 	                  productService.update(product);
 	                  }
 	            	}
