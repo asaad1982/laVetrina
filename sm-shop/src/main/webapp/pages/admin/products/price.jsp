@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page session="false" %>
 <script type="text/javascript">
 var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong format" />';
@@ -146,7 +147,9 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 	              <div class="control-group">
 	                        <label><s:message code="label.product.price.special.startdate" text="Special start date"/></label>
 	                        <div class="controls">
-	                        		 <input name="productPriceSpecialStartDate" id="productPriceSpecialStartDate" value="${price.price.productPriceSpecialStartDate}" class="small" type="text" data-datepicker="datepicker"> 
+	                        		 <fmt:formatDate value="${price.price.productPriceSpecialStartDate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="startFormattedDate" />
+	                        
+	                        		 <input name="productPriceSpecialStartDate" id="productPriceSpecialStartDate" value="${startFormattedDate}" class="small" type="text" data-datepicker="datepicker"> 
 	                                 <span class="help-inline"><form:errors path="productPriceSpecialStartDate" cssClass="error" /></span>
 	                        </div>
 	              </div>
@@ -155,7 +158,9 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 	              <div class="control-group">
 	                        <label><s:message code="label.product.price.special.enddate" text="Special end date"/></label>
 	                        <div class="controls">
-	                        		 <input name="productPriceSpecialEndDate" id="productPriceSpecialEndDate" value="${price.price.productPriceSpecialEndDate}" class="small" type="text" data-datepicker="datepicker"> 
+	                         <fmt:formatDate value="${price.price.productPriceSpecialEndDate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="productPriceSpecialEndDate" />
+	                        
+	                        		 <input name="productPriceSpecialEndDate" id="productPriceSpecialEndDate" value="${productPriceSpecialEndDate}" class="small" type="text" data-datepicker="datepicker"> 
 	                                 <span class="help-inline"><form:errors path="productPriceSpecialEndDate" cssClass="error" /></span>
 	                        </div>
 	              </div>
