@@ -289,7 +289,10 @@ public class ProductsController {
 	        	}else
 	        	result.addError( new ObjectError("fileData",messages.getMessage(se.getMessageCode(), locale)) );
 				return "admin-products";
-	        }
+	        }catch (Exception e) {
+	        	result.addError( new ObjectError("fileData","An Error Occured will uploading file") );
+				return "admin-products";
+			}
 			
 
 	        model.addAttribute("success","success");

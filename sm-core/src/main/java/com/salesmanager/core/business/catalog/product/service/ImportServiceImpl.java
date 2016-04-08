@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -57,10 +58,13 @@ public class ImportServiceImpl implements ImportService {
 	            List<Manufacturer> manufacturers=manufacturerService.listByStore(store, language);
 	            Sheet sheet=workbook.getSheetAt(0);
 	            List<String> errors=new ArrayList<String>();
+	            List<String> thrownError=new ArrayList<String>();
 	            for (Row row : sheet) {
+	            	Product product=new Product();
+	            	product.setMerchantStore(store);
 	            	if(row.getRowNum()!=0){
 	            	if(containsValue(row,0,8)){
-	            	Product product=new Product();
+	            	
 	                  Iterator<Cell> cellIterator = row.cellIterator();
 	                  product.setDescriptions(null); 
 	                  ProductDescription description=new ProductDescription();
@@ -139,23 +143,25 @@ public class ImportServiceImpl implements ImportService {
 	                  }
 	                  }
 	                  if(errors.size()==0){
-	                  product.setMerchantStore(store);
-	                  productService.save(product);
-	                  product.setDescriptions(new HashSet<ProductDescription>());
-	                  product.getDescriptions().add(description);
-	                  description.setProduct(product);
-	                  product.setAvailabilities(new HashSet<ProductAvailability>());
-	                  product.getAvailabilities().add(productAvailability);
-	                  productAvailability.setProduct(product);
-	                  
-	                  productService.update(product);
+	                 
+		                  productService.save(product);
+		                  product.setDescriptions(new HashSet<ProductDescription>());
+		                  product.getDescriptions().add(description);
+		                  description.setProduct(product);
+		                  product.setAvailabilities(new HashSet<ProductAvailability>());
+		                  product.getAvailabilities().add(productAvailability);
+		                  productAvailability.setProduct(product);
+		                  
+		                  productService.update(product);
 	                  }
+	                  thrownError.addAll(errors);
+	                  errors=Collections.emptyList();
 	            	}
 	            
 	            }
 	            }
-                if(errors.size()>0){
-                	throw new ServiceException(errors);
+                if(thrownError.size()>0){
+                	throw new ServiceException(thrownError);
                 }
 	        } catch (IOException e) {
 	            e.printStackTrace();
@@ -200,8 +206,10 @@ public class ImportServiceImpl implements ImportService {
 	        default:  
 	            throw new ServiceException("There is no support for this type of cell");                        
 	    }
-
+	    if(result!=null)
 	    return result.toString();
+	    else
+	    return "";
 	}
 
 }
