@@ -19,7 +19,7 @@
                          title: "Date To",
                          type: "date",
                          useTextField: true
-                        }
+                        },
                         {type: "blurb",
                          defaultValue: "<b>AND</b>"
                         },
