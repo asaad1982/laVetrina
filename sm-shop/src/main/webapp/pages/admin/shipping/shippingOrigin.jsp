@@ -87,7 +87,13 @@ function getZones(countryCode){
 }
 
 function resetData(){
-
+$('#postalCode').val('');
+$('#address').val('');
+$('#city').val('');
+$('#stateprovince').val('');
+document.getElementById("origin").reset();
+document.getElementById("origin").action="/sm-shop/admin/shipping/origin/reset.html";
+document.getElementById("origin").submit();
 }
 
 </script>
@@ -105,7 +111,7 @@ function resetData(){
 				</p>
 
 				<c:url var="origin" value="/admin/shipping/origin/post.html"/>
-
+					<c:url var="resetUrl" value="/admin/shipping/origin/reset.html"/>
 
 				<form:form method="POST" commandName="origin" action="${origin}">
 				
@@ -124,7 +130,7 @@ function resetData(){
 	                  <div class="control-group">
 	                        <label><s:message code="label.generic.address" text="Address"/></label>
 	                        <div class="controls">
-	                                    <form:input cssClass="input-large highlight" path="address" maxlength="256"/>
+	                                    <form:input cssClass="input-large highlight" path="address" maxlength="256" id="address"/>
 	                                    <span class="help-inline"><form:errors path="address" cssClass="error" /></span>
 	                        </div>
 	                  </div>
@@ -133,7 +139,7 @@ function resetData(){
 	                  <div class="control-group">
 	                        <label><s:message code="label.generic.city" text="City"/></label>
 	                        <div class="controls">
-	                                    <form:input cssClass="input-large highlight" path="city" maxlength="100"/>
+	                                    <form:input cssClass="input-large highlight" path="city" maxlength="100" id="city"/>
 	                                    <span class="help-inline"><form:errors path="city" cssClass="error" /></span>
 	                        </div>
 	                  </div>
@@ -162,7 +168,7 @@ function resetData(){
 	                  <div class="control-group">
 	                        <label><s:message code="label.generic.postalcode" text="Postal code"/></label>
 	                        <div class="controls">
-	                                    <form:input cssClass="input-large highlight" path="postalCode" maxlength="20"/>
+	                                    <form:input cssClass="input-large highlight" path="postalCode" maxlength="20" id="postalCode"/>
 	                                    <span class="help-inline"><form:errors path="postalCode" cssClass="error" /></span>
 	                        </div>
 	                  </div>
@@ -173,7 +179,7 @@ function resetData(){
 	                  			
 	                  		</div>
 	                  		 <div class="pull-left">
-			                                    <button type="reset" >Reset</button>
+			                                    <button type="reset" onclick="resetData();" >Reset</button>
 			                            </div>
 	                  		
 	            	 </div>

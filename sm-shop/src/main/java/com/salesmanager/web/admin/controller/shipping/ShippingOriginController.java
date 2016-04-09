@@ -81,7 +81,29 @@ public class ShippingOriginController {
 		
 		
 	}
-	
+	@PreAuthorize("hasRole('SHIPPING')")
+	@RequestMapping(value="/admin/shipping/origin/reset.html", method=RequestMethod.POST)
+	public String reset(@Valid @ModelAttribute("origin") ShippingOrigin origin,BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+		this.setMenu(model, request);
+
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		Language language = (Language)request.getAttribute("LANGUAGE");		
+		
+		ShippingOrigin shippingOrigin=null;
+		
+		List<Country> countries = countryService.getCountries(language);
+		
+		if(shippingOrigin==null) {
+			shippingOrigin = new ShippingOrigin();
+			shippingOrigin.setCountry(store.getCountry());
+			shippingOrigin.setState(store.getStorestateprovince());
+			shippingOrigin.setZone(store.getZone());
+		}
+
+		model.addAttribute("countries", countries);
+		model.addAttribute("origin", shippingOrigin);
+		return "shipping-origin";
+	}
 	@PreAuthorize("hasRole('SHIPPING')")
 	@RequestMapping(value="/admin/shipping/origin/post.html", method=RequestMethod.POST)
 	public String saveShippingOrigin(@Valid @ModelAttribute("origin") ShippingOrigin origin,BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
