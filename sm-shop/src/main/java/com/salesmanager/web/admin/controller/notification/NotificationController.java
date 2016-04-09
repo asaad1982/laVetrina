@@ -298,8 +298,8 @@ if(!StringUtils.isBlank(firstName)||!StringUtils.isBlank(lastName) || !StringUti
 	customers = customerService.getBySearchCritera(firstName, lastName, gender, birthDate,country,customerMail );
 				
 			}else {
-				CustomerList customerList = customerService.listByStore(store,new CustomerCriteria());
-				customers=customerList.getCustomers();
+//				CustomerList customerList = customerService.listByStore(store,new CustomerCriteria());
+				customers=customerService.listByStore(store);
 			}
 			
 			
