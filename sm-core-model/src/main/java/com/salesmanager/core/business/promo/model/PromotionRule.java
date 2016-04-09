@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
@@ -43,7 +44,16 @@ public class PromotionRule extends SalesManagerEntity<Long, PromotionRule> imple
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@Transient
+	private String[] brandsId;
 	
+	public String[] getBrandsId() {
+		return brandsId;
+	}
+
+	public void setBrandsId(String[] brandsId) {
+		this.brandsId = brandsId;
+	}
 	@ManyToMany(fetch=FetchType.EAGER, cascade = {CascadeType.REFRESH})
 	@JoinTable(name = "PROMOTION_CUSTOMER", schema="lavetrina", joinColumns = { 
 			@JoinColumn(name = "PROMOTION_ID", nullable = false, updatable = false) }

@@ -67,7 +67,7 @@
 				<h3>
 					<c:choose>
 						<c:when test="${customerComplaint.id!=null && customerComplaint.id>0}">
-								<s:message code="label.complaints.editcategory" text="Edit category" /> <c:out value="${customerComplaint.id}"/>
+								<s:message code="label.complaints.editcustomerComplaint" text="Edit category" /> <c:out value="${customerComplaint.id}"/>
 						</c:when>
 						<c:otherwise>
 								<s:message code="label.complaints.createcategory" text="Create category" />

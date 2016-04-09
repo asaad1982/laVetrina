@@ -7,9 +7,9 @@
 
 
 					{title:"<s:message code="label.entity.id" text="Id"/>", name:"id", canFilter:false},
-        			{title:"<s:message code="label.entity.name" text="Complaints "/>", name:"name"},
+        			{title:"Offer Name", name:"name"},
         			
         			{title:"<s:message code="label.entity.status" text="status"/>", name:"status"},
-        			{title:"<s:message code="label.entity.date" text="date"/>", name:"startDate"},
-        			{title:"<s:message code="label.entity.date" text="date"/>", name:"endDate"},
+        			{title:"Start Date", name:"startDate"},
+        			{title:"End Date", name:"endDate"},
         			{title:"<s:message code="label.entity.details" text="Details"/>", name: "buttonField", align: "center",canFilter:false,canSort:false, canReorder:false}

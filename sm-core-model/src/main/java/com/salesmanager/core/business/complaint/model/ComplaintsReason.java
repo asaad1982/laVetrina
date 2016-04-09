@@ -38,7 +38,7 @@ public class ComplaintsReason extends SalesManagerEntity<Long, ComplaintsReason>
 
 	@NotEmpty
 	@Column(name="name_en", length=100, nullable=false)
-	@Pattern(regexp="^[a-zA-Z0-9]*$")
+	@Pattern(regexp="^[a-zA-Z0-9 ]*$")
 	private String englishName;
 	
 	@NotEmpty

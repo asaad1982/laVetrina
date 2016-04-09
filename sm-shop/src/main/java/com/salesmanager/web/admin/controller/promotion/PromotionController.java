@@ -167,6 +167,15 @@ public class PromotionController {
 		}
 		List<Manufacturer> manufacturers=mnufacturerService.listByStore(store);
 		
+		if(promotion.getPromotionRule()!=null && promotion.getPromotionRule().getBrands()!=null ){
+			
+			promotion.getPromotionRule().setBrandsId(new String[promotion.getPromotionRule().getBrands().size()]);
+			for (int j = 0; j < promotion.getPromotionRule().getBrands().size(); j++) {	
+				
+				promotion.getPromotionRule().getBrandsId()[j]=promotion.getPromotionRule().getBrands().get(j).getId()+"";
+			}
+		}
+		
 		model.addAttribute("languages",languages);
 		model.addAttribute("promotion", promotion);
 		model.addAttribute("promotionTragetAges", promotionTragetAges);
@@ -239,8 +248,8 @@ public class PromotionController {
 				entry.put("id", promotion.getId());
 				
 				entry.put("name", promotion.getPromotionDescriptions().get(0).getName());
-				entry.put("startDate", promotion.getStartDate());
-				entry.put("endDate", promotion.getEndate());
+				entry.put("startDate", DateUtil.formatDate(promotion.getStartDate()));
+				entry.put("endDate", DateUtil.formatDate(promotion.getEndate()));
 				entry.put("status", promotion.getStatus());
 				resp.addDataEntry(entry);
 				
@@ -850,7 +859,7 @@ public @ResponseBody String updateCategories(HttpServletRequest request, HttpSer
 
 @PreAuthorize("hasRole('PRODUCTS')")
 @RequestMapping(value="/admin/promotion/save.html", method=RequestMethod.POST)
-public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promotion, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+public String saveNotification(@Valid @ModelAttribute("promotion") Promotion promotion, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
 
 	setMenu(model, request);
 	
@@ -862,6 +871,17 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 	List<PromotionTragetAge> promotionTragetAges=productAgeRangeSerivce.list();
 	List<PromotionType> promotionTypes=promotionTypeService.list();
 	List<Language> languages = store.getLanguages();
+	if(promotion.getStartDate()==null){
+		ObjectError error = new ObjectError("promotion.startDate","Start Date is required");
+		result.addError(error);
+	}
+	if(promotion.getEndate()==null){
+		ObjectError error = new ObjectError("promotion.endate","End Date is required");
+		result.addError(error);
+	}if("-1".equals(promotion.getStatus())){
+		ObjectError error = new ObjectError("promotion.status","Status is required");
+		result.addError(error);
+	}	
 	int i=0;
 	for(Language language:languages){
 		
@@ -904,7 +924,7 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 	}
 	if(promotion.getId()!=null && promotion.getId()>0){
 		Promotion currPromotion=promotionService.getById(promotion.getId());
-		
+
 	if(currPromotion!=null){
 		PromotionRule promotionRule=promotion.getPromotionRule();
 		promotion.setPromotionRule(currPromotion.getPromotionRule());
@@ -913,6 +933,14 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 	}else{
 		
 	}
+	}
+	if(promotion.getPromotionRule()!=null && promotion.getPromotionRule().getBrandsId()!=null ){
+		promotion.getPromotionRule().setBrands(new ArrayList<Manufacturer>());
+		for (int j = 0; j < promotion.getPromotionRule().getBrandsId().length; j++) {	
+			Manufacturer manufacturer=new Manufacturer();
+			manufacturer.setId(Long.parseLong(promotion.getPromotionRule().getBrandsId()[j]));
+			promotion.getPromotionRule().getBrands().add(manufacturers.get(manufacturers.indexOf(manufacturer)));
+		}
 	}
 	promotionService.saveOrUpdate(promotion);
 	model.addAttribute("success","success");
