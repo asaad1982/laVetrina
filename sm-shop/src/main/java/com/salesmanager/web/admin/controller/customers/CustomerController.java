@@ -1,5 +1,7 @@
 package com.salesmanager.web.admin.controller.customers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -361,6 +363,20 @@ public class CustomerController {
 		customer.getBilling().setCountry(billingCountry );
 		newCustomer.setBilling( customer.getBilling()  );
 		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		//String dateInString = "7-Jun-2013";
+
+		Date date=null;
+		try {
+			// (String)request.getAttribute("dateOfBirth");
+
+			date = formatter.parse( (String)request.getAttribute("dateOfBirth"));
+		 
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		newCustomer.setDateOfBirth(date);  //Billing( customer.getBilling()  );
 		customerService.saveOrUpdate(newCustomer);
 		
 		model.addAttribute("customer", newCustomer);
@@ -750,8 +766,11 @@ public class CustomerController {
 		Menu currentMenu = (Menu)menus.get("customer");
 		model.addAttribute("currentMenu",currentMenu);
 		model.addAttribute("activeMenus",activeMenus);
+String dateOfBirth = "";
+		
+		model.addAttribute("dateOfBirth",dateOfBirth);
 
-
+	//	dateOfBirth
 		//
 		
 	}

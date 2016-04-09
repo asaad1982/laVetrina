@@ -2,12 +2,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page session="false" %>
 
 
+ <link href="<c:url value="/resources/css/bootstrap/css/datepicker.css" />" rel="stylesheet"></link>
+ <script src="<c:url value="/resources/js/bootstrap/bootstrap-datepicker.js" />"></script>
+<script src="<c:url value="/resources/js/ckeditor/ckeditor.js" />"></script>
+
 <script src="<c:url value="/resources/js/jquery.alphanumeric.pack.js" />"></script>
-<script src="<c:url value="/resources/js/bootstrap/bootstrap-datepicker.js" />"></script>
+
 
 
 <script>
@@ -334,7 +339,7 @@ function resetCustomerPassword(customerId){
 				</h3>	
 				<br/>
 				
-				<c:if test="${customer.id!=null && customer.id>0}">
+			<%-- 	<c:if test="${customer.id!=null && customer.id>0}">
 				<div class="btn-group" style="z-index:400000;">
                     <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><s:message code="label.generic.moreoptions" text="More options"/> ... <span class="caret"></span></button>
                      <ul class="dropdown-menu">
@@ -342,7 +347,7 @@ function resetCustomerPassword(customerId){
                      </ul>
                 </div><!-- /btn-group -->
 			    <br/>
-				</c:if>
+				</c:if> --%>
 				
 				<c:set var="customerAttr" value="${customer}"/>
 
@@ -389,6 +394,23 @@ function resetCustomerPassword(customerId){
 	                        		<span class="input-large uneditable-input">${customer.nick}</span><form:hidden path="nick" />
 	                        </div>
 	                </div>
+	                
+	                
+	      
+
+  <div class="control-group">
+	                        <label>Birthday</label>
+	                        <div class="controls">
+	                        <fmt:formatDate value="${dateOfBirth}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="dateOfBirth" />
+	                       
+	                        		 <input id="dateOfBirth" name="dateOfBirth" value="${dateOfBirth}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                                 <script type="text/javascript">
+	                                 $('#dateOfBirth').datepicker();
+	                                 </script>
+	                                 <span class="help-inline"><form:errors path="dateOfBirth" cssClass="error" /></span>
+	                        </div>
+	                  	</div>
+
 
 
 					<address>
