@@ -135,6 +135,7 @@
                                     <button type="submit" class="btn btn-success" id="submit"><s:message code="label.generic.search" text="Submit"/></button>
                             </div>
                    </div>	
+                   <br><br><br><br><br><br><br><br>
 								
 				 <!-- Listing grid include -->
 				 <c:set value="/admin/report/paging.html?startDate=${startDate}&endDate=${endDate}" var="pagingUrl" scope="request"/>
