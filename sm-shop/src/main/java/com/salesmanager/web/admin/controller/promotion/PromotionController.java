@@ -169,7 +169,7 @@ public class PromotionController {
 		
 		if(promotion.getPromotionRule()!=null && promotion.getPromotionRule().getBrands()!=null ){
 			
-			promotion.getPromotionRule().setBrandsId(new String[]{});
+			promotion.getPromotionRule().setBrandsId(new String[promotion.getPromotionRule().getBrands().size()]);
 			for (int j = 0; j < promotion.getPromotionRule().getBrands().size(); j++) {	
 				
 				promotion.getPromotionRule().getBrandsId()[j]=promotion.getPromotionRule().getBrands().get(j).getId()+"";
