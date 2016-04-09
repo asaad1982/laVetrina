@@ -405,7 +405,7 @@ public class CustomerDAOImpl extends SalesManagerEntityDaoImpl<Long, Customer> i
 			.leftJoin(qCustomerOptionValue.descriptions).fetch()
 			.where(qCustomer.merchantStore.id.eq(store.getId()));
 		
-		return query.list(qCustomer);
+		return query.distinct().list(qCustomer);
 	}
 
 }

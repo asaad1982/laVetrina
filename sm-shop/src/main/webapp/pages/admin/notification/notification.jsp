@@ -13,11 +13,7 @@
 
 	<script type="text/javascript">
 	
-	$(document).ready(function(){ 
-		var eveDate=$('#eventDate').val();
-		var dateFormat=new Date(eveDate);
-	    $("#eventDate").val(dateFormat.toISOString());
-	});
+	
 	
 	
 	
