@@ -432,7 +432,13 @@ response.setDateHeader("Expires", 0); // Proxies.
 			$("#dash-board-availabilityCategory-link").click(function() {
   				window.location='<c:url value="/admin/orders/availabilityCategory.html" />';
 			});
-			
+			  var ambit = $(document);
+
+				    // Disable Cut + Copy + Paste (input)
+				    ambit.bind('copy paste cut', function (e) {
+				        e.preventDefault(); //disable cut,copy,paste
+				        return false;
+				    });
 			
 		}); 
 		
