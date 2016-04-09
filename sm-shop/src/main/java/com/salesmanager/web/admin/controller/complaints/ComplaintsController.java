@@ -490,7 +490,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 		//display menu
 		Map<String,String> activeMenus = new HashMap<String,String>();
 		
-		activeMenus.put("complaints", "Complaints");
+		activeMenus.put("Complaints", "Complaints");
 		activeMenus.put("catalogue-complaints", "catalogue-complaints");
 		@SuppressWarnings("unchecked")
 		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
