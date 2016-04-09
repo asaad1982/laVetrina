@@ -82,11 +82,10 @@ public class NotificationController {
 		
 		
 		if( notificationId!=0) {
-			if(request.getSession().getAttribute("emailNotification")==null){
+			
 				emailNotification=emailNotificationService.getById(notificationId);
-			}else{
-				emailNotification=(EmailNotification) request.getSession().getAttribute("emailNotification");
-			}
+				request.getSession().setAttribute("emailNotification",emailNotification);
+			
 			
 		}else{
 			emailNotification.setEmailTemplates(new ArrayList<EmailTemplate>());
