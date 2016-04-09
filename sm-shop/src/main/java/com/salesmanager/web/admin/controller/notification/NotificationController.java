@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.salesmanager.core.business.catalog.product.model.manufacturer.Manufacturer;
 import com.salesmanager.core.business.complaint.model.CustomerComplaint;
 import com.salesmanager.core.business.customer.model.Customer;
+import com.salesmanager.core.business.customer.model.CustomerCriteria;
+import com.salesmanager.core.business.customer.model.CustomerList;
 import com.salesmanager.core.business.customer.service.CustomerService;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.notification.EmailNotification;
@@ -94,13 +96,15 @@ public class NotificationController {
 		List<EmailTemplate> emailTemplates=emailNotification.getEmailTemplates();
 		for(Language language:languages){
 			EmailTemplate emailTemplate = null;
+			if(emailTemplates!=null){
 			for(EmailTemplate desc : emailTemplates) {				
-				if(desc.getLanguage().getCode().equals(language.getCode())) {
+				if(desc.getLanguage()!=null && desc.getLanguage().getCode().equals(language.getCode())) {
 					emailTemplate = desc;
 					
 					
 				}
 		}
+			}
 			if(emailTemplate==null) {
 				emailTemplate = new EmailTemplate();
 				emailTemplate.setLanguage(language);
@@ -294,8 +298,10 @@ if(!StringUtils.isBlank(firstName)||!StringUtils.isBlank(lastName) || !StringUti
 				
 	customers = customerService.getBySearchCritera(firstName, lastName, gender, birthDate,country,customerMail );
 				
-			}else 
-			 customers = customerService.listByStore(store);
+			}else {
+				CustomerList customerList = customerService.listByStore(store,new CustomerCriteria());
+				customers=customerList.getCustomers();
+			}
 			
 			
 			//get inclusions
