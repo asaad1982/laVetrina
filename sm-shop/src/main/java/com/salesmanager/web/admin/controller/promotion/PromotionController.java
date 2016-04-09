@@ -862,6 +862,14 @@ public String saveComplaints(@Valid @ModelAttribute("promotion") Promotion promo
 	List<PromotionTragetAge> promotionTragetAges=productAgeRangeSerivce.list();
 	List<PromotionType> promotionTypes=promotionTypeService.list();
 	List<Language> languages = store.getLanguages();
+	if(promotion.getStartDate()==null){
+		ObjectError error = new ObjectError("startDate","Start Date is required");
+		result.addError(error);
+	}
+	if(promotion.getEndate()==null){
+		ObjectError error = new ObjectError("endate","End Date is required");
+		result.addError(error);
+	}	
 	int i=0;
 	for(Language language:languages){
 		
