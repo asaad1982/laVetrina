@@ -401,7 +401,7 @@ function resetCustomerPassword(customerId){
   <div class="control-group">
 	                        <label>Birthday</label>
 	                        <div class="controls">
-	                        <fmt:formatDate value="${dateOfBirth}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="dateOfBirth" />
+	                        <fmt:formatDate value="${customer.dateOfBirth}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="dateOfBirth" />
 	                       
 	                        		 <input id="dateOfBirth" name="dateOfBirth" value="${dateOfBirth}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">

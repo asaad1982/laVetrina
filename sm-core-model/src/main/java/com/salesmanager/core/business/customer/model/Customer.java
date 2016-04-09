@@ -31,6 +31,7 @@ import javax.validation.Valid;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.salesmanager.core.business.catalog.product.model.review.ProductReview;
 import com.salesmanager.core.business.customer.model.attribute.CustomerAttribute;
@@ -60,7 +61,7 @@ public class Customer extends SalesManagerEntity<Long, Customer> {
 	@Enumerated(value = EnumType.STRING)
 	private CustomerGender gender;
 
-
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CUSTOMER_DOB")
 	private Date dateOfBirth;

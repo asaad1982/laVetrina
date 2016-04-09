@@ -323,7 +323,7 @@ public class CustomerController {
 		
 
 		newCustomer.setEmailAddress(customer.getEmailAddress() );		
-		
+		newCustomer.setDateOfBirth(customer.getDateOfBirth() );		
 		//get Customer country/zone 		
 		Country deliveryCountry = countryService.getByCode( customer.getDelivery().getCountry().getIsoCode()); 
 		Country billingCountry  = countryService.getByCode( customer.getBilling().getCountry().getIsoCode()) ;
@@ -363,20 +363,20 @@ public class CustomerController {
 		customer.getBilling().setCountry(billingCountry );
 		newCustomer.setBilling( customer.getBilling()  );
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		//String dateInString = "7-Jun-2013";
-
-		Date date=null;
-		try {
-			// (String)request.getAttribute("dateOfBirth");
-
-			date = formatter.parse( (String)request.getAttribute("dateOfBirth"));
-		 
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		newCustomer.setDateOfBirth(date);  //Billing( customer.getBilling()  );
+//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//		//String dateInString = "7-Jun-2013";
+//
+//		Date date=null;
+//		try {
+//			// (String)request.getAttribute("dateOfBirth");
+//
+//			date = formatter.parse( (String)request.getAttribute("dateOfBirth"));
+//		 
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+	//	newCustomer.setDateOfBirth(date);  //Billing( customer.getBilling()  );
 		customerService.saveOrUpdate(newCustomer);
 		
 		model.addAttribute("customer", newCustomer);
