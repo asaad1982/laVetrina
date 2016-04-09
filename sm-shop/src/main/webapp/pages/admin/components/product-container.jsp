@@ -180,7 +180,7 @@ isc.HLayout.create({
     members:[
         isc.SectionStack.create({
             ID:"leftSideLayout",
-            width:200,
+            width:400,
             showResizeBar:true,
             visibilityMode:"multiple",
             animateSections:true,

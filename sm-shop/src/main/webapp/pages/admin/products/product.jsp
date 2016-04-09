@@ -289,7 +289,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                         <label class="required"><s:message code="label.product.price" text="Price"/></label>
 
                         <div class="controls">
-                                    <form:input id="productPriceAmount" cssClass="highlight" path="productPrice" maxlength="19"/>
+                                    <form:input id="productPriceAmount" cssClass="highlight" path="productPrice" maxlength="10"/>
                                     <span id="help-price" class="help-inline"><form:errors path="productPrice" cssClass="error" /></span>
                         </div>
                   </div>
@@ -342,7 +342,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                  <div class="control-group">
                         <label><s:message code="label.product.weight" text="Weight"/></label>
                         <div class="controls">
-                                    <form:input id="weight" cssClass="" path="product.productWeight" maxlength="19"/>
+                                    <form:input id="weight" cssClass="" path="product.productWeight" maxlength="15"/>
                                     <span class="help-inline"><form:errors path="product.productWeight" cssClass="error" /></span>
                         </div>
                   </div>
@@ -350,7 +350,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                  <div class="control-group">
                         <label><s:message code="label.product.height" text="Height"/></label>
                         <div class="controls">
-                                    <form:input id="height" cssClass="" path="product.productHeight" maxlength="19"/>
+                                    <form:input id="height" cssClass="" path="product.productHeight" maxlength="15"/>
                                     <span class="help-inline"><form:errors path="product.productHeight" cssClass="error" /></span>
                         </div>
                   </div>
@@ -359,7 +359,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                  <div class="control-group">
                         <label><s:message code="label.product.width" text="Width"/></label>
                         <div class="controls">
-                                    <form:input id="width" cssClass="" path="product.productWidth" maxlength="19"/>
+                                    <form:input id="width" cssClass="" path="product.productWidth" maxlength="15"/>
                                     <span class="help-inline"><form:errors path="product.productWidth" cssClass="error" /></span>
                         </div>
                   </div>
@@ -367,7 +367,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                   <div class="control-group">
                         <label><s:message code="label.product.length" text="Length"/></label>
                         <div class="controls">
-                                    <form:input id="length" cssClass="" path="product.productLength" maxlength="19"/>
+                                    <form:input id="length" cssClass="" path="product.productLength" maxlength="15"/>
                                     <span class="help-inline"><form:errors path="product.productLength" cssClass="error" /></span>
                         </div>
                   </div>          
