@@ -158,7 +158,7 @@ public class Product extends SalesManagerEntity<Long, Product> implements Audita
 	private String sku;
 	
 	@Column(name = "video_link")
-	@Pattern(regexp="^(http://|https://)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*.[a-z]{3}.?([a-z]+)?$")
+	//@Pattern(regexp="^(http://|https://)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*.[a-z]{3}.?([a-z]+)?$")
 	private String videoLink;
 
 	public String getVideoLink() {
