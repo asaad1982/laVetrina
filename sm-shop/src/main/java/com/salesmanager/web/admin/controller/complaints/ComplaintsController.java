@@ -323,6 +323,7 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 				
 				entry.put("name", category.getEnglishName());
 				entry.put("nameAr", category.getArabicName());
+				entry.put("available", category.isAvailable());
 				resp.addDataEntry(entry);
 				
 				
