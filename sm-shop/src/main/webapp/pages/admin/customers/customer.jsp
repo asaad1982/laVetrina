@@ -410,9 +410,17 @@ function resetCustomerPassword(customerId){
 	                                 <span class="help-inline"><form:errors path="dateOfBirth" cssClass="error" /></span>
 	                        </div>
 	                  	</div>
+<div class="controls">
+		              		<label>Gender</label>
+		              		 
+		              		
+		              		
+		              		<form:radiobutton path="gender" value="M"/>Male 
+							<form:radiobutton path="gender" value="F"/>Female 
+							 <span class="help-inline"><form:errors path="gender" cssClass="error" /></span>
+			            </div>
 
-
-
+<br/>
 					<address>
 					
 						<div class="controls">

@@ -3,8 +3,10 @@ package com.salesmanager.core.business.catalog.product.service;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -32,9 +34,17 @@ import com.salesmanager.core.business.catalog.product.model.manufacturer.Manufac
 import com.salesmanager.core.business.catalog.product.model.manufacturer.ManufacturerDescription;
 import com.salesmanager.core.business.catalog.product.model.price.ProductPrice;
 import com.salesmanager.core.business.catalog.product.service.manufacturer.ManufacturerService;
+import com.salesmanager.core.business.common.model.Billing;
+import com.salesmanager.core.business.customer.model.Customer;
+import com.salesmanager.core.business.customer.model.CustomerGender;
+import com.salesmanager.core.business.customer.service.CustomerService;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
+import com.salesmanager.core.business.reference.country.model.Country;
+import com.salesmanager.core.business.reference.country.service.CountryService;
 import com.salesmanager.core.business.reference.language.model.Language;
+import com.salesmanager.core.business.reference.zone.model.Zone;
+
 @Service("importService")
 public class ImportServiceImpl implements ImportService {
 	@Autowired
@@ -43,6 +53,10 @@ public class ImportServiceImpl implements ImportService {
 	ManufacturerService manufacturerService;
 	@Autowired
 	ProductService productService;
+	@Autowired
+	private CustomerService customerService;
+	@Autowired
+	private CountryService countryService;
 	@Override
 	public void importFile(FileBean fileBean,MerchantStore store,Language language) throws ServiceException {
 		 ByteArrayInputStream bis = new ByteArrayInputStream(fileBean.getFileData().getBytes());
@@ -211,5 +225,162 @@ public class ImportServiceImpl implements ImportService {
 	    else
 	    return "";
 	}
+	
+	
+	
+	
+	@Override
+	public void importCustomerFile(FileBean fileBean,MerchantStore store,Language language) throws ServiceException {
+		 ByteArrayInputStream bis = new ByteArrayInputStream(fileBean.getFileData().getBytes());
+	        Workbook workbook;
+	        try {
+	            if (fileBean.getFileData().getOriginalFilename().endsWith("xls")) {
+	                workbook = new HSSFWorkbook(bis);
+	            } else if (fileBean.getFileData().getOriginalFilename().endsWith("xlsx")) {
+	                workbook = new XSSFWorkbook(bis);
+	            } else {
+	                throw new ServiceException("upload.error.message");
+	            }
+	            
+	            
+	    		
+	   
+
+	 
+	     
+	    		
+//	    		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//	    		//String dateInString = "7-Jun-2013";
+	    //
+//	    		Date date=null;
+//	    		try {
+//	    			// (String)request.getAttribute("dateOfBirth");
+	    //
+//	    			date = formatter.parse( (String)request.getAttribute("dateOfBirth"));
+//	    		 
+	    //
+//	    		} catch (Exception e) {
+//	    			e.printStackTrace();
+//	    		}
+	    	//	newCustomer.setDateOfBirth(date);  //Billing( customer.getBilling()  );
+	    		
+	            
+	     		Customer newCustomer = new Customer();
+
+	    		com.salesmanager.core.business.common.model.Billing customerBilling = new Billing();
+	            
+	    		newCustomer.setBilling(customerBilling);
+	            
+	          //  List<Manufacturer> manufacturers=manufacturerService.listByStore(store, language);
+	            Sheet sheet=workbook.getSheetAt(0);
+	            List<String> errors=new ArrayList<String>();
+	            List<String> thrownError=new ArrayList<String>();
+	            for (Row row : sheet) {
+	            	Product product=new Product();
+	            	product.setMerchantStore(store);
+	            	if(row.getRowNum()!=0){
+	            	if(containsValue(row,0,9)){
+	            	
+	                  Iterator<Cell> cellIterator = row.cellIterator();
+	                  product.setDescriptions(null); 
+	                  ProductDescription description=new ProductDescription();
+	                  description.setLanguage(language);
+	                  ProductAvailability productAvailability =new ProductAvailability();
+	                  while (cellIterator.hasNext()) {
+	                      Cell cell = cellIterator.next();
+	                      
+	                     // DataFormatter formatter = new DataFormatter(); //creating formatter using the default locale
+	                      String cellVal=cellToString(cell);
+	                      if(cell.getCellType() != Cell.CELL_TYPE_BLANK){
+	                      if(cell.getColumnIndex()==0){
+	                    	  newCustomer.getBilling().setFirstName(cellVal);
+	                      }else if(cell.getColumnIndex()==1){
+	                    	  newCustomer.getBilling().setLastName(cellVal);
+								
+							}else if(cell.getColumnIndex()==2){	
+								
+								
+								
+								
+								SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+								//String dateInString = "7-Jun-2013";
+						
+								Date date=null;
+								try {
+									// (String)request.getAttribute("dateOfBirth");
+						
+									date = formatter.parse( cellVal);
+								 
+						
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+								
+								newCustomer.setDateOfBirth(date);
+								
+										
+							}else if(cell.getColumnIndex()==3){	
+								
+								
+								
+								newCustomer.setGender(CustomerGender.valueOf(cellVal));							
+							}
+							else if(cell.getColumnIndex()==4){
+								newCustomer.getBilling().setAddress(cellVal);
+	                    	  
+	                      }else if(cell.getColumnIndex()==5){
+	                    	  
+	                    	  
+	                    	  customerBilling.setCity(cellVal);
+	                    	  
+	                    	  
+	                    	  
+	                      }else if(cell.getColumnIndex()==6){
+	                    	  
+	                    	  Country country  = countryService.getByCode(cellVal) ;
+	                    	  newCustomer.getBilling().setCountry(country);
+	                    	  
+	                    	  
+	                      }else if(cell.getColumnIndex()==7){
+	                    	  newCustomer.getBilling().setTelephone(cellVal);
+	                      }else  if(cell.getColumnIndex()==8){
+	                    	  
+	                    	  
+	                    	  
+	                    	  newCustomer.setEmailAddress(cellVal);
+	                      }else  if(cell.getColumnIndex()==9){
+	                    	  
+	                    	  
+	                    	  
+	                    	  newCustomer.getBilling().setPostalCode(cellVal);
+	                      }
+	                  }
+	                  }
+	                  if(errors.size()==0){
+	                	  newCustomer.setDefaultLanguage(language);
+	                	  newCustomer.setMerchantStore(store);
+	                	  customerService.saveOrUpdate(newCustomer);
+		           
+		                  
+		              
+	                  }
+	                  thrownError.addAll(errors);
+	                  errors=Collections.emptyList();
+	            	}
+	            
+	            }
+	            }
+                if(thrownError.size()>0){
+                	throw new ServiceException(thrownError);
+                }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		
+	}
+	
+	
+	
+	
 
 }
