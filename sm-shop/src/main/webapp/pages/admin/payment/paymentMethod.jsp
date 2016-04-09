@@ -95,7 +95,7 @@
 									<input type="hidden" name="code" value="${configuration.moduleCode}" />
 			                        <div class="form-actions">
 			                            <div class="pull-right">
-			                                    <button type="submit" class="btn-danger"><i class="icon-trash icon-large"></i><s:message code="label.generic.remove" text="Remove"/></button>
+			                                    <button type="submit" class="btn-danger" title="When you click this button Payment will be deleted"><i class="icon-trash icon-large"></i><s:message code="label.generic.remove" text="Remove"/></button>
 			                            </div>
 			                   		</div>
 		
