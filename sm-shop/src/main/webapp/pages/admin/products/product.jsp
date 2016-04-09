@@ -289,7 +289,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                         <label class="required"><s:message code="label.product.price" text="Price"/></label>
 
                         <div class="controls">
-                                    <form:input id="productPriceAmount" cssClass="highlight" path="productPrice" maxlength="19"/>
+                                    <form:input id="productPriceAmount" cssClass="highlight" path="productPrice" maxlength="10"/>
                                     <span id="help-price" class="help-inline"><form:errors path="productPrice" cssClass="error" /></span>
                         </div>
                   </div>
