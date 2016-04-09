@@ -323,7 +323,8 @@ public class CustomerController {
 		
 
 		newCustomer.setEmailAddress(customer.getEmailAddress() );		
-		newCustomer.setDateOfBirth(customer.getDateOfBirth() );		
+		newCustomer.setDateOfBirth(customer.getDateOfBirth() );	
+		newCustomer.setGender(customer.getGender() );		
 		//get Customer country/zone 		
 		Country deliveryCountry = countryService.getByCode( customer.getDelivery().getCountry().getIsoCode()); 
 		Country billingCountry  = countryService.getByCode( customer.getBilling().getCountry().getIsoCode()) ;
@@ -726,7 +727,7 @@ public class CustomerController {
 	
 	@Autowired
 	ImportService importService; 
-	@PreAuthorize("hasRole('PRODUCTS')")
+	@PreAuthorize("hasRole('CUSTOMER')")
 	@RequestMapping(value="/admin/customer/upload.html",method = RequestMethod.POST)
 	    public String upload(@ModelAttribute("fileBean") FileBean uploadItem, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
 		
@@ -736,14 +737,14 @@ public class CustomerController {
 	       
 	        setMenu(model, request);
 	        if(  uploadItem==null || uploadItem.getFileData()==null || uploadItem.getFileData().getSize()==0  ){
-	        	result.addError( new ObjectError("fileData",messages.getMessage("fileImport.importFile", locale)) );
+	        	result.addError( new ObjectError("fileData","Invalid File") );
 	        	
 	        }
 
 	        if(result.hasErrors()){
 	            return "admin-customers";
 	        }
-		    importService.importFile(uploadItem,store,language);
+		    importService.importCustomerFile(uploadItem,store,language);
 			
 
 	        model.addAttribute("success","success");

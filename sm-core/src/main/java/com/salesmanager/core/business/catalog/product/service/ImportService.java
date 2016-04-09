@@ -7,4 +7,6 @@ import com.salesmanager.core.business.reference.language.model.Language;
 
 public interface ImportService {
 	public void importFile(FileBean fileBean,MerchantStore store,Language language) throws ServiceException;
+
+	void importCustomerFile(FileBean fileBean, MerchantStore store, Language language) throws ServiceException;
 }
