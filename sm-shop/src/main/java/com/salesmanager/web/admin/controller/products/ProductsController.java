@@ -259,6 +259,52 @@ public class ProductsController {
 		return returnString;
 	}
 	
+	
+	@PreAuthorize("hasRole('PRODUCTS')")
+	@RequestMapping(value="/admin/products/choose.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
+	public @ResponseBody String selectProduct(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+		String sid = request.getParameter("productId");
+
+
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		
+		AjaxResponse resp = new AjaxResponse();
+
+		
+		try {
+			
+			Long id = Long.parseLong(sid);
+			
+			Product product = productService.getById(id);
+
+			if(product==null || !product.getMerchantStore().getId().equals(store.getId())) {
+
+				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
+				
+			} else {
+				
+				List<Product> products=(List<Product>) request.getSession().getAttribute("ProductsExportList");
+				if(products==null){
+					products=new ArrayList<Product>();
+				}
+				products.add(product);
+				resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+				
+			}
+		
+		
+		} catch (Exception e) {
+			LOGGER.error("Error while deleting product", e);
+			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			resp.setErrorMessage(e);
+		}
+		
+		String returnString = resp.toJSONString();
+		
+		return returnString;
+	}
+	
 	@Autowired
 	ImportService importService; 
 	@PreAuthorize("hasRole('PRODUCTS')")

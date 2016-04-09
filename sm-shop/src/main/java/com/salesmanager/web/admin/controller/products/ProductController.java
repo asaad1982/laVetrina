@@ -346,7 +346,20 @@ public class ProductController {
 					}
 					
 				}
-				
+				if(product.getAvailability().getProductQuantityOrderMin()>0 && product.getAvailability().getProductQuantityOrderMax()>0){
+					if(product.getAvailability().getProductQuantityOrderMin()> product.getAvailability().getProductQuantityOrderMax()){
+						ObjectError error = new ObjectError("error","Min Quantity Cannot be greater than Max Quantity" );
+						result.addError(error);
+					}
+					if(product.getAvailability().getProductQuantityOrderMin()> product.getAvailability().getProductQuantity()){
+						ObjectError error = new ObjectError("error","Min Quantity Cannot be greater than  Quantity" );
+						result.addError(error);
+					}
+					if(product.getAvailability().getProductQuantityOrderMax()> product.getAvailability().getProductQuantity()){
+						ObjectError error = new ObjectError("error","Max Quantity Cannot be greater than  Quantity" );
+						result.addError(error);
+					}
+				}
 
 				
 			} catch (Exception e) {
@@ -833,8 +846,10 @@ public class ProductController {
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/products/printProducts.html", method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	public String printInvoice(Model model,HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
-		try {		
-		List<Product> products = productService.list();
+		try {	
+			List<Product> products=(List<Product>) request.getSession().getAttribute("ProductsExportList");
+			if(products==null)
+	       products = productService.list();
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);

@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.salesmanager.core.business.catalog.product.model.manufacturer.Manufacturer;
 import com.salesmanager.core.business.complaint.model.CustomerComplaint;
 import com.salesmanager.core.business.customer.model.Customer;
+import com.salesmanager.core.business.customer.model.CustomerCriteria;
+import com.salesmanager.core.business.customer.model.CustomerList;
 import com.salesmanager.core.business.customer.service.CustomerService;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.notification.EmailNotification;
@@ -80,11 +82,10 @@ public class NotificationController {
 		
 		
 		if( notificationId!=0) {
-			if(request.getSession().getAttribute("emailNotification")==null){
+			
 				emailNotification=emailNotificationService.getById(notificationId);
-			}else{
-				emailNotification=(EmailNotification) request.getSession().getAttribute("emailNotification");
-			}
+				request.getSession().setAttribute("emailNotification",emailNotification);
+			
 			
 		}else{
 			emailNotification.setEmailTemplates(new ArrayList<EmailTemplate>());
@@ -94,13 +95,15 @@ public class NotificationController {
 		List<EmailTemplate> emailTemplates=emailNotification.getEmailTemplates();
 		for(Language language:languages){
 			EmailTemplate emailTemplate = null;
+			if(emailTemplates!=null){
 			for(EmailTemplate desc : emailTemplates) {				
-				if(desc.getLanguage().getCode().equals(language.getCode())) {
+				if(desc.getLanguage()!=null && desc.getLanguage().getCode().equals(language.getCode())) {
 					emailTemplate = desc;
 					
 					
 				}
 		}
+			}
 			if(emailTemplate==null) {
 				emailTemplate = new EmailTemplate();
 				emailTemplate.setLanguage(language);
@@ -294,8 +297,10 @@ if(!StringUtils.isBlank(firstName)||!StringUtils.isBlank(lastName) || !StringUti
 				
 	customers = customerService.getBySearchCritera(firstName, lastName, gender, birthDate,country,customerMail );
 				
-			}else 
-			 customers = customerService.listByStore(store);
+			}else {
+//				CustomerList customerList = customerService.listByStore(store,new CustomerCriteria());
+				customers=customerService.listByStore(store);
+			}
 			
 			
 			//get inclusions
@@ -314,7 +319,7 @@ if(!StringUtils.isBlank(firstName)||!StringUtils.isBlank(lastName) || !StringUti
 				entry.put("email", customer.getEmailAddress());
 				entry.put("gender", customer.getGender()==null?"":customer.getGender().toString());
 				entry.put("birthDate", DateUtil.formatDate(customer.getDateOfBirth()));
-				entry.put("ageRange",DateUtil.getAgeRange(customer.getDateOfBirth()) );
+				entry.put("ageRange",customer.getDateOfBirth()!=null?DateUtil.getAgeRange(customer.getDateOfBirth()):"");
 				entry.put("interset","" );
 				if(includedCountries!=null &&includedCountries.contains(customer)) {
 					entry.put("supported", true);

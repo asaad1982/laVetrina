@@ -56,7 +56,8 @@
 									dataFormat:"json", 
 									operationBindings:[ 
 										{operationType:"fetch", dataProtocol:"postParams",dataURL: "<c:url value="/admin/products/paging.html" />"},
-										{operationType:"remove", dataProtocol:"postParams",dataURL: "<c:url value="/admin/products/remove.html" />"}
+										{operationType:"remove", dataProtocol:"postParams",dataURL: "<c:url value="/admin/products/remove.html" />"},
+										{operationType:"update", dataProtocol:"postParams",dataURL: "<c:url value="/admin/products/choose.html" />"}
 									],
 									transformResponse : function (dsResponse, dsRequest, jsonData) {
 										var status = isc.XMLTools.selectObjects(jsonData, "/response/status");
@@ -125,7 +126,7 @@
     						      fields:[
     						              
     						              
-										
+										{title:"productId", name:"productId"},
 										{title:"<s:message code="label.entity.name" text="Name"/>", name:"name"},
 										{title:"<s:message code="label.product.sku" text="Sku"/>", name:"sku"},
 										{title:"<s:message code="label.product.available" text="Available"/>", name:"available",type:"boolean",canEdit:true},
@@ -142,6 +143,11 @@
 											return this.Super("removeData", arguments);
 										}
 								   },
+								   
+								updateData: function () {
+								alert(arguments);
+									return this.Super("updateData", arguments);
+								},
     							   createRecordComponent : function (record, colNum) {  
         
         							var fieldName = this.getFieldName(colNum);
