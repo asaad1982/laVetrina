@@ -11,6 +11,7 @@ import com.salesmanager.core.business.generic.dao.SalesManagerEntityDao;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
 import com.salesmanager.core.business.promo.model.Promotion;
+import com.salesmanager.core.business.promo.model.PromotionDescription;
 import com.salesmanager.core.business.promo.model.PromotionRule;
 import com.salesmanager.core.business.promo.model.PromotionTragetAge;
 import com.salesmanager.core.business.promotion.dao.PromotionDao;
@@ -67,10 +68,14 @@ public class PromotionServiceImpl extends SalesManagerEntityServiceImpl<Long, Pr
 					
 				} else {
 					PromotionRule promotionRule=promotion.getPromotionRule();
+					List<PromotionDescription> descriptions=promotion.getPromotionDescriptions();
 					promotion.setPromotionRule(null);
+					promotion.setPromotionDescriptions(null);
 					super.save(promotion);
-					
-					
+					for (int i = 0; i < descriptions.size(); i++) {
+						descriptions.get(i).setPromotion(promotion);
+					}
+					promotion.setPromotionDescriptions(descriptions);
 					promotion.setPromotionRule(promotionRule);
 					super.update(promotion);
 					

@@ -248,8 +248,8 @@ public class PromotionController {
 				entry.put("id", promotion.getId());
 				
 				entry.put("name", promotion.getPromotionDescriptions().get(0).getName());
-				entry.put("startDate", promotion.getStartDate());
-				entry.put("endDate", promotion.getEndate());
+				entry.put("startDate", DateUtil.formatDate(promotion.getStartDate()));
+				entry.put("endDate", DateUtil.formatDate(promotion.getEndate()));
 				entry.put("status", promotion.getStatus());
 				resp.addDataEntry(entry);
 				
