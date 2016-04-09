@@ -314,7 +314,7 @@ if(!StringUtils.isBlank(firstName)||!StringUtils.isBlank(lastName) || !StringUti
 				entry.put("email", customer.getEmailAddress());
 				entry.put("gender", customer.getGender()==null?"":customer.getGender().toString());
 				entry.put("birthDate", DateUtil.formatDate(customer.getDateOfBirth()));
-				entry.put("ageRange",DateUtil.getAgeRange(customer.getDateOfBirth()) );
+				entry.put("ageRange",customer.getDateOfBirth()!=null?DateUtil.getAgeRange(customer.getDateOfBirth()):"");
 				entry.put("interset","" );
 				if(includedCountries!=null &&includedCountries.contains(customer)) {
 					entry.put("supported", true);

@@ -833,8 +833,10 @@ public class ProductController {
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/products/printProducts.html", method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	public String printInvoice(Model model,HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
-		try {		
-		List<Product> products = productService.list();
+		try {	
+			List<Product> products=(List<Product>) request.getSession().getAttribute("ProductsExportList");
+			if(products==null)
+	       products = productService.list();
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
