@@ -71,7 +71,7 @@
 						      			  				</td>
 						      			  				<td>
 						      			  					<c:if test="${module.image!=null}">
-						      			  						<img src="<c:url value="/resources/img/payment/${module.image}"/>">
+						      			  						<a href="<c:url value="/admin/payments/paymentMethod.html?code="/><c:out value="${module.code}"/>"><img src="<c:url value="/resources/img/payment/${module.image}"/>"></a>
 						      			  					</c:if>
 						      			  				</td>
 						      			  			</tr>
