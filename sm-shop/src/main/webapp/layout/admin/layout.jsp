@@ -56,7 +56,7 @@ response.setDateHeader("Expires", 0); // Proxies.
  	
  	</head>
  
- 	<body class="body skin-blue sidebar-mini wysihtml5-supported">
+ 	<body class="body skin-blue sidebar-mini wysihtml5-supported" ondragstart="return false" draggable="false">
 
      
 <div class="wrapper">
@@ -439,6 +439,8 @@ response.setDateHeader("Expires", 0); // Proxies.
 				        e.preventDefault(); //disable cut,copy,paste
 				        return false;
 				    });
+				     $('input[type=text], input[type=password]').attr('autocomplete', 'off');
+				    
 			
 		}); 
 		

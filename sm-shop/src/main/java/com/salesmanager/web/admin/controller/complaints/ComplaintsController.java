@@ -203,21 +203,26 @@ public String saveComplaints(@Valid @ModelAttribute("customerComplaint") Custome
 
 		}
 
-			if(category.getEnglishName()!=null && "".equalsIgnoreCase(category.getEnglishName().trim())){
+			if(category.getEnglishName()!=null && "".equalsIgnoreCase(category.getEnglishName().trim()) && category.getEnglishName().length()>0){
 				ObjectError error = new ObjectError("englishName",messages.getMessage("Pattern.category.englishName", locale));
 				result.addError(error);
+			}else{
+				if(category.getEnglishName()!=null &&category.getEnglishName().length()>0){
+				List<ComplaintsReason> complaintsReason=complaintsService.getByName(category.getEnglishName(), language);
+				if(complaintsReason!=null && complaintsReason.size()>0){
+					if(category.getId()==null ){
+						ObjectError error = new ObjectError("englishName",messages.getMessage("complaint.name", locale));
+						result.addError(error);
+					}
+				}
+				}
 			}
-			if(category.getArabicName()!=null && "".equalsIgnoreCase(category.getArabicName().trim())){
+			if(category.getArabicName()!=null && "".equalsIgnoreCase(category.getArabicName().trim()) && category.getArabicName().length()>0){
 				ObjectError error = new ObjectError("arabicName",messages.getMessage("Pattern.category.arabicName", locale));
 				result.addError(error);
 			}
-			List<ComplaintsReason> complaintsReason=complaintsService.getByName(category.getEnglishName(), language);
-			if(complaintsReason!=null && complaintsReason.size()>0){
-				if(category.getId()==null ){
-					ObjectError error = new ObjectError("englishName",messages.getMessage("complaint.name", locale));
-					result.addError(error);
-				}
-			}
+			
+			
 			
 		
 		if (result.hasErrors()) {
