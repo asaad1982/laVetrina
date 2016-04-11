@@ -42,7 +42,7 @@ public class ComplaintsReason extends SalesManagerEntity<Long, ComplaintsReason>
 	private String englishName;
 	
 	@NotEmpty
-	@Pattern(regexp="^[\u0621-\u064A\u0660-\u0669 ]+$")
+	@Pattern(regexp="^[\u0621-\u064A\u0660-\u0669 \\s]+$")
 	@Column(name="name_ar", length=200, nullable=false)
 	private String arabicName;
 	

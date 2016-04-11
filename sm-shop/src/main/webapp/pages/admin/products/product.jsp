@@ -31,7 +31,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 		$('#weight').numeric({allow:"."});
 		$('#width').numeric({allow:"."});
 		$('#length').numeric({allow:"."});
-		$('#hight').numeric({allow:"."});
+		$('#height').numeric({allow:"."});
 		<c:forEach items="${product.descriptions}" var="description" varStatus="counter">		
 			$("#name${counter.index}").friendurl({id : 'seUrl${counter.index}'});
 		</c:forEach>

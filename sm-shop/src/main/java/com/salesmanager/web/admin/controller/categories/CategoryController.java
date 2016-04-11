@@ -391,7 +391,7 @@ public class CategoryController {
 			}
 			}
 
-			if(parentId!=1) {
+			if(parentId!=-1) {
 			
 				if(child==null || parent==null || !child.getMerchantStore().getId().equals(store.getId()) || !parent.getMerchantStore().getId().equals(store.getId())) {
 					resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
@@ -408,7 +408,7 @@ public class CategoryController {
 			
 			}
 			
-
+			if(parent!=null)
 			parent.getAuditSection().setModifiedBy(request.getRemoteUser());
 			categoryService.addChild(parent, child);
 			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);

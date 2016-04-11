@@ -107,7 +107,14 @@ public class Product implements Serializable {
 		return description;
 	}
 	
+private String videoLink;
 
+public String getVideoLink() {
+	return videoLink;
+}
+public void setVideoLink(String videoLink) {
+	this.videoLink = videoLink;
+}
 
 
 

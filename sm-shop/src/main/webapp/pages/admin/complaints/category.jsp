@@ -150,7 +150,7 @@ $('#arabicName').on("paste",function(e)
                   </div>
                   
                  <div class="control-group">
-                        <label>Status</label>
+                        <label>Enabled</label>
                         <div class="controls">
                         			<form:checkbox path="available" cssClass="highlight" maxlength="100"/>
                         			<span class="help-inline"><form:errors path="available" cssClass="error" /></span>
