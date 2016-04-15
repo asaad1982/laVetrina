@@ -864,7 +864,9 @@ public class ProductController {
         //Set the mime type for the response
         response.setContentType("application/pdf");
 
-		
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setContentLength(new Long(stream.size()).intValue());
+        
 		response.getOutputStream().write(stream.toByteArray());
 		
 		response.flushBuffer();

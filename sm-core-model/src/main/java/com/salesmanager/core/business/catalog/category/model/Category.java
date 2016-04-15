@@ -82,7 +82,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
 	private String lineage;
 	
 	@NotEmpty
-	@Pattern(regexp="^[a-zA-Z0-9]*$")
+	@Pattern(regexp="^[a-zA-Z0-9 ]*$")
 	@Column(name="CODE", length=100, nullable=false)
 	private String code;
 

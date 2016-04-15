@@ -34,7 +34,7 @@
 				</h3>	
 				<br/>
 				<div class="alert alert-info">
-					<s:message code="label.product.group.meassage" text="Drag and drop product from product list to the product group box"/>
+					Drag the desired product from products list to add it into product group.
 				</div>			
 		
       			<!-- Listing grid include -->
