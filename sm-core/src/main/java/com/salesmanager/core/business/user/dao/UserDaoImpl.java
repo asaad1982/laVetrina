@@ -29,7 +29,7 @@ public class UserDaoImpl extends SalesManagerEntityDaoImpl<Long, User> implement
 			.innerJoin(qUser.groups, qGroup).fetch()
 			.innerJoin(qUser.merchantStore).fetch()
 			.leftJoin(qUser.defaultLanguage).fetch()
-			.where(qUser.adminName.eq(userName));
+			.where(qUser.adminName.toLowerCase().eq(userName.toLowerCase()));
 		
 		
 

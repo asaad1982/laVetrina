@@ -19,6 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -141,7 +142,7 @@ public class CategoryController {
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/categories/save.html", method=RequestMethod.POST)
-	public String saveCategory(@Valid @ModelAttribute("category") Category category, BindingResult result, Model model, HttpServletRequest request) throws Exception {
+	public String saveCategory(@Valid @ModelAttribute("category") Category category, BindingResult result, Model model, HttpServletRequest request,Locale locale) throws Exception {
 
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
@@ -159,6 +160,12 @@ public class CategoryController {
 				return "catalogue-categories";
 			}
 
+		}else{
+			Category categoryByCode = categoryService.getByCode(store, category.getCode());
+			
+			if(categoryByCode!=null ) {
+				result.addError(new ObjectError("category.code", messages.getMessage("message.code.exist", locale)));
+			}
 		}
 
 			
@@ -391,7 +398,7 @@ public class CategoryController {
 			}
 			}
 
-			if(parentId!=1) {
+			if(parentId!=-1) {
 			
 				if(child==null || parent==null || !child.getMerchantStore().getId().equals(store.getId()) || !parent.getMerchantStore().getId().equals(store.getId())) {
 					resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
@@ -408,7 +415,7 @@ public class CategoryController {
 			
 			}
 			
-
+			if(parent!=null)
 			parent.getAuditSection().setModifiedBy(request.getRemoteUser());
 			categoryService.addChild(parent, child);
 			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);

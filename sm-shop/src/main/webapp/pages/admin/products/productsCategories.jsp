@@ -45,6 +45,7 @@
     								ID:"categoryTree",
     								border:0,
     								height:400,
+    								width:800,
     								showResizeBar: false,
     								position:"relative",
     								data: isc.Tree.create({

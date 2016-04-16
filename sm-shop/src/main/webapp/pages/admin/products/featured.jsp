@@ -34,7 +34,7 @@
 				</h3>	
 				<br/>
 				<div class="alert alert-info">
-					<s:message code="label.product.featured.meassage" text="Drag and drop product from product list to featured items box"/>
+					Drag the desired product from products list to add it into featured items.
 				</div>			
 		
       			<!-- Listing grid include -->

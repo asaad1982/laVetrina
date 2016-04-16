@@ -409,7 +409,7 @@ public class ProductController {
 			newProduct.setProductVirtual(product.getProduct().isProductVirtual());
 			newProduct.setProductShipeable(product.getProduct().isProductShipeable());
 			newProduct.setTaxClass(product.getProduct().getTaxClass());
-
+			newProduct.setVideoLink(product.getProduct().getVideoLink());
 
 			Set<ProductAvailability> avails = newProduct.getAvailabilities();
 			if(avails !=null && avails.size()>0) {
@@ -864,7 +864,9 @@ public class ProductController {
         //Set the mime type for the response
         response.setContentType("application/pdf");
 
-		
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setContentLength(new Long(stream.size()).intValue());
+        
 		response.getOutputStream().write(stream.toByteArray());
 		
 		response.flushBuffer();

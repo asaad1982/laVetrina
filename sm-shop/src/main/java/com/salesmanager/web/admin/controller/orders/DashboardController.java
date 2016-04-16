@@ -87,7 +87,7 @@ public class DashboardController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderControler.class);
 
 	
-	@PreAuthorize("hasRole('ORDER')")
+	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/orders/dashboardsProductCatalog.html", method=RequestMethod.GET)
 	public String dashboardsProductCatalog(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -134,7 +134,7 @@ public class DashboardController {
  
 	
 
-	@PreAuthorize("hasRole('ORDER')")
+	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/orders/dashboardsProductPrice.html", method=RequestMethod.GET)
 	public String dashboardsProductPrice(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -161,7 +161,7 @@ model.addAttribute("map", map);
 	}
 	
 	
-	@PreAuthorize("hasRole('ORDER')")
+	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/orders/dashboardsDeals.html", method=RequestMethod.GET)
 	public String dashboardsDeals(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -188,7 +188,7 @@ model.addAttribute("total", total);
 	}
 	
 	
-	@PreAuthorize("hasRole('ORDER')")
+	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/orders/dashboardsSoldInstock.html", method=RequestMethod.GET)
 	public String dashboardsSoldInstock(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -224,7 +224,7 @@ model.addAttribute("stock", stock);
 	}
 	
 	
-	@PreAuthorize("hasRole('ORDER')")
+	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/orders/dashboardsSalesCountry.html", method=RequestMethod.GET)
 	public String dashboardsSalesCountry(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -267,7 +267,7 @@ for(Object[] counts : countOrderByCountry) {
 	}
 	
 	
-	@PreAuthorize("hasRole('ORDER')")
+	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/orders/dashboardsSalesPayment.html", method=RequestMethod.GET)
 	public String dashboardsSalesPayment(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -316,7 +316,7 @@ for(Object[] counts : countOrderByCountry) {
 	
 	
 	
-	@PreAuthorize("hasRole('ORDER')")
+	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/orders/soldVsInstock.html", method=RequestMethod.GET)
 	public String soldVsInstock(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -351,7 +351,7 @@ model.addAttribute("totalQuantity_ordered", totalQuantity_ordered);
 	
 	
 	@PreAuthorize("hasRole('ORDER')")
-	@RequestMapping(value="/admin/orders/customersStatistics.html", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/PRODUCTSs/customersStatistics.html", method=RequestMethod.GET)
 	public String customersStatistics(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		
@@ -371,7 +371,7 @@ model.addAttribute("totalQuantity_ordered", totalQuantity_ordered);
 	
 	
 	@SuppressWarnings({ "unchecked"})
-	@PreAuthorize("hasRole('ORDER')")
+	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/orders/customersStatistics/paging.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	public @ResponseBody String customersStatisticspaging(HttpServletRequest request, HttpServletResponse response) {
 		String dateInString = request.getParameter("startDate");        
@@ -455,7 +455,7 @@ model.addAttribute("totalQuantity_ordered", totalQuantity_ordered);
 	
 	
 	
-	@PreAuthorize("hasRole('ORDER')")
+	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/orders/availabilityCategory.html", method=RequestMethod.GET)
 	public String availabilityCategory(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
