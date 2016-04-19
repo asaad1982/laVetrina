@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.salesmanager.core.business.catalog.category.model.Category;
+import com.salesmanager.core.business.catalog.category.service.CategoryService;
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationship;
 import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationshipType;
@@ -28,11 +30,13 @@ import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.merchant.service.MerchantStoreService;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.web.constants.Constants;
+import com.salesmanager.web.entity.catalog.category.ReadableCategory;
 import com.salesmanager.web.entity.catalog.product.ReadableProduct;
 import com.salesmanager.web.entity.shop.Breadcrumb;
 import com.salesmanager.web.entity.shop.BreadcrumbItem;
 import com.salesmanager.web.entity.shop.BreadcrumbItemType;
 import com.salesmanager.web.entity.shop.PageInformation;
+import com.salesmanager.web.populator.catalog.ReadableCategoryPopulator;
 import com.salesmanager.web.populator.catalog.ReadableProductPopulator;
 import com.salesmanager.web.utils.LabelUtils;
 
@@ -55,6 +59,9 @@ public class LandingController {
 	
 	@Autowired
 	private PricingService pricingService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	
 	@Autowired
 	private MerchantStoreService merchantService;
@@ -123,8 +130,19 @@ public class LandingController {
 			featuredItems.add(proxyProduct);
 		}
 
+		List<Category> categories=categoryService.listActiveByStore(store, language);
+       
+		ReadableCategoryPopulator readableCategoryPopulator = new ReadableCategoryPopulator();
+		
+		List<ReadableCategory> returnCategories = new ArrayList<ReadableCategory>();
+		for(Category category : categories) {
+			ReadableCategory categoryProxy = readableCategoryPopulator.populate(category, new ReadableCategory(), store, language);
+			returnCategories.add(categoryProxy);
+		}
+		
 		
 		model.addAttribute("featuredItems", featuredItems);
+		model.addAttribute("categories", returnCategories);
 		
 		/** template **/
 		StringBuilder template = new StringBuilder().append("landing.").append(store.getStoreTemplate());

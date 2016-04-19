@@ -117,6 +117,10 @@
     								showRecordComponents: true,    
     								showRecordComponentsByCell: true,
     								canRemoveRecords: true,
+    								canEdit:true,
+    								editByCell: true,
+									canReorderRecords:true,
+									editEvent: "click",
     								autoFetchData: false,
     								showFilterEditor: true,
     								filterOnKeypress: false,
@@ -131,6 +135,7 @@
 										{title:"<s:message code="label.product.sku" text="Sku"/>", name:"sku"},
 										{title:"<s:message code="label.product.available" text="Available"/>", name:"available",type:"boolean",canEdit:true},
 										{title:"<s:message code="label.generic.price" text="Quantity"/>", name:"price", canFilter:true},
+										{title:"Export", name:"export",type:"boolean",canEdit:true},
 										{title:"<s:message code="label.entity.details" text="Details"/>", name: "buttonField", align: "center",canFilter:false,canSort:false, canReorder:false}  
 
 
@@ -143,9 +148,10 @@
 											return this.Super("removeData", arguments);
 										}
 								   },
-								   
+								fetchData: function () {
+									return this.Super("fetchData", arguments);
+								},
 								updateData: function () {
-								alert(arguments);
 									return this.Super("updateData", arguments);
 								},
     							   createRecordComponent : function (record, colNum) {  

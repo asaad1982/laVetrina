@@ -154,6 +154,27 @@ public class ImportServiceImpl implements ImportService {
 	                    	  
 	                    	  product.setAvailable(b);
 	                      }
+	                      else if(cell.getColumnIndex()==9){
+	                    		try{									
+	                    			productAvailability.setProductQuantity(Integer.parseInt(cellVal));
+	                    		}catch(NumberFormatException nfe){
+	                    			errors.add("Product Quantity is number only on row"+row.getRowNum());
+	                    		}
+	                      }
+	                      else if(cell.getColumnIndex()==10){
+	                    		try{									
+	                    			productAvailability.setProductQuantityOrderMin(Integer.parseInt(cellVal));
+	                    		}catch(NumberFormatException nfe){
+	                    			errors.add("Product Quantity Order Min is number only on row"+row.getRowNum());
+	                    		}
+	                      }
+	                      else if(cell.getColumnIndex()==11){
+	                    		try{									
+	                    			productAvailability.setProductQuantityOrderMax(Integer.parseInt(cellVal));
+	                    		}catch(NumberFormatException nfe){
+	                    			errors.add("Product Quantity Order Min is number only on row"+row.getRowNum());
+	                    		}
+	                      }
 	                  }
 	                  }
 	                  if(errors.size()==0){
