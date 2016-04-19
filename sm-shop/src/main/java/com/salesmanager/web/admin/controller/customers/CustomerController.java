@@ -44,6 +44,7 @@ import com.salesmanager.core.business.customer.service.attribute.CustomerAttribu
 import com.salesmanager.core.business.customer.service.attribute.CustomerOptionService;
 import com.salesmanager.core.business.customer.service.attribute.CustomerOptionSetService;
 import com.salesmanager.core.business.customer.service.attribute.CustomerOptionValueService;
+import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.country.model.Country;
 import com.salesmanager.core.business.reference.country.service.CountryService;
@@ -744,8 +745,21 @@ public class CustomerController {
 	        if(result.hasErrors()){
 	            return "admin-customers";
 	        }
+	        try{
 		    importService.importCustomerFile(uploadItem,store,language);
-			
+	        }catch (ServiceException se){
+	        	model.addAttribute("error","error");
+	        	if(se.getMessageCodes()!=null && se.getMessageCodes().size()>0){
+	        		for (int i = 0; i < se.getMessageCodes().size(); i++) {
+	        			result.addError( new ObjectError("fileData",se.getMessageCodes().get(i)) );
+					}
+	        	}else
+	        	result.addError( new ObjectError("fileData",messages.getMessage(se.getMessageCode(), locale)) );
+				return "admin-customers";
+	        }catch (Exception e) {
+	        	result.addError( new ObjectError("fileData","An Error Occured will uploading file") );
+				return "admin-customers";
+			}
 
 	        model.addAttribute("success","success");
 			

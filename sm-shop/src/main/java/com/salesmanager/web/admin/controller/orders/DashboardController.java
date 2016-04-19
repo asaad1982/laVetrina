@@ -351,7 +351,7 @@ model.addAttribute("totalQuantity_ordered", totalQuantity_ordered);
 	
 	
 	@PreAuthorize("hasRole('ORDER')")
-	@RequestMapping(value="/admin/PRODUCTSs/customersStatistics.html", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/orders/customersStatistics.html", method=RequestMethod.GET)
 	public String customersStatistics(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		

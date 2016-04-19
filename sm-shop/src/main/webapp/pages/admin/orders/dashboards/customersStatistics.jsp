@@ -63,7 +63,7 @@
 
 
 								<div class="sm-ui-component">
-								<h3><s:message code="label.sales.title" text="Categories" /></h3>	
+								<h3><s:message code="label.customer.Statistics.title" text="Categories" /></h3>	
 								<br/>
 							 
 								
@@ -94,7 +94,7 @@
 				 <c:set var="entityId" value="id" scope="request"/>
 <%-- 				  <c:set var="groupByEntity" value="categoryName" scope="request"/>
  --%>				   <%-- <c:set var="showGridSummary" value="true" scope="request"/> --%>
-				 <c:set var="componentTitleKey" value="label.sales.title" scope="request"/>
+				 <c:set var="componentTitleKey" value="label.customer.Statistics.title" scope="request"/>
 				 <c:set var="gridHeader" value="/pages/admin/orders/dashboards/customersStatistics-gridHeader.jsp" scope="request"/>
 				 <c:set var="canRemoveEntry" value="false" scope="request"/>
 				

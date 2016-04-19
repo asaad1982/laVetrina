@@ -47,7 +47,7 @@
 				 <c:set var="entityId" value="id" scope="request"/>
 <%-- 				  <c:set var="groupByEntity" value="categoryName" scope="request"/>
  --%>				   <%-- <c:set var="showGridSummary" value="true" scope="request"/> --%>
-				 <c:set var="componentTitleKey" value="label.sales.title" scope="request"/>
+				 <c:set var="componentTitleKey" value="label.Stock.Availability.Category.title" scope="request"/>
 				 <c:set var="gridHeader" value="/pages/admin/orders/dashboards/availabilityCategory-gridHeader.jsp" scope="request"/>
 				 <c:set var="canRemoveEntry" value="false" scope="request"/>
 				
