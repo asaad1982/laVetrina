@@ -328,7 +328,7 @@ public class ShopProductController {
 		model.addAttribute("product", productProxy);
 		model.addAttribute("manufacturers",readableManufacturers);
 
-		List<Category> categories=categoryService.listByDepth(store, 0, language);
+		List<Category> categories=categoryService.listByStore(store, language);
 	       
 		ReadableCategoryPopulator readableCategoryPopulator = new ReadableCategoryPopulator();
 		
