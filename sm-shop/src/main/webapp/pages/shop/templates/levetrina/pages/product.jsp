@@ -24,126 +24,46 @@
 <jsp:include
 	page="/pages/shop/templates/bootstrap/sections/breadcrumb.jsp" />
 	<section class="inner-shop">
+	<div class="container"> <div class="row"> 
+	<div class="col-sm-3">
 <div class="left-sidebar">
 	<h2>Category</h2>
 	<div class="panel-group category-products" id="accordian">
 		<!--category-productsr-->
+		
+		<c:forEach items="${categories}" var="category">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordian"
-						href="#sportswear"> <span class="badge pull-right"><i
-							class="fa fa-plus"></i></span> Sportswear
+					<a data-toggle="collapse" data-parent="#accordian" onclick="getChildNode(${category.id})"
+						href="#${category.description.name}"> <span class="badge pull-right"><i
+							class="fa fa-plus"></i></span> ${category.description.name}
 					</a>
 				</h4>
 			</div>
 
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordian" href="#mens">
-						<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-						Mens
-					</a>
-				</h4>
-			</div>
-			<div id="mens" class="panel-collapse collapse">
+		<div id="${category.description.name}" class="panel-collapse collapse">
 				<div class="panel-body">
-					<ul>
-						<li><a href="">Fendi</a></li>
-						<li><a href="">Guess</a></li>
-						<li><a href="">Valentino</a></li>
-						<li><a href="">Dior</a></li>
-						<li><a href="">Versace</a></li>
-						<li><a href="">Armani</a></li>
-						<li><a href="">Prada</a></li>
-						<li><a href="">Dolce and Gabbana</a></li>
-						<li><a href="">Chanel</a></li>
-						<li><a href="">Gucci</a></li>
-					</ul>
+					
 				</div>
 			</div>
+		
+		</c:forEach>
+		
+			
 		</div>
 
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordian" href="#womens">
-						<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-						Womens
-					</a>
-				</h4>
-			</div>
-			<div id="womens" class="panel-collapse collapse">
-				<div class="panel-body">
-					<ul>
-						<li><a href="">Fendi</a></li>
-						<li><a href="">Guess</a></li>
-						<li><a href="">Valentino</a></li>
-						<li><a href="">Dior</a></li>
-						<li><a href="">Versace</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a href="#">Kids</a>
-				</h4>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a href="#">Fashion</a>
-				</h4>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a href="#">Households</a>
-				</h4>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a href="#">Interiors</a>
-				</h4>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a href="#">Clothing</a>
-				</h4>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a href="#">Bags</a>
-				</h4>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a href="#">Shoes</a>
-				</h4>
-			</div>
-		</div>
-	</div>
+		
+	
 	<!--/category-products-->
-
+	<c:if test="${fn:length(manufacturers) > 0}">
 	<div class="brands_products">
 		<!--brands_products-->
 		<h2>Brands</h2>
 		<div class="brands-name">
 			<ul class="nav nav-pills nav-stacked">
+			
 				<c:forEach items="${manufacturers}" var="manufacturer">
 					<li><a
 						href="javascript:filterCategory('BRAND','${manufacturer.id}')">
@@ -154,7 +74,7 @@
 
 			</ul>
 		</div>
-	</div>
+	</div></c:if>
 	<!--/brands_products-->
 
 	<div class="price-range">
@@ -187,14 +107,15 @@
 	</div>
 	<!--/shipping-->
 
-</div>
+</div></div>
 
-<div class="row-fluid">
+<div class="col-sm-9 padding-right">
 
-	<div itemscope class="span12"
+	<div itemscope class="product-details"
 		itemtype="http://data-vocabulary.org/Product">
 		<!-- Image column -->
-		<div id="img" class="span4 productMainImage">
+		<div class="col-sm-5">
+		<div id="img" class="view-product">
 			<c:if test="${product.image!=null}">
 				<span id="mainImg"><img
 					id="im-<c:out value="${product.image.id}"/>"
@@ -206,7 +127,11 @@
 									setImageZoom('im-<c:out value="${product.image.id}"/>');
 								});	
 							</script>
-				<c:if test="${product.images!=null && fn:length(product.images)>1}">
+				
+			</c:if>
+		</div>
+		
+		<c:if test="${product.images!=null && fn:length(product.images)>1}">
 					<ul id="imageGallery" class="thumbnails small">
 						<c:forEach items="${product.images}" var="thumbnail">
 							<li class="span2"><a href="#img" class="thumbImg"
@@ -218,28 +143,29 @@
 						</c:forEach>
 					</ul>
 				</c:if>
-			</c:if>
+		
+		
 		</div>
 
 		<!-- Google rich snippets (http://blog.hubspot.com/power-google-rich-snippets-ecommerce-seo-ht) -->
 		<!-- Product description column -->
-		<div class="span8">
+		<div class="col-sm-7">
+		<div class="product-information">
 			<p class="lead">
 				<strong>${product.description.name}</strong>
 			</p>
 
-
+		<address>
+		<strong><s:message
+						code="label.product.web.code" text="Product code" /></strong> <span
+					itemprop="identifier" content="mpn:${product.sku}">${product.sku}</span><br>
+				
+			</address>
 			<!-- product rating -->
 			<jsp:include page="/pages/shop/common/catalog/rating.jsp" />
 
 
-			<address>
-				<strong><s:message code="label.product.brand" text="Brand" /></strong>
-				<span itemprop="brand"><c:out
-						value="${product.manufacturer.description.name}" /></span><br> <strong><s:message
-						code="label.product.code" text="Product code" /></strong> <span
-					itemprop="identifier" content="mpn:${product.sku}">${product.sku}</span><br>
-			</address>
+			
 			<span itemprop="offerDetails" itemscope
 				itemtype="http://data-vocabulary.org/Offer">
 				<meta itemprop="seller"
@@ -259,9 +185,16 @@
 									value="${product.finalPrice}" /></span>
 						</c:otherwise>
 					</c:choose>
-				</h3> <c:if test="${not product.productVirtual}">
+				</h3> 
+				<p>
+				<jsp:include page="/pages/shop/common/catalog/addToCartProduct.jsp" />
+			</p>
+			</span>
+			
+			
+			<c:if test="${not product.productVirtual}">
 					<address>
-						<strong><s:message code="label.product.available"
+						<strong><s:message code="label.product.web.available"
 								text="Availability" /></strong> <span><c:choose>
 								<c:when test="${product.quantity>0}">
 									<span itemprop="availability" content="in_stock">${product.quantity}</span>
@@ -273,16 +206,17 @@
 							</c:choose></span><br>
 					</address>
 				</c:if>
-			</span>
-			<p>
-				<jsp:include page="/pages/shop/common/catalog/addToCartProduct.jsp" />
-			</p>
+				<address>
+				<strong><s:message code="label.product.brand" text="Brand" /></strong>
+				<span itemprop="brand"><c:out
+						value="${product.manufacturer.description.name}" /></span><br> 
+				</address>
 		</div>
 
-	</div>
+	</div></div>
 </div>
-<div class="row-fluid">
-	<div class="span12">
+<div class="category-tab shop-details-tab">
+	<div class="col-sm-12">
 
 		<ul class="nav nav-tabs" id="productTabs">
 			<li class="active"><a href="#description"><s:message
@@ -337,7 +271,7 @@
 
 
 	</div>
-</div>
+</div></div></div>
 </section>
 
 

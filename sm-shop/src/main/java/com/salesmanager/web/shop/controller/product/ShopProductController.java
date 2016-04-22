@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.salesmanager.core.business.catalog.category.model.Category;
 import com.salesmanager.core.business.catalog.category.service.CategoryService;
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.catalog.product.model.attribute.ProductAttribute;
@@ -45,12 +46,14 @@ import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.core.utils.CacheUtils;
 import com.salesmanager.web.constants.Constants;
+import com.salesmanager.web.entity.catalog.category.ReadableCategory;
 import com.salesmanager.web.entity.catalog.manufacturer.ReadableManufacturer;
 import com.salesmanager.web.entity.catalog.product.ReadableProduct;
 import com.salesmanager.web.entity.catalog.product.ReadableProductPrice;
 import com.salesmanager.web.entity.catalog.product.ReadableProductReview;
 import com.salesmanager.web.entity.shop.Breadcrumb;
 import com.salesmanager.web.entity.shop.PageInformation;
+import com.salesmanager.web.populator.catalog.ReadableCategoryPopulator;
 import com.salesmanager.web.populator.catalog.ReadableProductPopulator;
 import com.salesmanager.web.populator.catalog.ReadableFinalPricePopulator;
 import com.salesmanager.web.populator.catalog.ReadableProductReviewPopulator;
@@ -325,7 +328,16 @@ public class ShopProductController {
 		model.addAttribute("product", productProxy);
 		model.addAttribute("manufacturers",readableManufacturers);
 
+		List<Category> categories=categoryService.listByDepth(store, 0, language);
+	       
+		ReadableCategoryPopulator readableCategoryPopulator = new ReadableCategoryPopulator();
 		
+		List<ReadableCategory> returnCategories = new ArrayList<ReadableCategory>();
+		for(Category category : categories) {
+			ReadableCategory categoryProxy = readableCategoryPopulator.populate(category, new ReadableCategory(), store, language);
+			returnCategories.add(categoryProxy);
+		}
+		model.addAttribute("categories", returnCategories);
 		/** template **/
 		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Product.product).append(".").append(store.getStoreTemplate());
 
