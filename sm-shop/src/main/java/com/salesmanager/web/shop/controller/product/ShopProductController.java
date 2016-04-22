@@ -30,6 +30,7 @@ import com.salesmanager.core.business.catalog.product.model.attribute.ProductAtt
 import com.salesmanager.core.business.catalog.product.model.attribute.ProductOptionDescription;
 import com.salesmanager.core.business.catalog.product.model.attribute.ProductOptionValue;
 import com.salesmanager.core.business.catalog.product.model.attribute.ProductOptionValueDescription;
+import com.salesmanager.core.business.catalog.product.model.manufacturer.Manufacturer;
 import com.salesmanager.core.business.catalog.product.model.price.FinalPrice;
 import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationship;
 import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationshipType;
@@ -37,12 +38,14 @@ import com.salesmanager.core.business.catalog.product.model.review.ProductReview
 import com.salesmanager.core.business.catalog.product.service.PricingService;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.catalog.product.service.attribute.ProductAttributeService;
+import com.salesmanager.core.business.catalog.product.service.manufacturer.ManufacturerService;
 import com.salesmanager.core.business.catalog.product.service.relationship.ProductRelationshipService;
 import com.salesmanager.core.business.catalog.product.service.review.ProductReviewService;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.core.utils.CacheUtils;
 import com.salesmanager.web.constants.Constants;
+import com.salesmanager.web.entity.catalog.manufacturer.ReadableManufacturer;
 import com.salesmanager.web.entity.catalog.product.ReadableProduct;
 import com.salesmanager.web.entity.catalog.product.ReadableProductPrice;
 import com.salesmanager.web.entity.catalog.product.ReadableProductReview;
@@ -51,6 +54,7 @@ import com.salesmanager.web.entity.shop.PageInformation;
 import com.salesmanager.web.populator.catalog.ReadableProductPopulator;
 import com.salesmanager.web.populator.catalog.ReadableFinalPricePopulator;
 import com.salesmanager.web.populator.catalog.ReadableProductReviewPopulator;
+import com.salesmanager.web.populator.manufacturer.ReadableManufacturerPopulator;
 import com.salesmanager.web.shop.controller.ControllerConstants;
 import com.salesmanager.web.shop.model.catalog.Attribute;
 import com.salesmanager.web.shop.model.catalog.AttributeValue;
@@ -96,6 +100,8 @@ public class ShopProductController {
 	
 	@Autowired
 	private BreadcrumbsUtils breadcrumbsUtils;
+	@Autowired
+	private ManufacturerService manufacturerService;
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ShopProductController.class);
 	
@@ -149,7 +155,16 @@ public class ShopProductController {
 		populator.setPricingService(pricingService);
 		
 		ReadableProduct productProxy = populator.populate(product, new ReadableProduct(), store, language);
-
+		
+		List<Manufacturer> manufacturers=manufacturerService.listByStoreAvailable(store, language);
+		ReadableManufacturerPopulator manufacturerPopulator=new ReadableManufacturerPopulator();
+		List<ReadableManufacturer> readableManufacturers=new ArrayList<ReadableManufacturer>();
+		for(Manufacturer manufacturer:manufacturers){
+			ReadableManufacturer readableManufacturer=new ReadableManufacturer(); 
+			manufacturerPopulator.populate(manufacturer, readableManufacturer, store, language);
+			readableManufacturer.setProductCount(manufacturerService.getCountManufAttachedProducts(manufacturer));
+			readableManufacturers.add(readableManufacturer);
+		}
 		//meta information
 		PageInformation pageInformation = new PageInformation();
 		pageInformation.setPageDescription(productProxy.getDescription().getMetaDescription());
@@ -308,6 +323,7 @@ public class ShopProductController {
 		model.addAttribute("options", optionsList);
 			
 		model.addAttribute("product", productProxy);
+		model.addAttribute("manufacturers",readableManufacturers);
 
 		
 		/** template **/

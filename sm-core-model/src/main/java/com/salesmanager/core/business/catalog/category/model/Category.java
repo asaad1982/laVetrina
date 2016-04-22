@@ -1,5 +1,6 @@
 package com.salesmanager.core.business.catalog.category.model;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +18,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.salesmanager.core.business.common.model.audit.AuditListener;
 import com.salesmanager.core.business.common.model.audit.AuditSection;
@@ -56,6 +59,8 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
 	@JoinColumn(name="MERCHANT_ID", nullable=false)
 	private MerchantStore merchantStore;
 	
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "PARENT_ID")
 	private Category parent;
@@ -63,7 +68,7 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
 	@OneToMany(mappedBy = "parent", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Category> categories = new ArrayList<Category>();
 	
-	@Column(name = "CATEGORY_IMAGE", length=100)
+	@Column(name = "CATEGORY_IMAGE")
 	private String categoryImage;
 
 	@Column(name = "SORT_ORDER")
@@ -212,4 +217,32 @@ public class Category extends SalesManagerEntity<Long, Category> implements Audi
 		
 		return null;
 	}
+	@Transient
+	private MultipartFile image = null;
+	
+	
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	public InputStream getFile() {
+		return file;
+	}
+
+	public void setFile(InputStream file) {
+		this.file = file;
+	}
+	@Transient
+	private InputStream file = null;
+	
+	//private MultiPartFile image
+
+
+
+	
+
 }

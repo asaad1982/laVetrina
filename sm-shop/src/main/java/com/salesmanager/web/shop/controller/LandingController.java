@@ -130,7 +130,7 @@ public class LandingController {
 			featuredItems.add(proxyProduct);
 		}
 
-		List<Category> categories=categoryService.listActiveByStore(store, language);
+		List<Category> categories=categoryService.listByDepth(store, 0, language);
        
 		ReadableCategoryPopulator readableCategoryPopulator = new ReadableCategoryPopulator();
 		

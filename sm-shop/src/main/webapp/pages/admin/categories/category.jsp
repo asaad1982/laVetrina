@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="/WEB-INF/shopizer-tags.tld" prefix="sm" %>
 <%@ page session="false" %>				
 				
 
@@ -76,6 +77,45 @@
 	}
 	
 	
+
+	
+	function removeImage(id){
+			$("#store.error").show();
+			$.ajax({
+			  type: 'POST',
+			  url: '<c:url value="/admin/category/removeImage.html"/>',
+			  dataType: 'json',
+			  data:  "&id=" + id,
+			  success: function(response){
+		
+					var status = isc.XMLTools.selectObjects(response, "/response/status");
+					if(status==0 || status ==9999) {
+						
+						//remove delete
+						$("#imageControlRemove").html('');
+						//add field
+						$("#imageControl").html('<input class=\"input-file\" id=\"file[0]\" name=\"file[0]\" type=\"file\">');
+						$(".alert-success").show();
+						
+					} else {
+						
+						//display message
+						$(".alert-error").show();
+					}
+		
+			  
+			  },
+			  error: function(xhr, textStatus, errorThrown) {
+			  	alert('error ' + errorThrown);
+			  }
+			  
+			});
+	}
+	
+
+
+	
+	
 	</script>
 
 
@@ -109,7 +149,7 @@
 				<c:url var="categorySave" value="/admin/categories/save.html"/>
 
 
-				<form:form method="POST" commandName="category" action="${categorySave}">
+				<form:form method="POST" commandName="category" action="${categorySave}" enctype="multipart/form-data" >
 
       							
       				<form:errors path="*" cssClass="alert alert-error" element="div" />
@@ -251,7 +291,20 @@
                   <form:hidden path="descriptions[${counter.index}].id" />
                   
                   </c:forEach>
-                  
+                   <div class="control-group">
+                        <label><s:message code="label.product.image" text="Image"/>&nbsp;<c:if test="${category.categoryImage!=null}"><span id="imageControlRemove"> - <a href="#" onClick="removeImage('${category.id}')"><s:message code="label.generic.remove" text="Remove"/></a></span></c:if></label></label>
+                        <div class="controls" id="imageControl">
+                        		<c:choose>
+	                        		<c:when test="${category.categoryImage==null || category.categoryImage==''}">
+	                                    <input class="input-file" id="image" name="image" type="file">
+	                                </c:when>
+	                                <c:otherwise>
+	                                <img src='<sm:contentImage imageName="${category.categoryImage}" imageType="IMAGE"/>'>
+	                                </c:otherwise>
+	                                
+                                </c:choose>
+                        </div>
+                  </div>
                   <div class="control-group">
                         <label><s:message code="label.entity.order" text="Sort order"/></label>
                         <div class="controls">
