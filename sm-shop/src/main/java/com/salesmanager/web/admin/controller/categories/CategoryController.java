@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.salesmanager.core.business.catalog.category.model.Category;
 import com.salesmanager.core.business.catalog.category.model.CategoryDescription;
 import com.salesmanager.core.business.catalog.category.service.CategoryService;
+import com.salesmanager.core.business.content.model.FileContentType;
+import com.salesmanager.core.business.content.service.ContentService;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.country.service.CountryService;
 import com.salesmanager.core.business.reference.language.model.Language;
@@ -54,6 +57,9 @@ public class CategoryController {
 	
 	@Autowired
 	LabelUtils messages;
+	
+	@Autowired
+	private ContentService contentService;
 
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/categories/editCategory.html", method=RequestMethod.GET)
@@ -156,7 +162,7 @@ public class CategoryController {
 			//get from DB
 			Category currentCategory = categoryService.getById(category.getId());
 			
-			if(currentCategory==null || currentCategory.getMerchantStore().getId()!=store.getId()) {
+			if(currentCategory==null || currentCategory.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
 				return "catalogue-categories";
 			}
 
@@ -204,7 +210,12 @@ public class CategoryController {
 				category.setDepth(0);
 			}
 		}
-		
+		if(category.getImage()!=null && !category.getImage().isEmpty()) {
+			String imageName = category.getImage().getOriginalFilename();
+			category.setCategoryImage(imageName);
+			category.setFile(category.getImage().getInputStream());
+		}
+		 
 		category.getAuditSection().setModifiedBy(request.getRemoteUser());
 		categoryService.saveOrUpdate(category);
 
@@ -511,6 +522,37 @@ public class CategoryController {
 		model.addAttribute("activeMenus",activeMenus);
 		//
 		
+	}
+	
+	@PreAuthorize("hasRole('PRODUCTS')")
+	@RequestMapping(value="/admin/category/removeImage.html", method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
+	public @ResponseBody String removeImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		
+		AjaxResponse resp = new AjaxResponse();
+		String id = request.getParameter("id");
+		Category category=categoryService.getById(Long.parseLong(id));
+		
+		try {
+			
+
+			
+			contentService.removeFile(store.getCode(), FileContentType.IMAGE,category.getCategoryImage() );
+			
+			category.setCategoryImage(null);
+			categoryService.update(category);
+		
+		
+		} catch (Exception e) {
+			LOGGER.error("Error while deleting product", e);
+			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+			resp.setErrorMessage(e);
+		}
+		
+		String returnString = resp.toJSONString();
+		
+		return returnString;
 	}
 
 }

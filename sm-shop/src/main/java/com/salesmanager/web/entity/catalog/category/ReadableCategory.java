@@ -35,5 +35,14 @@ public class ReadableCategory extends CategoryEntity implements Serializable {
 	public void setChildren(List<ReadableCategory> children) {
 		this.children = children;
 	}
+	private String categoryImage;
+
+
+	public String getCategoryImage() {
+		return categoryImage;
+	}
+	public void setCategoryImage(String categoryImage) {
+		this.categoryImage = categoryImage;
+	}
 
 }

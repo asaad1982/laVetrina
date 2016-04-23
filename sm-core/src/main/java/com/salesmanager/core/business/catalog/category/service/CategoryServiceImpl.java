@@ -1,5 +1,6 @@
 package com.salesmanager.core.business.catalog.category.service;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,6 +15,10 @@ import com.salesmanager.core.business.catalog.category.model.Category;
 import com.salesmanager.core.business.catalog.category.model.CategoryDescription;
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
+import com.salesmanager.core.business.content.model.FileContentType;
+import com.salesmanager.core.business.content.model.ImageContentFile;
+import com.salesmanager.core.business.content.model.InputContentFile;
+import com.salesmanager.core.business.content.service.ContentService;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
@@ -25,7 +30,8 @@ public class CategoryServiceImpl extends SalesManagerEntityServiceImpl<Long, Cat
 	
 	private CategoryDao categoryDao;
 	
-
+     @Autowired
+     private ContentService contentService;
 	  
 	  @Autowired
 	  private ProductService productService;
@@ -87,9 +93,16 @@ public class CategoryServiceImpl extends SalesManagerEntityServiceImpl<Long, Cat
 	public void saveOrUpdate(Category category) throws ServiceException {
 		
 		
+		InputStream inputStream = category.getFile();
+		InputContentFile cmsContentImage = new InputContentFile();
+        cmsContentImage.setFileName( category.getCategoryImage() );
+        cmsContentImage.setFile( inputStream );
+        cmsContentImage.setFileContentType(FileContentType.IMAGE);
+        contentService.addContentFile(category.getMerchantStore().getCode(), cmsContentImage);
+		
 		//save or update (persist and attach entities
 		if(category.getId()!=null && category.getId()>0) {
-
+			
 			super.update(category);
 			
 		} else {

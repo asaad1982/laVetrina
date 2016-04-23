@@ -37,6 +37,7 @@ import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
+import com.salesmanager.core.business.reference.language.service.LanguageService;
 import com.salesmanager.core.utils.ProductPriceUtils;
 import com.salesmanager.core.utils.ajax.AjaxPageableResponse;
 import com.salesmanager.core.utils.ajax.AjaxResponse;
@@ -58,6 +59,8 @@ public class ProductsController {
 	@Autowired
 	private ProductPriceUtils priceUtil;
 	
+	@Autowired
+	private LanguageService languageService;
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductsController.class);
 	
 	@PreAuthorize("hasRole('PRODUCTS')")
@@ -325,6 +328,7 @@ public class ProductsController {
 	            return "admin-products";
 	        }
 	        try{
+	      	
 		    importService.importFile(uploadItem,store,language);
 	        }catch (ServiceException se){
 	        	model.addAttribute("error","error");
