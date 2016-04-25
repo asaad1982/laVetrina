@@ -464,4 +464,22 @@ public class CategoryDaoImpl extends SalesManagerEntityDaoImpl<Long, Category> i
 		return query.distinct().list(qCategory);
 	}
 
+	@Override
+	public List<Category> listAll(Language language) {
+		
+		QCategory qCategory = QCategory.category;
+		QCategoryDescription qDescription = QCategoryDescription.categoryDescription;
+		
+		JPQLQuery query = new JPAQuery (getEntityManager());
+		
+		query.from(qCategory)
+			.leftJoin(qCategory.descriptions, qDescription).fetch()
+			.leftJoin(qCategory.merchantStore).fetch().
+			leftJoin(qCategory.parent).fetch()
+			.where(qDescription.language.id.eq(language.getId()))
+			.orderBy(qCategory.sortOrder.asc(),qCategory.id.asc());
+		
+		return query.distinct().list(qCategory);
+	}
+
 }

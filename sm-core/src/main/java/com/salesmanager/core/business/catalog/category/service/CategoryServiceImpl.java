@@ -215,6 +215,12 @@ public class CategoryServiceImpl extends SalesManagerEntityServiceImpl<Long, Cat
 		
 		return categoryDao.listByParent(category, language);
 	}
+	
+	@Override
+	public List<Category> listAll(Language language){
+		
+		return categoryDao.listAll(language);
+	}
 
 	
 	@Override

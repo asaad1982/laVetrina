@@ -14,4 +14,132 @@ response.setDateHeader ("Expires", -1);
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
  
-welcome to whole sale
+<script>
+function loadProducts(category) {
+
+	var categoryValue = -1;
+	if (category != null && category != -1) {
+		categoryValue = category.value;
+		if (categoryValue != null && categoryValue != '') {
+			var url = "loadProducts?categoryId=" + categoryValue;
+			$.ajax({
+						type : "GET",
+						url : url,
+						success : function(data) {
+							$('#productId').empty();
+							$('#productId').append(new Option('<s:message code="label.wholeSale.chooseProduct" />',""));
+							$.each(data, function(key, val) {
+								$('#productId').append(new Option(val.name, val.id));
+							});
+						},
+						dataType : 'json',
+						cache : false,
+						contentType : "application/json"
+					});
+		} else {
+			$('#productId').empty();
+			$('#productId').append(new Option('<s:message code="label.wholeSale.chooseProduct" />',""));
+		}
+	} else {
+		$('#productId').empty();
+		$('#productId').append(new Option('<s:message code="label.wholeSale.chooseProduct" />', ""));
+	}
+	return false;
+}
+</script>
+ 
+<c:url var="saleRequest" value="/shop/sale/wholeSale.html" />
+
+<form:form action="${saleRequest}" method="POST" modelAttribute="saleRequest" id="saleRequest">
+
+	<c:if test="${not empty successMsgCode}">
+					<div class="alert-success">
+						<s:message code="${successMsgCode}" text="success"/>
+					</div>
+	</c:if>
+
+	<c:if test="${not empty msgCode}">
+		<font color="red"><p class="alert-error">
+			<s:message code="${msgCode}" text="error" />
+		</p></font>
+	</c:if>
+	
+	<div class="control-group">
+		<label class="required"><s:message code="label.wholeSale.customerName" text="Code" /></label>
+		<div class="controls">
+			<form:input id="customerName" path="customerName" />
+			<div class="alert-error" id="customerName_error">
+				<font color="red"><form:errors path="customerName" /></font>
+			</div>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="required"><s:message code="label.wholeSale.customerMobile" text="Code" /></label>
+		<div class="controls">
+			<form:input id="customerMobile" path="customerMobile" />
+			<div class="alert-error" id="customerMobile_error">
+				<font color="red"><form:errors path="customerMobile" /></font>
+			</div>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="required"><s:message code="label.wholeSale.customerEmail" text="Code" /></label>
+		<div class="controls">
+			<form:input id="customerEmail" path="customerEmail" />
+			<div class="alert-error" id="customerEmail_error">
+				<font color="red"><form:errors path="customerEmail" /></font>
+			</div>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="required"><s:message code="label.wholeSale.categoryName" text="Code" /></label>
+		<div class="controls">
+			<select id="categoryId" onchange="javascript:loadProducts(this);" style="width: 30%;">
+				<option value="-1">
+					<s:message code="label.wholeSale.chooseCategory" text="Root" />
+				</option>
+				<c:forEach items="${categories}" var="cat" >
+					<option value="${cat.id}">
+						<c:out value="${cat.descriptions[0].name}" />
+					</option>
+				</c:forEach>
+			</select>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="required"><s:message code="label.wholeSale.productName" text="Code" /></label>
+		<div class="controls">
+			<form:select path="productId" id="productId" cssStyle="width: 30%;">
+				<form:option value="">
+					<s:message code="label.wholeSale.chooseProduct" />
+				</form:option>
+				<form:options items="${products}" itemLabel="name" itemValue="id"></form:options>
+			</form:select>
+			<div class="alert-error" id="productId_error">
+				<font color="red"><form:errors path="productId" /></font>
+			</div>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="required"><s:message code="label.wholeSale.quantity" text="Code" /></label>
+		<div class="controls">
+			<form:input id="quantity" path="quantity" />
+			<div class="alert-error" id="quantity_error">
+				<font color="red"><form:errors path="quantity" /></font>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<button type="submit" class="btn btn-success">
+			<s:message code="btn.wholeSale.send" text="Submit" />
+		</button>
+	</div>
+
+</form:form>
+

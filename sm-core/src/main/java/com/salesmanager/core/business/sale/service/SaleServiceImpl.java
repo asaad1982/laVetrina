@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
 import com.salesmanager.core.business.sale.dao.SaleRequestDao;
 import com.salesmanager.core.business.sale.model.SaleRequest;
+import com.salesmanager.core.business.sale.util.EmailClient;
 
 @Service("saleService")
 public class SaleServiceImpl extends
@@ -13,12 +14,35 @@ public class SaleServiceImpl extends
 
 	SaleRequestDao saleRequestDao;
 
-
+	
 	@Autowired
 	public SaleServiceImpl(SaleRequestDao saleRequestDao) {
 		super(saleRequestDao);
 		this.saleRequestDao = saleRequestDao;
 
+	}
+
+
+	@Override
+	public void sendSaleRequest(SaleRequest saleRequest) throws Exception {
+
+		//send email
+//		sendEmail(saleRequest);
+		
+		//save request
+		saleRequestDao.save(saleRequest);
+		
+	}
+
+
+	private void sendEmail(SaleRequest saleRequest) throws Exception {
+
+		String from = saleRequest.getCustomerEmail();
+		String subject = "Whole Sale Request";
+		String mailBody ="Whoe Sale Request, Request Number: " + saleRequest.getRequestNumber();
+
+		EmailClient.sendMail(from, "eng.amiranagi@gmail.com", subject, mailBody);
+		
 	}
 
 

@@ -5,6 +5,8 @@ import com.salesmanager.core.business.sale.model.SaleRequest;
 
 public interface SaleService extends SalesManagerEntityService<Long, SaleRequest> {
 
+	void sendSaleRequest(SaleRequest saleRequest) throws Exception;
+
 
 
 }

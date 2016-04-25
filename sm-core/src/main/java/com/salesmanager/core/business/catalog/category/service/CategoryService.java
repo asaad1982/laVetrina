@@ -103,6 +103,8 @@ public interface CategoryService extends SalesManagerEntityService<Long, Categor
 
 	List<Category> listActiveByStore(MerchantStore store, Language language)
 			throws ServiceException;
+
+	List<Category> listAll(Language language);
 	
 
 }
