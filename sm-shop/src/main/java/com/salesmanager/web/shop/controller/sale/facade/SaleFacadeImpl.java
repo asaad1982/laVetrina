@@ -10,6 +10,7 @@ import com.salesmanager.core.business.catalog.category.service.CategoryService;
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.generic.exception.ServiceException;
+import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.core.business.sale.model.SaleRequest;
 import com.salesmanager.core.business.sale.service.SaleService;
@@ -28,9 +29,9 @@ public class SaleFacadeImpl implements SaleFacade {
 	private SaleService saleService;
 	
 	@Override
-	public List<Category> getAllCategories(Language language){
+	public List<Category> getAllCategories(MerchantStore store,Language language) throws ServiceException{
 		
-		return categoryService.listAll(language);
+		return categoryService.listActiveByStore(store, language);
 	}
 
 	@Override

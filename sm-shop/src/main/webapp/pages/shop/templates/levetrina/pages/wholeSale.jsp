@@ -47,7 +47,11 @@ function loadProducts(category) {
 	return false;
 }
 </script>
- 
+<div id="main-content" class="container" style="padding: 15px 0;">
+	<div class="bg">
+	    	<div class="row">    		
+	    		<div class="col-sm-12">
+	    		<h2 class="title text-center"><s:message code="label.wholesale" text="Contact us"/></h2>
 <c:url var="saleRequest" value="/shop/sale/wholeSale.html" />
 
 <form:form action="${saleRequest}" method="POST" modelAttribute="saleRequest" id="saleRequest">
@@ -64,40 +68,40 @@ function loadProducts(category) {
 		</p></font>
 	</c:if>
 	
-	<div class="control-group">
+	<div class="form-group col-md-6">
 		<label class="required"><s:message code="label.wholeSale.customerName" text="Code" /></label>
 		<div class="controls">
-			<form:input id="customerName" path="customerName" />
+			<form:input id="customerName" path="customerName" cssClass="form-control"/>
 			<div class="alert-error" id="customerName_error">
 				<font color="red"><form:errors path="customerName" /></font>
 			</div>
 		</div>
 	</div>
 	
-	<div class="control-group">
+	<div class="form-group col-md-6">
 		<label class="required"><s:message code="label.wholeSale.customerMobile" text="Code" /></label>
 		<div class="controls">
-			<form:input id="customerMobile" path="customerMobile" />
+			<form:input id="customerMobile" path="customerMobile" cssClass="form-control"/>
 			<div class="alert-error" id="customerMobile_error">
 				<font color="red"><form:errors path="customerMobile" /></font>
 			</div>
 		</div>
 	</div>
 	
-	<div class="control-group">
+	<div class="form-group col-md-6">
 		<label class="required"><s:message code="label.wholeSale.customerEmail" text="Code" /></label>
 		<div class="controls">
-			<form:input id="customerEmail" path="customerEmail" />
+			<form:input id="customerEmail" path="customerEmail" cssClass="form-control"/>
 			<div class="alert-error" id="customerEmail_error">
 				<font color="red"><form:errors path="customerEmail" /></font>
 			</div>
 		</div>
 	</div>
 
-	<div class="control-group">
+	<div class="form-group col-md-6">
 		<label class="required"><s:message code="label.wholeSale.categoryName" text="Code" /></label>
 		<div class="controls">
-			<select id="categoryId" onchange="javascript:loadProducts(this);" style="width: 30%;">
+			<select id="categoryId" onchange="javascript:loadProducts(this);" style="width: 30%;" cssClass="form-control">
 				<option value="-1">
 					<s:message code="label.wholeSale.chooseCategory" text="Root" />
 				</option>
@@ -110,10 +114,10 @@ function loadProducts(category) {
 		</div>
 	</div>
 
-	<div class="control-group">
+	<div class="form-group col-md-6">
 		<label class="required"><s:message code="label.wholeSale.productName" text="Code" /></label>
 		<div class="controls">
-			<form:select path="productId" id="productId" cssStyle="width: 30%;">
+			<form:select path="productId" id="productId" cssStyle="width: 30%;" cssClass="form-control">
 				<form:option value="">
 					<s:message code="label.wholeSale.chooseProduct" />
 				</form:option>
@@ -125,10 +129,10 @@ function loadProducts(category) {
 		</div>
 	</div>
 
-	<div class="control-group">
+	<div class="form-group col-md-6">
 		<label class="required"><s:message code="label.wholeSale.quantity" text="Code" /></label>
 		<div class="controls">
-			<form:input id="quantity" path="quantity" />
+			<form:input id="quantity" path="quantity" cssClass="form-control"/>
 			<div class="alert-error" id="quantity_error">
 				<font color="red"><form:errors path="quantity" /></font>
 			</div>
@@ -136,10 +140,10 @@ function loadProducts(category) {
 	</div>
 
 	<div class="form-actions">
-		<button type="submit" class="btn btn-success">
+		<button type="submit" class="btn btn-primary pull-right">
 			<s:message code="btn.wholeSale.send" text="Submit" />
 		</button>
 	</div>
 
-</form:form>
+</form:form></div></div></div></div>
 

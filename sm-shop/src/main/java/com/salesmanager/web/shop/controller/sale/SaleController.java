@@ -26,8 +26,10 @@ import com.salesmanager.core.business.catalog.category.model.Category;
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.catalog.product.model.description.ProductDescription;
 import com.salesmanager.core.business.generic.exception.ServiceException;
+import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.core.business.sale.model.SaleRequest;
+import com.salesmanager.web.constants.Constants;
 import com.salesmanager.web.shop.controller.sale.facade.SaleFacade;
 import com.salesmanager.web.shop.controller.sale.model.ProductModel;
 
@@ -44,14 +46,15 @@ public class SaleController {
 	
 	
 	@RequestMapping(value="/shop/sale/wholeSale.html", method=RequestMethod.GET)
-	public String wholeSale(Model model, HttpServletRequest request, HttpServletResponse response) {
+	public String wholeSale(Model model, HttpServletRequest request, HttpServletResponse response) throws ServiceException {
 		
 		LOGGER.info("whole sale entry page");
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 		SaleRequest saleRequest = new SaleRequest();
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
-		List<Category> categories = saleFacade.getAllCategories(language);
+		List<Category> categories = saleFacade.getAllCategories(store,language);
 		
 		request.getSession().setAttribute("categories", categories);
 		
