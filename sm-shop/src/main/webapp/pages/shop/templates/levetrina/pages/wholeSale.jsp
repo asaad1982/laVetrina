@@ -101,7 +101,7 @@ function loadProducts(category) {
 	<div class="form-group col-md-6">
 		<label class="required"><s:message code="label.wholeSale.categoryName" text="Code" /></label>
 		<div class="controls">
-			<select id="categoryId" onchange="javascript:loadProducts(this);" style="width: 30%;" cssClass="form-control">
+			<select id="categoryId" onchange="javascript:loadProducts(this);" class="form-control">
 				<option value="-1">
 					<s:message code="label.wholeSale.chooseCategory" text="Root" />
 				</option>
@@ -117,7 +117,7 @@ function loadProducts(category) {
 	<div class="form-group col-md-6">
 		<label class="required"><s:message code="label.wholeSale.productName" text="Code" /></label>
 		<div class="controls">
-			<form:select path="productId" id="productId" cssStyle="width: 30%;" cssClass="form-control">
+			<form:select path="productId" id="productId"  cssClass="form-control">
 				<form:option value="">
 					<s:message code="label.wholeSale.chooseProduct" />
 				</form:option>
