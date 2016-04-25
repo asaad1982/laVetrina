@@ -57,7 +57,7 @@ function loadProducts(category) {
 <form:form action="${saleRequest}" method="POST" modelAttribute="saleRequest" id="saleRequest">
 
 	<c:if test="${not empty successMsgCode}">
-					<div class="alert-success">
+					<div class="status alert alert-success">
 						<s:message code="${successMsgCode}" text="success"/>
 					</div>
 	</c:if>
