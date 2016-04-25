@@ -88,14 +88,19 @@ function isFormValid() {
 
 
 <c:set var="register_url" value="${pageContext.request.contextPath}/shop/customer/register.html"/>
-
+	<div id="main-content" class="container" style="padding: 15px 0;">
+	<div class="bg">
+	    	<div class="row">    		
+	    		<div class="col-sm-12">  
+	<h2 class="title text-center"><s:message code="label.customer.register" text="Contact us"/></h2>
+	<div class="col-sm-8">
 	<div id="main-content" class="container clearfix row-fluid">
 			<div id="registrationError"  class="alert alert-warning common-row" style="display:none;"></div>
 			<div class="span7 col-md-7 no-padding">
 				<form:form method="post" action="${register_url}" id="registrationForm" class="form-horizontal" commandName="customer">
 					<form:errors path="*" cssClass="alert alert-error alert-danger form-group" element="div" />
 					<fieldset>
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<label class="required control-label" for="FirstNameRegister"><s:message code="label.generic.firstname" text="First Name"/></label>
 							<div class="controls">
 							   <s:message code="NotEmpty.customer.firstName" text="First name is required" var="msgFirstName"/>
@@ -104,7 +109,7 @@ function isFormValid() {
 								
 							</div>
 						</div>
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<label class="required control-label" for="LastNameRegister"><s:message code="label.generic.lastname" text="Last Name"/></label>
 							<div class="controls">
 							    <s:message code="NotEmpty.customer.lastName" text="Last name is required" var="msgLastName"/>
@@ -114,7 +119,7 @@ function isFormValid() {
 							</div>
 						</div>
 
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<label class="required control-label" for="sex"><s:message code="label.generic.genre" text="Genre"/></label>
 							<div class="controls">
 							 <form:select path="gender" class="form-control form-control-lg">
@@ -125,7 +130,7 @@ function isFormValid() {
 							</div>
 						</div>
 
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<label class="control-label required"><s:message code="label.generic.country" text="Country"/></label>
 							<div class="controls">
 							<form:select path="billing.country" class="form-control form-control-lg" id="registration_country">
@@ -136,7 +141,7 @@ function isFormValid() {
 						
 						
 		
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<label class="control-label required"><s:message code="label.generic.stateprovince" text="State / Province"/></label>
 							<div class="controls">
 							<s:message code="NotEmpty.customer.billing.stateProvince" text="State / Province is required" var="msgStateProvince"/>
@@ -147,7 +152,7 @@ function isFormValid() {
 						</div>		
 						
 						
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<label class="required control-label" for="username"><s:message code="label.generic.username" text="User name" /></label>
 							<div class="controls">
 								<s:message code="NotEmpty.customer.userName" text="User name is required" var="msgUserName"/>
@@ -158,7 +163,7 @@ function isFormValid() {
 						
 						
 						
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<label class="required control-label" for="email"><s:message code="label.generic.email" text="Email address"/></label>
 							<div class="controls">
 							     <s:message code="NotEmpty.customer.emailAddress" text="Email address is required" var="msgEmail"/>
@@ -168,7 +173,7 @@ function isFormValid() {
 							</div>
 						</div>
 						
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<label class="required control-label" for="password"><s:message code="label.generic.password" text="Password"/></label>
 							<div class="controls">
 							    <s:message code="message.password.required" text="Password is required" var="msgPassword"/>
@@ -177,7 +182,7 @@ function isFormValid() {
 							</div>
 						</div>
 						
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<label class="required control-label" for="passwordAgain"><s:message code="label.generic.repeatpassword" text="Repeat password"/></label>
 							<div class="controls">
 							     <s:message code="message.password.repeat.required" text="Repeated password is required" var="msgRepeatPassword"/>
@@ -186,7 +191,7 @@ function isFormValid() {
 							</div>
 						</div>						
 		
-						<div class="control-group form-group">
+						<div class="form-group col-md-12">
 							<div class="controls"><!--watch the white space in IOS!-->
 								<script type="text/javascript"
     								 src="http://www.google.com/recaptcha/api/challenge?k=<c:out value="${recapatcha_public_key}"/>&hl=${requestScope.LANGUAGE.code}">
@@ -206,21 +211,26 @@ function isFormValid() {
 						</div>
 						</div>
 
-						<div class="form-actions">
-							<input id="submitRegistration" type="submit" value="<s:message code="label.generic.register" text="Register"/>" name="register" class="btn btn-large">
+						<div class="form-group col-md-12">
+							<input id="submitRegistration" type="submit" value="<s:message code="label.generic.register" text="Register"/>" name="register" class="btn btn-primary pull-right">
 						</div>
 					</fieldset>
 				</form:form>
 				<!-- end registration form--> 
 				
 			</div>
-			<!--close .span7-->
-			
-			<div id="why-join" class="span4 offset1 col-md-5">
+			<div id="why-join" class="col-md-4">
 				<h3 class="short_headline"><span><s:message code="label.register.whyregister" text="Why register?" /></span></h3>
 				<p>
 					<s:message code="label.register.registerreasons" text="Simplify a checkout process by having your information pre-filed, re-order an item from one click and get access to premium information." />
 				</p>
 			</div>
+			</div></div>
+			
+			
+			</div></div>
+			<!--close .span7-->
+			
+			
 	</div>
 	<!--close .container "main-content" -->
