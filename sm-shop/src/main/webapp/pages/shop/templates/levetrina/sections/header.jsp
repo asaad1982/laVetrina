@@ -180,7 +180,7 @@ $(document).ready(function() {
 						<!-- no dual login -->
 						<ul class="logon-box pull-right">
 							<li>
-								<s:message code="label.security.loggedinas" text="You are logged in as"/> [<sec:authentication property="principal.username"/>]. <s:message code="label.security.nologinacces.store" text="We can't display store logon box"/>
+								<s:message code="label.security.loggedinas" text="You are logged in as"/> [<sec:authentication property="principal.username"/>]. 
 							</li>
 						</ul>
 					</sec:authorize>
@@ -222,8 +222,8 @@ $(document).ready(function() {
                                 
                                  <div class="call-to-actions-btn pull-right">
                                      <button type="button" class="btn offers-btn-style">HOT OFFERS !</button>
-                                        <button type="button" class="btn call-btn-style">
-                                            <img src="<c:url value="/resources/templates/levetrina/images/tele.png" />">CALL US</button>
+                                      <a href='<c:url value="/shop/store/contactus.html"/>' class="btn call-btn-style" >
+                                            <img src="<c:url value="/resources/templates/levetrina/images/tele.png" />">CALL US</a>
                                 </div>
                             </div>
 					</div>
