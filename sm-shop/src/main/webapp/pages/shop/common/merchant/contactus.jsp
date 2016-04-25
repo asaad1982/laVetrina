@@ -254,7 +254,7 @@ if(address!=null) {
 	    			<div class="contact-info">
 									<!-- COMPANY ADDRESS -->   
 									<c:if test="${requestScope.CONFIGS['displayStoreAddress'] == true}">   
-									<h2 class="title text-center">Contact Info</h2>                               
+									<h2 class="title text-center"><s:message code="label.contactus.form.title"/></h2>                               
                                      <address>  
 									 	<div itemscope itemtype="http://schema.org/Organization"> 
 										 	<h2 itemprop="name"><c:out value="${requestScope.MERCHANT_STORE.storename}"/></h2><br/>  
@@ -270,7 +270,7 @@ if(address!=null) {
 									 </c:if>
 									 
 									 <div class="social-networks">
-			    					<h2 class="title text-center">Social Networking</h2>
+			    					<h2 class="title text-center"><s:message code="label.contactus.social"/></h2>
 									<ul>
 										<c:if test="${requestScope.CONFIGS['facebook_page_url'] != null || requestScope.CONFIGS['twitter_handle'] != null}">
 							             

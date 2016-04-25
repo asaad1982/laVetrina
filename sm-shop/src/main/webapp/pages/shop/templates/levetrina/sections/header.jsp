@@ -222,8 +222,8 @@ $(document).ready(function() {
                                 
                                  <div class="call-to-actions-btn pull-right">
                                      <button type="button" class="btn offers-btn-style">HOT OFFERS !</button>
-                                      <a href='<c:url value="/shop/store/contactus.html"/>' class="btn call-btn-style" >
-                                            <img src="<c:url value="/resources/templates/levetrina/images/tele.png" />">CALL US</a>
+                                      <button  type="button" onclick='location.href="<c:url value="/shop/store/contactus.html"/>"' class="btn call-btn-style" >
+                                            <img src="<c:url value="/resources/templates/levetrina/images/tele.png" />"><s:message code="label.contactus.menu"/></button>
                                 </div>
                             </div>
 					</div>
