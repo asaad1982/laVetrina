@@ -180,7 +180,7 @@ $(document).ready(function() {
 						<!-- no dual login -->
 						<ul class="logon-box pull-right">
 							<li>
-								<s:message code="label.security.loggedinas" text="You are logged in as"/> [<sec:authentication property="principal.username"/>]. <s:message code="label.security.nologinacces.store" text="We can't display store logon box"/>
+								<s:message code="label.security.loggedinas" text="You are logged in as"/> [<sec:authentication property="principal.username"/>]. 
 							</li>
 						</ul>
 					</sec:authorize>
@@ -196,16 +196,14 @@ $(document).ready(function() {
 								<!-- form id must be login, form fields must be userName, password and storeCode -->
 								<form id="login" method="post" accept-charset="UTF-8">
 									<div class="control-group">
-	                        				<label><s:message code="label.username" text="Username" /></label>
-					                        <div class="controls">
-												<input id="signin_userName" style="margin-bottom: 15px;" type="text" name="userName" size="30" />
-											</div>
+	                        				<s:message code="label.username" text="Username"  var="username"/>
+												<input id="signin_userName" style="margin-bottom: 15px;" type="text" name="userName" size="30" required="required" placeholder='${username }' class="form-control"/>
+											
 									</div>
 									<div class="control-group">
-	                        				<label><s:message code="label.password" text="Password" /></label>
-					                        <div class="controls">
-												<input id="signin_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
-											</div>
+	                        					<s:message code="label.password" text="Password" var="password"/>
+												<input id="signin_password" style="margin-bottom: 15px;" type="password" name="password" size="30" required="required" placeholder='${password }' class="form-control"/>
+											
 									</div>
 									<input id="signin_storeCode" name="storeCode" type="hidden" value="<c:out value="${requestScope.MERCHANT_STORE.code}"/>"/>					 
 									<button type="submit" style="width:100%" class="btn btn-large" id="login-button"><s:message code="button.label.login" text="Login" /></button>
@@ -222,8 +220,8 @@ $(document).ready(function() {
                                 
                                  <div class="call-to-actions-btn pull-right">
                                      <button type="button" class="btn offers-btn-style">HOT OFFERS !</button>
-                                        <button type="button" class="btn call-btn-style">
-                                            <img src="<c:url value="/resources/templates/levetrina/images/tele.png" />">CALL US</button>
+                                      <button  type="button" onclick='location.href="<c:url value="/shop/store/contactus.html"/>"' class="btn call-btn-style" >
+                                            <img src="<c:url value="/resources/templates/levetrina/images/tele.png" />"><s:message code="label.contactus.menu"/></button>
                                 </div>
                             </div>
 					</div>
