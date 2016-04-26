@@ -12,7 +12,7 @@ import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
-import com.salesmanager.core.business.sale.model.SaleRequest;
+import com.salesmanager.core.business.sale.entity.SaleRequest;
 import com.salesmanager.core.business.sale.service.SaleService;
 
 

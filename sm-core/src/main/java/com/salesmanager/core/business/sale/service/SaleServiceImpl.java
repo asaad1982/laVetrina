@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
 import com.salesmanager.core.business.sale.dao.SaleRequestDao;
-import com.salesmanager.core.business.sale.model.SaleRequest;
+import com.salesmanager.core.business.sale.entity.ProductSaleRequest;
+import com.salesmanager.core.business.sale.entity.SaleRequest;
 import com.salesmanager.core.business.sale.util.EmailClient;
 
 @Service("saleService")
@@ -13,7 +14,6 @@ public class SaleServiceImpl extends
 		SalesManagerEntityServiceImpl<Long, SaleRequest> implements SaleService {
 
 	SaleRequestDao saleRequestDao;
-
 	
 	@Autowired
 	public SaleServiceImpl(SaleRequestDao saleRequestDao) {
@@ -30,8 +30,11 @@ public class SaleServiceImpl extends
 //		sendEmail(saleRequest);
 		
 		//save request
+		for(ProductSaleRequest psr:saleRequest.getProductSaleRequests()){
+			psr.setSaleRequest(saleRequest);
+		}
 		saleRequestDao.save(saleRequest);
-		
+
 	}
 
 

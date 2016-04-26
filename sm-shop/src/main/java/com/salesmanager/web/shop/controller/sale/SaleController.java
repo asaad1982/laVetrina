@@ -28,9 +28,11 @@ import com.salesmanager.core.business.catalog.product.model.description.ProductD
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
-import com.salesmanager.core.business.sale.model.SaleRequest;
+import com.salesmanager.core.business.sale.entity.ProductSaleRequest;
+import com.salesmanager.core.business.sale.entity.SaleRequest;
 import com.salesmanager.web.constants.Constants;
 import com.salesmanager.web.shop.controller.sale.facade.SaleFacade;
+import com.salesmanager.web.shop.controller.sale.form.SaleRequestForm;
 import com.salesmanager.web.shop.controller.sale.model.ProductModel;
 
 
@@ -50,7 +52,9 @@ public class SaleController {
 		
 		LOGGER.info("whole sale entry page");
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-		SaleRequest saleRequest = new SaleRequest();
+		SaleRequestForm saleRequestForm = new SaleRequestForm();
+		
+		request.getSession().setAttribute("productSaleRequests", null);
 		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		
@@ -59,19 +63,27 @@ public class SaleController {
 		request.getSession().setAttribute("categories", categories);
 		
 		model.addAttribute("categories", categories);
-		model.addAttribute("saleRequest", saleRequest);
+		model.addAttribute("saleRequestForm", saleRequestForm);
 		return "wholeSale.page";
 	}
 	
 	@RequestMapping(value="/shop/sale/wholeSale.html", method=RequestMethod.POST)
-	public String saveContent(@Valid @ModelAttribute SaleRequest saleRequest, BindingResult result, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
+	public String saveContent(@Valid @ModelAttribute SaleRequestForm saleRequestForm, BindingResult result, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
 		
-		request.setAttribute("saleRequest", saleRequest);
-
+		request.setAttribute("saleRequestForm", saleRequestForm);
+		
 		if (result.hasErrors()) {
-			model.addAttribute("saleRequest", saleRequest);
+			model.addAttribute("saleRequestForm", saleRequestForm);
 			return "wholeSale.page";
 		}
+		
+		SaleRequest saleRequest = new SaleRequest();
+		saleRequest.setCustomerEmail(saleRequestForm.getCustomerEmail());
+		saleRequest.setCustomerMobile(saleRequestForm.getCustomerMobile());
+		saleRequest.setCustomerName(saleRequestForm.getCustomerName());
+		
+		saleRequest.setProductSaleRequests((List<ProductSaleRequest>) request.getSession().getAttribute("productSaleRequests"));
+		
 		
 		saleFacade.sendSaleRequest(saleRequest);
 		
@@ -108,6 +120,36 @@ public class SaleController {
 		request.setAttribute("products", pm);
 		return pm;
 	}
+
+	@RequestMapping(value = "/shop/sale/populateProduct", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody String populateProduct(HttpServletRequest request,
+			@RequestParam("productId") String productId, @RequestParam("quantity") String quantity) throws ServiceException {
+
+		long product=0;
+		Integer productQuantity=0;
+		if (productId != null && !productId.isEmpty()) {
+			product = Long.parseLong(productId);
+		}
+		
+		if (quantity != null && !quantity.isEmpty()) {
+			productQuantity = Integer.parseInt(quantity);
+		}
+
+		ProductSaleRequest productSaleRequest = new ProductSaleRequest();
+		productSaleRequest.setProductId(product);
+		productSaleRequest.setQuantity(productQuantity);
+		
+		List<ProductSaleRequest> productSaleRequests = (List<ProductSaleRequest>) request.getSession().getAttribute("productSaleRequests");
+		if(productSaleRequests==null)
+			productSaleRequests = new ArrayList<ProductSaleRequest>();
+		
+		productSaleRequests.add(productSaleRequest);
+		
+		request.getSession().setAttribute("productSaleRequests", productSaleRequests);
+		
+		return "success";
+	}
+
 	
 	@ExceptionHandler({Exception.class})
 	public ModelAndView  saleControlerHandler(HttpServletRequest req,
@@ -115,12 +157,12 @@ public class SaleController {
 
 		LOGGER.error("saleControllerHandler :: ", e);
 		ModelAndView mav = new ModelAndView();
-		SaleRequest saleRequest = (SaleRequest) req.getAttribute("saleRequest");
+		SaleRequestForm saleRequestForm = (SaleRequestForm) req.getAttribute("saleRequestForm");
 		
-		if(saleRequest == null)
-			saleRequest = new SaleRequest();
+		if(saleRequestForm == null)
+			saleRequestForm = new SaleRequestForm();
 		
-		mav.getModelMap().addAttribute("saleRequest", saleRequest);
+		mav.getModelMap().addAttribute("saleRequestForm", saleRequestForm);
 		mav.getModelMap().addAttribute("msgCode","message.wholeSale.error");
 		mav.setViewName("wholeSale.page");
 		

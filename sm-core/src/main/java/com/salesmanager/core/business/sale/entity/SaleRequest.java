@@ -1,31 +1,30 @@
-package com.salesmanager.core.business.sale.model;
+package com.salesmanager.core.business.sale.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import com.salesmanager.core.business.common.model.audit.AuditListener;
 import com.salesmanager.core.business.common.model.audit.AuditSection;
 import com.salesmanager.core.business.common.model.audit.Auditable;
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
-import com.salesmanager.core.business.reference.zone.model.Zone;
 
 @Entity
 @EntityListeners(value = AuditListener.class)
 @Table(name = "SALE_REQUEST", schema="lavetrina")
-public class SaleRequest extends SalesManagerEntity<Long, Zone> implements Auditable {
+public class SaleRequest extends SalesManagerEntity<Long, SaleRequest> implements Auditable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -34,36 +33,19 @@ public class SaleRequest extends SalesManagerEntity<Long, Zone> implements Audit
 	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT",
 	pkColumnValue = "SALE_REQUEST_SEQ_NEXT_VAL")
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-
 	private Long id;
 	
-	@NotEmpty(message="{validation.wholeSale.customerEmail.required}")
-	@Email(message="{validation.wholeSale.customerEmail.invalidFormat}")
-	@Column(name="CUSTOMER_EMAIL",unique=true,length=100)
+	@Column(name="CUSTOMER_EMAIL",length=100)
 	private String customerEmail;
 	
-	//TODO make index
-	@NotNull(message="{validation.wholeSale.productId.required}")
-	@Column(name="PRODUCT_ID")
-	private Long productId;
-	
-	@NotNull(message="{validation.wholeSale.quantity.required}")
-	@Column(name="QUANTITY")
-	private Integer quantity;
-	
-	@NotEmpty(message="{validation.wholeSale.customerName.required}")
-	@Pattern(regexp = "^[a-zA-Z0-9\\s]*$", message = "{validation.wholeSale.customerName.invalidFormat}")
-	@Size(max=100, message="{validation.wholeSale.customerName.size}")
 	@Column(name="CUSTOMER_NAME",length=100)
 	private String customerName;
 	
 	//TODO make index
-	@NotEmpty(message="{validation.wholeSale.customerMobile.required}")
-	@Pattern(regexp = "^[\\d]*$", message = "{validation.wholeSale.customerMobile.invalidFormat}")
 	@Column(name="CUSTOMER_MOBILE",length=100)
 	private String customerMobile;
 	
-	//TODO Id will be generated date.long
+	//TODO make index
 	@Column(name="REQUEST_NUMBER",length=100)
 	private String requestNumber;
 	
@@ -71,6 +53,8 @@ public class SaleRequest extends SalesManagerEntity<Long, Zone> implements Audit
 	@Embedded
 	private AuditSection auditSection = new AuditSection();
 	
+	@OneToMany(mappedBy="saleRequest", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<ProductSaleRequest> productSaleRequests = new ArrayList<ProductSaleRequest>();
 	
 	public String getCustomerEmail() {
 		return customerEmail;
@@ -78,22 +62,6 @@ public class SaleRequest extends SalesManagerEntity<Long, Zone> implements Audit
 
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
-	}
-
-	public Long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
 	}
 
 	public String getCustomerName() {
@@ -110,14 +78,6 @@ public class SaleRequest extends SalesManagerEntity<Long, Zone> implements Audit
 
 	public void setCustomerMobile(String customerMobile) {
 		this.customerMobile = customerMobile;
-	}
-
-	public String getRequestNumber() {
-		return requestNumber;
-	}
-
-	public void setRequestNumber(String requestNumber) {
-		this.requestNumber = requestNumber;
 	}
 
 	@Override
@@ -139,6 +99,22 @@ public class SaleRequest extends SalesManagerEntity<Long, Zone> implements Audit
 	@Override
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getRequestNumber() {
+		return requestNumber;
+	}
+
+	public void setRequestNumber(String requestNumber) {
+		this.requestNumber = requestNumber;
+	}
+
+	public List<ProductSaleRequest> getProductSaleRequests() {
+		return productSaleRequests;
+	}
+
+	public void setProductSaleRequests(List<ProductSaleRequest> productSaleRequests) {
+		this.productSaleRequests = productSaleRequests;
 	}
 
 
