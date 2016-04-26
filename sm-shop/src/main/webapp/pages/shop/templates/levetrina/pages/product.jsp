@@ -18,6 +18,7 @@
 <script
 	src="<c:url value="/resources/js/jquery.elevateZoom-3.0.8.min.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.raty.min.js" />"></script>
+<script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
 
 
 

@@ -132,7 +132,7 @@ $(document).ready(function() {
                                     <ul class="nav navbar-nav">
                                         <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                         <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                                        <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                        <li><a href="<c:url value="/shop/order/checkout.html"/>"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                         <c:if test="${not fn:contains(requestScope['javax.servlet.forward.servlet_path'], 'order') && not fn:contains(requestScope['javax.servlet.forward.servlet_path'], 'cart')}">
                                         <li class="fa fa-shopping-cart">
                                         

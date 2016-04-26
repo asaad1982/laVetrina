@@ -191,7 +191,7 @@ public class ShoppingOrderController extends AbstractController {
 			
 	
 	    if(customer!=null) {
-			if(cart.getCustomerId()!=customer.getId().longValue()) {
+			if(cart.getCustomerId()!=null && cart.getCustomerId()!=customer.getId().longValue()) {
 					return "redirect:/shop/shoppingCart.html";
 			}
 	     } else {
