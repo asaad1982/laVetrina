@@ -43,6 +43,7 @@ import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.country.model.Country;
 import com.salesmanager.core.business.reference.country.service.CountryService;
 import com.salesmanager.core.business.reference.language.model.Language;
+import com.salesmanager.core.business.reference.language.service.LanguageService;
 import com.salesmanager.core.business.reference.zone.model.Zone;
 
 @Service("importService")
@@ -57,6 +58,11 @@ public class ImportServiceImpl implements ImportService {
 	private CustomerService customerService;
 	@Autowired
 	private CountryService countryService;
+	
+	@Autowired
+	private   LanguageService languageService;
+	
+	
 	@Override
 	public void importFile(FileBean fileBean,MerchantStore store,Language language) throws ServiceException {
 		 ByteArrayInputStream bis = new ByteArrayInputStream(fileBean.getFileData().getBytes());
@@ -374,6 +380,17 @@ public class ImportServiceImpl implements ImportService {
 	                    	  
 	                    	  
 	                    	  newCustomer.getBilling().setPostalCode(cellVal);
+	                      }
+	                      	else  if(cell.getColumnIndex()==10){
+	                    	  
+	                      		 Language  languages = languageService.getByCode(cellVal);
+	                    	  
+	                      		 if(languages == null){
+	                      			 
+	                      			    languages = languageService.getByCode("en");
+	                      		 }
+	                      		 
+	                    	  newCustomer.setDefaultLanguage(languages); 
 	                      }
 	                  }
 	                  }

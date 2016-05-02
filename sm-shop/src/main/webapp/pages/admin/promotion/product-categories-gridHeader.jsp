@@ -6,5 +6,5 @@
 
 
 
-					{title:"<s:message code="label.entity.id" text="Id"/>", name:"categoryId", canFilter:false},
-        			{title:"<s:message code="label.entity.name" text="Name"/>", name:"name", canFilter:false}
+					{title:"<s:message code="label.entity.id" text="Id"/>", name:"categoryId", canFilter:false,canEdit:false},
+        			{title:"<s:message code="label.entity.name" text="Name"/>", name:"name", canFilter:false,canEdit:false}

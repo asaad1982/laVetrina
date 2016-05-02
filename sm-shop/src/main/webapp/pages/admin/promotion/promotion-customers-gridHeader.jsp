@@ -6,14 +6,14 @@
 
 
 
-				        			{title:"<s:message code="label.entity.id" text="Id"/>", name:"id",canFilter:false},
-        							{title:"<s:message code="label.customer.firstname" text="First name"/>", name:"firstName",canFilter:false},
-        							{title:"<s:message code="label.customer.lastname" text="Last name"/>", name:"lastName",canFilter:true},
-        							{title:"<s:message code="label.generic.email" text="Email"/>", name:"email",canFilter:true},
-        							{title:"<s:message code="label.customer.country" text="Customer country"/>", name:"country",canFilter:false},
-        							{title:"Gender", name:"gender",valueMap:{M:"Male", F:"Female"},canEdit:false},
-        							{title:"Birth Date ", name:"birthDate", type: "datetime",canFilter:true,canEdit:false},
-        							{title:"Age Range ", name:"ageRange",valueMap:{1:"20-30", 2:"30-40",3:"40-50",4:"50+"},canFilter:true,canEdit:false},
-        							{title:"Interset ", name:"interset",canFilter:true,canEdit:false},
+				        			{title:"<s:message code="label.entity.id" text="Id"/>", name:"id",canFilter:false,canEdit:false},
+        							{title:"<s:message code="label.customer.firstname" text="First name"/>", name:"firstName",canFilter:false,canEdit:false},
+        							{title:"<s:message code="label.customer.lastname" text="Last name"/>", name:"lastName",canFilter:true,canEdit:false},
+        							{title:"<s:message code="label.generic.email" text="Email"/>", name:"email",canFilter:true,canEdit:false},
+        							{title:"<s:message code="label.customer.country" text="Customer country"/>", name:"country",canFilter:false,canEdit:false},
+        							{title:"Gender", name:"gender",valueMap:{M:"Male", F:"Female"},canEdit:false,canEdit:false},
+        							{title:"Birth Date ", name:"birthDate", type: "datetime",canFilter:true,canEdit:false,canEdit:false},
+        							{title:"Age Range ", name:"ageRange",valueMap:{1:"20-30", 2:"30-40",3:"40-50",4:"50+"},canFilter:true,canEdit:false,canEdit:false},
+        							{title:"Interset ", name:"interset",canFilter:true,canEdit:false,canEdit:false},
         							{title:"<s:message code="label.entity.enabled" text="Enabled"/>", name:"supported", type:"boolean", canEdit:true, canFilter:true}
         							

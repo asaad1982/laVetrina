@@ -383,20 +383,23 @@ public class CategoryDaoImpl extends SalesManagerEntityDaoImpl<Long, Category> i
 
 		
 		StringBuilder qs = new StringBuilder();
-		qs.append("select categories, count(product.id) from Product product ");
+		/*qs.append("select categories, count(product.id) from Product product ");
 		qs.append("inner join product.categories categories ");
 	 
 		qs.append("where categories.merchantStore.id =:md and product.available=true and product.dateAvailable<=:dt ");
 		
 		//qs.append("where   product.available=true and product.dateAvailable<=:dt ");
 
-		qs.append("group by categories.id");
+		qs.append("group by categories.id");*/
+		
+		qs.append("SELECT PC.CATEGORY_ID,COUNT(PC.PRODUCT_ID),C.NAME FROM PRODUCT_CATEGORY PC, CATEGORY_DESCRIPTION C WHERE C.CATEGORY_ID = PC.CATEGORY_ID GROUP BY PC.CATEGORY_ID");
 		
     	String hql = qs.toString();
-		Query q = super.getEntityManager().createQuery(hql);
+//		Query q = super.getEntityManager().createQuery(hql);
+		Query q = super.getEntityManager().createNativeQuery(hql);
 
-	q.setParameter("md", store.getId());
-    	q.setParameter("dt", new Date());
+//	q.setParameter("md", store.getId());
+//    	q.setParameter("dt", new Date());
 
 
     	

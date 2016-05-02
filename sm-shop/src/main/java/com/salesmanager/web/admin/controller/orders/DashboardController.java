@@ -108,10 +108,17 @@ public class DashboardController {
 		 
 		
 		
+//		for(Object[] counts : countProductsByCategories) {
+//			Category c = (Category)counts[0];
+//			map.put(c.getDescription().getName(), (Long)counts[1]);
+//			total = total+((Long)counts[1]).longValue();
+//
+//		}
+		
 		for(Object[] counts : countProductsByCategories) {
-			Category c = (Category)counts[0];
-			map.put(c.getDescription().getName(), (Long)counts[1]);
-			total = total+((Long)counts[1]).longValue();
+			 
+			map.put((String)counts[2], ((BigInteger)counts[1]).longValue());
+			total = total+((BigInteger)counts[1]).longValue();
 
 		}
 		
