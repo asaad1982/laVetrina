@@ -6,9 +6,9 @@
 
 
 
-				{title:"<s:message code="label.entity.id" text="Id"/>", name:"id", canFilter:false},
-        		{title:"<s:message code="label.entity.name" text="Name"/>", name:"name",  canFilter:false},
-        		{title:"<s:message code="label.entity.type" text="Type"/>", name:"type", canFilter:false},
+				{title:"<s:message code="label.entity.id" text="Id"/>", name:"id", canFilter:false,canEdit:false},
+        		{title:"<s:message code="label.entity.name" text="Name"/>", name:"name",  canFilter:false,canEdit:false},
+        		{title:"<s:message code="label.entity.type" text="Type"/>", name:"type", canFilter:false,canEdit:false},
         		{title:"<s:message code="label.entity.active" text="Active"/>", name:"active", type:"boolean", canEdit:false, canFilter:false},
         		{title:"<s:message code="label.entity.public" text="Public"/>", name:"public", type:"boolean", canEdit:false, canFilter:false},
         		{title:"<s:message code="label.entity.details" text="Details"/>", name: "buttonField", align: "center",canFilter:false,canSort:false, canReorder:false}

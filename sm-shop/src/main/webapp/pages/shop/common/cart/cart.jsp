@@ -7,20 +7,21 @@
 <script src="<c:url value="/resources/js/jquery.alphanumeric.pack.js" />"></script>
 
 
-
+<section id="cart_items" style="padding: 15px 0;">
 <c:url value="/shop/cart/removeShoppingCartItem.html"
 	var="removeShoppingCartItemUrl" />
 
 
 
-<div id="main-content" class="row-fluid show-grid container">
+<div id="main-content" class="container">
 
-<div class="span12 common-row">
 
-<h1 class="cart-title"><s:message code="label.cart.revieworder" text="Review your order" /></h1>
+
+<h2 class="title text-center"><s:message code="label.cart.revieworder" text="Review your order" /></h2>
 <div id="store.error" class="alert alert-error" style="display:none;"><s:message code="message.error.shoppingcart.update" text="An error occurred while updating the shopping cart"/></div>
 <br/>
-<table id="mainCartTable" class="table table-bordered table-striped">
+<div class="table-responsive cart_info">
+<table id="mainCartTable" class="table table-condensed">
 
 	<c:if test="${not empty cart}">
 	   <c:choose>
@@ -30,7 +31,7 @@
 				varStatus="itemStatus">
 				<c:if test="${itemStatus.index eq 0}">
 					<thead>
-						<tr>
+						<tr class="cart_menu">
 							<th colspan="2" width="55%"><s:message code="label.generic.item.title" text="Item"/></th>
 							<th colspan="2" width="15%"><s:message code="label.quantity" text="Quantity"/></th>
 							<th width="15%"><s:message code="label.generic.price" text="Price"/></th>
@@ -42,14 +43,14 @@
 				<form:form action="${updateShoppingCartItemUrl}"
 					id="shoppingCartLineitem_${shoppingCartItem.id}">
 					<tr>
-						<td width="10%">
+						<td  class="cart_product">
 							<c:if test="${shoppingCartItem.image!=null}">
-								<img width="60" src="<c:url value="${shoppingCartItem.image}"/>">
+								<img  src="<c:url value="${shoppingCartItem.image}"/>">
 							</c:if>
 						</td>
 
-						<td style="border-left:none;">
-								<strong>${shoppingCartItem.name}</strong>
+						<td style="border-left:none;" class="cart_description">
+								<h4>${shoppingCartItem.name}</h4>
 								<c:if test="${fn:length(shoppingCartItem.shoppingCartAttributes)>0}">
 									<br/>
 									<ul>
@@ -60,17 +61,17 @@
 								</c:if>
 						
 						</td>
-						<td>
-							<input type="text" class="input-small quantity form-control" placeholder="<s:message code="label.quantity" text="Quantity"/>"
+						<td class="cart_quantity_button">
+							<input type="text" class="input-small" placeholder="<s:message code="label.quantity" text="Quantity"/>"
 							value="${shoppingCartItem.quantity}" name="quantity" id="${shoppingCartItem.id}" <c:if test="${shoppingCartItem.productVirtual==true}">readonly</c:if>>
 						</td>
-						<td style="border-left:none;"><button class="close"
-								onclick="javascript:updateLineItem('${shoppingCartItem.id}','${removeShoppingCartItemUrl}');">&times;</button>
+						
+
+						<td class="cart_quantity_button"><strong>${shoppingCartItem.price}</strong></td>
+						<td class="cart_total"><strong>${shoppingCartItem.subTotal}</strong></td>
+						<td style="border-left:none;"class="cart_delete"><a class="cart_quantity_delete" href="#"
+								onclick="javascript:updateLineItem('${shoppingCartItem.id}','${removeShoppingCartItemUrl}');">&times;</a>
 						</td>
-
-						<td><strong>${shoppingCartItem.price}</strong></td>
-						<td><strong>${shoppingCartItem.subTotal}</strong></td>
-
 
 						<input type="hidden" name="lineItemId" id="lineItemId"
 							value="${shoppingCartItem.id}"/>
@@ -98,18 +99,18 @@
 
 
 	</tbody>
-</table>
+</table></div>
 <c:if test="${not empty cart}">
 	<c:if test="${not empty cart.shoppingCartItems}">
 		<div class="pull-right">
 			<div class="form-actions">
 				<button type="button" class="btn" onClick="javascript:updateCart('#mainCartTable');"><s:message code="label.order.recalculate" text="Racalculate"/></button>
-				<button id="checkoutButton" type="submit" class="btn btn-success"><s:message code="label.cart.placeorder" text="Place your order" /></button>
+				<button id="checkoutButton" type="submit" class="btn btn-primary"><s:message code="label.cart.placeorder" text="Place your order" /></button>
 			</div>
 		</div>
 	</c:if>
 </c:if>
-</div>
+
 </div>
 <c:if test="${empty cart}">
 <!-- load cart with cookie -->
@@ -138,5 +139,5 @@
 	    });
    });
 </script>
-
+</section>
 

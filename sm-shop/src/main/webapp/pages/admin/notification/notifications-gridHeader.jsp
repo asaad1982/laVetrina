@@ -6,8 +6,8 @@
 
 
 
-					{title:"<s:message code="label.entity.id" text="Id"/>", name:"id", canFilter:false},
-        			{title:"<s:message code="label.entity.notification.name" text="Complaints "/>", name:"eventName",canFilter:false},
-        			{title:"<s:message code="label.generic.notification.date" text="Email"/>", name:"eventDate", type: "datetime",canFilter:false},
+					{title:"<s:message code="label.entity.id" text="Id"/>", name:"id", canFilter:false,canEdit:false},
+        			{title:"<s:message code="label.entity.notification.name" text="Complaints "/>", name:"eventName",canFilter:false,canEdit:false},
+        			{title:"<s:message code="label.generic.notification.date" text="Email"/>", name:"eventDate", type: "datetime",canFilter:false,canEdit:false},
         			
         			{title:"<s:message code="label.entity.details" text="Details"/>", name: "buttonField", align: "center",canFilter:false,canSort:false, canReorder:false}

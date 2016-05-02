@@ -153,9 +153,7 @@ input.required, select.required, checkbox.required, textarea.required {
 
 /** cart colors **/
 #mainCartTable th {
-	background-color: #FBFBFB;
-	background-image: -moz-linear-gradient(center top , #FFFFFF, #F5F5F5);
-	box-shadow: 0 1px 0 #FFFFFF inset;
+	
 }
 
 form input.valid {
