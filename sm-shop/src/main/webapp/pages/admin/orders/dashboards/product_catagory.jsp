@@ -16,7 +16,7 @@
 		var chart = new CanvasJS.Chart("chartContainer",
 		{
 			title:{
-				text: "Product/Catalog"
+				text: "Product/Category"
 			},
 	                animationEnabled: true,
 			legend:{
