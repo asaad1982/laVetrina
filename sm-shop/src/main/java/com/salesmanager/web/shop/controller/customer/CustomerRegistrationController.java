@@ -101,7 +101,7 @@ public class CustomerRegistrationController extends AbstractController {
 	@RequestMapping(value="/registration.html", method=RequestMethod.GET)
 	public String displayRegistration(final Model model, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
+//		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 
 		model.addAttribute( "recapatcha_public_key", coreConfiguration.getProperty( Constants.RECAPATCHA_PUBLIC_KEY ) );
 		
@@ -114,14 +114,14 @@ public class CustomerRegistrationController extends AbstractController {
 		model.addAttribute("customer", customer);
 
 		/** template **/
-		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.register).append(".").append(store.getStoreTemplate());
+//		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.register).append(".").append(store.getStoreTemplate());
 
-		return template.toString();
+		return "loginOrSignUp.entry";
 
 
 	}
 
-    @RequestMapping( value = "/register.html", method = RequestMethod.POST )
+    @RequestMapping( value = "/registration.html", method = RequestMethod.POST )
     public String registerCustomer( @Valid
     @ModelAttribute("customer") SecuredShopPersistableCustomer customer, BindingResult bindingResult, Model model,
                                     HttpServletRequest request, HttpServletResponse response, final Locale locale )
@@ -182,9 +182,8 @@ public class CustomerRegistrationController extends AbstractController {
         {
             LOGGER.debug( "found {} validation error while validating in customer registration ",
                          bindingResult.getErrorCount() );
-            StringBuilder template =
-                new StringBuilder().append( ControllerConstants.Tiles.Customer.register ).append( "." ).append( merchantStore.getStoreTemplate() );
-            return template.toString();
+            
+            return "loginOrSignUp.entry";
 
         }
 
@@ -201,18 +200,14 @@ public class CustomerRegistrationController extends AbstractController {
             LOGGER.error( "Error while registering customer.. ", cre);
         	ObjectError error = new ObjectError("registration",messages.getMessage("registration.failed", locale));
         	bindingResult.addError(error);
-            StringBuilder template =
-                            new StringBuilder().append( ControllerConstants.Tiles.Customer.register ).append( "." ).append( merchantStore.getStoreTemplate() );
-             return template.toString();
+        	return "loginOrSignUp.entry";
         }
         catch ( Exception e )
         {
             LOGGER.error( "Error while registering customer.. ", e);
         	ObjectError error = new ObjectError("registration",messages.getMessage("registration.failed", locale));
         	bindingResult.addError(error);
-            StringBuilder template =
-                            new StringBuilder().append( ControllerConstants.Tiles.Customer.register ).append( "." ).append( merchantStore.getStoreTemplate() );
-            return template.toString();
+        	return "loginOrSignUp.entry";
         }
               
         /**
@@ -253,9 +248,7 @@ public class CustomerRegistrationController extends AbstractController {
         }
         
         
-        StringBuilder template =
-                new StringBuilder().append( ControllerConstants.Tiles.Customer.register ).append( "." ).append( merchantStore.getStoreTemplate() );
-        return template.toString();
+        return "loginOrSignUp.entry";
 
     }
 	

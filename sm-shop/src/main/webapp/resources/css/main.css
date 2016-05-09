@@ -1064,7 +1064,7 @@ border: 1px solid #f3f3f3;
 }
 
 .product-overlay {
-  background:#FE980F;
+ background: #6950A2;
   top: 0;
   display: none;
   height: 0;
@@ -1608,8 +1608,8 @@ border: 1px solid #f3f3f3;
 
 #form {
   display: block;
-  margin-bottom: 185px;
-  margin-top: 185px;
+      margin-bottom: 55px;
+  margin-top: 25px;
   overflow: hidden;
 }
 
@@ -1619,6 +1619,10 @@ border: 1px solid #f3f3f3;
 
 .signup-form {
 
+}
+
+.login-form a {
+	margin-bottom: 15px;
 }
 
 .login-form h2, .signup-form h2 {
@@ -1661,7 +1665,7 @@ border: 1px solid #f3f3f3;
 }
 
 .login-form form button, .signup-form form button {
-  background: #FE980F;
+  background: #6851A3;
   border: medium none;
   border-radius: 0;
   color: #FFFFFF;
@@ -1686,7 +1690,7 @@ border: 1px solid #f3f3f3;
 
 
 .or{
-	background: #FE980F;
+	background: #E30000;
 	border-radius: 40px;
 	color: #FFFFFF;
 	font-family: 'Roboto', sans-serif;
@@ -1737,7 +1741,7 @@ border: 1px solid #f3f3f3;
 }
 
 .breadcrumbs .breadcrumb > li + li:before {
-  content: "Â ";
+  content: " ";
 }
 
 #cart_items .cart_info {
@@ -2701,4 +2705,11 @@ border: 1px solid #f3f3f3;
   color: #FE980F;
 }
 
+.mobile-nav-bar{display: none;}
 
+
+
+@media screen and ( max-width: 767px) {
+    .big-header{display: none;}
+ .mobile-nav-bar{display: block !important;text-align: center;}
+}

@@ -12,19 +12,24 @@ public class SaleRequestForm implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	@NotEmpty(message="{validation.wholeSale.customerEmail.required}")
+	@NotEmpty(message="{NotEmpty.saleRequestForm.customerEmail}")
 	@Email(message="{validation.wholeSale.customerEmail.invalidFormat}")
 	private String customerEmail;
 	
-	@NotEmpty(message="{validation.wholeSale.customerName.required}")
+	@NotEmpty(message="{NotEmpty.saleRequestForm.customerName}")
 	@Pattern(regexp = "^[a-zA-Z0-9\\s]*$", message = "{validation.wholeSale.customerName.invalidFormat}")
 	@Size(max=100, message="{validation.wholeSale.customerName.size}")
 	private String customerName;
 	
-	@NotEmpty(message="{validation.wholeSale.customerMobile.required}")
+	@NotEmpty(message="{NotEmpty.saleRequestForm.customerMobile}")
 	@Pattern(regexp = "^[\\d]*$", message = "{validation.wholeSale.customerMobile.invalidFormat}")
+	@Size(min=11, max=11, message="{validation.wholeSale.customerMobile.size}")
 	private String customerMobile;
 	
+	@NotEmpty(message="{NotEmpty.saleRequestForm.messageBody}")
+	@Size(max=300, message="{validation.wholeSale.messageBody.size}")
+	@Pattern(regexp = "^[0-9a-zA-Z\\s,\\-\\._]*$", message = "{validation.wholeSale.messageBody.invalidFormat}")
+	private String messageBody;
 	
 	public String getCustomerEmail() {
 		return customerEmail;
@@ -48,6 +53,14 @@ public class SaleRequestForm implements Serializable {
 
 	public void setCustomerMobile(String customerMobile) {
 		this.customerMobile = customerMobile;
+	}
+
+	public String getMessageBody() {
+		return messageBody;
+	}
+
+	public void setMessageBody(String messageBody) {
+		this.messageBody = messageBody;
 	}
 
 

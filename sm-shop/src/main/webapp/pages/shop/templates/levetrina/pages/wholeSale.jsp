@@ -15,6 +15,29 @@ response.setDateHeader ("Expires", -1);
 <%@page pageEncoding="UTF-8"%>
 
 <script>
+
+	$(document).ready(function(){
+		resetErrors();
+	});
+
+	function resetErrors(){
+		$("#quantityEmptyError").hide();
+		$("#quantityLetterError").hide();
+		$("#productEmptyError").hide();
+		
+	}
+	
+	$(document).on('click', 'button.removebutton', function () {
+		
+		var product = $(this).closest('tr').find('td:eq(0)').text();
+		var productId = $(this).parent().prev().prev().find("input[type='hidden']").val();
+		var quantity = $(this).parent().prev().text();
+	    $(this).closest('tr').remove();
+	    populateProduct('delete', productId, quantity);
+	    return false;
+	});
+	
+
 	function loadProducts(category) {
 
 		var categoryValue = -1;
@@ -49,21 +72,40 @@ response.setDateHeader ("Expires", -1);
 
 	function addProduct() {
 
-		var rows = "";
-		rows += "<tr><td>"
-				+ $('#productId :selected').text()
-				+ "</td><td>"
-				+ $('#quantity').val()
-				+ "</td><td><a href='#' class='btn'><img src='/sm-shop/resources/img/admin/remove.png'></a></td></tr>";
-		rows += "";
-		$(rows).appendTo("#productTable tbody");
+		if ($('#productId :selected').val() == '' || $('#productId :selected').val() == 0){
+			resetErrors();
+			$("#productEmptyError").show();
+			
+		} else if($('#quantity').val() == '' || $('#quantity').val() == 0){
+			resetErrors();
+			$("#quantityEmptyError").show();
+			
+		} else if($("#quantity").val() != null && $("#quantity").val() != '' && ! /^[0-9]+$/.test($("#quantity").val()) ){
+			resetErrors();
+			$("#quantityLetterError").show();
+			
+		} else {
+			resetErrors();
+			var productId = $('#productId').val();
+			var quantity = $('#quantity').val();
+			
+			var rows = "";
+			rows += "<tr><td>"
+					+ $('#productId :selected').text()
+					+ "<input type='hidden' id='pId' name='pId' value='" + productId + "' ></td><td>"
+					+ quantity
+					+ "</td><td><button class='btn removebutton'><img src='/sm-shop/resources/img/admin/remove.png'></button></td></tr>";
+			rows += "";
+			$(rows).appendTo("#productTable tbody");
+			
+			populateProduct('add', productId, quantity);
+			
+		}
 	}
-
-	function populateProduct() {
-
-		var productId = $('#productId').val();
-		var quantity = $('#quantity').val();
-		var url = "populateProduct?productId=" + productId + "&quantity=" + quantity;
+	
+	function populateProduct(action, productId, quantity) {
+		
+		var url = "populateProduct?productId=" + productId + "&quantity=" + quantity + "&action=" + action;
 		$.ajax({
 				type : "GET",
 				url : url,
@@ -88,15 +130,15 @@ response.setDateHeader ("Expires", -1);
 					modelAttribute="saleRequestForm" id="saleRequestForm">
 
 					<c:if test="${not empty successMsgCode}">
-						<div class="status alert alert-success">
+						<div class="alert alert alert-success">
 							<s:message code="${successMsgCode}" text="success" />
 						</div>
 					</c:if>
 
 					<c:if test="${not empty msgCode}">
-						<font color="red"><p class="alert-error">
+						<div class="alert alert-error alert-danger">
 								<s:message code="${msgCode}" text="error" />
-							</p></font>
+							</div>
 					</c:if>
 
 					<div class="form-group col-md-6">
@@ -164,6 +206,11 @@ response.setDateHeader ("Expires", -1);
 									</option>
 								</c:forEach>
 							</select>
+							<div class="alert-error" id="productEmptyError">
+								<font color="red"><s:message
+								code="validation.wholeSale.productId.required"
+								text="required" /></font>
+							</div>
 						</div>
 					</div>
 
@@ -171,6 +218,16 @@ response.setDateHeader ("Expires", -1);
 						<label class="required"><s:message code="label.wholeSale.quantity" text="Code" /></label>
 						<div class="controls">
 							<input id="quantity" class="form-control" />
+							<div class="alert-error" id="quantityEmptyError">
+								<font color="red"><s:message
+										code="validation.wholeSale.quantity.required"
+										text="Please Enter quantity" /></font>
+							</div>
+							<div class="alert-error" id="quantityLetterError">
+								<font color="red"><s:message
+										code="validation.wholeSale.quantity.invalidFormat"
+										text="numbers only" /></font>
+							</div>
 						</div>
 					</div>
 
@@ -191,7 +248,7 @@ response.setDateHeader ("Expires", -1);
 											<tr>
 												<td><c:out value="${productSaleRequest.productId}"></c:out></td>
 												<td><c:out value="${productSaleRequest.quantity}"></c:out></td>
-												<td><a href='#' class='btn'><img src='/sm-shop/resources/img/admin/remove.png'></a></td>
+												<td><button class="btn removebutton"><img src="/sm-shop/resources/img/admin/remove.png"></button></td>
 											</tr>
 										</c:forEach>
 									</c:if>
@@ -203,9 +260,18 @@ response.setDateHeader ("Expires", -1);
 					<div class="form-group col-md-6">
 						<div class="controls">
 							<a class="btn btn-primary fa fa-shopping-cart" id="addProductBtn"
-								href="javascript:addProduct()" onclick="javascript:populateProduct();"> <s:message
-									code="btn.wholeSale.add" />
+								href="javascript:addProduct()" > <s:message	code="btn.wholeSale.add" />
 							</a>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-12">
+						<label class="required"><s:message code="label.wholeSale.messageBody" text="Code" /></label>
+						<div class="controls">
+							<form:textarea id="messageBody" path="messageBody" cssClass="form-control" />
+							<div class="alert-error" id="messageBody_error">
+								<font color="red"><form:errors path="messageBody" /></font>
+							</div>
 						</div>
 					</div>
 
