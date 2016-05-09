@@ -11,7 +11,13 @@
 
 								
 								isc.RestDataSource.create({ 
-									ID:"dataSource", 
+									 <c:if test="${listId!=null }">
+    								ID: "${listId}dataSource",
+    								</c:if>
+    						   <c:if test="${listId==null}">
+    								ID: "dataSource",
+    							</c:if>
+									
 									dataFormat:"json",  
 									operationBindings:[ 
 										{operationType:"fetch", dataProtocol:"postParams",dataURL: "<c:url value="${pagingUrl}" />"},
@@ -43,9 +49,20 @@
 
 							  
 							  isc.ListGrid.create({
+							  <c:if test="${listId!=null }">
+    								ID: "${listId}",
+    								</c:if>
+    						   <c:if test="${listId==null}">
     								ID: "entityList",
+    							</c:if>
     								border:1,
+    								
+    								 <c:if test="${listId!=null }">
+    								dataSource: "${listId}dataSource",
+    								</c:if>
+    						   <c:if test="${listId==null}">
     								dataSource: "dataSource",
+    							</c:if>
     								showRecordComponents: true,    
     								showRecordComponentsByCell: true,
     								canRemoveRecords: <c:out value="${canRemoveEntry}" />,
@@ -168,24 +185,41 @@
 // ---------------------------------------------------------------------
 
 isc.HLayout.create({
-    ID:"pageLayout",
+<c:if test="${listId!=null }">
+    							ID:"${listId}pageLayout",
+    								</c:if>
+    						   <c:if test="${listId==null}">
+    								ID:"pageLayout",
+    							</c:if>
+    
     width: "80%",
     height: "600",
     position:"relative",
     members:[
 
         isc.SectionStack.create({
-            ID:"mainLayout",
+           
+            <c:if test="${listId!=null }">
+    							ID:"${listId}mainLayout",
+    								</c:if>
+    						   <c:if test="${listId==null}">
+    								ID:"mainLayout",
+    							</c:if>
             visibilityMode:"multiple",
             animateSections:true,
             sections:[
-                {title:"<s:message code="${componentTitleKey}" text="{componentTitleKey} UNDEFINED"/>", autoShow:true, items:[entityList]}
+                {title:"<s:message code="${componentTitleKey}" text="{componentTitleKey} UNDEFINED"/>", autoShow:true, items:[  <c:if test="${listId!=null }">
+    								${listId}
+    								</c:if>
+    						   <c:if test="${listId==null}">
+    								entityList
+    							</c:if>]}
             ]
         })
     ]
 });
 
-isc.Page.setEvent("load", "pageLayout.draw()");
+isc.Page.setEvent("load", "${listId}pageLayout.draw()");
 
 			      			     
 			 </script>

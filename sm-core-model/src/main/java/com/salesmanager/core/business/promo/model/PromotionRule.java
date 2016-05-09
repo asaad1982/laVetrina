@@ -54,6 +54,18 @@ public class PromotionRule extends SalesManagerEntity<Long, PromotionRule> imple
 	public void setBrandsId(String[] brandsId) {
 		this.brandsId = brandsId;
 	}
+	
+	@Transient
+	private String[] categoriesId;
+	
+	
+	public String[] getCategoriesId() {
+		return categoriesId;
+	}
+
+	public void setCategoriesId(String[] categoriesId) {
+		this.categoriesId = categoriesId;
+	}
 	@ManyToMany(fetch=FetchType.EAGER, cascade = {CascadeType.REFRESH})
 	@JoinTable(name = "PROMOTION_CUSTOMER", schema="lavetrina", joinColumns = { 
 			@JoinColumn(name = "PROMOTION_ID", nullable = false, updatable = false) }

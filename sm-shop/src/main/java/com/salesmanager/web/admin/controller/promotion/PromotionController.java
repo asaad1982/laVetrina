@@ -104,7 +104,34 @@ public class PromotionController {
 		return displayPromotion(promotionId,model,request,response);
 
 	}
-	
+	@PreAuthorize("hasRole('PRODUCTS')")
+	@RequestMapping(value="/admin/promotion/conditionTab.html", method=RequestMethod.GET)
+	public String conditionTab(@RequestParam("id") long promotionId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		setMenu(model,request);
+		List<PromotionTragetAge> promotionTragetAges=productAgeRangeSerivce.list();
+		model.addAttribute("promotionTragetAges", promotionTragetAges);
+		Promotion promotion=promotionService.getById(promotionId);
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		
+	    List<Manufacturer> manufacturers=mnufacturerService.listByStore(store);
+		
+		if(promotion.getPromotionRule()!=null && promotion.getPromotionRule().getBrands()!=null ){
+			
+			promotion.getPromotionRule().setBrandsId(new String[promotion.getPromotionRule().getBrands().size()]);
+			for (int j = 0; j < promotion.getPromotionRule().getBrands().size(); j++) {	
+				
+				promotion.getPromotionRule().getBrandsId()[j]=promotion.getPromotionRule().getBrands().get(j).getId()+"";
+			}
+		}
+	   Language language = (Language)request.getAttribute("LANGUAGE");
+	   List<Category> categories = categoryService.listByStore(store,language);
+		
+		model.addAttribute("categories", categories);
+		model.addAttribute("promotion", promotion);
+		model.addAttribute("manufacturers",manufacturers);
+		return "conditionTab";
+
+	}
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/promotion/bouns.html", method=RequestMethod.GET)
 	public String displayPromotionBouns(@RequestParam("id") long promotionId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -311,7 +338,10 @@ public class PromotionController {
 			Map<String,Country> countries = countryService.getCountriesMap(language);
 			
 			//get inclusions
-			List<Country> includedCountries = promotion.getPromotionRule().getCountries();
+			List<Country> includedCountries =null;
+			if(promotion.getPromotionRule()!=null){
+			 includedCountries = promotion.getPromotionRule().getCountries();
+			}
 			
 
 			for(String key : countries.keySet()) {
@@ -323,7 +353,7 @@ public class PromotionController {
 				entry.put("code", country.getIsoCode());
 				entry.put("name", country.getName());
 				
-				if(includedCountries.contains(country)) {
+				if(includedCountries!=null &&includedCountries.contains(country)) {
 					entry.put("supported", true);
 				} else {
 					entry.put("supported", false);
@@ -374,8 +404,16 @@ public class PromotionController {
 			
 			Promotion promotion=(Promotion) request.getSession().getAttribute("promotion");
 			//get list of countries
-			List<Country> includedCountries = promotion.getPromotionRule().getCountries();
+			if(promotion.getPromotionRule()==null){
+				promotion.setPromotionRule(new PromotionRule());
+				
+			}
 			
+			List<Country> includedCountries = promotion.getPromotionRule().getCountries();
+			if(includedCountries==null){
+				includedCountries=new ArrayList<Country>();
+				promotion.getPromotionRule().setCountries(includedCountries);
+			}
 			if(!StringUtils.isBlank(supported)) {
 				if("true".equals(supported)) {
 					promotion.getPromotionRule().getCountries().add(countryService.getByCode(countryCode));
@@ -636,7 +674,7 @@ public class PromotionController {
 				entry.put("birthDate", DateUtil.formatDate(customer.getDateOfBirth()));
 				entry.put("ageRange",DateUtil.getAgeRange(customer.getDateOfBirth()) );
 				entry.put("interset","" );
-				if(includedCountries.contains(customer)) {
+				if(includedCountries!=null && includedCountries.contains(customer)) {
 					entry.put("supported", true);
 				} else {
 					entry.put("supported", false);
@@ -682,7 +720,12 @@ public class PromotionController {
 			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 			
 			Promotion promotion=(Promotion) request.getSession().getAttribute("promotion");
-		
+			if(promotion.getPromotionRule()==null){
+				promotion.setPromotionRule(new PromotionRule());
+			}
+			if(promotion.getPromotionRule().getCustomers()==null){
+				promotion.getPromotionRule().setCustomers(new ArrayList<Customer>());
+			}
 			
 			if(!StringUtils.isBlank(supported)) {
 				if("true".equals(supported)) {
@@ -886,6 +929,7 @@ public String saveNotification(@Valid @ModelAttribute("promotion") Promotion pro
 	for(Language language:languages){
 		
 		PromotionDescription promotionDescription = null;
+		if(promotion.getPromotionDescriptions()!=null){
 		for(PromotionDescription desc : promotion.getPromotionDescriptions()) {
 			
 			
@@ -911,6 +955,7 @@ public String saveNotification(@Valid @ModelAttribute("promotion") Promotion pro
 		i++;
 		
 	}
+	}
 	List<Manufacturer> manufacturers=mnufacturerService.listByStore(store);
 	
 	model.addAttribute("languages",languages);
@@ -928,8 +973,10 @@ public String saveNotification(@Valid @ModelAttribute("promotion") Promotion pro
 	if(currPromotion!=null){
 		PromotionRule promotionRule=promotion.getPromotionRule();
 		promotion.setPromotionRule(currPromotion.getPromotionRule());
-		promotion.getPromotionRule().setTargetGender(promotionRule.getTargetGender());
-		promotion.getPromotionRule().setPromotionTragetAge(promotionRule.getPromotionTragetAge());
+		if(promotionRule!=null){
+			promotion.getPromotionRule().setTargetGender(promotionRule.getTargetGender());
+			promotion.getPromotionRule().setPromotionTragetAge(promotionRule.getPromotionTragetAge());
+		}
 	}else{
 		
 	}
@@ -945,6 +992,79 @@ public String saveNotification(@Valid @ModelAttribute("promotion") Promotion pro
 	promotionService.saveOrUpdate(promotion);
 	model.addAttribute("success","success");
 	return "promotion";
+}
+
+
+@PreAuthorize("hasRole('PRODUCTS')")
+@RequestMapping(value="/admin/promotion/saveConditionTab.html", method=RequestMethod.POST)
+public String saveConditionTab(@Valid @ModelAttribute("promotion") Promotion promotion, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+
+	setMenu(model, request);
+	
+	
+	MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+	
+	
+	
+	List<PromotionTragetAge> promotionTragetAges=productAgeRangeSerivce.list();
+	List<PromotionType> promotionTypes=promotionTypeService.list();
+	List<Language> languages = store.getLanguages();
+	
+	List<Manufacturer> manufacturers=mnufacturerService.listByStore(store);
+	
+	model.addAttribute("languages",languages);
+	model.addAttribute("promotion", promotion);
+	model.addAttribute("promotionTragetAges", promotionTragetAges);
+	model.addAttribute("promotionTypes", promotionTypes);
+	model.addAttribute("manufacturers",manufacturers);
+	
+	
+	if(promotion.getId()!=null && promotion.getId()>0){
+		Promotion currPromotion=promotionService.getById(promotion.getId());
+
+	if(currPromotion!=null){
+		PromotionRule promotionRule=promotion.getPromotionRule();
+		promotion.setPromotionRule(currPromotion.getPromotionRule());
+		if(promotion.getPromotionRule()==null){
+			promotion.setPromotionRule(new PromotionRule());
+		}
+		promotion.setStatus(currPromotion.getStatus());
+		promotion.setStartDate(currPromotion.getStartDate());
+		promotion.setEndate(currPromotion.getEndate());
+		promotion.setId(currPromotion.getId());
+		promotion.setPromotionType(currPromotion.getPromotionType());
+		promotion.setPromotionDescriptions(currPromotion.getPromotionDescriptions());
+		if(promotionRule!=null ){
+			promotion.getPromotionRule().setTargetGender(promotionRule.getTargetGender());
+			promotion.getPromotionRule().setPromotionTragetAge(promotionRule.getPromotionTragetAge());
+		}
+	}else{
+		
+	}
+	}
+	if(promotion.getPromotionRule()!=null && promotion.getPromotionRule().getBrandsId()!=null ){
+		promotion.getPromotionRule().setBrands(new ArrayList<Manufacturer>());
+		for (int j = 0; j < promotion.getPromotionRule().getBrandsId().length; j++) {	
+			Manufacturer manufacturer=new Manufacturer();
+			manufacturer.setId(Long.parseLong(promotion.getPromotionRule().getBrandsId()[j]));
+			promotion.getPromotionRule().getBrands().add(manufacturers.get(manufacturers.indexOf(manufacturer)));
+		}
+	}
+	 Language language = (Language)request.getAttribute("LANGUAGE");
+	List<Category> categories = categoryService.listByStore(store,language);
+	
+	model.addAttribute("categories", categories);
+	if(promotion.getPromotionRule()!=null && promotion.getPromotionRule().getCategoriesId()!=null ){
+		promotion.getPromotionRule().setCategories(new ArrayList<Category>());
+		for (int j = 0; j < promotion.getPromotionRule().getCategoriesId().length; j++) {	
+			Category category=new Category();
+			category.setId(Long.parseLong(promotion.getPromotionRule().getCategoriesId()[j]));
+			promotion.getPromotionRule().getCategories().add(categories.get(manufacturers.indexOf(category)));
+		}
+	}
+	promotionService.saveOrUpdate(promotion);
+	model.addAttribute("success","success");
+	return "conditionTab";
 }
 @InitBinder     
 protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {

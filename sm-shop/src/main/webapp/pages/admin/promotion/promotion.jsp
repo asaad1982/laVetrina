@@ -58,6 +58,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 								
 								<c:if test="${promotion.id!=null && promotion.id>0}">
 									<c:set value="${promotion.id}" var="id" scope="request"/>
+									
 									<jsp:include page="/pages/admin/promotion/promotion-menu.jsp" />
 								</c:if>	
 								
@@ -88,80 +89,15 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
 						<form:hidden path="id" />
                  	
 
-                  		
-                  		
-                  		
                   		<div class="control-group">
-	                        <label><s:message code="label.promotion.startDate" text="Date available"/></label>
-	                        <div class="controls">
-	                         <fmt:formatDate value="${promotion.startDate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="startFormattedDate" />
-	                        		 <input id="startDate" name="startDate" value="${startFormattedDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
-	                                 <script type="text/javascript">
-	                                 $('#startDate').datepicker();
-	                                 </script>
-	                                 <span class="help-inline"><form:errors path="startDate" cssClass="error" /></span>
-	                        </div>
-	                  	</div>
-	                  	
-	                  	<div class="control-group">
-	                        <label><s:message code="label.promotion.endDate" text="Date available"/></label>
-	                        <div class="controls">
-	                        <fmt:formatDate value="${promotion.endate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="formattedDate" />
-	                        		 <input id="endate" name="endate" value="${ formattedDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
-	                                 <script type="text/javascript">
-	                                 $('#endate').datepicker();
-	                                 </script>
-	                                 <span class="help-inline"><form:errors path="endate" cssClass="error" /></span>
-	                        </div>
-	                  	</div>
-	                  	<div class="control-group">
-                        	<label><s:message code="label.promotion.status" text="Manufacturer"/></label>
-                          	<div class="controls">
-                          		      <form:select   path="status" cssClass="highlight">
-                          		      <form:option value="-1"><s:message code="label.promotion.select.status"/></form:option>
-                          		      <form:option value="Running"><s:message code="label.promotion.select.status.1"/></form:option>
-                          		      <form:option value="Paused"><s:message code="label.promotion.select.status.2"/></form:option>
-                          		      <form:option value="Closed"><s:message code="label.promotion.select.status.3"/></form:option>
-                          		       </form:select>
-	                                  <span class="help-inline"><form:errors path="status" cssClass="error" /></span>
-                          	</div>
-                    	</div>
-                    	
-                    	<div class="control-group">
-                        	<label><s:message code="label.promotion.target.gender" text="Manufacturer"/></label>
-                          	<div class="controls">
-                          		      <form:select   path="promotionRule.targetGender">
-                          		      <form:option value="-1"><s:message code="label.promotion.target.select"/></form:option>
-                          		      <form:option value="M,F"><s:message code="label.promotion.target.select.1"/></form:option>
-                          		      <form:option value="M"><s:message code="label.promotion.target.select.2"/></form:option>
-                          		      <form:option value="F"><s:message code="label.promotion.target.select.3"/></form:option>
-                          		       </form:select>
-	                                  <span class="help-inline"></span>
-                          	</div>
-                    	</div>
-	                  	<div class="control-group">
-                        	<label><s:message code="label.promotion.age" text="Manufacturer"/></label>
-                          	<div class="controls">
-                          		      <form:select items="${promotionTragetAges}" itemValue="id" itemLabel="name"  path="promotionRule.promotionTragetAge"/> 
-	                                  <span class="help-inline"></span>
-                          	</div>
-                    	</div>
-
-						<div class="control-group">
                         	<label><s:message code="label.promotion.type" text="Manufacturer"/></label>
                           	<div class="controls">
-                          		      <form:select items="${promotionTypes}" itemValue="id" itemLabel="name"  path="promotionType.id"/> 
+                          		      <form:select items="${promotionTypes}" itemValue="id" itemLabel="name"  path="promotionType.id" cssClass="required"/> 
 	                                  <span class="help-inline"></span>
                           	</div>
                     	</div>
-                    	<div class="control-group">
-                        	<label><s:message code="label.product.manufacturer" text="Manufacturer"/></label>
-                          	<div class="controls">
-						 		<form:select items="${manufacturers}" itemValue="id" itemLabel="descriptions[0].name"  path="promotionRule.brandsId"/> <span class="help-inline"></span>
-                          	</div>
-                    	</div>
-
-                  		 <c:forEach items="${promotion.promotionDescriptions}" var="description" varStatus="counter">
+                  		
+                  		<c:forEach items="${promotion.promotionDescriptions}" var="description" varStatus="counter">
 
                  
 
@@ -244,6 +180,43 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                  
 
                   </c:forEach>
+                  		<div class="control-group">
+	                        <label><s:message code="label.promotion.startDate" text="Date available"/></label>
+	                        <div class="controls">
+	                         <fmt:formatDate value="${promotion.startDate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="startFormattedDate" />
+	                        		 <input id="startDate" name="startDate" value="${startFormattedDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                                 <script type="text/javascript">
+	                                 $('#startDate').datepicker();
+	                                 </script>
+	                                 <span class="help-inline"><form:errors path="startDate" cssClass="error" /></span>
+	                        </div>
+	                  	</div>
+	                  	
+	                  	<div class="control-group">
+	                        <label><s:message code="label.promotion.endDate" text="Date available"/></label>
+	                        <div class="controls">
+	                        <fmt:formatDate value="${promotion.endate}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="formattedDate" />
+	                        		 <input id="endate" name="endate" value="${ formattedDate}" class="small highlight" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                                 <script type="text/javascript">
+	                                 $('#endate').datepicker();
+	                                 </script>
+	                                 <span class="help-inline"><form:errors path="endate" cssClass="error" /></span>
+	                        </div>
+	                  	</div>
+	                  	<div class="control-group">
+                        	<label><s:message code="label.promotion.status" text="Manufacturer"/></label>
+                          	<div class="controls">
+                          		      <form:select   path="status" cssClass="highlight">
+                          		      <form:option value="-1"><s:message code="label.promotion.select.status"/></form:option>
+                          		      <form:option value="Running"><s:message code="label.promotion.select.status.1"/></form:option>
+                          		      <form:option value="Paused"><s:message code="label.promotion.select.status.2"/></form:option>
+                          		      <form:option value="Closed"><s:message code="label.promotion.select.status.3"/></form:option>
+                          		       </form:select>
+	                                  <span class="help-inline"><form:errors path="status" cssClass="error" /></span>
+                          	</div>
+                    	</div>
+                    	
+                    
                   		
 
                    <div class="form-actions">
