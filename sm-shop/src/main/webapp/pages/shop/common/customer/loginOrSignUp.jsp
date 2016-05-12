@@ -17,7 +17,7 @@
 
 <!-- requires functions.jsp -->
 <script src="<c:url value="/resources/js/jquery.maskedinput.min.js" />"></script>
-<%-- <script src="<c:url value="/resources/js/shop-customer.js" />"></script> --%>
+<script src="<c:url value="/resources/js/shop-customer.js" />"></script>
 <script src="<c:url value="/resources/js/address.js" />"></script>
 
 <script type="text/javascript">
@@ -102,15 +102,18 @@
 				<div class="login-form">
 					<!--login form-->
 					<h2>Login to your account</h2>
-					<form class="form-signin mg-btm">
 						<div class="social-box">
 							<div class="row mg-btm">
-								<div class="col-md-12">
-									<a href="#" class="btn btn-primary btn-block"> <i
+							<div class="col-md-12">
+								<form name='facebookSocialloginForm'
+									action="<c:url value='../../auth/facebook?scope=email,user_about_me,user_birthday' />"
+									method='POST'>
+									<button type="submit" class="btn btn-primary btn-block"> <i
 										class="icon-facebook"></i> Login with Facebook
-									</a>
-								</div>
+									</button>
+								</form>
 							</div>
+						</div>
 							<div class="row">
 								<div class="col-md-12">
 									<a href="#" class="btn btn-info btn-block"> <i
@@ -119,9 +122,10 @@
 								</div>
 							</div>
 						</div>
-						<input type="text" class="form-control" placeholder="Email"
-							autofocus> <input type="password" class="form-control"
-							placeholder="Password"><span> <input
+					<form class="form-signin mg-btm" action="<c:url value='/shop/customer/j_spring_security_check' />" method='POST'>
+						<input type="text" class="form-control" placeholder="Email" name="j_username">
+						<input type="password" class="form-control"
+							placeholder="Password" name="j_password"><span> <input
 							type="checkbox" class="checkbox"> Keep me signed in
 						</span>
 						<button type="submit" class="btn btn-default">Login</button>
@@ -198,21 +202,6 @@
 								</form:select>
 							</div>
 						</div>
-
-
-						<s:message code="label.generic.username" text="User name"
-							var="usernameMsg" />
-						<div class="controls">
-							<s:message code="NotEmpty.customer.userName"
-								text="User name is required" var="msgUserName" />
-							<form:input path="userName"
-								cssClass="span8 required userName form-control form-control-md"
-								id="userName" title="${msgUserName}"
-								placeholder="${usernameMsg}" />
-							<font color="red"><form:errors path="userName"
-									cssClass="error" /></font>
-						</div>
-
 
 
 						<s:message code="label.generic.email" text="Email address"

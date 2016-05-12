@@ -101,7 +101,7 @@ public class CustomerProductReviewController extends AbstractController {
         model.addAttribute("product", readableProduct);
         
 
-        Customer customer =  customerFacade.getCustomerByUserName(request.getRemoteUser(), store);
+        Customer customer =  customerFacade.getCustomerByEmail(request.getRemoteUser(), store);
         
         List<ProductReview> reviews = productReviewService.getByProduct(product, language);
 	    for(ProductReview r : reviews) {
@@ -145,7 +145,7 @@ public class CustomerProductReviewController extends AbstractController {
 	    MerchantStore store = getSessionAttribute(Constants.MERCHANT_STORE, request);
 	    Language language = getLanguage(request);
 	    
-        Customer customer =  customerFacade.getCustomerByUserName(request.getRemoteUser(), store);
+        Customer customer =  customerFacade.getCustomerByEmail(request.getRemoteUser(), store);
         
         if(customer==null) {
         	return "redirect:" + Constants.SHOP_URI;

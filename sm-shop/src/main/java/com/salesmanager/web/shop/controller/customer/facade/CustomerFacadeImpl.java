@@ -14,7 +14,6 @@ import org.apache.commons.lang.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.Authentication;
@@ -128,8 +127,8 @@ public class CustomerFacadeImpl implements CustomerFacade
  	 @Autowired
  	 private EmailService emailService;
  	 
- 	 @Autowired
-     private AuthenticationManager customerAuthenticationManager;
+// 	 @Autowired
+//     private AuthenticationManager customerAuthenticationManager;
 
 
 
@@ -253,9 +252,9 @@ public class CustomerFacadeImpl implements CustomerFacade
 
 
  	@Override
- 	public Customer getCustomerByUserName(String userName, MerchantStore store)
+ 	public Customer getCustomerByEmail(String email, MerchantStore store)
 		throws Exception {
- 		return customerService.getByNick( userName, store.getId() );
+ 		return customerService.getByEmail( email, store.getId() );
  	}
 
 
@@ -274,19 +273,19 @@ public class CustomerFacadeImpl implements CustomerFacade
     * 
     */
    @Override
-    public boolean checkIfUserExists( final String userName, final MerchantStore store )
+    public boolean checkIfUserExists( final String email, final MerchantStore store )
         throws Exception
     {
-        if ( StringUtils.isNotBlank( userName ) && store != null )
+        if ( StringUtils.isNotBlank( email ) && store != null )
         {
-            Customer customer = customerService.getByNick( userName, store.getId() );
+            Customer customer = customerService.getByEmail( email, store.getId() );
             if ( customer != null )
             {
-                LOG.info( "Customer with userName {} already exists for store {} ", userName, store.getStorename() );
+                LOG.info( "Customer with userName {} already exists for store {} ", email, store.getStorename() );
                 return true;
             }
             
-            LOG.info( "No customer found with userName {} for store {} ", userName, store.getStorename());
+            LOG.info( "No customer found with userName {} for store {} ", email, store.getStorename());
             return false;
 
         }
@@ -427,9 +426,9 @@ public class CustomerFacadeImpl implements CustomerFacade
 			Authentication authenticationToken =
                 new UsernamePasswordAuthenticationToken(userName, password, authorities);
     	
-			Authentication authentication = customerAuthenticationManager.authenticate(authenticationToken);
+//			Authentication authentication = customerAuthenticationManager.authenticate(authenticationToken);
     
-			SecurityContextHolder.getContext().setAuthentication(authentication);
+//			SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 	}
 

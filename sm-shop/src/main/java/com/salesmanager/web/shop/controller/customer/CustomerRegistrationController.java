@@ -16,7 +16,6 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +43,6 @@ import com.salesmanager.web.entity.customer.AnonymousCustomer;
 import com.salesmanager.web.entity.customer.CustomerEntity;
 import com.salesmanager.web.entity.customer.SecuredShopPersistableCustomer;
 import com.salesmanager.web.shop.controller.AbstractController;
-import com.salesmanager.web.shop.controller.ControllerConstants;
 import com.salesmanager.web.shop.controller.customer.facade.CustomerFacade;
 import com.salesmanager.web.utils.EmailTemplatesUtils;
 import com.salesmanager.web.utils.LabelUtils;
@@ -90,8 +88,8 @@ public class CustomerRegistrationController extends AbstractController {
 	@Autowired
 	private CustomerFacade customerFacade;
 	
-	@Autowired
-    private AuthenticationManager customerAuthenticationManager;
+//	@Autowired
+//    private AuthenticationManager customerAuthenticationManager;
 	
 	@Autowired
 	private EmailTemplatesUtils emailTemplatesUtils;
@@ -135,7 +133,7 @@ public class CustomerRegistrationController extends AbstractController {
         reCaptcha.setPublicKey( coreConfiguration.getProperty( Constants.RECAPATCHA_PUBLIC_KEY ) );
         reCaptcha.setPrivateKey( coreConfiguration.getProperty( Constants.RECAPATCHA_PRIVATE_KEY ) );
         
-        String userName = null;
+        String email = null;
         String password = null;
         
         model.addAttribute( "recapatcha_public_key", coreConfiguration.getProperty( Constants.RECAPATCHA_PUBLIC_KEY ) );
@@ -155,15 +153,15 @@ public class CustomerRegistrationController extends AbstractController {
 
         }
         
-        if ( StringUtils.isNotBlank( customer.getUserName() ) )
+        if ( StringUtils.isNotBlank( customer.getEmailAddress() ) )
         {
-            if ( customerFacade.checkIfUserExists( customer.getUserName(), merchantStore ) )
+            if ( customerFacade.checkIfUserExists( customer.getEmailAddress(), merchantStore ) )
             {
                 LOGGER.debug( "Customer with username {} already exists for this store ", customer.getUserName() );
             	FieldError error = new FieldError("userName","userName",messages.getMessage("registration.username.already.exists", locale));
             	bindingResult.addError(error);
             }
-            userName = customer.getUserName();
+            email = customer.getEmailAddress();
         }
         
         
@@ -222,9 +220,9 @@ public class CustomerRegistrationController extends AbstractController {
         try {
         	
 	        //refresh customer
-	        Customer c = customerFacade.getCustomerByUserName(customer.getUserName(), merchantStore);
+	        Customer c = customerFacade.getCustomerByEmail(customer.getEmailAddress(), merchantStore);
 	        //authenticate
-	        customerFacade.authenticate(c, userName, password);
+	        customerFacade.authenticate(c, email, password);
 	        super.setSessionAttribute(Constants.CUSTOMER, c, request);
 	        
 	        StringBuilder cookieValue = new StringBuilder();

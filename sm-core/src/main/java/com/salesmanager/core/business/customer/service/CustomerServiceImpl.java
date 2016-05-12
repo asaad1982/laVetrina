@@ -82,6 +82,11 @@ public class CustomerServiceImpl extends SalesManagerEntityServiceImpl<Long, Cus
 	}
 	
 	@Override
+	public Customer getByEmail(String email) {
+		return customerDAO.getByEmail(email);	
+	}
+	
+	@Override
 	public Customer getByNick(String nick, int storeId) {
 		return customerDAO.getByNick(nick, storeId);	
 	}
@@ -297,6 +302,12 @@ public class CustomerServiceImpl extends SalesManagerEntityServiceImpl<Long, Cus
 		
 		
 
+	}
+
+	@Override
+	public Customer getByEmail(String email, Integer storeId) {
+
+		return customerDAO.getByEmail(email, storeId);
 	}
 
 }

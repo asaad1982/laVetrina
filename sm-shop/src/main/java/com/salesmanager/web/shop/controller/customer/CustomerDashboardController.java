@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,8 +40,8 @@ import com.salesmanager.web.shop.controller.ControllerConstants;
 @RequestMapping("/shop/customer")
 public class CustomerDashboardController extends AbstractController {
 	
-	@Autowired
-    private AuthenticationManager customerAuthenticationManager;
+//	@Autowired
+//    private AuthenticationManager customerAuthenticationManager;
 	
 	@Autowired
 	private CustomerOptionSetService customerOptionSetService;

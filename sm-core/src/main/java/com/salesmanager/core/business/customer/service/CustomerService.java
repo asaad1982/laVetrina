@@ -42,5 +42,9 @@ public interface CustomerService  extends SalesManagerEntityService<Long, Custom
 	ByteArrayOutputStream exportCusstomerList(MerchantStore store,
 			List<Customer> customers, Language language) throws Exception;
 
+	Customer getByEmail(String email);
+
+	public Customer getByEmail(String email, Integer id);
+
 
 }

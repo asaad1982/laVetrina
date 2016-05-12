@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,6 +24,7 @@ import com.salesmanager.core.business.user.model.Permission;
 import com.salesmanager.core.business.user.service.GroupService;
 import com.salesmanager.core.business.user.service.PermissionService;
 import com.salesmanager.web.admin.security.SecurityDataAccessException;
+import com.salesmanager.web.shop.security.model.LocalUser;
 
 
 /**
@@ -52,7 +52,7 @@ public class CustomerServicesImpl implements UserDetailsService{
 	
 	
 	@SuppressWarnings("deprecation")
-	public UserDetails loadUserByUsername(String userName)
+	public UserDetails loadUserByUsername(String email)
 			throws UsernameNotFoundException, DataAccessException {
 
 		Customer user = null;
@@ -60,7 +60,8 @@ public class CustomerServicesImpl implements UserDetailsService{
 
 		try {
 
-				user = customerService.getByNick(userName);
+				user = customerService.getByEmail(email);
+//				user = customerService.getByNick(userName);
 			
 				if(user==null) {
 					return null;
@@ -93,16 +94,17 @@ public class CustomerServicesImpl implements UserDetailsService{
 			throw new SecurityDataAccessException("Cannot authenticate customer",e);
 		}
 		
-		User authUser = new User(userName, user.getPassword(), true, true,
-				true, true, authorities);
-		
-		return authUser;
+        return new LocalUser(user.getNick(), user.getNick(), user.getPassword(), true, true
+                , true, true, authorities);
+        
+//		User authUser = new User(userName, user.getPassword(), true, true,
+//				true, true, authorities);
+//		
+//		return authUser;
 		
 		
 	}
 	
-
-
 
 
 }

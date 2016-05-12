@@ -75,7 +75,7 @@ public class CustomerOrdersController extends AbstractController {
 		Customer customer = null;
     	if(auth != null &&
         		 request.isUserInRole("AUTH_CUSTOMER")) {
-    		customer = customerFacade.getCustomerByUserName(auth.getName(), store);
+    		customer = customerFacade.getCustomerByEmail(auth.getName(), store);
 
         }
     	
@@ -128,7 +128,7 @@ public class CustomerOrdersController extends AbstractController {
 		Customer customer = null;
     	if(auth != null &&
         		 request.isUserInRole("AUTH_CUSTOMER")) {
-    		customer = customerFacade.getCustomerByUserName(auth.getName(), store);
+    		customer = customerFacade.getCustomerByEmail(auth.getName(), store);
 
         }
     	
