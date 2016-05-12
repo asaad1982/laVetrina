@@ -94,7 +94,7 @@ public class CustomerServicesImpl implements UserDetailsService{
 			throw new SecurityDataAccessException("Cannot authenticate customer",e);
 		}
 		
-        return new LocalUser(user.getNick(), user.getNick(), user.getPassword(), true, true
+        return new LocalUser(user.getEmailAddress(), user.getEmailAddress(), user.getPassword(), true, true
                 , true, true, authorities);
         
 //		User authUser = new User(userName, user.getPassword(), true, true,

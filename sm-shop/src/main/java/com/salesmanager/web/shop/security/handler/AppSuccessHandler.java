@@ -49,29 +49,13 @@ public class AppSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         for (GrantedAuthority a : authorities) {
             roles.add(a.getAuthority());
         }
+        roles.add("AUTH_CUSTOMER");
 
-        if (isUser(roles)) {
-            url = "/shop";
-        } else {
-            url = "/shop/customer/denied.html";
-        }
+        url = "/shop";
 
         return url;
     }
 
-    private boolean isUser(List<String> roles) {
-        if (roles.contains("AUTH_CUSTOMER")) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isAdmin(List<String> roles) {
-        if (roles.contains("ROLE_ADMIN")) {
-            return true;
-        }
-        return false;
-    }
 
     public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
         this.redirectStrategy = redirectStrategy;
