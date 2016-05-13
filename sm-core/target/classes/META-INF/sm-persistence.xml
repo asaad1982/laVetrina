@@ -93,5 +93,6 @@
 			<class>com.salesmanager.core.business.promo.model.BounsType</class>
 			<class>com.salesmanager.core.business.notification.EmailTemplate</class>
 			<class>com.salesmanager.core.business.notification.EmailNotification</class>
+			<class>com.salesmanager.core.business.promo.model.CartPromotion</class>
 	</persistence-unit>
 </persistence>

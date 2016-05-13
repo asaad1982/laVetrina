@@ -45,6 +45,7 @@ import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.customer.service.CustomerService;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.promo.model.BounsType;
+import com.salesmanager.core.business.promo.model.CartPromotion;
 import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.promo.model.PromotionDescription;
 import com.salesmanager.core.business.promo.model.PromotionRule;
@@ -130,6 +131,22 @@ public class PromotionController {
 		model.addAttribute("promotion", promotion);
 		model.addAttribute("manufacturers",manufacturers);
 		return "conditionTab";
+
+	}
+	
+	@PreAuthorize("hasRole('PRODUCTS')")
+	@RequestMapping(value="/admin/promotion/cartPromotion.html", method=RequestMethod.GET)
+	public String cartPromotion(@RequestParam("id") long promotionId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		setMenu(model,request);
+		
+		CartPromotion cartPromotion=  promotionService.getCartPromotionById(promotionId);
+		if(cartPromotion==null){
+			cartPromotion=new CartPromotion();
+			cartPromotion.setPromotion(new Promotion());
+			cartPromotion.getPromotion().setId(promotionId);
+		}
+		model.addAttribute("cartPromotion", cartPromotion);
+		return "cartPromotion";
 
 	}
 	@PreAuthorize("hasRole('PRODUCTS')")

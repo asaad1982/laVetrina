@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityService;
+import com.salesmanager.core.business.promo.model.CartPromotion;
 import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.reference.language.model.Language;
 
@@ -15,4 +16,6 @@ public interface PromotionService extends SalesManagerEntityService<Long, Promot
 	public List<Promotion> listPromotion(Language language, String name,
 			String status, String startDate, String endDate)throws ServiceException;
 	void saveOrUpdate(Promotion promotion) throws ServiceException;
+	CartPromotion getCartPromotionById(long promotionId)throws ServiceException;
+	void saveCartPromotionById(CartPromotion cartPromotion)throws ServiceException;
 }

@@ -10,6 +10,7 @@ import com.salesmanager.core.business.complaint.model.ComplaintsReason;
 import com.salesmanager.core.business.generic.dao.SalesManagerEntityDao;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
+import com.salesmanager.core.business.promo.model.CartPromotion;
 import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.promo.model.PromotionDescription;
 import com.salesmanager.core.business.promo.model.PromotionRule;
@@ -92,6 +93,21 @@ public class PromotionServiceImpl extends SalesManagerEntityServiceImpl<Long, Pr
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
+	}
+
+	@Override
+	public CartPromotion getCartPromotionById(long promotionId)
+			throws ServiceException {
+
+
+		return promotionDao.getCartPromotionById(promotionId);
+	}
+
+	@Override
+	public void saveCartPromotionById(CartPromotion cartPromotion)
+			throws ServiceException {
+		
+		
 	}
 
 }

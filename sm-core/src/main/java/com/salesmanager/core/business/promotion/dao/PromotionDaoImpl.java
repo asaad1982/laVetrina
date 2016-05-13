@@ -18,6 +18,9 @@ import java.util.List;
 
 
 
+
+
+
 import javax.persistence.Query;
 
 import org.apache.commons.lang3.StringUtils;
@@ -28,6 +31,7 @@ import com.mysema.query.jpa.impl.JPAQuery;
 import com.mysema.query.types.expr.BooleanExpression;
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.generic.dao.SalesManagerEntityDaoImpl;
+import com.salesmanager.core.business.promo.model.CartPromotion;
 import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.promo.model.QPromotion;
 import com.salesmanager.core.business.promo.model.QPromotionDescription;
@@ -159,6 +163,28 @@ public class PromotionDaoImpl extends SalesManagerEntityDaoImpl<Long, Promotion>
 		
 		
 		return query.distinct().list(qPromotion);
+	}
+
+	@Override
+	public CartPromotion getCartPromotionById(long promotionId) {
+		StringBuilder qs = new StringBuilder();
+		qs.append("select distinct cp from CartPromotion as cp ");
+		qs.append("join fetch cp.promotion p ");
+		qs.append("where p.id=:promotionId ");
+		String hql = qs.toString();
+		Query q = super.getEntityManager().createQuery(hql);
+
+
+    	q.setParameter("promotionId", promotionId);
+        CartPromotion cp = null;
+    	
+    	try {
+    		cp = (CartPromotion)q.getSingleResult();
+    	} catch(javax.persistence.NoResultException ignore) {
+
+    	}
+    	return cp;
+    	
 	}
 
 
