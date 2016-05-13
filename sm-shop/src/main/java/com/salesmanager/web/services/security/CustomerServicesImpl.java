@@ -85,6 +85,7 @@ public class CustomerServicesImpl implements UserDetailsService{
 			}
 			
 
+			authorities.add(new GrantedAuthorityImpl("AUTH_CUSTOMER"));
 			
 
 		

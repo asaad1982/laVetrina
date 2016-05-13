@@ -173,7 +173,7 @@ public class CustomerRegistrationController extends AbstractController {
             	bindingResult.addError(error);
 
             }
-            password = customer.getPassword();
+            password = passwordEncoder.encodePassword(customer.getPassword(),null);
         }
 
         if ( bindingResult.hasErrors() )

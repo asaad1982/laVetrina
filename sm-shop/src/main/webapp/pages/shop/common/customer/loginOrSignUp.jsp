@@ -102,6 +102,11 @@
 				<div class="login-form">
 					<!--login form-->
 					<h2>Login to your account</h2>
+					<c:if test="${msgCode == '1'}">
+						<div class="alert alert-error alert-danger form-group">
+							Your Email is not registered
+						</div>
+					</c:if>
 						<div class="social-box">
 							<div class="row mg-btm">
 							<div class="col-md-12">
@@ -116,9 +121,13 @@
 						</div>
 							<div class="row">
 								<div class="col-md-12">
-									<a href="#" class="btn btn-info btn-block"> <i
-										class="icon-twitter"></i> Login with Twitter
-									</a>
+									<form name='facebookSocialloginForm'
+										action="<c:url value='../../auth/twitter?scope=email,user_about_me,user_birthday' />"
+										method='POST'>
+										<button type="submit" class="btn btn-info btn-block"> <i
+											class="icon-twitter"></i>  Login with Twitter
+										</button>
+									</form>
 								</div>
 							</div>
 						</div>
