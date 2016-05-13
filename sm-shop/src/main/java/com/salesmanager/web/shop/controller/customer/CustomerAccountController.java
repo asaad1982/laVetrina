@@ -161,7 +161,7 @@ public class CustomerAccountController extends AbstractController {
 		Customer customer = null;
     	if(auth != null &&
         		 request.isUserInRole("AUTH_CUSTOMER")) {
-    		customer = customerFacade.getCustomerByUserName(auth.getName(), store);
+    		customer = customerFacade.getCustomerByEmail(auth.getName(), store);
 
         } else {
         	response.sendError(401, "Customer not authenticated");
@@ -243,7 +243,7 @@ public class CustomerAccountController extends AbstractController {
 		Customer customer = null;
     	if(auth != null &&
         		 request.isUserInRole("AUTH_CUSTOMER")) {
-    		customer = customerFacade.getCustomerByUserName(auth.getName(), store);
+    		customer = customerFacade.getCustomerByEmail(auth.getName(), store);
 
         }
     	
@@ -314,7 +314,7 @@ public class CustomerAccountController extends AbstractController {
 		Customer customer = null;
     	if(auth != null &&
         		 request.isUserInRole("AUTH_CUSTOMER")) {
-    		customer = customerFacade.getCustomerByUserName(auth.getName(), store);
+    		customer = customerFacade.getCustomerByEmail(auth.getName(), store);
 
         }
     	
@@ -441,7 +441,7 @@ public class CustomerAccountController extends AbstractController {
 		Customer customer = null;
     	if(auth != null &&
         		 request.isUserInRole("AUTH_CUSTOMER")) {
-    		customer = customerFacade.getCustomerByUserName(auth.getName(), store);
+    		customer = customerFacade.getCustomerByEmail(auth.getName(), store);
 
         }
     	
@@ -473,7 +473,7 @@ public class CustomerAccountController extends AbstractController {
 		Customer customer = null;
     	if(auth != null &&
         		 request.isUserInRole("AUTH_CUSTOMER")) {
-    		customer = customerFacade.getCustomerByUserName(auth.getName(), store);
+    		customer = customerFacade.getCustomerByEmail(auth.getName(), store);
 
         }
     	
@@ -503,7 +503,7 @@ public class CustomerAccountController extends AbstractController {
 		Customer customer = null;
     	if(auth != null &&
         		 request.isUserInRole("AUTH_CUSTOMER")) {
-    		customer = customerFacade.getCustomerByUserName(auth.getName(), store);
+    		customer = customerFacade.getCustomerByEmail(auth.getName(), store);
 
         }
     	

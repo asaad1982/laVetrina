@@ -17,7 +17,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -128,8 +127,8 @@ public class ShoppingOrderController extends AbstractController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@Autowired
-    private AuthenticationManager customerAuthenticationManager;
+//	@Autowired
+//    private AuthenticationManager customerAuthenticationManager;
 	
 	@Autowired
 	private EmailTemplatesUtils emailTemplatesUtils;
@@ -387,7 +386,7 @@ public class ShoppingOrderController extends AbstractController {
 			Customer authCustomer = null;
         	if(auth != null &&
 	        		 request.isUserInRole("AUTH_CUSTOMER")) {
-        		authCustomer = customerFacade.getCustomerByUserName(auth.getName(), store);
+        		authCustomer = customerFacade.getCustomerByEmail(auth.getName(), store);
         		//set id and authentication information
         		customer.setUserName(authCustomer.getNick());
         		customer.setEncodedPassword(authCustomer.getPassword());
@@ -466,7 +465,7 @@ public class ShoppingOrderController extends AbstractController {
 
 	        try {
 		        //refresh customer --
-	        	modelCustomer = customerFacade.getCustomerByUserName(modelCustomer.getNick(), store);
+	        	modelCustomer = customerFacade.getCustomerByEmail(modelCustomer.getNick(), store);
 		        
 	        	//if has downloads, authenticate
 	        	

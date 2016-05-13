@@ -348,6 +348,35 @@ public class CustomerDAOImpl extends SalesManagerEntityDaoImpl<Long, Customer> i
 	}
 	
 	@Override
+	public Customer getByEmail(String email){
+		QCustomer qCustomer = QCustomer.customer;
+		QCountry qCountry = QCountry.country;
+		QZone qZone = QZone.zone;
+		QCustomerAttribute qCustomerAttribute = QCustomerAttribute.customerAttribute;
+		QCustomerOption qCustomerOption = QCustomerOption.customerOption;
+		QCustomerOptionValue qCustomerOptionValue = QCustomerOptionValue.customerOptionValue;
+		
+
+		
+		JPQLQuery query = new JPAQuery (getEntityManager());
+		
+		query.from(qCustomer)
+			.join(qCustomer.merchantStore).fetch()
+			//.leftJoin(qCustomer.billing.country,qCountry).fetch()
+			//.leftJoin(qCustomer.billing.zone,qZone).fetch()
+			.leftJoin(qCustomer.defaultLanguage).fetch()
+			.leftJoin(qCustomer.groups).fetch()
+			.leftJoin(qCustomer.attributes,qCustomerAttribute).fetch()
+			.leftJoin(qCustomerAttribute.customerOption, qCustomerOption).fetch()
+			.leftJoin(qCustomerAttribute.customerOptionValue, qCustomerOptionValue).fetch()
+			.leftJoin(qCustomerOption.descriptions).fetch()
+			.leftJoin(qCustomerOptionValue.descriptions).fetch()
+			.where(qCustomer.emailAddress.eq(email));
+		
+		return query.uniqueResult(qCustomer);
+	}
+	
+	@Override
 	public Customer getByNick(String nick, int storeId){
 		QCustomer qCustomer = QCustomer.customer;
 		QMerchantStore qMerchantStore = QMerchantStore.merchantStore;
@@ -373,6 +402,41 @@ public class CustomerDAOImpl extends SalesManagerEntityDaoImpl<Long, Customer> i
 			.leftJoin(qCustomerOption.descriptions).fetch()
 			.leftJoin(qCustomerOptionValue.descriptions).fetch()
 			.where(qCustomer.nick.eq(nick).and(qMerchantStore.id.eq(storeId)));
+		
+		return query.uniqueResult(qCustomer);
+		
+		} catch(NoResultException nre) {
+			return null;
+		}
+	}
+	
+
+	@Override
+	public Customer getByEmail(String email, Integer id) {
+		QCustomer qCustomer = QCustomer.customer;
+		QMerchantStore qMerchantStore = QMerchantStore.merchantStore;
+		QCountry qCountry = QCountry.country;
+		QZone qZone = QZone.zone;
+		QCustomerAttribute qCustomerAttribute = QCustomerAttribute.customerAttribute;
+		QCustomerOption qCustomerOption = QCustomerOption.customerOption;
+		QCustomerOptionValue qCustomerOptionValue = QCustomerOptionValue.customerOptionValue;
+		
+		try {
+		
+		JPQLQuery query = new JPAQuery (getEntityManager());
+		
+		query.from(qCustomer)
+			.join(qCustomer.merchantStore, qMerchantStore).fetch()
+			//.leftJoin(qCustomer.billing.country,qCountry).fetch()
+			//.leftJoin(qCustomer.billing.zone,qZone).fetch()
+			.leftJoin(qCustomer.defaultLanguage).fetch()
+			.leftJoin(qCustomer.groups).fetch()
+			.leftJoin(qCustomer.attributes,qCustomerAttribute).fetch()
+			.leftJoin(qCustomerAttribute.customerOption, qCustomerOption).fetch()
+			.leftJoin(qCustomerAttribute.customerOptionValue, qCustomerOptionValue).fetch()
+			.leftJoin(qCustomerOption.descriptions).fetch()
+			.leftJoin(qCustomerOptionValue.descriptions).fetch()
+			.where(qCustomer.emailAddress.eq(email).and(qMerchantStore.id.eq(id)));
 		
 		return query.uniqueResult(qCustomer);
 		
@@ -407,5 +471,7 @@ public class CustomerDAOImpl extends SalesManagerEntityDaoImpl<Long, Customer> i
 		
 		return query.distinct().list(qCustomer);
 	}
+
+
 
 }

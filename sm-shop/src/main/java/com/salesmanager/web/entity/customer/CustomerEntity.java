@@ -32,7 +32,7 @@ public class CustomerEntity extends Customer implements Serializable {
 	
 	private String storeCode;
 	
-	@NotEmpty(message="{NotEmpty.customer.userName}")
+//	@NotEmpty(message="{NotEmpty.customer.userName}")
 	private String userName;
 	
 	public void setUserName(final String userName) {

@@ -113,9 +113,9 @@ public class SaleController {
 		saleRequest.setProductSaleRequests(productSaleRequests);
 		
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
-		sendEmail(store, request);
+		sendEmail(store, request, saleRequest);
 		
-		saleFacade.sendSaleRequest(saleRequest);
+//		saleFacade.sendSaleRequest(saleRequest);
 
 		redirectAttributes.addFlashAttribute("successMsgCode", "message.wholeSale.success");
 
@@ -208,7 +208,7 @@ public class SaleController {
 
 	}
 
-	private void sendEmail(MerchantStore store, HttpServletRequest request){
+	private void sendEmail(MerchantStore store, HttpServletRequest request, SaleRequest saleRequest){
 
 		try {
 			Language defaultLanguage = store.getDefaultLanguage();
@@ -229,9 +229,9 @@ public class SaleController {
 
 			Email email = new Email();
 			email.setFrom(store.getStorename());
-			email.setFromEmail(store.getStoreEmailAddress());
+			email.setFromEmail(saleRequest.getCustomerEmail());
 			email.setSubject(messages.getMessage("email.newstore.title",storeLocale));
-			email.setTo(store.getStoreEmailAddress());
+			email.setTo("eng.amiranagi@gmail.com");
 			email.setTemplateName(NEW_STORE_TMPL);
 			email.setTemplateTokens(templateTokens);
 

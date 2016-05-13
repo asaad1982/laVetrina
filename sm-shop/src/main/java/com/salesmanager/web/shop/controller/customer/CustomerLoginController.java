@@ -8,7 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,8 +37,8 @@ import com.salesmanager.web.shop.controller.customer.facade.CustomerFacade;
 @RequestMapping("/shop/customer")
 public class CustomerLoginController extends AbstractController {
 	
-	@Autowired
-    private AuthenticationManager customerAuthenticationManager;
+//	@Autowired
+//    private AuthenticationManager customerAuthenticationManager;
 	
 
     @Autowired
@@ -65,7 +64,7 @@ public class CustomerLoginController extends AbstractController {
         	Language language = (Language)request.getAttribute("LANGUAGE");
 
             //check if username is from the appropriate store
-            Customer customerModel = customerFacade.getCustomerByUserName(userName, store);
+            Customer customerModel = customerFacade.getCustomerByEmail(userName, store);
             if(customerModel==null) {
             	jsonObject.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
             	return jsonObject;

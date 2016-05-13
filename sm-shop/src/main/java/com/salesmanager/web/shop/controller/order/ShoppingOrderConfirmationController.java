@@ -12,7 +12,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -89,8 +88,8 @@ public class ShoppingOrderConfirmationController extends AbstractController {
     @Autowired
     private  CustomerFacade customerFacade;
 	
-	@Autowired
-    private AuthenticationManager customerAuthenticationManager;
+//	@Autowired
+//    private AuthenticationManager customerAuthenticationManager;
 	
 	@Autowired
 	private OrderProductDownloadService orderProdctDownloadService;

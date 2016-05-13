@@ -1,0 +1,44 @@
+package com.salesmanager.web.shop.controller.customer;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.salesmanager.web.entity.customer.SecuredShopPersistableCustomer;
+import com.salesmanager.web.shop.controller.AbstractController;
+
+
+@Controller
+@RequestMapping("/shop/customer")
+public class SignUpController extends AbstractController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(SignUpController.class);
+    
+    
+
+
+
+	@RequestMapping(value="/loginOrSignUp.html", method=RequestMethod.GET)
+	public String displayRegistration(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+
+		model.addAttribute("customer", new SecuredShopPersistableCustomer());
+		
+		return "redirect:/shop/customer/registration.html";
+
+
+	}
+
+	
+	
+
+	
+
+
+}

@@ -22,6 +22,10 @@ public interface CustomerDAO extends SalesManagerEntityDao<Long, Customer> {
 
 	List<Customer> getBySearchCritera(String firstname, String lastname,
 			String gender, String birthDate, String country,String email);
-	
+
+	Customer getByEmail(String email);
+
+	public Customer getByEmail(String email, Integer id);
+
 	
 }
