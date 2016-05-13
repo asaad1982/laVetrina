@@ -151,7 +151,7 @@ $(document).ready(function() {
 					                 </div>
                                         </li>
                                         </c:if>
-                                        <li><c:if test="${requestScope.CONFIGS['displayCustomerSection'] == true}">
+                                        <li><a href="<c:url value='/shop/customer/loginOrSignUp.html' />" > login or signup </a> <c:if test="${requestScope.CONFIGS['displayCustomerSection'] == true}">
 					<sec:authorize access="hasRole('AUTH_CUSTOMER') and fullyAuthenticated">
 						<!-- logged in user -->
 						<c:if test="${requestScope.CUSTOMER!=null}">

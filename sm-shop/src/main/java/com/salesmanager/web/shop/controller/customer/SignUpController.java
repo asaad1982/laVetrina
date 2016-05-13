@@ -30,7 +30,7 @@ public class SignUpController extends AbstractController {
 
 		model.addAttribute("customer", new SecuredShopPersistableCustomer());
 		
-		return "loginOrSignUp.entry";
+		return "redirect:/shop/customer/registration.html";
 
 
 	}
