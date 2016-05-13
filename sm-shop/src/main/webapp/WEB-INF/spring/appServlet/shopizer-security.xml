@@ -92,6 +92,7 @@
 		<intercept-url pattern="/shop/customer/customLogon.html*" access="permitAll" />
 		<intercept-url pattern="/shop/customer/denied.html" access="permitAll"/>
 		<intercept-url pattern="/shop/customer/j_spring_security_check" access="permitAll"/>
+		<intercept-url pattern="/shop/customer/j_spring_security_logout" access="permitAll"/>
 		<intercept-url pattern="/shop/customer" access="hasRole('AUTH_CUSTOMER')" />
 		<intercept-url pattern="/shop/customer/" access="hasRole('AUTH_CUSTOMER')" />
 		<intercept-url pattern="/shop/customer/*.html*" access="hasRole('AUTH_CUSTOMER')" />
@@ -104,9 +105,9 @@
 		<custom-filter position="FORM_LOGIN_FILTER" ref="SecurityAuthFilter"/>
 <!--         <custom-filter position="LOGOUT_FILTER" ref="logoutFilter"/> -->
 			
-<!-- 		<logout invalidate-session="false"  -->
-<!-- 			logout-success-url="/shop/"  -->
-<!-- 			logout-url="/shop/customer/j_spring_security_logout" /> -->
+		<logout invalidate-session="false" 
+			logout-success-url="/shop/" 
+			logout-url="/shop/customer/j_spring_security_logout" />
 		<access-denied-handler error-page="/shop/"/>
 	</http>
 	
@@ -119,9 +120,9 @@
 		<custom-filter position="FORM_LOGIN_FILTER" ref="SecurityAuthFilter"/>
 <!--         <custom-filter position="LOGOUT_FILTER" ref="logoutFilter"/> -->
 			
-<!-- 		<logout invalidate-session="false"  -->
-<!-- 			logout-success-url="/shop/"  -->
-<!-- 			logout-url="/shop/customer/j_spring_security_logout" /> -->
+		<logout invalidate-session="false" 
+			logout-success-url="/shop/" 
+			logout-url="/shop/customer/j_spring_security_logout" />
 		<access-denied-handler error-page="/shop/"/>
 	</http>
 	

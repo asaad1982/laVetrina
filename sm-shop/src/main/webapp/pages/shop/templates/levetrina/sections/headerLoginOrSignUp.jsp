@@ -79,7 +79,7 @@ response.setDateHeader ("Expires", -1);
 										Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i>
 										Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i>
+								<li><a href="<c:url value='/shop/customer/loginOrSignUp.html' />"><i class="fa fa-lock"></i>
 										Login</a></li>
 							</ul>
 						</div>

@@ -125,9 +125,10 @@
 					<form class="form-signin mg-btm" action="<c:url value='/shop/customer/j_spring_security_check' />" method='POST'>
 						<input type="text" class="form-control" placeholder="Email" name="j_username">
 						<input type="password" class="form-control"
-							placeholder="Password" name="j_password"><span> <input
-							type="checkbox" class="checkbox"> Keep me signed in
-						</span>
+							placeholder="Password" name="j_password">
+<%-- 							<span> <input --%>
+<!-- 							type="checkbox" class="checkbox"> Keep me signed in -->
+<%-- 						</span> --%>
 						<button type="submit" class="btn btn-default">Login</button>
 					</form>
 				</div>
