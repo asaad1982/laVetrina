@@ -99,7 +99,7 @@
 		<div class="row">
 			<h2 class="title text-center">Log in & sign out</h2>
 			<div class="col-sm-4 col-sm-offset-1">
-				<div class="login-form">
+				
 					<!--login form-->
 					<h2>Login to your account</h2>
 					<c:if test="${msgCode == '1'}">
@@ -124,6 +124,7 @@
 									<form name='facebookSocialloginForm'
 										action="<c:url value='../../auth/twitter?scope=email,user_about_me,user_birthday' />"
 										method='POST'>
+										<input type="hidden" name="include_email" value="true" />
 										<button type="submit" class="btn btn-info btn-block"> <i
 											class="icon-twitter"></i>  Login with Twitter
 										</button>
@@ -131,6 +132,7 @@
 								</div>
 							</div>
 						</div>
+						<div class="login-form">
 					<form class="form-signin mg-btm" action="<c:url value='/shop/customer/j_spring_security_check' />" method='POST'>
 						<input type="text" class="form-control" placeholder="Email" name="j_username">
 						<input type="password" class="form-control"
