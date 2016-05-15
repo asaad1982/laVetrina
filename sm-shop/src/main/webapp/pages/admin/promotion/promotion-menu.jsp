@@ -13,7 +13,7 @@
 				    
 				    	<c:if test="${promotion.promotionType.id==1}"><li><a href="<c:url value="/admin/promotion/cartPromotion.html" />?id=<c:out value="${id}"/>">Cart Promotion</a></li></c:if>
 				    	<c:if test="${promotion.promotionType.id==6}"><li><a href="<c:url value="/admin/promotion/featured/list.html" />?id=<c:out value="${id}"/>">Cross Selling</a></li></c:if>
-				    	<c:if test="${promotion.promotionType.id==4}"><li><a href="<c:url value="/admin/promotion/featured/list.html" />?id=<c:out value="${id}"/>">Cross Selling</a></li></c:if>
+				    	<c:if test="${promotion.promotionType.id==4}"><li><a href="<c:url value="/admin/promotion/displayUpSellingItems.html" />?id=<c:out value="${id}"/>">UP Selling</a></li></c:if>
 				    	
 				    	<li><a href="<c:url value="/admin/promotion/editPromotion.html" />?id=<c:out value="${id}"/>">Edit Offer</a></li>
 				    	<li><a href="<c:url value="/admin/promotion/promotions.html" />">Offers</a></li>

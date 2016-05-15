@@ -39,22 +39,31 @@ import com.salesmanager.core.business.catalog.category.service.CategoryService;
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.catalog.product.model.description.ProductDescription;
 import com.salesmanager.core.business.catalog.product.model.manufacturer.Manufacturer;
+import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationship;
+import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationshipType;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.catalog.product.service.manufacturer.ManufacturerService;
+import com.salesmanager.core.business.catalog.product.service.relationship.ProductRelationshipService;
 import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.customer.service.CustomerService;
+import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.promo.model.BounsType;
+import com.salesmanager.core.business.promo.model.BundlePromotion;
 import com.salesmanager.core.business.promo.model.CartPromotion;
 import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.promo.model.PromotionDescription;
 import com.salesmanager.core.business.promo.model.PromotionRule;
 import com.salesmanager.core.business.promo.model.PromotionTragetAge;
 import com.salesmanager.core.business.promo.model.PromotionType;
+import com.salesmanager.core.business.promo.model.UpSellingPromotion;
 import com.salesmanager.core.business.promotion.service.BounsService;
+import com.salesmanager.core.business.promotion.service.BundlePromotionService;
+import com.salesmanager.core.business.promotion.service.CartPromotionService;
 import com.salesmanager.core.business.promotion.service.ProductAgeRangeSerivce;
 import com.salesmanager.core.business.promotion.service.PromotionService;
 import com.salesmanager.core.business.promotion.service.PromotionTypeService;
+import com.salesmanager.core.business.promotion.service.UpSellingPromotionService;
 import com.salesmanager.core.business.reference.country.model.Country;
 import com.salesmanager.core.business.reference.country.service.CountryService;
 import com.salesmanager.core.business.reference.language.model.Language;
@@ -62,6 +71,8 @@ import com.salesmanager.core.utils.ajax.AjaxPageableResponse;
 import com.salesmanager.core.utils.ajax.AjaxResponse;
 import com.salesmanager.web.admin.entity.web.Menu;
 import com.salesmanager.web.constants.Constants;
+import com.salesmanager.web.shop.controller.sale.facade.SaleFacade;
+import com.salesmanager.web.shop.controller.sale.model.ProductModel;
 import com.salesmanager.web.utils.DateUtil;
 import com.salesmanager.web.utils.LabelUtils;
 
@@ -74,7 +85,12 @@ public class PromotionController {
 	
 	@Autowired
 	PromotionService promotionService;
-	
+	@Autowired
+	CartPromotionService cartPromotionService;
+	@Autowired
+	BundlePromotionService bundlePromotionService;
+	@Autowired
+	UpSellingPromotionService upSellingPromotionService;
 	@Autowired
 	LabelUtils messages;
 	@Autowired
@@ -94,6 +110,12 @@ public class PromotionController {
 	
 	@Autowired
 	BounsService bounsService;
+	
+	@Autowired
+	ProductRelationshipService productRelationshipService;
+
+	@Autowired
+	private SaleFacade saleFacade;
 	
 
 	
@@ -469,12 +491,30 @@ public class PromotionController {
 	@RequestMapping(value="/admin/promotion/featured/list.html", method=RequestMethod.GET)
 	public String displayFeaturedItems(@RequestParam("id")long promotionId,Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		setMenu(model, request);
+		
 		Language language = (Language)request.getAttribute("LANGUAGE");
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		
-		List<Category> categories = categoryService.listByStore(store,language);
-		
-		model.addAttribute("categories", categories);
+
+		List<ProductRelationship> relationships = productRelationshipService.getGroups(store);
+		List<ProductRelationship> productRelationships=new ArrayList<ProductRelationship>();
+		for(ProductRelationship relationship : relationships) {
+			
+			if(!"FEATURED_ITEM".equals(relationship.getCode())) {//do not add featured items
+
+				productRelationships.add(relationship);
+			
+			}
+			
+		}
+		BundlePromotion bundlePromotion=  promotionService.getBundlePromotionById(promotionId);
+		if(bundlePromotion==null){
+			bundlePromotion=new BundlePromotion();
+			bundlePromotion.setPromotion(new Promotion());
+			bundlePromotion.getPromotion().setId(promotionId);
+		}
+		model.addAttribute("bundlePromotion", bundlePromotion);
+		model.addAttribute("relationships",productRelationships);
 		model.addAttribute("promotionId", promotionId);
 		return "admin-promotion-featured";
 		
@@ -1082,6 +1122,166 @@ public String saveConditionTab(@Valid @ModelAttribute("promotion") Promotion pro
 	promotionService.saveOrUpdate(promotion);
 	model.addAttribute("success","success");
 	return "conditionTab";
+}
+
+@PreAuthorize("hasRole('PRODUCTS')")
+@RequestMapping(value="/admin/promotion/saveCartPromotion.html", method=RequestMethod.POST)
+public String saveCartPromotion(@Valid @ModelAttribute("cartPromotion") CartPromotion cartPromotion, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+
+	setMenu(model, request);
+	
+	MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+	if(cartPromotion.getCouponCode()==null || "".equalsIgnoreCase(cartPromotion.getCouponCode())){
+		ObjectError error = new ObjectError("couponCode",messages.getMessage("NotEmpty.promotion.couponCode", locale));
+		result.addError(error);
+	}else if(!isAlphaNumeric(cartPromotion.getCouponCode())){
+		ObjectError error = new ObjectError("couponCode",messages.getMessage("Alpha.promotion.couponCode", locale));
+		result.addError(error);
+	}
+	if(cartPromotion.getCouponDiscountType()==-1){
+		ObjectError error = new ObjectError("couponDiscountType",messages.getMessage("NotEmpty.promotion.couponDiscountType", locale));
+		result.addError(error);
+	}
+	if(cartPromotion.getCouponDiscountAmount()==0 || cartPromotion.getCouponDiscountAmount()==0.0){
+		ObjectError error = new ObjectError("couponDiscountAmount",messages.getMessage("NotEmpty.promotion.couponDiscountAmount", locale));
+		result.addError(error);
+	}
+	if (result.hasErrors()) {
+		return "cartPromotion";
+	}
+	cartPromotion.setPromotion(promotionService.getById(cartPromotion.getPromotion().getId()));
+	
+	cartPromotionService.saveOrUpdate(cartPromotion);
+	
+	model.addAttribute("success","success");
+	return "cartPromotion";
+}
+
+
+@PreAuthorize("hasRole('PRODUCTS')")
+@RequestMapping(value="/admin/promotion/saveCrossSellingPromotion.html", method=RequestMethod.POST)
+public String saveCrossSellingPromotion(@Valid @ModelAttribute("bundlePromotion") BundlePromotion bundlePromotion, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+
+	setMenu(model, request);
+	
+	MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+	
+	
+	if(bundlePromotion.getBundlePrice()==0 || bundlePromotion.getBundlePrice()==0.0){
+		ObjectError error = new ObjectError("bundlePrice",messages.getMessage("NotEmpty.promotion.bundlePrice", locale));
+		result.addError(error);
+	}
+	if (result.hasErrors()) {
+		return "admin-promotion-featured";
+	}
+	bundlePromotion.setPromotion(promotionService.getById(bundlePromotion.getPromotion().getId()));
+	
+	bundlePromotionService.saveOrUpdate(bundlePromotion);
+	List<ProductRelationship> relationships = productRelationshipService.getGroups(store);
+	List<ProductRelationship> productRelationships=new ArrayList<ProductRelationship>();
+	for(ProductRelationship relationship : relationships) {
+		
+		if(!"FEATURED_ITEM".equals(relationship.getCode())) {//do not add featured items
+
+			productRelationships.add(relationship);
+		
+		}
+		
+	}
+	model.addAttribute("relationships","productRelationships");
+	model.addAttribute("success","success");
+	return "admin-promotion-featured";
+}
+
+
+
+@PreAuthorize("hasRole('PRODUCTS')")
+@RequestMapping(value="/admin/promotion/saveupSellingPromotion.html", method=RequestMethod.POST)
+public String saveupSellingPromotion(@Valid @ModelAttribute("upSellingPromotion") UpSellingPromotion upSellingPromotion, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+
+	setMenu(model, request);
+	
+	MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+	
+	
+	if(upSellingPromotion.getValue()==0 || upSellingPromotion.getValue()==0.0){
+		ObjectError error = new ObjectError("value",messages.getMessage("NotEmpty.promotion.value", locale));
+		result.addError(error);
+	}
+	if (result.hasErrors()) {
+		return "upsellingPromotion";
+	}
+	upSellingPromotion.setPromotion(promotionService.getById(upSellingPromotion.getPromotion().getId()));
+	Language language = (Language)request.getAttribute("LANGUAGE");
+	upSellingPromotionService.saveOrUpdate(upSellingPromotion);
+	List<Category> categories = saleFacade.getAllCategories(store,language);
+
+	request.getSession().setAttribute("categories", categories);
+
+   model.addAttribute("categories", categories);
+	model.addAttribute("success","success");
+	return "upsellingPromotion";
+}
+@PreAuthorize("hasRole('PRODUCTS')")
+@RequestMapping(value="/admin/promotion/displayUpSellingItems.html", method=RequestMethod.GET)
+public String displayUpSellingItems(@RequestParam("id")long promotionId,Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	setMenu(model, request);
+	
+	Language language = (Language)request.getAttribute("LANGUAGE");
+	MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+	
+
+	List<Category> categories = saleFacade.getAllCategories(store,language);
+
+	request.getSession().setAttribute("categories", categories);
+
+   model.addAttribute("categories", categories);
+	UpSellingPromotion upSellingPromotion=  promotionService.getUpSellingPromotionById(promotionId);
+	if(upSellingPromotion==null){
+		upSellingPromotion=new UpSellingPromotion();
+		upSellingPromotion.setPromotion(new Promotion());
+		upSellingPromotion.getPromotion().setId(promotionId);
+	}
+	model.addAttribute("upSellingPromotion", upSellingPromotion);
+	
+	return "upsellingPromotion";
+	
+}
+
+
+@RequestMapping(value = "/admin/promotion/loadProducts", method = RequestMethod.GET, produces = "application/json")
+public @ResponseBody List<ProductModel> loadProducts(HttpServletRequest request,
+		@RequestParam("categoryId") String categoryId) throws ServiceException {
+
+	Language language = (Language)request.getAttribute("LANGUAGE");
+
+	List<Product> products = new ArrayList<Product>();
+	List<Long> categoryIds = new ArrayList<Long>();
+	if (categoryId != null && !categoryId.isEmpty()) {
+		long category = Long.parseLong(categoryId);
+		categoryIds.add(category);
+		products = saleFacade.loadProducts(categoryIds, language);
+	}
+
+	List<ProductModel> pm = new ArrayList<ProductModel>();
+	for(Product p:products){
+
+		ProductModel m = new ProductModel();
+		m.setId(p.getId());
+		m.setName( ((ProductDescription) p.getDescriptions().toArray()[0]).getName());
+
+		pm.add(m);
+	}
+
+	request.setAttribute("products", pm);
+	return pm;
+}
+private boolean isAlphaNumeric(String s){
+    String pattern= "^[a-zA-Z0-9]*$";
+        if(s.matches(pattern)){
+            return true;
+        }
+        return false;   
 }
 @InitBinder     
 protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {

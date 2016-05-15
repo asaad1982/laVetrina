@@ -173,6 +173,9 @@
   	<definition name="cartPromotion" template="/layout/admin/layout.jsp">
   		<put-attribute name="body" value="/pages/admin/promotion/cartPromotion.jsp" /> 
   	</definition>
+  	<definition name="upsellingPromotion" template="/layout/admin/layout.jsp">
+  		<put-attribute name="body" value="/pages/admin/promotion/product.jsp" /> 
+  	</definition>
   		<definition name="conditionTab" template="/layout/admin/layout.jsp">
   		<put-attribute name="body" value="/pages/admin/promotion/conditionTab.jsp" /> 
   	</definition>
