@@ -22,6 +22,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.Query;
 
 import org.apache.commons.lang3.StringUtils;
@@ -38,6 +39,7 @@ import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.promo.model.QPromotion;
 import com.salesmanager.core.business.promo.model.QPromotionDescription;
 import com.salesmanager.core.business.promo.model.QPromotionRule;
+import com.salesmanager.core.business.promo.model.UpSellingPromotion;
 import com.salesmanager.core.business.reference.language.model.Language;
 @Repository("promotionDao")
 public class PromotionDaoImpl extends SalesManagerEntityDaoImpl<Long, Promotion> implements PromotionDao {
@@ -204,6 +206,27 @@ public class PromotionDaoImpl extends SalesManagerEntityDaoImpl<Long, Promotion>
     	
     	try {
     		bp = (BundlePromotion)q.getSingleResult();
+    	} catch(javax.persistence.NoResultException ignore) {
+
+    	}
+    	return bp;
+	}
+
+	@Override
+	public UpSellingPromotion getUpSellingPromotionById(long promotionId) {
+		StringBuilder qs = new StringBuilder();
+		qs.append("select distinct bp from UpSellingPromotion as bp ");
+		qs.append("join fetch bp.promotion p ");
+		qs.append("where p.id=:promotionId ");
+		String hql = qs.toString();
+		Query q = super.getEntityManager().createQuery(hql);
+
+
+    	q.setParameter("promotionId", promotionId);
+    	UpSellingPromotion bp = null;
+    	
+    	try {
+    		bp = (UpSellingPromotion)q.getSingleResult();
     	} catch(javax.persistence.NoResultException ignore) {
 
     	}

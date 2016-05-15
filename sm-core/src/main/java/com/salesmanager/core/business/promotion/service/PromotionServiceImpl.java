@@ -16,6 +16,7 @@ import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.promo.model.PromotionDescription;
 import com.salesmanager.core.business.promo.model.PromotionRule;
 import com.salesmanager.core.business.promo.model.PromotionTragetAge;
+import com.salesmanager.core.business.promo.model.UpSellingPromotion;
 import com.salesmanager.core.business.promotion.dao.PromotionDao;
 import com.salesmanager.core.business.reference.language.model.Language;
 @Service
@@ -116,6 +117,11 @@ public class PromotionServiceImpl extends SalesManagerEntityServiceImpl<Long, Pr
 
 
 		return promotionDao.getBundlePromotionById(promotionId);
+	}
+
+	@Override
+	public UpSellingPromotion getUpSellingPromotionById(long promotionId) {
+		return promotionDao.getUpSellingPromotionById(promotionId);
 	}
 
 

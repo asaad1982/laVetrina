@@ -110,15 +110,19 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                                           <span class="help-inline"><form:errors path="couponDiscountAmount" cssClass="error" /></span>
                           	</div>
                     	</div>
-                    	
+                    	 <div class="control-group">
+                        	<label>Free Shipping </label>
+                          	<div class="controls">
+                       <form:radiobutton path="freeShippingOption" value="true"/>Yes 
+                       <form:radiobutton path="freeShippingOption" value="false"/>No </div></div>
                     
                   		<div class="control-group">
                               <label class="required">Email Message </label>
                               <div class="controls">
                               		 
                               		 
-                              	     <textarea cols="30" id="emailMessageEn" name="emailMessageEn">
-                        				
+                              	     <textarea cols="30" id="emailMessageEn" name="emailMessageEn" >
+                        				<c:out value="${cartPoromotion.emailMessageEn}"/>
                         			 </textarea>
                               </div>
                               
@@ -164,7 +168,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                               		 
                               		 
                               	     <textarea cols="30" id="emailMessageAr" name="emailMessageAr">
-                        				
+                        				<c:out value="${cartPoromotion.emailMessageAr}"/>
                         			 </textarea>
                               </div>
                               
@@ -203,6 +207,7 @@ var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong form
                               
                               
                        </div>
+                      
                        <form:hidden path="promotion.id"/>
 
                    <div class="form-actions">

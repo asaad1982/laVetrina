@@ -2,78 +2,146 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="/WEB-INF/shopizer-tags.tld" prefix="sm" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ page session="false" %>				
-				
-<script>
-	
-
-	
+<%@ page session="false" %>			
+<script type="text/javascript">
+var priceFormatMessage = '<s:message code="message.price.cents" text="Wrong format" />';
 </script>
 
+    <link href="<c:url value="/resources/css/bootstrap/css/datepicker.css" />" rel="stylesheet"></link>
+	<script src="<c:url value="/resources/js/bootstrap/bootstrap-datepicker.js" />"></script>
+	<script src="<c:url value="/resources/js/ckeditor/ckeditor.js" />"></script>
+	<script src="<c:url value="/resources/js/jquery.formatCurrency-1.4.0.js" />"></script>
+	<script src="<c:url value="/resources/js/jquery.alphanumeric.pack.js" />"></script>
+	<script src="<c:url value="/resources/js/adminFunctions.js" />"></script>
+	
+	
+	
+<script type="text/javascript">
 
+	
+	$(function(){
+		$('#sku').alphanumeric();
+		$('#productPriceAmount').numeric({allow:"."});
+		$('#quantity').numeric();
+		$('#ordermin').numeric();
+		$('#ordermax').numeric();
+		$('#order').numeric();
+		$('#weight').numeric({allow:"."});
+		$('#width').numeric({allow:"."});
+		$('#length').numeric({allow:"."});
+		$('#hight').numeric({allow:"."});
+	
+	});
+
+	
+
+	
+	
+</script>
+	
+				
 <div class="tabbable">
 
+
+					<jsp:include page="/common/adminTabs.jsp" />
   					
-					<c:set value="${promotionId}" var="id" scope="request"/>
-					<jsp:include page="/pages/admin/promotion/promotion-menu.jsp" />
-
-
-
-  					<div class="tab-content">
+  					 <div class="tab-content">
 
     					<div class="tab-pane active" id="catalogue-section">
-
-								
-								
 
 
 								<div class="sm-ui-component">
 								
+								
+								<c:if test="${cartPromotion.promotion.id!=null && cartPromotion.promotion.id>0}">
+									<c:set value="${cartPromotion.promotion.id}" var="id" scope="request"/>
+									
+									<jsp:include page="/pages/admin/promotion/promotion-menu.jsp" />
+								</c:if>	
+								
+								
 				<h3>
-						<s:message code="label.product.offer.meassage" text="Offer's Product" />
+					Cross Selling 
+					
 				</h3>	
 				<br/>
-				<div class="alert alert-info">
-					<s:message code="label.product.featured.meassage" text="Drag and drop product from product list to Offers items box"/>
-				</div>			
-		
-      			<!-- Listing grid include -->
-				 <c:set value="/admin/products/paging.html" var="pagingUrl" scope="request"/>
-				 <c:set value="/admin/promotion/featured/paging.html?id=${promotionId}" var="containerFetchUrl" scope="request"/>
-				 <c:set value="/admin/promotion/featured/removeItem.html" var="containerRemoveUrl" scope="request"/>
-				 <c:set value="FEATURED" var="removeEntity" scope="request"/>
-				 <c:set value="/admin/promotion/featured/addItem.html" var="containerAddUrl" scope="request"/>
 				
-				 <c:set value="/admin/promotion/editPromotion.html?id=${promotionId}" var="editUrl" scope="request"/>
-				 <c:set value="/admin/promotion/featured/list.html?id=${promotionId}" var="reloadUrl" scope="request"/>
-				 <c:set var="componentTitleKey" value="menu.catalogue-featured" scope="request"/>
-				 <c:set var="gridHeader" value="/pages/admin/promotion/featured-gridHeader.jsp" scope="request"/>
-				 <c:set var="gridHeaderContainer" value="/pages/admin/promotion/featured-gridHeader.jsp" scope="request"/>
-				 <c:set var="canRemoveEntry" value="true" scope="request"/>
+				
 
-            	 <jsp:include page="/pages/admin/components/product-container.jsp"></jsp:include> 
-				 <!-- End listing grid include -->
+      					<c:url var="promotionSave" value="/admin/promotion/saveCrossSellingPromotion.html"/>
+                        <form:form method="POST" enctype="multipart/form-data" commandName="bundlePromotion" action="${promotionSave}">
+
+                            <form:errors path="*" cssClass="alert alert-error" element="div" />
+                            <div id="store.success" class="alert alert-success" style="<c:choose><c:when test="${success!=null}">display:block;</c:when><c:otherwise>display:none;</c:otherwise></c:choose>"><s:message code="message.success" text="Request successfull"/></div>   
+                            <div id="store.error" class="alert alert-error" style="display:none;"><s:message code="message.error" text="An error occured"/></div>
+
+                       
+						<form:hidden path="id" />
+                 	
+
+                  		
+                  		<div class="control-group">
+                        	<label>Bundled Products</label>
+                          	<div class="controls">
+                          		      <form:select items="${relationships}" itemValue="id" itemLabel="code"  path="productRelationship.id" cssClass="required"/> 
+	                                  <span class="help-inline"></span>
+                          	</div>
+                    	</div>
+                  	
+	                  	
+                    	</div>
+                    	<div class="control-group">
+                        	<label>Bundle Price</label>
+                          	<div class="controls">
+                          		      <form:input cssClass="input-large highlight"  path="bundlePrice" maxlength="6"/>
+                                          <span class="help-inline"><form:errors path="bundlePrice" cssClass="error" /></span>
+                          	</div>
+                    	</div>
+                    	
+                    
+                  	
+                       <form:hidden path="promotion.id"/>
+
+                   <div class="form-actions">
+                            <div class="pull-right">
+                                    <button type="submit" class="btn btn-success"><s:message code="button.label.submit2" text="Submit"/></button>
+                            </div>
+                   </div>
+                   
+                   
+
+                   
 
 
-      					</div>
+                   
+
+                 
+
+ 
+
+ 
+
+                                   
+
+                        </form:form>
+                        
+                  
+              
+                   
+                   
+                   
+                   
+                   	    
+                        
+      				</div>
       					
 
       			     
-      			     <c:url var="countriesPromotionSave" value="/admin/promotion/saveCountries.html"/>
-						<form:form method="GET"  action="${countriesPromotionSave}">
+      			     
 
-      							
-      								<form:errors path="*" cssClass="alert alert-error" element="div" />
-									<div id="store.success" class="alert alert-success" style="<c:choose><c:when test="${success!=null}">display:block;</c:when><c:otherwise>display:none;</c:otherwise></c:choose>"><s:message code="message.success" text="Request successfull"/></div>    
-								
-					                  <div class="form-actions">
-                  						<div class="pull-right">
-                  							<button type="submit" class="btn btn-success"><s:message code="button.label.submit" text="Submit"/></button>
-                  						</div>
-
-            	 					</div>
-            	 			</form:form>
 
       			     
       			     
