@@ -10,6 +10,7 @@ import com.salesmanager.core.business.complaint.model.ComplaintsReason;
 import com.salesmanager.core.business.generic.dao.SalesManagerEntityDao;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
+import com.salesmanager.core.business.promo.model.BundlePromotion;
 import com.salesmanager.core.business.promo.model.CartPromotion;
 import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.promo.model.PromotionDescription;
@@ -109,5 +110,13 @@ public class PromotionServiceImpl extends SalesManagerEntityServiceImpl<Long, Pr
 		
 		
 	}
+	@Override
+	public BundlePromotion getBundlePromotionById(long promotionId)
+			throws ServiceException {
+
+
+		return promotionDao.getBundlePromotionById(promotionId);
+	}
+
 
 }

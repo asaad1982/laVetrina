@@ -94,5 +94,6 @@
 			<class>com.salesmanager.core.business.notification.EmailTemplate</class>
 			<class>com.salesmanager.core.business.notification.EmailNotification</class>
 			<class>com.salesmanager.core.business.promo.model.CartPromotion</class>
+			<class>com.salesmanager.core.business.promo.model.BundlePromotion</class>
 	</persistence-unit>
 </persistence>

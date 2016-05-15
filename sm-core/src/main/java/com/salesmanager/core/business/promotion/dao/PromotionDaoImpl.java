@@ -21,6 +21,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.Query;
 
 import org.apache.commons.lang3.StringUtils;
@@ -31,6 +32,7 @@ import com.mysema.query.jpa.impl.JPAQuery;
 import com.mysema.query.types.expr.BooleanExpression;
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.generic.dao.SalesManagerEntityDaoImpl;
+import com.salesmanager.core.business.promo.model.BundlePromotion;
 import com.salesmanager.core.business.promo.model.CartPromotion;
 import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.promo.model.QPromotion;
@@ -185,6 +187,27 @@ public class PromotionDaoImpl extends SalesManagerEntityDaoImpl<Long, Promotion>
     	}
     	return cp;
     	
+	}
+
+	@Override
+	public BundlePromotion getBundlePromotionById(long promotionId) {
+		StringBuilder qs = new StringBuilder();
+		qs.append("select distinct bp from BundlePromotion as bp ");
+		qs.append("join fetch bp.promotion p ");
+		qs.append("where p.id=:promotionId ");
+		String hql = qs.toString();
+		Query q = super.getEntityManager().createQuery(hql);
+
+
+    	q.setParameter("promotionId", promotionId);
+    	BundlePromotion bp = null;
+    	
+    	try {
+    		bp = (BundlePromotion)q.getSingleResult();
+    	} catch(javax.persistence.NoResultException ignore) {
+
+    	}
+    	return bp;
 	}
 
 

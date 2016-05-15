@@ -45,8 +45,8 @@ public class CartPromotion extends SalesManagerEntity<Long, CartPromotion> imple
 	public void setId(Long id) {
 		this.id = id;
 	}
-	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
-	@JoinColumn(name="promotion_cart_id")
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="promotion_cart_id", nullable=true, updatable=true)
 	private Promotion promotion;
 	
 	

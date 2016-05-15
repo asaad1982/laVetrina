@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.salesmanager.core.business.generic.dao.SalesManagerEntityDao;
 import com.salesmanager.core.business.generic.exception.ServiceException;
+import com.salesmanager.core.business.promo.model.BundlePromotion;
 import com.salesmanager.core.business.promo.model.CartPromotion;
 import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.reference.language.model.Language;
@@ -19,5 +20,6 @@ public List<Promotion> listPromotionByBrand(Long brandId);
 public List<Promotion> listPromotion(Language language, String name,
 		String status, String startDate, String endDate);
 CartPromotion getCartPromotionById(long promotionId);
+BundlePromotion getBundlePromotionById(long promotionId);
 
 }
