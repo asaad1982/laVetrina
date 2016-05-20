@@ -25,7 +25,7 @@ import com.salesmanager.core.constants.Constants;
  */
 
 @Service("socialMediaService")
-public class SocialMediaConfigServiceImpl implements SocialMediaService {
+public class SocialMediaServiceImpl implements SocialMediaService {
 
 	@Autowired
 	private MerchantConfigurationService merchantConfigurationService;
