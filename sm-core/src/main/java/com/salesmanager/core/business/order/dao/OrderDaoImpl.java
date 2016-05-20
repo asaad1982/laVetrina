@@ -216,14 +216,14 @@ public class OrderDaoImpl  extends SalesManagerEntityDaoImpl<Long, Order> implem
 		
 		
 		
-		
+		/*
 		if(!StringUtils.isBlank(criteria.getCountry())) {
 			if(pBuilder==null) {
 				pBuilder = new BooleanBuilder();
 			}			pBuilder.and(qOrder.delivery.country.name.like(new StringBuilder().append("%").append(criteria.getCountry()).append("%").toString())
 					);
 		}
-		
+		*/
 		
 		
 		if(!StringUtils.isBlank(criteria.getStatus())) {

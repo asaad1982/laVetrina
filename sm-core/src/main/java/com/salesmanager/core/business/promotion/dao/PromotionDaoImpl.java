@@ -90,11 +90,12 @@ public class PromotionDaoImpl extends SalesManagerEntityDaoImpl<Long, Promotion>
 		
 		
 		JPQLQuery query = new JPAQuery (getEntityManager());
+		/*
 		query.from(qPromotion)
 		.leftJoin(qPromotion.promotionDescriptions, qDescription).fetch()
 		.leftJoin(qPromotion.promotionRule,qPromotionRule)
 		.where((qPromotionRule.promotionTragetAge.minVal.eq(minAge)).and(qPromotionRule.promotionTragetAge.maxVal.eq(maxAge)))
-				;
+			*/	;
 		
 		
 		return query.distinct().list(qPromotion);

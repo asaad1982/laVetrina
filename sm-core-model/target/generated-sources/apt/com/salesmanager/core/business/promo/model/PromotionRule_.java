@@ -15,7 +15,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class PromotionRule_ {
 
 	public static volatile ListAttribute<PromotionRule, Manufacturer> brands;
-	public static volatile SingularAttribute<PromotionRule, PromotionTragetAge> promotionTragetAge;
+	public static volatile SingularAttribute<PromotionRule, Integer> promotionTragetAge;
 	public static volatile SingularAttribute<PromotionRule, String> targetGender;
 	public static volatile SingularAttribute<PromotionRule, Long> id;
 	public static volatile ListAttribute<PromotionRule, Customer> customers;

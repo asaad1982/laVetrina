@@ -14,6 +14,7 @@ public abstract class Promotion_ {
 	public static volatile SingularAttribute<Promotion, PromotionRule> promotionRule;
 	public static volatile SingularAttribute<Promotion, PromotionType> promotionType;
 	public static volatile SingularAttribute<Promotion, Double> promotionVal;
+	public static volatile SingularAttribute<Promotion, BounsType> bounsType;
 	public static volatile SingularAttribute<Promotion, Long> id;
 	public static volatile ListAttribute<Promotion, PromotionDescription> promotionDescriptions;
 	public static volatile SingularAttribute<Promotion, Date> startDate;

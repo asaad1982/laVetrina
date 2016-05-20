@@ -27,7 +27,9 @@ import com.salesmanager.core.business.system.model.MerchantConfiguration;
 import com.salesmanager.core.business.system.model.MerchantConfigurationType;
 import com.salesmanager.core.business.system.service.EmailService;
 import com.salesmanager.core.business.system.service.MerchantConfigurationService;
+import com.salesmanager.core.business.system.service.SocialMediaService;
 import com.salesmanager.core.modules.email.EmailConfig;
+import com.salesmanager.core.modules.social.SocialMediaConfig;
 import com.salesmanager.web.admin.controller.ControllerConstants;
 import com.salesmanager.web.admin.entity.web.ConfigListWrapper;
 import com.salesmanager.web.admin.entity.web.Menu;
@@ -45,6 +47,10 @@ public class ConfigurationController {
 	@Autowired
 	private EmailService emailService;
 
+	@Autowired
+	private SocialMediaService socialService;
+	
+	
 	@Autowired
 	Environment env;
 	
@@ -185,6 +191,67 @@ public class ConfigurationController {
 		return ControllerConstants.Tiles.Configuration.email;
 	}
 	
+	
+	@PreAuthorize("hasRole('AUTH')")
+	@RequestMapping(value="/admin/configuration/saveEmailConfiguration1.html", method=RequestMethod.GET)
+	public String saveEmailSettings1(@ModelAttribute("configuration") EmailConfig config, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+		setEmailConfigurationMenu(model, request);
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		EmailConfig emailConfig = emailService.getEmailConfiguration(store);
+		if(emailConfig == null){
+			emailConfig = new EmailConfig();
+		}
+		
+		// populte EmailConfig model from UI values
+		emailConfig.setProtocol("http");
+		emailConfig.setHost("10.9.1.10");
+		emailConfig.setPort("8080");
+		emailConfig.setUsername("ssssss");
+		emailConfig.setPassword("sssssssssss");
+		//emailConfig.setSmtpAuth("sssss");
+		//emailConfig.setStarttls("sssssssssssssss");
+		
+		emailService.saveEmailConfiguration(emailConfig, store);
+		
+		model.addAttribute("configuration", emailConfig);
+		model.addAttribute("success","success");
+		return ControllerConstants.Tiles.Configuration.email;
+	}
+	
+
+	
+	
+	
+	@PreAuthorize("hasRole('AUTH')")
+	@RequestMapping(value="/admin/configuration/socialMedia.html", method=RequestMethod.GET)
+	public String displaySocialMedialSettings(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		setSocialConfigurationMenu(model, request);
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		SocialMediaConfig socialConfig = socialService.getConfiguration(store);
+		if(socialConfig == null){
+			socialConfig = new SocialMediaConfig();
+			//TODO: Need to check below properties. When there are no record available in MerchantConfguration table with EMAIL_CONFIG key, 
+			// instead of showing blank fields in setup screen, show default configured values from email.properties
+			socialConfig.setShareDiscountNumber(env.getProperty("mailSender.protocol"));
+			socialConfig.setShareDiscountIntervalUnit(env.getProperty("mailSender.host"));
+			socialConfig.setShareDiscountFrequency(env.getProperty("mailSender.port}"));
+		}
+		
+		model.addAttribute("configuration", socialConfig);
+		return ControllerConstants.Tiles.Configuration.socilMedia;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private void setConfigurationMenu(Model model, HttpServletRequest request) throws Exception {
 		
 		Map<String,String> activeMenus = new HashMap<String,String>();
@@ -212,4 +279,24 @@ public class ConfigurationController {
 		model.addAttribute("currentMenu",currentMenu);
 		model.addAttribute("activeMenus",activeMenus);
 	}
+
+
+private void setSocialConfigurationMenu(Model model, HttpServletRequest request) throws Exception {
+		
+		Map<String,String> activeMenus = new HashMap<String,String>();
+		activeMenus.put("configuration", "configuration");
+		activeMenus.put("socilMedia-conf", "socilMedia-conf");
+		 //final String socilMedia="config-socilMedia";
+		@SuppressWarnings("unchecked")
+		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
+		
+		Menu currentMenu = (Menu)menus.get("configuration");
+		model.addAttribute("currentMenu",currentMenu);
+		model.addAttribute("activeMenus",activeMenus);
+	}
+
+
+
+
+
 }
