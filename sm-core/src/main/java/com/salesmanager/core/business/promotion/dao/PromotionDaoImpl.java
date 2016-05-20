@@ -98,10 +98,10 @@ public class PromotionDaoImpl extends
 		query.from(qPromotion)
 				.leftJoin(qPromotion.promotionDescriptions, qDescription)
 				.fetch()
-				.leftJoin(qPromotion.promotionRule, qPromotionRule)
-				.where((qPromotionRule.promotionTragetAge.minVal.eq(minAge))
-						.and(qPromotionRule.promotionTragetAge.maxVal
-								.eq(maxAge)));
+				.leftJoin(qPromotion.promotionRule, qPromotionRule);
+//				.where((qPromotionRule.promotionTragetAge.minVal.eq(minAge))
+//						.and(qPromotionRule.promotionTragetAge.maxVal
+//								.eq(maxAge)));
 
 		return query.distinct().list(qPromotion);
 	}

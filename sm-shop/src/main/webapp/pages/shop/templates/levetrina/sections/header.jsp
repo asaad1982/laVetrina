@@ -153,7 +153,7 @@ $(document).ready(function() {
                                         </c:if>
                                         <li>
                                         <form class="form-signin mg-btm" action="<c:url value='/shop/customer/j_spring_security_logout' />" method='POST'>
-                                        <sec:authorize access="hasRole('AUTH_CUSTOMER')"> you are loggin in with <sec:authentication property="principal.username" />  <button type="submit" class="btn btn-default">Logout</button></sec:authorize></form> <sec:authorize access="!hasRole('AUTH_CUSTOMER')"> <a href="<c:url value='/shop/customer/loginOrSignUp.html' />" > login or signup </a> </sec:authorize> <c:if test="${requestScope.CONFIGS['displayCustomerSection'] == true}">
+                                        <sec:authorize access="hasRole('AUTH_CUSTOMER')">  <sec:authentication property="principal.username" />  <button type="submit" class="btn btn-default">Logout</button></sec:authorize></form> <sec:authorize access="!hasRole('AUTH_CUSTOMER')"> <a href="<c:url value='/shop/customer/loginOrSignUp.html' />" > login or signup </a> </sec:authorize> <c:if test="${requestScope.CONFIGS['displayCustomerSection'] == true}">
 					<sec:authorize access="hasRole('AUTH_CUSTOMER') and fullyAuthenticated">
 						<!-- logged in user -->
 						<c:if test="${requestScope.CUSTOMER!=null}">
@@ -221,7 +221,7 @@ $(document).ready(function() {
 						              </div>
                                 
                                  <div class="call-to-actions-btn pull-right">
-                                     <button type="button" class="btn offers-btn-style">HOT OFFERS !</button>
+                                     <button type="button" class="btn offers-btn-style" onclick='location.href="<c:url value="/shop/promotion/hotdeals.html"/>"' ><s:message code="label.hotdeals.menu"/></button>
                                       <button  type="button" onclick='location.href="<c:url value="/shop/store/contactus.html"/>"' class="btn call-btn-style" >
                                             <img src="<c:url value="/resources/templates/levetrina/images/tele.png" />"><s:message code="label.contactus.menu"/></button>
                                 </div>
