@@ -48,6 +48,7 @@ public abstract class Product_ {
 	public static volatile SingularAttribute<Product, Integer> sortOrder;
 	public static volatile SingularAttribute<Product, Boolean> productIsFree;
 	public static volatile SetAttribute<Product, ProductAttribute> attributes;
+	public static volatile SingularAttribute<Product, String> videoLink;
 
 }
 

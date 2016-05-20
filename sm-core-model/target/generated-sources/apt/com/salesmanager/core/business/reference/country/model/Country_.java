@@ -13,6 +13,7 @@ public abstract class Country_ {
 
 	public static volatile SingularAttribute<Country, String> isoCode;
 	public static volatile SingularAttribute<Country, Integer> id;
+	public static volatile ListAttribute<Country, City> citys;
 	public static volatile ListAttribute<Country, Zone> zones;
 	public static volatile ListAttribute<Country, CountryDescription> descriptions;
 	public static volatile SingularAttribute<Country, GeoZone> geoZone;

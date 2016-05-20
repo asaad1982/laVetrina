@@ -10,6 +10,7 @@ public abstract class ComplaintsReason_ {
 
 	public static volatile SingularAttribute<ComplaintsReason, String> englishName;
 	public static volatile SingularAttribute<ComplaintsReason, String> arabicName;
+	public static volatile SingularAttribute<ComplaintsReason, Boolean> available;
 	public static volatile SingularAttribute<ComplaintsReason, Long> id;
 
 }

@@ -7,6 +7,7 @@ import com.mysema.query.types.path.*;
 import com.mysema.query.types.PathMetadata;
 import javax.annotation.Generated;
 import com.mysema.query.types.Path;
+import com.mysema.query.types.path.PathInits;
 
 
 /**
@@ -25,12 +26,14 @@ public class QManufacturer extends EntityPathBase<Manufacturer> {
 
     public final com.salesmanager.core.business.common.model.audit.QAuditSection auditSection;
 
+    public final BooleanPath available = createBoolean("available");
+
     public final StringPath code = createString("code");
 
     public final SetPath<ManufacturerDescription, QManufacturerDescription> descriptions = this.<ManufacturerDescription, QManufacturerDescription>createSet("descriptions", ManufacturerDescription.class, QManufacturerDescription.class, PathInits.DIRECT2);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
-    public final BooleanPath available = createBoolean("available");
+
     public final StringPath image = createString("image");
 
     public final com.salesmanager.core.business.merchant.model.QMerchantStore merchantStore;

@@ -11,7 +11,7 @@ public abstract class PromotionTragetAge_ {
 	public static volatile SingularAttribute<PromotionTragetAge, Integer> maxVal;
 	public static volatile SingularAttribute<PromotionTragetAge, Integer> minVal;
 	public static volatile SingularAttribute<PromotionTragetAge, String> name;
-	public static volatile SingularAttribute<PromotionTragetAge, Long> id;
+	public static volatile SingularAttribute<PromotionTragetAge, Integer> id;
 
 }
 

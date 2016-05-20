@@ -21,7 +21,7 @@ public class QPromotionTragetAge extends EntityPathBase<PromotionTragetAge> {
 
     public final com.salesmanager.core.business.generic.model.QSalesManagerEntity _super = new com.salesmanager.core.business.generic.model.QSalesManagerEntity(this);
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
     public final NumberPath<Integer> maxVal = createNumber("maxVal", Integer.class);
 

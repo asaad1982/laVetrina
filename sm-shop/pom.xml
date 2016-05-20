@@ -57,7 +57,12 @@
 			<version>${sm-core-modules.version}</version>
 		</dependency>
 
-
+<!-- ayman -->	
+	<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>4.2.6.RELEASE</version>
+    </dependency>
 		<!-- sm-search -->
 		<dependency>
 			<groupId>com.shopizer</groupId>

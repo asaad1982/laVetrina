@@ -23,6 +23,8 @@ public class QComplaintsReason extends EntityPathBase<ComplaintsReason> {
 
     public final StringPath arabicName = createString("arabicName");
 
+    public final BooleanPath available = createBoolean("available");
+
     public final StringPath englishName = createString("englishName");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
