@@ -12,6 +12,7 @@
 //_hiddenCategory_\:http\://java.sun.com/jstl/xml_rt=false
 //_hiddenCategory_\:http\://tiles.apache.org/tags-tiles=false
 //_hiddenCategory_\:http\://www.springframework.org/security/tags=false
+//_hiddenCategory_\:http\://www.springframework.org/spring-social/social/tags=false
 //_hiddenCategory_\:http\://www.springframework.org/tags=false
 //_hiddenCategory_\:http\://www.springframework.org/tags/form=false
 _hiddenCategory_\:HTML=false
