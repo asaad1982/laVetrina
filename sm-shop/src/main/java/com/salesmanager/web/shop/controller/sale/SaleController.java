@@ -115,7 +115,7 @@ public class SaleController {
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 		sendEmail(store, request, saleRequest);
 		
-//		saleFacade.sendSaleRequest(saleRequest);
+		saleFacade.sendSaleRequest(saleRequest);
 
 		redirectAttributes.addFlashAttribute("successMsgCode", "message.wholeSale.success");
 

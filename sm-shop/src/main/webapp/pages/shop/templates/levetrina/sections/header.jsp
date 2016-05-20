@@ -153,7 +153,7 @@ $(document).ready(function() {
                                         </c:if>
                                         <li>
                                         <form class="form-signin mg-btm" action="<c:url value='/shop/customer/j_spring_security_logout' />" method='POST'>
-                                        <sec:authorize access="hasRole('AUTH_CUSTOMER')"> you are loggin in with <sec:authentication property="principal.username" />  <button type="submit" class="btn btn-default">Logout</button></sec:authorize></form> <sec:authorize access="!hasRole('AUTH_CUSTOMER')"> <a href="<c:url value='/shop/customer/loginOrSignUp.html' />" > login or signup </a> </sec:authorize> <c:if test="${requestScope.CONFIGS['displayCustomerSection'] == true}">
+                                        <sec:authorize access="hasRole('AUTH_CUSTOMER')"> <sec:authentication property="principal.username" />  <button type="submit" class="btn btn-default">Logout</button></sec:authorize></form> <sec:authorize access="!hasRole('AUTH_CUSTOMER')"> <a href="<c:url value='/shop/customer/loginOrSignUp.html' />" > Login </a> </sec:authorize> <c:if test="${requestScope.CONFIGS['displayCustomerSection'] == true}">
 					<sec:authorize access="hasRole('AUTH_CUSTOMER') and fullyAuthenticated">
 						<!-- logged in user -->
 						<c:if test="${requestScope.CUSTOMER!=null}">

@@ -6,6 +6,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UserProfile;
+import org.springframework.social.twitter.api.Twitter;
+import org.springframework.social.twitter.api.TwitterProfile;
+import org.springframework.social.twitter.api.impl.TwitterTemplate;
+import org.springframework.social.twitter.connect.TwitterAdapter;
 
 import com.salesmanager.web.shop.security.model.LocalUser;
 import com.salesmanager.web.shop.security.model.SocialProvider;
@@ -33,6 +37,7 @@ public class AppConnectionSignUp implements ConnectionSignUp {
 
     @Override
     public String execute(final Connection<?> connection) {
+    	
         UserRegistrationForm userDetails = toUserRegistrationObject(connection.getKey().getProviderUserId(), SecurityUtil.toSocialProvider(connection.getKey().getProviderId()), connection.fetchUserProfile());
         LocalUser user = (LocalUser) userDetailService.loadUserByUsername(userDetails.getEmail());
 //        if(user == null)

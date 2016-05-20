@@ -5,6 +5,8 @@ package com.salesmanager.web.shop.controller.customer.facade;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,13 +27,16 @@ import org.springframework.stereotype.Service;
 import com.salesmanager.core.business.catalog.product.service.PricingService;
 import com.salesmanager.core.business.catalog.product.service.ProductService;
 import com.salesmanager.core.business.catalog.product.service.attribute.ProductAttributeService;
+import com.salesmanager.core.business.common.model.Billing;
 import com.salesmanager.core.business.customer.CustomerRegistrationException;
 import com.salesmanager.core.business.customer.exception.CustomerNotFoundException;
 import com.salesmanager.core.business.customer.model.Customer;
+import com.salesmanager.core.business.customer.model.CustomerGender;
 import com.salesmanager.core.business.customer.service.CustomerService;
 import com.salesmanager.core.business.customer.service.attribute.CustomerOptionService;
 import com.salesmanager.core.business.customer.service.attribute.CustomerOptionValueService;
 import com.salesmanager.core.business.generic.exception.ConversionException;
+import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.country.model.Country;
 import com.salesmanager.core.business.reference.country.service.CountryService;
@@ -63,6 +68,7 @@ import com.salesmanager.web.populator.customer.PersistableCustomerBillingAddress
 import com.salesmanager.web.populator.customer.PersistableCustomerShippingAddressPopulator;
 import com.salesmanager.web.populator.customer.ReadableCustomerPopulator;
 import com.salesmanager.web.populator.shoppingCart.ShoppingCartDataPopulator;
+import com.salesmanager.web.shop.controller.customer.form.RegistrationForm;
 
 
 /**
@@ -295,11 +301,11 @@ public class CustomerFacadeImpl implements CustomerFacade
 
 
     @Override
-    public CustomerEntity registerCustomer( final PersistableCustomer customer,final MerchantStore merchantStore, Language language )
+    public CustomerEntity registerCustomer( final RegistrationForm customer,final MerchantStore merchantStore, Language language )
         throws Exception
     {
        LOG.info( "Starting customer registration process.." );
-        Customer customerModel= getCustomerModel(customer,merchantStore,language);
+        Customer customerModel= populateCustomer(customer,merchantStore,language);
         if(customerModel == null){
             LOG.equals( "Unable to create customer in system" );
             throw new CustomerRegistrationException( "Unable to register customer" );
@@ -311,6 +317,42 @@ public class CustomerFacadeImpl implements CustomerFacade
        LOG.info( "Returning customer data to controller.." );
        return customerEntityPoulator(customerModel,merchantStore);
      }
+    
+    private Customer populateCustomer(final RegistrationForm customer,final MerchantStore merchantStore, Language language) throws Exception {
+        
+        LOG.info( "Starting to populate customer model from customer data" );
+        Customer customerModel= new Customer();
+		
+		Map<String,Country> countriesMap = countryService.getCountriesMap(language);
+		Country country = countriesMap.get(customer.getCountry());
+		List<Zone> zones = zoneService.getZones(country, language);
+		Zone zone = null;
+		if(zones!=null && zones.size()>0) {
+			for(Zone z : zones) {
+				if(z.getCode()!=null && z.getCode().equalsIgnoreCase(customer.getZone()))
+					zone=z;
+			}
+		}
+		
+		Billing billing = new Billing();
+		billing.setCountry(country);
+		billing.setZone(zone);
+		billing.setFirstName(customer.getFirstName());
+		billing.setLastName(customer.getLastName());
+		billing.setAddress(customer.getAddress());
+
+		customerModel.setBilling(billing);
+		
+		customerModel.setEmailAddress(customer.getEmailAddress());
+		customerModel.setPassword(customer.getPassword());
+		customerModel.setGender(customer.getGender()=="M"?CustomerGender.M:CustomerGender.F);
+//        customerModel.setDateOfBirth(new Date(customer.getBirthdate()));
+        
+		customerModel.setDefaultLanguage(language);
+        customerModel.setMerchantStore(merchantStore);
+          return customerModel;
+
+    }
     
     @Override
     public Customer getCustomerModel(final PersistableCustomer customer,final MerchantStore merchantStore, Language language) throws Exception {
@@ -559,6 +601,15 @@ public class CustomerFacadeImpl implements CustomerFacade
             LOG.info( "About to persist customer to database." );
             customerService.saveOrUpdate( customerModel );
             return customerModel;
+	}
+
+
+	@Override
+	public void updateCustomer(Customer customerData) throws ServiceException {
+
+		Customer customer = customerService.getByEmail(customerData.getEmailAddress());
+		customerData.setId(customer.getId());
+		customerService.saveOrUpdate( customerData );
 	}
 
 }

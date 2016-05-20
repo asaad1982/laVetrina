@@ -123,6 +123,20 @@
   		<put-attribute name="footer" value="/pages/shop/templates/levetrina/sections/footerLoginOrSignUp.jsp" />
   	</definition>
   	  	
+  	<definition name="updateProfile.entry" template="/pages/shop/templates/levetrina/catalogLayout.jsp">
+  		<put-attribute name="header" value="/pages/shop/templates/levetrina/sections/header.jsp" />
+  		<put-attribute name="navbar" value="/pages/shop/templates/levetrina/sections/navbar.jsp" />
+  		<put-attribute name="body" value="/pages/shop/common/customer/updateProfile.jsp" />
+  		<put-attribute name="footer" value="/pages/shop/templates/levetrina/sections/footer.jsp" />
+  	</definition>
+
+  	<definition name="forgetPassword.entry" template="/pages/shop/templates/levetrina/catalogLayout.jsp">
+  		<put-attribute name="header" value="/pages/shop/templates/levetrina/sections/header.jsp" />
+  		<put-attribute name="navbar" value="/pages/shop/templates/levetrina/sections/navbar.jsp" />
+  		<put-attribute name="body" value="/pages/shop/common/customer/forgetPassword.jsp" />
+  		<put-attribute name="footer" value="/pages/shop/templates/levetrina/sections/footer.jsp" />
+  	</definition>
+  	
   	<definition name="customerAccount.*" template="/pages/shop/templates/{1}/catalogLayout.jsp">
   	  	<put-attribute name="header" value="/pages/shop/templates/{1}/sections/header.jsp" />
   		<put-attribute name="navbar" value="/pages/shop/templates/{1}/sections/navbar.jsp" />

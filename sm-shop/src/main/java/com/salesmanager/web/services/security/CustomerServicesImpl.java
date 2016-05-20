@@ -90,7 +90,7 @@ public class CustomerServicesImpl implements UserDetailsService{
 
 		
 		
-		} catch (ServiceException e) {
+		} catch (Exception e) {
 			LOGGER.error("Exception while querrying customer",e);
 			throw new SecurityDataAccessException("Cannot authenticate customer",e);
 		}

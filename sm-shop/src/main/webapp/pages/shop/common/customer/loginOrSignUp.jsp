@@ -11,6 +11,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="/WEB-INF/shopizer-tags.tld" prefix="sm"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
@@ -19,6 +20,10 @@
 <script src="<c:url value="/resources/js/jquery.maskedinput.min.js" />"></script>
 <script src="<c:url value="/resources/js/shop-customer.js" />"></script>
 <script src="<c:url value="/resources/js/address.js" />"></script>
+<link href="<c:url value="/resources/css/bootstrap/css/datepicker.css" />" rel="stylesheet"></link>
+ <script src="<c:url value="/resources/js/bootstrap/bootstrap-datepicker.js" />"></script>
+<script src="<c:url value="/resources/js/ckeditor/ckeditor.js" />"></script>
+<script src="<c:url value="/resources/js/jquery.alphanumeric.pack.js" />"></script>
 
 <script type="text/javascript">
 	var RecaptchaOptions = {
@@ -30,7 +35,7 @@
 					function() {
 
 						getZones($('#registration_country').val(),
-								'<c:out value="${customer.billing.zone}" />',
+								'<c:out value="${customer.zone}" />',
 								isFormValid);
 						$("#hidden_zones").hide();
 						$("#registration_country")
@@ -38,7 +43,7 @@
 										function() {
 											getZones(
 													$(this).val(),
-													'<c:out value="${customer.billing.zone}" />',
+													'<c:out value="${customer.zone}" />',
 													isFormValid);
 										})
 
@@ -102,10 +107,23 @@
 				
 					<!--login form-->
 					<h2>Login to your account</h2>
-					<c:if test="${msgCode == '1'}">
-						<div class="alert alert-error alert-danger form-group">
-							Your Email is not registered
+					<c:if test="${not empty successMsgCode}">
+						<div class="alert alert alert-success">
+							<s:message code="${successMsgCode}" text="success" />
 						</div>
+					</c:if>
+
+					<c:if test="${not empty msgCode}">
+						<c:if test="${msgCode == '1'}">
+							<div class="alert alert-error alert-danger form-group">
+								<s:message code="message.email.not.registered" text="code"></s:message>
+							</div>
+						</c:if>
+						<c:if test="${msgCode != '1'}">
+							<div class="alert alert-error alert-danger">
+								<s:message code="${msgCode}" text="error" />
+							</div>
+						</c:if>
 					</c:if>
 						<div class="social-box">
 							<div class="row mg-btm">
@@ -122,9 +140,9 @@
 							<div class="row">
 								<div class="col-md-12">
 									<form name='facebookSocialloginForm'
-										action="<c:url value='../../auth/twitter?scope=email,user_about_me,user_birthday' />"
+										action="<c:url value='../../auth/twitter?include_email=true' />"
 										method='POST'>
-										<input type="hidden" name="include_email" value="true" />
+										<input type="hidden" name="scope" value="email,user_about_me,user_birthday" />
 										<button type="submit" class="btn btn-info btn-block"> <i
 											class="icon-twitter"></i>  Login with Twitter
 										</button>
@@ -162,11 +180,11 @@
 							text="First name is required" var="msgFirstNameReq" />
 						<s:message code="label.generic.firstname" text="First name"
 							var="msgFirstName" />
-						<form:input path="billing.firstName"
+						<form:input path="firstName"
 							cssClass="required span8 required input form-control form-control-md"
 							id="firstName" placeholder="${msgFirstName}"
 							title="${msgFirstNameReq}" />
-						<font color="red"> <form:errors path="billing.firstName"
+						<font color="red"> <form:errors path="firstName"
 								cssClass="error" />
 						</font>
 
@@ -174,11 +192,11 @@
 							var="msgLastName" />
 						<s:message code="NotEmpty.customer.lastName"
 							text="Last name is required" var="msgLastNameReq" />
-						<form:input path="billing.lastName"
+						<form:input path="lastName"
 							cssClass="span8 required form-control form-control-md"
 							id="lastName" title="${msgLastNameReq}"
 							placeholder="${msgLastName}" />
-						<font color="red"> <form:errors path="billing.lastName"
+						<font color="red"> <form:errors path="lastName"
 								cssClass="error" /></font>
 
 						<div class="form-group col-md-12">
@@ -196,7 +214,7 @@
 
 						<div class="form-group col-md-12">
 							<div class="controls">
-								<form:select path="billing.country"
+								<form:select path="country"
 									class="form-control form-control-lg" id="registration_country">
 									<form:options items="${countryList}" itemValue="isoCode"
 										itemLabel="name" />
@@ -206,15 +224,21 @@
 
 
 						<div class="form-group col-md-12">
+							<label class="control-label required"><s:message code="label.generic.stateprovince" text="State / Province"/></label>
 							<div class="controls">
-								<s:message code="NotEmpty.customer.billing.stateProvince"
-									text="State / Province is required" var="msgStateProvince" />
-								<form:select path="billing.zone" id="customer_zones"
-									class="form-control form-control-lg">
-								</form:select>
+							<s:message code="NotEmpty.customer.billing.stateProvince" text="State / Province is required" var="msgStateProvince"/>
+							<form:select path="zone" id="customer_zones" class="form-control form-control-lg">
+							</form:select>
+							<form:input path="stateProvince" cssClass="span8 required form-control form-control-md" id="hidden_zones" title="${msgStateProvince}"/>
 							</div>
-						</div>
+						</div>	
 
+						<div class="form-group col-md-12">
+			            	<label><s:message code="label.customer.billing.streetaddress" text="Street Address"/></label>
+							<div class="controls">
+					 			<form:input  cssClass="input-large highlight"  maxlength="256"  path="address"/>		 				
+				            </div>
+		            	</div>
 
 						<s:message code="label.generic.email" text="Email address"
 							var="emailMsg" />
@@ -256,6 +280,19 @@
 							<font color="red"><form:errors path="checkPassword"
 									cssClass="error" /></font>
 						</div>
+						
+						<div class="control-group">
+	                        <label>Birthday</label>
+	                        <div class="controls">
+<%-- 	                        <fmt:formatDate value="${customer.birthdate}" pattern="yyyy-MM-dd" var="birthdate" /> --%>
+	                       
+	                        		 <input id="birthdate" name="birthdate" value="${birthdate}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+<%-- 	                                 <script type="text/javascript"> --%>
+//     	                                 $('#birthdate').datepicker();
+<%-- 	                                 </script> --%>
+<%-- 	                                 <span class="help-inline"><form:errors path="dateOfBirth" cssClass="error" /></span> --%>
+	                        </div>
+	                  	</div>
 
 
 						<div class="form-group col-md-12">

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.salesmanager.core.business.common.model.Billing;
 import com.salesmanager.core.business.customer.CustomerRegistrationException;
 import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.generic.exception.ServiceException;
@@ -39,11 +40,12 @@ import com.salesmanager.core.business.reference.zone.service.ZoneService;
 import com.salesmanager.core.business.system.service.EmailService;
 import com.salesmanager.core.utils.CoreConfiguration;
 import com.salesmanager.web.constants.Constants;
-import com.salesmanager.web.entity.customer.AnonymousCustomer;
+import com.salesmanager.web.entity.customer.Address;
 import com.salesmanager.web.entity.customer.CustomerEntity;
-import com.salesmanager.web.entity.customer.SecuredShopPersistableCustomer;
+import com.salesmanager.web.entity.customer.PersistableCustomer;
 import com.salesmanager.web.shop.controller.AbstractController;
 import com.salesmanager.web.shop.controller.customer.facade.CustomerFacade;
+import com.salesmanager.web.shop.controller.customer.form.RegistrationForm;
 import com.salesmanager.web.utils.EmailTemplatesUtils;
 import com.salesmanager.web.utils.LabelUtils;
 
@@ -103,11 +105,11 @@ public class CustomerRegistrationController extends AbstractController {
 
 		model.addAttribute( "recapatcha_public_key", coreConfiguration.getProperty( Constants.RECAPATCHA_PUBLIC_KEY ) );
 		
-		SecuredShopPersistableCustomer customer = new SecuredShopPersistableCustomer();
-		AnonymousCustomer anonymousCustomer = (AnonymousCustomer)request.getAttribute(Constants.ANONYMOUS_CUSTOMER);
-		if(anonymousCustomer!=null) {
-			customer.setBilling(anonymousCustomer.getBilling());
-		}
+		RegistrationForm customer = new RegistrationForm();
+//		AnonymousCustomer anonymousCustomer = (AnonymousCustomer)request.getAttribute(Constants.ANONYMOUS_CUSTOMER);
+//		if(anonymousCustomer!=null) {
+//			customer.setBilling(anonymousCustomer.getBilling());
+//		}
 		
 		model.addAttribute("customer", customer);
 
@@ -121,7 +123,7 @@ public class CustomerRegistrationController extends AbstractController {
 
     @RequestMapping( value = "/registration.html", method = RequestMethod.POST )
     public String registerCustomer( @Valid
-    @ModelAttribute("customer") SecuredShopPersistableCustomer customer, BindingResult bindingResult, Model model,
+    @ModelAttribute("customer") RegistrationForm customer, BindingResult bindingResult, Model model,
                                     HttpServletRequest request, HttpServletResponse response, final Locale locale )
         throws Exception
     {
@@ -157,7 +159,7 @@ public class CustomerRegistrationController extends AbstractController {
         {
             if ( customerFacade.checkIfUserExists( customer.getEmailAddress(), merchantStore ) )
             {
-                LOGGER.debug( "Customer with username {} already exists for this store ", customer.getUserName() );
+                LOGGER.debug( "Customer with email {} already exists for this store ", customer.getEmailAddress() );
             	FieldError error = new FieldError("userName","userName",messages.getMessage("registration.username.already.exists", locale));
             	bindingResult.addError(error);
             }
@@ -174,6 +176,7 @@ public class CustomerRegistrationController extends AbstractController {
 
             }
             password = passwordEncoder.encodePassword(customer.getPassword(),null);
+            customer.setPassword(password);
         }
 
         if ( bindingResult.hasErrors() )
@@ -189,8 +192,6 @@ public class CustomerRegistrationController extends AbstractController {
         CustomerEntity customerData = null;
         try
         {
-            //set user clear password
-        	customer.setClearPassword(password);
         	customerData = customerFacade.registerCustomer( customer, merchantStore, language );
         }
         catch ( CustomerRegistrationException cre )
@@ -211,7 +212,16 @@ public class CustomerRegistrationController extends AbstractController {
         /**
          * Send registration email
          */
-        emailTemplatesUtils.sendRegistrationEmail( customer, merchantStore, locale, request.getContextPath() );
+        PersistableCustomer persistableCustomer = new PersistableCustomer();
+        
+        Address b = new Address();
+        b.setFirstName(customer.getFirstName());
+        b.setLastName(customer.getLastName());
+        
+        persistableCustomer.setBilling(b);
+        persistableCustomer.setEmailAddress(customer.getEmailAddress());
+        
+        emailTemplatesUtils.sendRegistrationEmail( persistableCustomer, merchantStore, locale, request.getContextPath() );
 
         /**
          * Login user

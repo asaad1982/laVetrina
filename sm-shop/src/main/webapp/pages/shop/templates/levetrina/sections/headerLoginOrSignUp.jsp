@@ -79,8 +79,10 @@ response.setDateHeader ("Expires", -1);
 										Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i>
 										Cart</a></li>
-								<li><a href="<c:url value='/shop/customer/loginOrSignUp.html' />"><i class="fa fa-lock"></i>
-										Login</a></li>
+								<li>
+                                        <sec:authorize access="hasRole('AUTH_CUSTOMER')"> <form class="form-signin mg-btm" action="<c:url value='/shop/customer/j_spring_security_logout' />" method='POST'> <sec:authentication property="principal.username" />  <button type="submit" class="btn btn-default">Logout</button></form></sec:authorize> <sec:authorize access="!hasRole('AUTH_CUSTOMER')"> <a href="<c:url value='/shop/customer/loginOrSignUp.html' />" > Login <i class="fa fa-lock"></i> </a> </sec:authorize>
+                                       
+								</li>
 							</ul>
 						</div>
 

@@ -52,7 +52,7 @@ public class AppFailureHandler extends SimpleUrlAuthenticationFailureHandler {
         	HttpSession session = request.getSession(false);
 
             if (session != null || allowSessionCreation) {
-                request.getSession().setAttribute("msgCode", 1);
+                request.setAttribute("msgCode", 1);
             }
 
             if (forwardToDestination) {

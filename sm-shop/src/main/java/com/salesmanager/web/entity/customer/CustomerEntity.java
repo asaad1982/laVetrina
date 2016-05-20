@@ -35,6 +35,8 @@ public class CustomerEntity extends Customer implements Serializable {
 //	@NotEmpty(message="{NotEmpty.customer.userName}")
 	private String userName;
 	
+	private String dateOfBirth;
+	
 	public void setUserName(final String userName) {
 		this.userName = userName;
 	}
@@ -125,6 +127,14 @@ public class CustomerEntity extends Customer implements Serializable {
 
 	public void setClearPassword(String clearPassword) {
 		this.clearPassword = clearPassword;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 

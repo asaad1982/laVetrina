@@ -5,6 +5,7 @@ package com.salesmanager.web.shop.controller.customer.facade;
 
 import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.customer.service.CustomerService;
+import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.reference.language.model.Language;
 import com.salesmanager.web.entity.customer.Address;
@@ -12,6 +13,7 @@ import com.salesmanager.web.entity.customer.CustomerEntity;
 import com.salesmanager.web.entity.customer.PersistableCustomer;
 import com.salesmanager.web.entity.customer.ReadableCustomer;
 import com.salesmanager.web.entity.shoppingcart.ShoppingCartData;
+import com.salesmanager.web.shop.controller.customer.form.RegistrationForm;
 
 /**
  * <p>Customer facade working as a bridge between {@link CustomerService} and Controller
@@ -66,7 +68,7 @@ public interface CustomerFacade
     
     public boolean checkIfUserExists(final String userName,final MerchantStore store) throws Exception;
     
-    public CustomerEntity  registerCustomer( final PersistableCustomer customer,final MerchantStore merchantStore, final Language language) throws Exception;
+    public CustomerEntity  registerCustomer( final RegistrationForm customer,final MerchantStore merchantStore, final Language language) throws Exception;
     
     public Address getAddress(final Long userId, final MerchantStore merchantStore,boolean isBillingAddress) throws Exception;
     
@@ -84,6 +86,8 @@ public interface CustomerFacade
 	
 	Customer populateCustomerModel(Customer customerModel, PersistableCustomer customer,
 			MerchantStore merchantStore, Language language) throws Exception;
+
+	public void updateCustomer(Customer customerData) throws ServiceException;
 	
 
 	
