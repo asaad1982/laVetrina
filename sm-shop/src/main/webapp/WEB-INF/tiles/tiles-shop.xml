@@ -122,11 +122,11 @@
   		<put-attribute name="footer" value="/pages/shop/templates/{1}/sections/footer.jsp" />
   	</definition>
   	
-  	<definition name="loginOrSignUp.entry" template="/pages/shop/templates/levetrina/loginOrSignUpLayout.jsp">
-  		<put-attribute name="header" value="/pages/shop/templates/levetrina/sections/headerLoginOrSignUp.jsp" />
-  		<put-attribute name="navbar" value="/pages/shop/templates/levetrina/sections/navbarLoginOrSignUp.jsp" />
+  	<definition name="loginOrSignUp.entry" template="/pages/shop/templates/levetrina/catalogLayout.jsp">
+  		<put-attribute name="header" value="/pages/shop/templates/levetrina/sections/header.jsp" />
+  		<put-attribute name="navbar" value="/pages/shop/templates/levetrina/sections/navbar.jsp" />
   		<put-attribute name="body" value="/pages/shop/common/customer/loginOrSignUp.jsp" />
-  		<put-attribute name="footer" value="/pages/shop/templates/levetrina/sections/footerLoginOrSignUp.jsp" />
+  		<put-attribute name="footer" value="/pages/shop/templates/levetrina/sections/footer.jsp" />
   	</definition>
   	  	
   	<definition name="customerAccount.*" template="/pages/shop/templates/{1}/catalogLayout.jsp">
