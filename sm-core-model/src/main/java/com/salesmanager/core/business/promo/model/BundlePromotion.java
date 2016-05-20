@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 
 import com.salesmanager.core.business.catalog.product.model.relationship.ProductRelationship;
 import com.salesmanager.core.business.generic.model.SalesManagerEntity;
@@ -25,6 +26,18 @@ public class BundlePromotion extends SalesManagerEntity<Long, BundlePromotion> i
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
 	private Long id;
 	
+	@Transient
+	private List<ProductRelationship> productRelationships;
+	
+	public List<ProductRelationship> getProductRelationships() {
+		return productRelationships;
+	}
+
+	public void setProductRelationships(
+			List<ProductRelationship> productRelationships) {
+		this.productRelationships = productRelationships;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -40,7 +53,7 @@ public class BundlePromotion extends SalesManagerEntity<Long, BundlePromotion> i
 	
 	
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="relation_bundle_id", nullable=true, updatable=true)
    private ProductRelationship productRelationship;
 	

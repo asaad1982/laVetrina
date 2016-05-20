@@ -1,19 +1,24 @@
 package com.salesmanager.core.business.promotion.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.salesmanager.core.business.catalog.product.service.relationship.ProductRelationshipService;
 import com.salesmanager.core.business.complaint.model.ComplaintsReason;
+import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.generic.dao.SalesManagerEntityDao;
 import com.salesmanager.core.business.generic.exception.ServiceException;
 import com.salesmanager.core.business.generic.service.SalesManagerEntityServiceImpl;
+import com.salesmanager.core.business.merchant.model.MerchantStore;
 import com.salesmanager.core.business.promo.model.BundlePromotion;
 import com.salesmanager.core.business.promo.model.CartPromotion;
 import com.salesmanager.core.business.promo.model.Promotion;
 import com.salesmanager.core.business.promo.model.PromotionDescription;
+import com.salesmanager.core.business.promo.model.PromotionModel;
 import com.salesmanager.core.business.promo.model.PromotionRule;
 import com.salesmanager.core.business.promo.model.PromotionTragetAge;
 import com.salesmanager.core.business.promo.model.UpSellingPromotion;
@@ -25,6 +30,8 @@ public class PromotionServiceImpl extends SalesManagerEntityServiceImpl<Long, Pr
 
 	private PromotionDao promotionDao;
 	@Autowired
+	private ProductRelationshipService productRelationshipService; 
+	@Autowired
 	public PromotionServiceImpl(
 			PromotionDao promotionDao) {
 		super(promotionDao);
@@ -35,7 +42,7 @@ public class PromotionServiceImpl extends SalesManagerEntityServiceImpl<Long, Pr
 	public List<Promotion> listPromotionByCountry(Integer countryId,
 			Language language) throws ServiceException {
 		try {
-			return promotionDao.listPromotionByCountry(countryId, language);
+			return null;
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
@@ -124,5 +131,37 @@ public class PromotionServiceImpl extends SalesManagerEntityServiceImpl<Long, Pr
 		return promotionDao.getUpSellingPromotionById(promotionId);
 	}
 
-
+	public List<PromotionModel> listPromotionActive(MerchantStore store,Language language,Customer customer ) throws ServiceException {
+		List<PromotionModel> promotionModels=new ArrayList<PromotionModel>();
+		List<Promotion> promotions=null;
+		if(customer==null)
+			promotions=promotionDao.listPromotionActive(language);
+		else
+			promotions=promotionDao.listPromotionByCustomer(customer, language);
+		for (Promotion promotion : promotions) {
+			PromotionModel model=new PromotionModel();
+			model.setPromotionId(promotion.getId());
+			model.setPromotionName(promotion.getPromotionDescriptions().get(0).getName());
+			if(promotion.getPromotionRule()!=null){
+				model.setBrands(promotion.getPromotionRule().getBrands());
+				model.setProducts(promotion.getPromotionRule().getProducts());
+			}
+//			if(promotion.getPromotionType().getId()==1){
+//				CartPromotion cartPromotion=getCartPromotionById(promotion.getId());
+//				model.setCartPromotion(cartPromotion);
+//			}else 
+			if(promotion.getPromotionType().getId()==4){
+				BundlePromotion bundlePromotion=getBundlePromotionById(promotion.getId());
+				bundlePromotion.setProductRelationships(productRelationshipService.getByGroup(store,  bundlePromotion.getProductRelationship().getCode(),
+						 language));
+				model.setBundlePromotion(bundlePromotion);
+			}
+//			else if(promotion.getPromotionType().getId()==6){
+//				UpSellingPromotion sellingPromotion=getUpSellingPromotionById(promotion.getId());
+//				model.setUpSellingPromotion(sellingPromotion);
+//			}
+			promotionModels.add(model);
+		}
+		return promotionModels;
+	}
 }
