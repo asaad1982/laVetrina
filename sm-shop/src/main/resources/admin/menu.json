@@ -316,8 +316,15 @@
 	{"menu":{
 		"code":"email-conf","url":"/admin/configuration/email.html","role":"AUTH","order":1
 	}},
+	
 	{"menu":{
-		"code":"system-configurations","url":"/admin/configuration/system.html","role":"AUTH","order":2
+		"code":"socialMedia-conf","url":"/admin/configuration/socialMedia.html","role":"AUTH","order":2
+	}}
+	
+	
+	
+	,{"menu":{
+		"code":"system-configurations","url":"/admin/configuration/system.html","role":"AUTH","order":3
 	}},
 	{"menu":{
 		"code":"EmailConfig","url":"","role":"AUTH","order":0,"menus":

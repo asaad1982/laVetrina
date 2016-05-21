@@ -364,6 +364,11 @@ response.setDateHeader("Expires", 0); // Proxies.
 			$("#email-conf-link").click(function() {
   				window.location='<c:url value="/admin/configuration/email.html" />';
 			});
+			
+			$("#socialMedia-conf-link").click(function() {
+  				window.location='<c:url value="/admin/configuration/socialMedia.html" />';
+			});
+			
 			$("#system-configurations-link").click(function() {
   				window.location='<c:url value="/admin/configuration/system.html" />';
 			});

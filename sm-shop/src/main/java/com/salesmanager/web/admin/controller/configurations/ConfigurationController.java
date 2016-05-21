@@ -192,35 +192,7 @@ public class ConfigurationController {
 	}
 	
 	
-	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value="/admin/configuration/saveEmailConfiguration1.html", method=RequestMethod.GET)
-	public String saveEmailSettings1(@ModelAttribute("configuration") EmailConfig config, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
-		setEmailConfigurationMenu(model, request);
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		EmailConfig emailConfig = emailService.getEmailConfiguration(store);
-		if(emailConfig == null){
-			emailConfig = new EmailConfig();
-		}
 		
-		// populte EmailConfig model from UI values
-		emailConfig.setProtocol("http");
-		emailConfig.setHost("10.9.1.10");
-		emailConfig.setPort("8080");
-		emailConfig.setUsername("ssssss");
-		emailConfig.setPassword("sssssssssss");
-		//emailConfig.setSmtpAuth("sssss");
-		//emailConfig.setStarttls("sssssssssssssss");
-		
-		emailService.saveEmailConfiguration(emailConfig, store);
-		
-		model.addAttribute("configuration", emailConfig);
-		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Configuration.email;
-	}
-	
-
-	
-	
 	
 	@PreAuthorize("hasRole('AUTH')")
 	@RequestMapping(value="/admin/configuration/socialMedia.html", method=RequestMethod.GET)
@@ -239,11 +211,34 @@ public class ConfigurationController {
 		
 		model.addAttribute("configuration", socialConfig);
 		return ControllerConstants.Tiles.Configuration.socilMedia;
+		//return "socialMedia";
 	}
 	
 	
 	
+	@PreAuthorize("hasRole('AUTH')")
+	@RequestMapping(value="/admin/configuration/saveSocialConfiguration.html", method=RequestMethod.GET)
+	public String saveSocialSettings(@ModelAttribute("configuration") SocialMediaConfig config, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+		setEmailConfigurationMenu(model, request);
+		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+		SocialMediaConfig socialConfig = socialService.getConfiguration(store);
+		if(socialConfig == null){
+			socialConfig = new SocialMediaConfig();
+		}
+		
+		// populte EmailConfig model from UI values
+		socialConfig.setShareDiscountNumber(config.getShareDiscountNumber());
+		socialConfig.setShareDiscountIntervalUnit(config.getShareDiscountIntervalUnit());
+		socialConfig.setShareDiscountFrequency(config.getShareDiscountFrequency());
+		
+		socialService.saveConfiguration(socialConfig, store);
+		
+		model.addAttribute("configuration", socialConfig);
+		model.addAttribute("success","success");
+		return ControllerConstants.Tiles.Configuration.email;
+	}
 	
+
 	
 	
 	
@@ -285,7 +280,7 @@ private void setSocialConfigurationMenu(Model model, HttpServletRequest request)
 		
 		Map<String,String> activeMenus = new HashMap<String,String>();
 		activeMenus.put("configuration", "configuration");
-		activeMenus.put("socilMedia-conf", "socilMedia-conf");
+		activeMenus.put("socialMedia-conf", "socialMedia-conf");
 		 //final String socilMedia="config-socilMedia";
 		@SuppressWarnings("unchecked")
 		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");

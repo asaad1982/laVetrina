@@ -304,6 +304,13 @@
   		<put-attribute name="body" value="/pages/admin/configuration/email.jsp" /> 
   	</definition>
   	
+  	<!-- Adding social media config page -->
+  	<definition name="config-socilMedia" template="/layout/admin/layout.jsp"> 
+  		<put-attribute name="body" value="/pages/admin/configuration/socialMedia.jsp" /> 
+  	</definition>
+  	
+  	
+  	
   	 <definition name="config-system" template="/layout/admin/layout.jsp"> 
   		<put-attribute name="body" value="/pages/admin/configuration/system.jsp" /> 
   	</definition>
