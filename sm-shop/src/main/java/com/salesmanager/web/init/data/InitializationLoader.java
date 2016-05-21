@@ -207,19 +207,6 @@ public class InitializationLoader {
 	        modifiers.setInt(field, field.getModifiers() & ~Modifier.FINAL);
 	        field.set(null, fieldsToMap);
 
-	        Field twitterField = Class.forName("org.springframework.social.twitter.api.impl.AbstractTwitterOperations").
-	                getDeclaredField("EMPTY_PARAMETERS");
-	        twitterField.setAccessible(true);
-	        
-	        LinkedMultiValueMap<String, String> EMPTY_PARAMETERS = new LinkedMultiValueMap<String, String>();
-	        EMPTY_PARAMETERS.set("include_email", "true");
-	        
-	        Field twitterModifiers = twitterField.getClass().getDeclaredField("modifiers");
-	        twitterModifiers.setAccessible(true);
-	        twitterModifiers.setInt(twitterField, twitterField.getModifiers() & ~Modifier.FINAL);
-	        twitterField.set(null, EMPTY_PARAMETERS);
-	        
-	      
 	        
 		} catch (Exception e) {
 			LOGGER.error("Error in the init method",e);

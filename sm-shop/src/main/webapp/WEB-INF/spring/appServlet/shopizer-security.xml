@@ -211,7 +211,7 @@
     </beans:bean>
 
     <beans:bean id="twitterAuthenticationService"
-          class="org.springframework.social.twitter.security.TwitterAuthenticationService">
+          class="com.salesmanager.web.shop.security.twitter.service.TwitterAuthenticationService">
         <beans:constructor-arg name="apiKey" value="${twitter.consumer.key}"/>
         <beans:constructor-arg name="appSecret" value="${twitter.consumer.secret}"/>
     </beans:bean>

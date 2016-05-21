@@ -103,6 +103,11 @@ public class CustomerRegistrationController extends AbstractController {
 
 //		MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 
+		if(request.getSession().getAttribute("login_error")!=null && !request.getSession().getAttribute("login_error").equals(""))
+			request.setAttribute("msgCode", 1);
+
+		request.getSession().setAttribute("login_error", null);
+	
 		model.addAttribute( "recapatcha_public_key", coreConfiguration.getProperty( Constants.RECAPATCHA_PUBLIC_KEY ) );
 		
 		RegistrationForm customer = new RegistrationForm();
