@@ -325,28 +325,34 @@ public class CustomerFacadeImpl implements CustomerFacade
 		
 		Map<String,Country> countriesMap = countryService.getCountriesMap(language);
 		Country country = countriesMap.get(customer.getCountry());
-		List<Zone> zones = zoneService.getZones(country, language);
-		Zone zone = null;
-		if(zones!=null && zones.size()>0) {
-			for(Zone z : zones) {
-				if(z.getCode()!=null && z.getCode().equalsIgnoreCase(customer.getZone()))
-					zone=z;
-			}
-		}
-		
+
 		Billing billing = new Billing();
 		billing.setCountry(country);
-		billing.setZone(zone);
 		billing.setFirstName(customer.getFirstName());
 		billing.setLastName(customer.getLastName());
 		billing.setAddress(customer.getAddress());
+	
+		if(customer.getZone() != null && !customer.getZone().equals("")){
+			List<Zone> zones = zoneService.getZones(country, language);
+			Zone zone = null;
+			if(zones!=null && zones.size()>0) {
+				for(Zone z : zones) {
+					if(z.getCode()!=null && z.getCode().equalsIgnoreCase(customer.getZone()))
+						zone=z;
+				}
+			}
+			billing.setZone(zone);
+		} else if(customer.getStateProvince()!=null && !customer.getStateProvince().equals("")){
+			billing.setState(customer.getStateProvince());
+		}
+		
 
 		customerModel.setBilling(billing);
 		
 		customerModel.setEmailAddress(customer.getEmailAddress());
 		customerModel.setPassword(customer.getPassword());
 		customerModel.setGender(customer.getGender()=="M"?CustomerGender.M:CustomerGender.F);
-//        customerModel.setDateOfBirth(new Date(customer.getBirthdate()));
+        customerModel.setDateOfBirth(new Date(customer.getBirthdate()));
         
 		customerModel.setDefaultLanguage(language);
         customerModel.setMerchantStore(merchantStore);

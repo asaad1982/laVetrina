@@ -1,7 +1,6 @@
 package com.salesmanager.web.shop.controller.customer.form;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.validation.constraints.Size;
 
@@ -33,7 +32,7 @@ public class CustomerProfileForm implements Serializable {
 	
 	private String city;
 	
-	private Date birthdate;
+	private String birthdate;
 	
 	private String interests;
 	
@@ -92,11 +91,11 @@ public class CustomerProfileForm implements Serializable {
 		this.city = city;
 	}
 
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 

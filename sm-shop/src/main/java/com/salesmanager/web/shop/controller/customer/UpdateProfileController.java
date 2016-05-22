@@ -1,6 +1,7 @@
 package com.salesmanager.web.shop.controller.customer;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -114,12 +115,17 @@ public class UpdateProfileController extends AbstractController {
 					zone=z;
 			}
 		}
-		request.setAttribute("zoneSelected", zone.getCode());
+
+		if(zone!=null){
+			request.setAttribute("zoneSelected", zone.getCode());
+			form.setZone(zone.getCode());
+		} else if(customer.getBilling().getState()!=null){
+			form.setStateProvince(customer.getBilling().getState());
+		}
 		
 		form.setFirstName(customer.getBilling().getFirstName());
 		form.setLastName(customer.getBilling().getLastName());
 		form.setCountry(country.getIsoCode());
-		form.setZone(zone.getCode());
 		form.setAddress(customer.getBilling().getAddress());
 
 		
@@ -156,30 +162,37 @@ public class UpdateProfileController extends AbstractController {
 
 		Map<String,Country> countriesMap = countryService.getCountriesMap(language);
 		Country country = countriesMap.get(customer.getCountry());
-		List<Zone> zones = zoneService.getZones(country, language);
-		Zone zone = null;
-		if(zones!=null && zones.size()>0) {
-			for(Zone z : zones) {
-				if(z.getCode()!=null && z.getCode().equalsIgnoreCase(customer.getZone()))
-					zone=z;
-			}
-		}
-		
-		Customer customerData = new Customer();
 		
 		Billing billing = new Billing();
 		billing.setFirstName(customer.getFirstName());
 		billing.setLastName(customer.getLastName());
 		billing.setCountry(country);
-		billing.setZone(zone);
 		billing.setAddress(customer.getAddress());
+		
+		if(customer.getZone()!=null && !customer.getZone().equals("")){
+			List<Zone> zones = zoneService.getZones(country, language);
+			Zone zone = null;
+			if(zones!=null && zones.size()>0) {
+				for(Zone z : zones) {
+					if(z.getCode()!=null && z.getCode().equalsIgnoreCase(customer.getZone()))
+						zone=z;
+				}
+			}
+			billing.setZone(zone);
+		} else if(customer.getStateProvince()!=null && !customer.getStateProvince().equals("")){
+			billing.setState(customer.getStateProvince());
+		}
+		
+		Customer customerData = new Customer();
+		
+		
 
 		customerData.setBilling(billing);
 		
 		customerData.setEmailAddress(customer.getEmailAddress());
 		customerData.setPassword(passwordEncoder.encodePassword(customer.getPassword(),null));
 		customerData.setGender(customer.getGender().equals("M")?CustomerGender.M:CustomerGender.F);
-//        customerModel.setDateOfBirth(new Date(customer.getBirthdate()));
+		customerData.setDateOfBirth(new Date(customer.getBirthdate()));
         
 		customerData.setDefaultLanguage(language);
 		customerData.setMerchantStore(merchantStore);
