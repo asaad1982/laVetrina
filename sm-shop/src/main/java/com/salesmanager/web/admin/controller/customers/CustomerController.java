@@ -28,6 +28,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.salesmanager.core.business.catalog.product.service.FileBean;
@@ -35,6 +36,7 @@ import com.salesmanager.core.business.catalog.product.service.ImportService;
 import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.customer.model.CustomerCriteria;
 import com.salesmanager.core.business.customer.model.CustomerList;
+import com.salesmanager.core.business.customer.model.CustomerShareLog;
 import com.salesmanager.core.business.customer.model.attribute.CustomerAttribute;
 import com.salesmanager.core.business.customer.model.attribute.CustomerOptionSet;
 import com.salesmanager.core.business.customer.model.attribute.CustomerOptionType;
@@ -790,7 +792,36 @@ String dateOfBirth = "";
 		
 	}
 	
-/*	private void setMenuCreate(Model model, HttpServletRequest request) throws Exception {
+/**
+ * Customer socila share
+ * @param customerId
+ * @return
+ * @throws ServiceException
+ */
+
+	@RequestMapping(value="/admin/customer/socilaShare.html",method = RequestMethod.GET)
+	public String updateCustomerSahre (@RequestParam("CustomerId") String customerId) throws Exception{
+		Customer customer= new Customer();
+		customer.setId(Long.parseLong(customerId));
+		customerService.updateCustomerShare(customer);
+		return "";
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*	private void setMenuCreate(Model model, HttpServletRequest request) throws Exception {
 		
 		//display menu
 		Map<String,String> activeMenus = new HashMap<String,String>();

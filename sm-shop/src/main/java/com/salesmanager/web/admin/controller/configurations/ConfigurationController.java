@@ -200,15 +200,16 @@ public class ConfigurationController {
 		setSocialConfigurationMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
 		SocialMediaConfig socialConfig = socialService.getConfiguration(store);
+	
+		/*
 		if(socialConfig == null){
 			socialConfig = new SocialMediaConfig();
-			//TODO: Need to check below properties. When there are no record available in MerchantConfguration table with EMAIL_CONFIG key, 
-			// instead of showing blank fields in setup screen, show default configured values from email.properties
-			socialConfig.setShareDiscountNumber(env.getProperty("mailSender.protocol"));
-			socialConfig.setShareDiscountIntervalUnit(env.getProperty("mailSender.host"));
-			socialConfig.setShareDiscountFrequency(env.getProperty("mailSender.port}"));
+			socialConfig.setShareDiscountNumber("");
+			socialConfig.setShareDiscountIntervalUnit("");
+			socialConfig.setShareDiscountFrequency("");
+			
 		}
-		
+		*/
 		model.addAttribute("configuration", socialConfig);
 		return ControllerConstants.Tiles.Configuration.socilMedia;
 		//return "socialMedia";
@@ -217,32 +218,16 @@ public class ConfigurationController {
 	
 	
 	@PreAuthorize("hasRole('AUTH')")
-	@RequestMapping(value="/admin/configuration/saveSocialConfiguration.html", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/configuration/saveSocialConfiguration.html", method=RequestMethod.POST)
 	public String saveSocialSettings(@ModelAttribute("configuration") SocialMediaConfig config, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
-		setEmailConfigurationMenu(model, request);
+		setSocialConfigurationMenu(model, request);
 		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		SocialMediaConfig socialConfig = socialService.getConfiguration(store);
-		if(socialConfig == null){
-			socialConfig = new SocialMediaConfig();
-		}
+		socialService.saveConfiguration(config, store);
 		
-		// populte EmailConfig model from UI values
-		socialConfig.setShareDiscountNumber(config.getShareDiscountNumber());
-		socialConfig.setShareDiscountIntervalUnit(config.getShareDiscountIntervalUnit());
-		socialConfig.setShareDiscountFrequency(config.getShareDiscountFrequency());
-		
-		socialService.saveConfiguration(socialConfig, store);
-		
-		model.addAttribute("configuration", socialConfig);
+		model.addAttribute("configuration", config);
 		model.addAttribute("success","success");
-		return ControllerConstants.Tiles.Configuration.email;
+		return ControllerConstants.Tiles.Configuration.socilMedia;
 	}
-	
-
-	
-	
-	
-	
 	
 	
 	

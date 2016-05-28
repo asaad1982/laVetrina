@@ -42,6 +42,15 @@
 	                                	<span class="help-inline"><form:errors path="shareDiscountNumber" cssClass="error" /></span>
 	                        		</div>
 	                        		
+	                        		<div class="control-group">
+                        				<label><s:message code="label.socialMediaconfig.discountPercent" text="Discount Percentage"/></label>
+                        				<div class="controls">
+											<form:input  cssClass="input-large" path="discountPercent"  />
+                        				</div>
+	                                	<span class="help-inline"><form:errors path="discountPercent" cssClass="error" /></span>
+	                        		</div>
+	                        		
+	                        		
 	                        		<table>
 	                        		<tr>
 	                        		
@@ -77,15 +86,11 @@
 	                        		
 	                        		</table>
 	                        		
-	                        		
-	                        		
-	                        		
-	                        		
-	                        		<div class="form-actions">
-                  						<div class="pull-right">
+	                        		<!--div class="form-actions"-->
+                  						<!--div class="pull-right"-->
                   							<button type="submit" class="btn btn-success"><s:message code="button.label.submit" text="Submit"/></button>
-                  						</div>
-            	 					</div>
+                  						<!--/div-->
+            	 					<!--/div-->
 					                  
 
             	 			</form:form>
