@@ -26,6 +26,7 @@ public interface CustomerDAO extends SalesManagerEntityDao<Long, Customer> {
 	Customer getByEmail(String email);
 
 	public Customer getByEmail(String email, Integer id);
-
+	
+	public void updateCustomerShare(Customer customer);
 	
 }

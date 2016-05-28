@@ -1,10 +1,13 @@
 package com.salesmanager.core.business.customer.dao;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
@@ -19,7 +22,9 @@ import com.salesmanager.core.business.customer.model.Customer;
 import com.salesmanager.core.business.customer.model.CustomerCriteria;
 import com.salesmanager.core.business.customer.model.CustomerGender;
 import com.salesmanager.core.business.customer.model.CustomerList;
+import com.salesmanager.core.business.customer.model.CustomerShareLog;
 import com.salesmanager.core.business.customer.model.QCustomer;
+import com.salesmanager.core.business.customer.model.QCustomerShareLog;
 import com.salesmanager.core.business.customer.model.attribute.QCustomerAttribute;
 import com.salesmanager.core.business.customer.model.attribute.QCustomerOption;
 import com.salesmanager.core.business.customer.model.attribute.QCustomerOptionValue;
@@ -472,6 +477,24 @@ public class CustomerDAOImpl extends SalesManagerEntityDaoImpl<Long, Customer> i
 		return query.distinct().list(qCustomer);
 	}
 
-
+/**
+ * Insert record in CUSTOMER_SHARE_LOG table 
+ * @param customer
+ */
+	public void updateCustomerShare(Customer customer){
+		EntityManager entitymanager= getEntityManager();
+		QCustomerShareLog qCustomerShareLog= QCustomerShareLog.customerShareLog; 
+		JPQLQuery query = new JPAQuery (entitymanager);
+		query.from(qCustomerShareLog).where(qCustomerShareLog.customerId.eq(customer.getId()).and(qCustomerShareLog.transactionDate.before(new Date())));
+		List<CustomerShareLog> result=query.list(qCustomerShareLog);
+		// Check previous customer share
+		if(result.size()==0){
+			CustomerShareLog log = new CustomerShareLog();
+			log.setCustomerId(customer.getId());
+			log.setTransactionDate(new Date());
+			entitymanager.persist(log);
+		}
+	
+}
 
 }

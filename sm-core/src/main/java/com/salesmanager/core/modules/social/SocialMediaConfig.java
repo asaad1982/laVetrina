@@ -15,6 +15,18 @@ public class SocialMediaConfig  implements JSONAware  {
 private String shareDiscountNumber ;
 private String shareDiscountIntervalUnit ;
 private String shareDiscountFrequency ;
+private Long discountPercent;
+
+
+
+
+public Long getDiscountPercent() {
+	return discountPercent;
+}
+
+public void setDiscountPercent(Long discountPercent) {
+	this.discountPercent = discountPercent;
+}
 
 public String getShareDiscountNumber() {
 	return shareDiscountNumber;
@@ -46,6 +58,7 @@ public String toJSONString() {
 	data.put("shareDiscountNumber", this.getShareDiscountNumber());
 	data.put("shareDiscountIntervalUnit", this.getShareDiscountIntervalUnit());
 	data.put("shareDiscountFrequency", this.getShareDiscountFrequency());
+	data.put("discountPercent", this.getDiscountPercent());
 	return data.toJSONString();
 }
 

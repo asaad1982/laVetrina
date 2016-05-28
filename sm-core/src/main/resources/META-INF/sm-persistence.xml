@@ -96,5 +96,6 @@
 			<class>com.salesmanager.core.business.promo.model.CartPromotion</class>
 			<class>com.salesmanager.core.business.promo.model.BundlePromotion</class>
 			<class>com.salesmanager.core.business.promo.model.UpSellingPromotion</class>
+			<class>com.salesmanager.core.business.customer.model.CustomerShareLog</class>
 	</persistence-unit>
 </persistence>

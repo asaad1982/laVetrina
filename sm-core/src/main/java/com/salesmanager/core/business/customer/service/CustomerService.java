@@ -46,5 +46,13 @@ public interface CustomerService  extends SalesManagerEntityService<Long, Custom
 
 	public Customer getByEmail(String email, Integer id);
 
+	
+	/**
+	 * Update customer share
+	 * @param customer
+	 */
+	
+	public void updateCustomerShare(Customer customer) throws ServiceException;
+
 
 }

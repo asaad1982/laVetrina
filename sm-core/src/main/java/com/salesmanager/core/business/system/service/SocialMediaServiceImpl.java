@@ -60,10 +60,10 @@ public class SocialMediaServiceImpl implements SocialMediaService {
 		MerchantConfiguration configuration = merchantConfigurationService.getMerchantConfiguration(Constants.SOCIAL_MEDIA_CONFIG, store);
 		
 		
-		if(configuration!=null){
+		if(configuration==null){
 			configuration = new MerchantConfiguration();
 			configuration.setMerchantStore(store);
-			configuration.setKey(Constants.EMAIL_CONFIG);
+			configuration.setKey(Constants.SOCIAL_MEDIA_CONFIG);
 		}
 		
 		String value = config.toJSONString();

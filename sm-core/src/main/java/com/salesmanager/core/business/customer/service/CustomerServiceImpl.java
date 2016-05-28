@@ -299,9 +299,6 @@ public class CustomerServiceImpl extends SalesManagerEntityServiceImpl<Long, Cus
 //			 file.delete();//remove spreadsheet file
 //			 is.close();
 			 return null;
-		
-		
-
 	}
 
 	@Override
@@ -309,5 +306,19 @@ public class CustomerServiceImpl extends SalesManagerEntityServiceImpl<Long, Cus
 
 		return customerDAO.getByEmail(email, storeId);
 	}
+
+	/**
+	 * 
+	 */
+	
+	
+	@Override
+	public void updateCustomerShare(Customer customer) throws ServiceException{
+		customerDAO.updateCustomerShare(customer);
+		
+	}
+
+
+
 
 }
