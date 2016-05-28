@@ -79,6 +79,8 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final com.salesmanager.core.business.catalog.product.model.type.QProductType type;
 
+    public final StringPath videoLink = createString("videoLink");
+
     public QProduct(String variable) {
         this(Product.class, forVariable(variable), INITS);
     }

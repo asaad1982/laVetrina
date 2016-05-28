@@ -83,6 +83,7 @@ import com.salesmanager.web.shop.controller.customer.form.RegistrationForm;
 public class CustomerFacadeImpl implements CustomerFacade
 {
 
+	
 	private static final Logger LOG = LoggerFactory.getLogger(CustomerFacadeImpl.class);
 	private final static int USERNAME_LENGTH=6;
 

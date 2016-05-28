@@ -102,15 +102,15 @@ public class ProductManagementAPITest {
 			  "id" : 0
 			}*/
 		
-		restTemplate = new RestTemplate();
-
-		
-		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
-
-		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/manufacturer", entity, PersistableManufacturer.class);
-
-		PersistableManufacturer manuf = (PersistableManufacturer) response.getBody();
-		System.out.println("New Manufacturer ID : " + manuf.getId());
+//		restTemplate = new RestTemplate();
+//
+//		
+//		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
+//
+//		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/manufacturer", entity, PersistableManufacturer.class);
+//
+//		PersistableManufacturer manuf = (PersistableManufacturer) response.getBody();
+//		System.out.println("New Manufacturer ID : " + manuf.getId());
 		
 		
 	}
@@ -210,14 +210,14 @@ public class ProductManagementAPITest {
 			}
 		 */
 
-		restTemplate = new RestTemplate();
-
-		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
-
-		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/product/optionValue", entity, PersistableProductOptionValue.class);
-
-		PersistableProductOptionValue opt = (PersistableProductOptionValue) response.getBody();
-		System.out.println("New optionValue ID : " + opt.getId());
+//		restTemplate = new RestTemplate();
+//
+//		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
+//
+//		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/product/optionValue", entity, PersistableProductOptionValue.class);
+//
+//		PersistableProductOptionValue opt = (PersistableProductOptionValue) response.getBody();
+//		System.out.println("New optionValue ID : " + opt.getId());
 
 	}
 	
@@ -268,14 +268,14 @@ public class ProductManagementAPITest {
 			}
 		 */
 
-		restTemplate = new RestTemplate();
-
-		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
-
-		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/product/option", entity, PersistableProductOption.class);
-
-		PersistableProductOption opt = (PersistableProductOption) response.getBody();
-		System.out.println("New option ID : " + opt.getId());
+//		restTemplate = new RestTemplate();
+//
+//		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
+//
+//		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/product/option", entity, PersistableProductOption.class);
+//
+//		PersistableProductOption opt = (PersistableProductOption) response.getBody();
+//		System.out.println("New option ID : " + opt.getId());
 
 	}
 		
@@ -287,13 +287,13 @@ public class ProductManagementAPITest {
 		
 		HttpEntity<String> httpEntity = new HttpEntity<String>(getHeader());
 		
-		ResponseEntity<ReadableProduct[]> response = restTemplate.exchange("http://localhost:8080/sm-shop/services/rest/products/DEFAULT/en/"+testCategoryID, HttpMethod.GET, httpEntity, ReadableProduct[].class);
-		
-		if(response.getStatusCode() != HttpStatus.OK){
-			throw new Exception();
-		}else{
-			System.out.println(response.getBody().length + " Product records found.");
-		}
+//		ResponseEntity<ReadableProduct[]> response = restTemplate.exchange("http://localhost:8080/sm-shop/services/rest/products/DEFAULT/en/"+testCategoryID, HttpMethod.GET, httpEntity, ReadableProduct[].class);
+//		
+//		if(response.getStatusCode() != HttpStatus.OK){
+//			throw new Exception();
+//		}else{
+//			System.out.println(response.getBody().length + " Product records found.");
+//		}
 	}
 	
 	@Test
@@ -415,16 +415,16 @@ public class ProductManagementAPITest {
 		System.out.println(json);
 		
 		
-		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
-
-		//post to create category web service
-		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/product", entity, PersistableProduct.class);
-
-		PersistableProduct prod = (PersistableProduct) response.getBody();
-		
-
-		
-		System.out.println("---------------------");
+//		HttpEntity<String> entity = new HttpEntity<String>(json, getHeader());
+//
+//		//post to create category web service
+//		ResponseEntity response = restTemplate.postForEntity("http://localhost:8080/sm-shop/services/private/DEFAULT/product", entity, PersistableProduct.class);
+//
+//		PersistableProduct prod = (PersistableProduct) response.getBody();
+//		
+//
+//		
+//		System.out.println("---------------------");
 
 		
 		
@@ -440,8 +440,8 @@ public class ProductManagementAPITest {
 		
 		HttpEntity<String> httpEntity = new HttpEntity<String>(getHeader());
 		
-		restTemplate.exchange("http://localhost:8080/sm-shop/services/rest/products/DEFAULT/en/"+testCategoryID+"/"+testProductID, HttpMethod.DELETE, httpEntity, ReadableProduct.class);
-		System.out.println("Product "+testProductID+" Deleted.");
+//		restTemplate.exchange("http://localhost:8080/sm-shop/services/rest/products/DEFAULT/en/"+testCategoryID+"/"+testProductID, HttpMethod.DELETE, httpEntity, ReadableProduct.class);
+//		System.out.println("Product "+testProductID+" Deleted.");
 	}
 	
 	/** private helper methods **/

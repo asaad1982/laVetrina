@@ -51,5 +51,5 @@ public interface ProductDao extends SalesManagerEntityDao<Long, Product> {
 	List<Object[]> listSoldInstoc(MerchantStore store);
 
 	List<Object[]> customersStatistics(MerchantStore store, String year, String month);
-
+	public List<Product> listByStoreDiscount(MerchantStore store);
 }

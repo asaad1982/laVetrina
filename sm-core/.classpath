@@ -34,5 +34,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/sm-core-model/target/classes"/>
+	<classpathentry kind="lib" path="/sm-shop/src/main/webapp/WEB-INF/lib/spring-context-4.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/sm-shop/src/main/webapp/WEB-INF/lib/spring-core-3.2.8.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

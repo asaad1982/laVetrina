@@ -24,6 +24,8 @@ public class QCountry extends EntityPathBase<Country> {
 
     public final com.salesmanager.core.business.generic.model.QSalesManagerEntity _super = new com.salesmanager.core.business.generic.model.QSalesManagerEntity(this);
 
+    public final ListPath<City, QCity> citys = this.<City, QCity>createList("citys", City.class, QCity.class, PathInits.DIRECT2);
+
     public final ListPath<CountryDescription, QCountryDescription> descriptions = this.<CountryDescription, QCountryDescription>createList("descriptions", CountryDescription.class, QCountryDescription.class, PathInits.DIRECT2);
 
     public final com.salesmanager.core.business.reference.geozone.model.QGeoZone geoZone;
@@ -31,8 +33,6 @@ public class QCountry extends EntityPathBase<Country> {
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
     public final StringPath isoCode = createString("isoCode");
-
-    public final StringPath name = createString("name");
 
     //inherited
     public final BooleanPath new$ = _super.new$;
