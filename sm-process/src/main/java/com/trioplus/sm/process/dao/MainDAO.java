@@ -95,8 +95,6 @@ public class MainDAO {
 	 */
 	
 	
-	
-	
 	public void updateCustomer(CustomerShareCount customer, SocialMediaConfig config) {
 
 		CustomerSocialShareDiscount entity = new CustomerSocialShareDiscount();
@@ -122,9 +120,6 @@ public class MainDAO {
 		entity.setCouponEndDate(cal.getTime());
 		
 		getSession().persist(entity);
-	
-	
-		
 		Criteria criteria = getSession().createCriteria(CustomerShareLog.class);
 		criteria.add(Restrictions.eq("customerId", entity.getCustomerId()));
 		criteria.add(Restrictions.eq("discountSent",false));
