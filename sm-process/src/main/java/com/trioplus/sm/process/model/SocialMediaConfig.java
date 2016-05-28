@@ -12,43 +12,43 @@ import org.json.simple.JSONObject;
  */
 public class SocialMediaConfig  implements JSONAware  {
 
-private String shareDiscountNumber ;
-private String shareDiscountIntervalUnit ;
-public Long getDiscountPercent() {
+private Long shareDiscountNumber ;
+private Long shareDiscountIntervalUnit ;
+public Integer getDiscountPercent() {
 	return discountPercent;
 }
 
-public void setDiscountPercent(Long discountPercent) {
+public void setDiscountPercent(Integer discountPercent) {
 	this.discountPercent = discountPercent;
 }
 
 
-private String shareDiscountFrequency ;
-private Long discountPercent;
+private Long shareDiscountFrequency ;
+private Integer discountPercent;
 
 
 
-public String getShareDiscountNumber() {
+public Long getShareDiscountNumber() {
 	return shareDiscountNumber;
 }
 
-public void setShareDiscountNumber(String shareDiscountNumber) {
+public void setShareDiscountNumber(Long shareDiscountNumber) {
 	this.shareDiscountNumber = shareDiscountNumber;
 }
 
-public String getShareDiscountIntervalUnit() {
+public Long getShareDiscountIntervalUnit() {
 	return shareDiscountIntervalUnit;
 }
 
-public void setShareDiscountIntervalUnit(String shareDiscountIntervalUnit) {
+public void setShareDiscountIntervalUnit(Long shareDiscountIntervalUnit) {
 	this.shareDiscountIntervalUnit = shareDiscountIntervalUnit;
 }
 
-public String getShareDiscountFrequency() {
+public Long getShareDiscountFrequency() {
 	return shareDiscountFrequency;
 }
 
-public void setShareDiscountFrequency(String shareDiscountFrequency) {
+public void setShareDiscountFrequency(Long shareDiscountFrequency) {
 	this.shareDiscountFrequency = shareDiscountFrequency;
 }
 

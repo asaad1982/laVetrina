@@ -12,6 +12,7 @@ import com.trioplus.sm.process.model.CustomerSocialShareDiscount;
 import com.trioplus.sm.process.model.MerchantConfiguration;
 import com.trioplus.sm.process.model.SocialMediaConfig;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -65,9 +66,7 @@ public class MainDAO {
 
 		try {
 			Criteria criteria = getSession().createCriteria(CustomerShareCount.class);
-			criteria.add(Restrictions.gt("count", config.getShareDiscountNumber()));
-			criteria.add(Restrictions.eq("discountSent", false));
-
+			criteria.add(Restrictions.ge("count", new Long(config.getShareDiscountNumber())));
 			List<CustomerShareCount> elegibleCustomerList = criteria.list();
 			return elegibleCustomerList;
 		} catch (HibernateException e) {
@@ -85,7 +84,25 @@ public class MainDAO {
 		entity.setCoupon("testserialnumber");
 		entity.setCreationDate(new Date());
 		entity.setCouponStartDate(new Date());
-
+		entity.setDiscountPercentage(config.getDiscountPercent());
+		Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        int validDay;
+        if(config.getShareDiscountIntervalUnit().longValue()==1){
+        	
+        	validDay=config.getShareDiscountFrequency().intValue()*7;
+        }else{
+        	
+        	validDay=config.getShareDiscountFrequency().intValue()*30;
+        	
+        	
+        }
+        cal.add(Calendar.DATE, validDay);
+		entity.setCouponEndDate(cal.getTime());
+		
+		getSession().persist(entity);
+	
+	
 	}
 
 }
