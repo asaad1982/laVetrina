@@ -15,10 +15,13 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 
+<link href="<c:url value="/resources/css/jquery-ui.css" />" rel="stylesheet"></link>
 <!-- requires functions.jsp -->
 <script src="<c:url value="/resources/js/jquery.maskedinput.min.js" />"></script>
 <script src="<c:url value="/resources/js/shop-customer.js" />"></script>
 <script src="<c:url value="/resources/js/address.js" />"></script>
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/js/jquery-ui.js" />"></script>
 
 <script type="text/javascript">
 	var RecaptchaOptions = {
@@ -172,7 +175,7 @@
 						</div>
 					</div>
 
-					<div class="form-group col-md-12">
+					<div class="form-group col-md-6">
 							<label class="control-label required"><s:message code="label.generic.stateprovince" text="State / Province"/></label>
 						<div class="controls">
 							<s:message code="NotEmpty.customer.billing.stateProvince" text="State / Province is required" var="msgStateProvince"/>
@@ -182,10 +185,10 @@
 						</div>
 					</div>	
 					
-					<div class="form-group col-md-12">
+					<div class="form-group col-md-6">
 		            	<label><s:message code="label.customer.billing.streetaddress" text="Street Address"/></label>
 						<div class="controls">
-				 			<form:input  cssClass="input-large highlight"  maxlength="256"  path="address"/>		 				
+				 			<form:input  cssClass="span8 required form-control form-control-md"  maxlength="256"  path="address"/>		 				
 			            </div>
 		            </div>
 
@@ -218,17 +221,17 @@
 						</div>
 					</div>
 					
-					<div class="control-group">
+					<div class="form-group col-md-6">
 	                        <label>Birthday</label>
-<!-- 	                        <div class="controls"> -->
-<%-- 	                        <fmt:formatDate value="${customer.dateOfBirth}" pattern="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" var="dateOfBirth" /> --%>
+	                        <div class="controls">
+<%-- 	                        <fmt:formatDate value="${customer.birthdate}" pattern="yyyy-MM-dd" var="birthdate" /> --%>
 	                       
-<%-- 	                        		 <input id="dateOfBirth" name="dateOfBirth" value="${dateOfBirth}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker">  --%>
-<%-- 	                                 <script type="text/javascript"> --%>
-// 	                                 $('#dateOfBirth').datepicker();
-<%-- 	                                 </script> --%>
+	                        		 <input id="birthdate" name="birthdate" value="${birthdate}" cssClass="span8 required form-control form-control-md" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
+	                                 <script type="text/javascript">
+    	                                 $('#birthdate').datepicker();
+	                                 </script>
 <%-- 	                                 <span class="help-inline"><form:errors path="dateOfBirth" cssClass="error" /></span> --%>
-<!-- 	                        </div> -->
+	                        </div>
 	                  	</div>
 					
 					<div class="form-actions">

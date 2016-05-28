@@ -16,14 +16,18 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 
+<link href="<c:url value="/resources/css/jquery-ui.css" />" rel="stylesheet"></link>
 <!-- requires functions.jsp -->
 <script src="<c:url value="/resources/js/jquery.maskedinput.min.js" />"></script>
 <script src="<c:url value="/resources/js/shop-customer.js" />"></script>
 <script src="<c:url value="/resources/js/address.js" />"></script>
-<link href="<c:url value="/resources/css/bootstrap/css/datepicker.css" />" rel="stylesheet"></link>
- <script src="<c:url value="/resources/js/bootstrap/bootstrap-datepicker.js" />"></script>
-<script src="<c:url value="/resources/js/ckeditor/ckeditor.js" />"></script>
-<script src="<c:url value="/resources/js/jquery.alphanumeric.pack.js" />"></script>
+<%-- <link href="<c:url value="/resources/css/bootstrap/css/datepicker.css" />" rel="stylesheet"></link> --%>
+<%--  <script src="<c:url value="/resources/js/bootstrap/bootstrap-datepicker.js" />"></script> --%>
+<%-- <script src="<c:url value="/resources/js/ckeditor/ckeditor.js" />"></script> --%>
+<%-- <script src="<c:url value="/resources/js/jquery.alphanumeric.pack.js" />"></script> --%>
+
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/js/jquery-ui.js" />"></script>
 
 <script type="text/javascript">
 	var RecaptchaOptions = {
@@ -287,9 +291,9 @@
 <%-- 	                        <fmt:formatDate value="${customer.birthdate}" pattern="yyyy-MM-dd" var="birthdate" /> --%>
 	                       
 	                        		 <input id="birthdate" name="birthdate" value="${birthdate}" class="small" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
-<%-- 	                                 <script type="text/javascript"> --%>
-//     	                                 $('#birthdate').datepicker();
-<%-- 	                                 </script> --%>
+	                                 <script type="text/javascript">
+    	                                 $('#birthdate').datepicker();
+	                                 </script>
 <%-- 	                                 <span class="help-inline"><form:errors path="dateOfBirth" cssClass="error" /></span> --%>
 	                        </div>
 	                  	</div>
