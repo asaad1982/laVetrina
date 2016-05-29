@@ -134,21 +134,21 @@ public class PromotionController {
 
 	}
 	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/promotion/cartPromotion.html", method=RequestMethod.GET)
-	public String cartPromotion(@RequestParam("id") long promotionId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		setMenu(model,request);
-		
-		CartPromotion cartPromotion=  promotionService.getCartPromotionById(promotionId);
-		if(cartPromotion==null){
-			cartPromotion=new CartPromotion();
-			cartPromotion.setPromotion(new Promotion());
-			cartPromotion.getPromotion().setId(promotionId);
-		}
-		model.addAttribute("cartPromotion", cartPromotion);
-		return "cartPromotion";
-
-	}
+//	@PreAuthorize("hasRole('PRODUCTS')")
+//	@RequestMapping(value="/admin/promotion/cartPromotion.html", method=RequestMethod.GET)
+//	public String cartPromotion(@RequestParam("id") long promotionId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		setMenu(model,request);
+//		
+//		CartPromotion cartPromotion=  promotionService.getCartPromotionById(promotionId);
+//		if(cartPromotion==null){
+//			cartPromotion=new CartPromotion();
+//			cartPromotion.setPromotion(new Promotion());
+//			cartPromotion.getPromotion().setId(promotionId);
+//		}
+//		model.addAttribute("cartPromotion", cartPromotion);
+//		return "cartPromotion";
+//
+//	}
 	@PreAuthorize("hasRole('PRODUCTS')")
 	@RequestMapping(value="/admin/promotion/bouns.html", method=RequestMethod.GET)
 	public String displayPromotionBouns(@RequestParam("id") long promotionId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {

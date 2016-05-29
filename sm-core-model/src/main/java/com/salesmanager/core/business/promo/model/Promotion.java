@@ -53,9 +53,7 @@ public class Promotion extends SalesManagerEntity<Long, Promotion> implements Se
 	private PromotionRule promotionRule;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
-	@JoinColumn(name="promotion_bouns_id")
-	private BounsType bounsType;
+	
 	
 	public PromotionRule getPromotionRule() {
 		return promotionRule;
@@ -140,12 +138,6 @@ public class Promotion extends SalesManagerEntity<Long, Promotion> implements Se
 		this.promotionType = promotionType;
 	}
 
-	public BounsType getBounsType() {
-		return bounsType;
-	}
-
-	public void setBounsType(BounsType bounsType) {
-		this.bounsType = bounsType;
-	}
+	
 
 }

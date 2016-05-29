@@ -18,8 +18,6 @@ public class QPromotionRule extends EntityPathBase<PromotionRule> {
 
     private static final long serialVersionUID = 444507964L;
 
-    private static final PathInits INITS = PathInits.DIRECT2;
-
     public static final QPromotionRule promotionRule = new QPromotionRule("promotionRule");
 
     public final com.salesmanager.core.business.generic.model.QSalesManagerEntity _super = new com.salesmanager.core.business.generic.model.QSalesManagerEntity(this);
@@ -39,29 +37,20 @@ public class QPromotionRule extends EntityPathBase<PromotionRule> {
 
     public final ListPath<com.salesmanager.core.business.catalog.product.model.Product, com.salesmanager.core.business.catalog.product.model.QProduct> products = this.<com.salesmanager.core.business.catalog.product.model.Product, com.salesmanager.core.business.catalog.product.model.QProduct>createList("products", com.salesmanager.core.business.catalog.product.model.Product.class, com.salesmanager.core.business.catalog.product.model.QProduct.class, PathInits.DIRECT2);
 
-    public final QPromotionTragetAge promotionTragetAge;
+    public final NumberPath<Integer> promotionTragetAge = createNumber("promotionTragetAge", Integer.class);
 
     public final StringPath targetGender = createString("targetGender");
 
     public QPromotionRule(String variable) {
-        this(PromotionRule.class, forVariable(variable), INITS);
+        super(PromotionRule.class, forVariable(variable));
     }
 
     public QPromotionRule(Path<? extends PromotionRule> path) {
-        this(path.getType(), path.getMetadata(), path.getMetadata().isRoot() ? INITS : PathInits.DEFAULT);
+        super(path.getType(), path.getMetadata());
     }
 
     public QPromotionRule(PathMetadata<?> metadata) {
-        this(metadata, metadata.isRoot() ? INITS : PathInits.DEFAULT);
-    }
-
-    public QPromotionRule(PathMetadata<?> metadata, PathInits inits) {
-        this(PromotionRule.class, metadata, inits);
-    }
-
-    public QPromotionRule(Class<? extends PromotionRule> type, PathMetadata<?> metadata, PathInits inits) {
-        super(type, metadata, inits);
-        this.promotionTragetAge = inits.isInitialized("promotionTragetAge") ? new QPromotionTragetAge(forProperty("promotionTragetAge")) : null;
+        super(PromotionRule.class, metadata);
     }
 
 }

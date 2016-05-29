@@ -11,10 +11,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+//import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.salesmanager.core.utils.ajax.AjaxResponse;
+//import com.salesmanager.core.utils.ajax.AjaxResponse;
 import com.salesmanager.web.entity.shop.ContactForm;
 
 public class ContactAPITest {
@@ -53,13 +53,13 @@ public class ContactAPITest {
 		
 		HttpEntity<String> httpEntity = new HttpEntity<String>(json, getHeader());
 		
-		ResponseEntity<AjaxResponse> response = restTemplate.exchange("http://localhost:8080/sm-shop/services/public/DEFAULT/contact", HttpMethod.POST, httpEntity, AjaxResponse.class);
-		
-		if(response.getStatusCode() != HttpStatus.OK){
-			throw new Exception();
-		}else{
-			System.out.println(response.getBody() + " Success sending contact");
-		}
+//		ResponseEntity<AjaxResponse> response = restTemplate.exchange("http://localhost:8080/sm-shop/services/public/DEFAULT/contact", HttpMethod.POST, httpEntity, AjaxResponse.class);
+//		
+//		if(response.getStatusCode() != HttpStatus.OK){
+//			throw new Exception();
+//		}else{
+//			System.out.println(response.getBody() + " Success sending contact");
+//		}
 	}
 	
 		

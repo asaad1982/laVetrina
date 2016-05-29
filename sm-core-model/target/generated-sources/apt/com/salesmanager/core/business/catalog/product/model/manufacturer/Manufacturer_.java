@@ -13,6 +13,7 @@ public abstract class Manufacturer_ {
 
 	public static volatile SingularAttribute<Manufacturer, String> image;
 	public static volatile SingularAttribute<Manufacturer, String> code;
+	public static volatile SingularAttribute<Manufacturer, Boolean> available;
 	public static volatile SingularAttribute<Manufacturer, Long> id;
 	public static volatile SingularAttribute<Manufacturer, MerchantStore> merchantStore;
 	public static volatile SingularAttribute<Manufacturer, AuditSection> auditSection;

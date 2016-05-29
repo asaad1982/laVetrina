@@ -279,7 +279,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						</p>
 						<p>
     							${EMAIL_USERNAME_LABEL}: ${EMAIL_USER_NAME}<br />
-    							${EMAIL_PASSWORD_LABEL}: ${EMAIL_CUSTOMER_PASSWORD}<br />
+    							
 
 						</p>
 						<!-- Callout Panel -->
