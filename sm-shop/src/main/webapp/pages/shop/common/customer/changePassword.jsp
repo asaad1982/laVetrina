@@ -78,16 +78,13 @@ function resetGlobalErrors() {
 
 </script>
 
-	<div id="main-content" class="container clearfix row-fluid">
-			<div class="span12 col-md-12 no-padding common-row">
-			
-			<div class="span8 col-md-8 no-padding">
-				<div class="checkout-box">
-					<span class="box-title">
-						<p class="p-title">
+	<div id="main-content" class="container" style="padding: 15px 0;">
+	<div class="bg">
+		<div class="row">
+			<div class="col-sm-6">
+				<h2 class="title text-center">
 							<s:message code="label.generic.changepassword" text="Change password"/>
-						</p>
-					</span>
+						</h2>
 				<div id="store.success" class="alert alert-success" style="<c:choose><c:when test="${success!=null}">display:block;</c:when><c:otherwise>display:none;</c:otherwise></c:choose>"><s:message code="message.success" text="Request successfull"/></div>
 				<c:url var="changePassword" value="/shop/customer/changePassword.html"/>
 				<div id="formError"  class="alert alert-warning" style="display:none;"></div>
@@ -122,7 +119,7 @@ function resetGlobalErrors() {
 						 </div>
 						
 						<div class="form-actions">
-							<input id="submitChangePassword" class="btn btn-large btn-disabled" type="submit" name="changePassword" value="<s:message code="menu.change-password" text="Change password"/>" disabled="">
+							<input id="submitChangePassword" class="btn btn-primary btn-disabled" type="submit" name="changePassword" value="<s:message code="menu.change-password" text="Change password"/>" disabled="">
 						</div>
 						
 						
@@ -130,11 +127,14 @@ function resetGlobalErrors() {
 
 
 			</div>
-			</div>
-			<div class="span4 col-md-4">
+			
+			<div class="col-sm-6">
 			 	<jsp:include page="/pages/shop/common/customer/customerProfileMenu.jsp" />
 			 	<jsp:include page="/pages/shop/common/customer/customerOrdersMenu.jsp" />
 			 </div>
+			 
+			</div>
+			
 			</div>
 			<!--close .span12-->
 	</div>

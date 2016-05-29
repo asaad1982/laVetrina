@@ -51,7 +51,7 @@ public class AppSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         }
         roles.add("AUTH_CUSTOMER");
 
-        url = "/shop";
+        url = "/shop/customer/account.html";
 
         return url;
     }

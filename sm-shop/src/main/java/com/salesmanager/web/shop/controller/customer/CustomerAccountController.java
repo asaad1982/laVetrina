@@ -178,10 +178,6 @@ public class CustomerAccountController extends AbstractController {
 			return null;
     	}
     	
-    	if(!customer.getNick().equals(userName)) {
-        	response.sendError(401, "Customer not authenticated");
-			return null;
-    	}
     	
     	
     	ReadableCustomer readableCustomer = new ReadableCustomer();
@@ -452,7 +448,7 @@ public class CustomerAccountController extends AbstractController {
         
         CustomerEntity customerEntity = customerFacade.getCustomerDataByUserName( customer.getNick(), store, language );
         if(customer !=null){
-           model.addAttribute( "customer",  customerEntity);
+           model.addAttribute( "customer",  customer);
         }
         
         

@@ -17,11 +17,11 @@
 
 <link href="<c:url value="/resources/css/jquery-ui.css" />" rel="stylesheet"></link>
 <!-- requires functions.jsp -->
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/js/jquery-ui.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.maskedinput.min.js" />"></script>
 <script src="<c:url value="/resources/js/shop-customer.js" />"></script>
 <script src="<c:url value="/resources/js/address.js" />"></script>
-<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
-<script src="<c:url value="/resources/js/jquery-ui.js" />"></script>
 
 <script type="text/javascript">
 	var RecaptchaOptions = {
@@ -224,7 +224,8 @@
 					<div class="form-group col-md-6">
 	                        <label>Birthday</label>
 	                        <div class="controls">
-<%-- 	                        <fmt:formatDate value="${customer.birthdate}" pattern="yyyy-MM-dd" var="birthdate" /> --%>
+	                        ${customer.birthdate}
+	                        <fmt:formatDate value="${customer.birthdate}" pattern="dd/MM/yyyy" var="birthdate" />
 	                       
 	                        		 <input id="birthdate" name="birthdate" value="${birthdate}" cssClass="span8 required form-control form-control-md" type="text" data-date-format="<%=com.salesmanager.core.constants.Constants.DEFAULT_DATE_FORMAT%>" data-datepicker="datepicker"> 
 	                                 <script type="text/javascript">
@@ -239,6 +240,10 @@
 					</div>
 				</form:form>
 			</div>
+			<div class="col-sm-6">
+			 	<jsp:include page="/pages/shop/common/customer/customerProfileMenu.jsp" />
+			 	<jsp:include page="/pages/shop/common/customer/customerOrdersMenu.jsp" />
+			 </div>
 		</div>
 	</div>
 </div>

@@ -27,14 +27,13 @@ function print() {
 </script>
 
 
-	<div id="main-content" class="container clearfix row-fluid">
-		
-
-
-
-				<header class="page-header">
-					<h1><s:message code="label.order.details" text="Order details" />&nbsp;#&nbsp;<c:out value="${order.id}"/></h1>
-				</header>
+<div id="main-content" class="container" style="padding: 15px 0;">
+	<div class="bg">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 class="title text-center">
+					<s:message code="label.order.details" text="Order details" />&nbsp;#&nbsp;<c:out value="${order.id}"/>
+				</h2>
 
 				
 				<div class="row-fluid">
@@ -198,5 +197,8 @@ function print() {
 
 		</div>
 	
+	</div>
+	</div>
+	</div>
 	</div>
 	<!--close .container "main-content" -->

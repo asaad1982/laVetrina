@@ -18,16 +18,14 @@ response.setDateHeader ("Expires", -1);
 <c:set var="ordersAction" value="${pageContext.request.contextPath}/shop/customer/orders.html"/>
 <c:set var="customerOrder" value="${pageContext.request.contextPath}/shop/customer/order.html"/>
 
-<div id="main-content" class="container clearfix row-fluid">
-		<div class="span12 col-md-12 common-row">
-
-			  <div class="span8 col-md-8 no-padding">
-				
-			<div class="checkout-box">
-					<span class="box-title">
-						<p class="p-title">
+<div id="main-content" class="container" style="padding: 15px 0;">
+	<div class="bg">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 class="title text-center">
 							<s:message
 									code="menu.order-list" text="List of orders" />
+									</h2>
 							&nbsp;
 							<span class="p-title-text">
 							<c:if test="${not empty customerOrders.orders}">
@@ -53,6 +51,7 @@ response.setDateHeader ("Expires", -1);
 								<th><s:message code="label.customer.order.date" text="Order date"/></th>
 								<th><s:message code="label.generic.amount" text="Amount"/></th>
 								<th><s:message code="label.entity.status" text="Status"/></th>
+								<th></th>
 							</tr>
 						</thead>
 						
@@ -64,7 +63,7 @@ response.setDateHeader ("Expires", -1);
 								<td><fmt:formatDate type="both" value="${order.datePurchased}" /></td>
 								<td><sm:monetary value="${order.total.value}" />&nbsp;<small>(${fn:length(order.products)} <c:choose><c:when test="${fn:length(order.products)==1}"><s:message code="label.generic.item" text="item"/></c:when><c:otherwise><s:message code="label.generic.items" text="items"/></c:otherwise></c:choose>)</small></td>
 								<td>${order.orderStatus}</td>
-								
+								<td><a href="#?orderId=${order.id}">File a Complaint</a></td>
 							</tr>
 						</c:forEach>
 							

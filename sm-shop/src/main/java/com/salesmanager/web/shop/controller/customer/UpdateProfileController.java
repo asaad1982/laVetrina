@@ -132,7 +132,7 @@ public class UpdateProfileController extends AbstractController {
 		form.setEmailAddress(customer.getEmailAddress());
 		form.setPassword(customer.getPassword());
 		form.setGender(customer.getGender()==CustomerGender.M?"M":"F");
-//        customerModel.setDateOfBirth(new Date(customer.getBirthdate()));
+		form.setBirthdate(customer.getDateOfBirth().toString());
         
 		
 		model.addAttribute("customer", form);
