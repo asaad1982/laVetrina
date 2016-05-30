@@ -86,6 +86,7 @@
 		<intercept-url pattern="/shop/" access="permitAll" />
 		<intercept-url pattern="/shop/**" access="permitAll" />
 		<intercept-url pattern="/shop/customer/logon.html*" access="permitAll" />
+		<intercept-url pattern="/shop/promotion/hotdeals.html*" access="permitAll" />
 		<intercept-url pattern="/shop/customer/registration.html*" access="permitAll" />
 		<intercept-url pattern="/shop/customer/loginOrSignUp.html*" access="permitAll" />
 		<intercept-url pattern="/shop/customer/forgetPassword.html*" access="permitAll" />

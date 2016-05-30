@@ -1,322 +1,344 @@
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\file\DigitalProduct_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\zone\model\QZoneDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingPackageType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOptionSet_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\geozone\model\QGeoZoneDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\ProductCriteria.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\MerchantConfig.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\category\model\CategoryDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\zone\model\QZone.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderTotalSummary.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\category\model\Category_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QSystemNotification.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\common\model\audit\AuditSection_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\content\model\ContentDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotionDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerAttribute.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\review\QProductReviewDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\utils\CloneUtils.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\FileContentType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\shoppingcart\model\ShoppingCartAttributeItem_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\CreditCardPayment.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\OrderTotalItem.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\common\model\Billing_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\audit\AuditListener.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\user\model\QUser.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingConfiguration.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\EntityList.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\reference\geozone\model\GeoZoneDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\filehistory\FileHistory_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionValue_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\currency\model\QCurrency.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\manufacturer\Manufacturer.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\taxrate\TaxRateDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\Product.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\SystemConfiguration_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductOption.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\description\QProductDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QMerchantConfiguration.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\category\model\CategoryDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderCriteria.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\Content.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ImageContentFile.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\review\ProductReview_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\AttributeCriteria.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\image\ProductImageDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderproduct\OrderProduct_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\country\model\QCountryDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOption.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\Group.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\CustomShippingQuotesConfiguration.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\currency\model\Currency_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\shipping\model\QShippingOrigin.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOptionValueDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\shoppingcart\model\QShoppingCartItem.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\review\ProductReview.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\ShippingQuoteModule.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\CustomerList.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\payment\CreditCard.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\price\ProductPriceType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\IndexProduct.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\SearchEntry.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\category\model\QCategoryDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\type\QProductType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductOptionDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\zone\model\ZoneDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\tax\model\taxrate\QTaxRateDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\TaxBasisCalculation.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\availability\QProductAvailability.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\reference\country\model\Country.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\audit\Auditable.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\payment\CreditCard_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\type\ProductType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderChannel.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\audit\AuditSection.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderaccount\OrderAccount_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerAttribute.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\PromotionTragetAge_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\PromotionRule_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\price\FinalPrice.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOptionValue.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\reference\zone\model\ZoneDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\complaint\model\CustomerComplaint.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\PackageDetails.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\common\model\QBilling.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductAttribute.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Delivery.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderSummary.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\PermissionCriteria.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\MerchantConfiguration_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\Customer.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionSet.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\TaxItem.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOptionValueDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\generic\model\QSalesManagerEntity.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\PromotionDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotion.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerAttribute_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\user\model\User_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionValue.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\constants\MeasureUnit.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\QProduct.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QMerchantLog.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOption_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\PaymentType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ContentType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\relationship\ProductRelationshipType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\file\QDigitalProduct.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotionType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderaccount\QOrderAccount.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\tax\model\taxrate\TaxRateDescription_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ContentDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\generic\model\SalesManagerEntity.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QSystemConfiguration.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\SearchResponse.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOption.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\generic\exception\ConversionException.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\MerchantLog_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\reference\geozone\model\GeoZone.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\GroupType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\PaymentMethod.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\PermissionList.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ContentFile.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shoppingcart\model\ShoppingCart.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\Order_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\OrderTotal_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\merchant\model\MerchantStore.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderValueType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingBasisType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\Permission.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\user\model\Permission_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\user\model\QPermission.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderproduct\OrderProductAttribute_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingOrigin.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionValueDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderproduct\QOrderProductPrice.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\complaint\model\ComplaintsReason.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\category\model\Category.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\SearchFacet.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\user\model\QGroup.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\availability\ProductAvailability.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionValueDescription_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderproduct\QOrderProductAttribute.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\ShippingQuotePreProcessModule.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\common\model\QDelivery.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\complaint\model\CustomerComplaint_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\filehistory\FileHistory.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\TransactionType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\price\QProductPrice.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\file\DigitalProduct.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderproduct\OrderProductPrice.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\manufacturer\QManufacturerDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderproduct\QOrderProductDownload.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\review\ProductReviewDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductAttribute_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\price\ProductPriceDescription_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingOptionPriceType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\PromotionRule.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\IntegrationException.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\PromotionType_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderaccount\QOrderAccountProduct.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\merchant\model\MerchantStore_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingProduct.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\InputContentFile.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\taxrate\TaxRate.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderTotal.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\manufacturer\QManufacturer.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\complaint\model\ComplaintsReason_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\shoppingcart\model\QShoppingCart.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\OutputContentFile.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\content\model\QContentDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\MerchantConfigurationType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderstatus\OrderStatus.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderproduct\OrderProductAttribute.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\category\model\QCategory.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\Product_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\generic\exception\ServiceException.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderproduct\OrderProductDownload.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\image\QProductImage.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\complaint\model\QComplaintsReason.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\ModuleConfig.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\PromotionType.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderTotalType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOptionValue_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\image\QProductImageDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderproduct\OrderProductPrice_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\review\QProductReview.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductAttribute.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Description.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderList.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\PaypalPayment.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderstatus\OrderStatusHistory_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingOption.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\ShippingQuotePrePostProcessModule.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shoppingcart\model\ShoppingCartAttributeItem.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\price\QProductPriceDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\tax\model\taxrate\QTaxRate.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\CustomShippingQuotesRegion.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\price\ProductPriceDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\Transaction.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\common\model\Delivery_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\availability\ProductAvailability_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderstatus\QOrderStatusHistory.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderaccount\OrderAccountProduct_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\complaint\model\QCustomerComplaint.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\image\ProductImage_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\SystemNotification.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\content\model\Content_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\filehistory\QFileHistory.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderaccount\OrderAccount.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\reference\language\model\Language.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\QOrderTotal.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderaccount\OrderAccountProduct.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\relationship\ProductRelationship.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\CreditCardType.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\country\model\Country_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\payments\model\QTransaction.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\geozone\model\GeoZone_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\CriteriaOrderBy.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\tax\model\taxclass\TaxClass_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\CustomerCriteria.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\CustomIntegrationConfiguration.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductOptionValue.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\Module.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shoppingcart\model\ShoppingCartItem.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\MerchantLog.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\Packaging.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\relationship\QProductRelationship.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\shoppingcart\model\QShoppingCartAttributeItem.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\language\model\Language_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOption.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\price\ProductPrice_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\zone\model\Zone_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\user\model\Group_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QIntegrationModule.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\Order.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\geozone\model\QGeoZone.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\CustomShippingQuoteItem.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\CustomShippingQuoteWeightItem.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\common\model\QDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\country\model\QCountry.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderproduct\OrderProduct.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\manufacturer\ManufacturerDescription_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\manufacturer\ManufacturerDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderstatus\OrderStatusHistory.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\Environment.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\User.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\price\ProductPrice.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\taxclass\TaxClass.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\file\ProductImageSize.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\common\model\audit\QAuditSection.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\description\ProductDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductOption_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOptionDescription.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionValueDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\shipping\model\ShippingOrigin_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Address.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\reference\currency\model\Currency.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\CustomerGender.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\image\ProductImageDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\country\model\CountryDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\shoppingcart\model\ShoppingCartItem_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingSummary.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\review\ProductReviewDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\common\model\Description_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\QOrder.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\MerchantConfiguration.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\payments\model\Transaction_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\Promotion_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Criteria.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOptionDescription_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\TaxConfiguration.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\manufacturer\Manufacturer_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\reference\country\model\CountryDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\payment\QCreditCard.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\Promotion.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Billing.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\content\model\QContent.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\StaticContentFile.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingQuote.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\SearchKeywords.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\payment\model\PaymentModule.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotionTragetAge.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\constants\SchemaConstant.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\IntegrationConfiguration.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderproduct\OrderProductDownload_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\image\ProductImage.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\PromotionTragetAge.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\type\ProductType_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\QCustomer.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\SystemConfiguration.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOptionSet.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\PromotionDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\tax\model\taxrate\TaxRate_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotionRule.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\Payment.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\merchant\model\QMerchantStore.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductOptionValueDescription.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\language\model\QLanguage.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ContentPosition.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\tax\model\taxclass\QTaxClass.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\Customer_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\modules\constants\Constants.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\ProductList.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\reference\zone\model\Zone.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\IntegrationModule.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\description\ProductDescription_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\SystemNotification_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\BasicPayment.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\shoppingcart\model\ShoppingCart_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\IntegrationModule_.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\geozone\model\GeoZoneDescription_.java
-D:\personal\shopizer\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionValue.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderproduct\QOrderProduct.java
-D:\personal\shopizer\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\relationship\ProductRelationship_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\ShippingQuoteModule.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\language\model\QLanguage.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\complaint\model\ComplaintsReason.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\payment\CreditCard_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\QOrder.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\manufacturer\QManufacturerDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\description\ProductDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOptionValueDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\MerchantConfiguration_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOptionSet.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\file\DigitalProduct.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\reference\country\model\Country.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\CartPromotion_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\complaint\model\ComplaintsReason_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\country\model\QCountryDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\language\model\Language_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\CustomShippingQuoteWeightItem.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerAttribute.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\category\model\QCategoryDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\taxclass\TaxClass.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\PromotionDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\manufacturer\ManufacturerDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\shoppingcart\model\ShoppingCartItem_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\complaint\model\QComplaintsReason.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\taxrate\TaxRateDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\PaymentMethod.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\MerchantLog.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderproduct\QOrderProductDownload.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotion.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\content\model\QContentDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\QOrderTotal.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\Content.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderproduct\OrderProductDownload_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\SalesReport.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderstatus\OrderStatus.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\reference\geozone\model\GeoZoneDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ImageContentFile.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\geozone\model\QGeoZone.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\review\ProductReviewDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\BounsType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\content\model\Content_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\user\model\Group_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Delivery.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\CustomShippingQuotesRegion.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\QCustomer.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderproduct\OrderProduct.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\price\ProductPrice_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOptionValue_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\QProduct.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QMerchantLog.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\ShippingQuotePreProcessModule.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\description\QProductDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\CriteriaOrderBy.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderaccount\OrderAccountProduct_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\common\model\QDelivery.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\generic\exception\ConversionException.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\GroupType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\SystemConfiguration.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\Product_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\price\FinalPrice.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductAttribute_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\CustomIntegrationConfiguration.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\country\model\QCountry.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingPackageType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\ProductList.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingOrigin.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Billing.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\common\model\QDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\user\model\QUser.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionValueDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\Packaging.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\SearchFacet.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\availability\ProductAvailability_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductAttribute.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\notification\EmailNotification.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\tax\model\taxrate\TaxRateDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderCriteria.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\Payment.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\availability\QProductAvailability.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\PaymentType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\PaypalPayment.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductAttribute.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\price\ProductPriceType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\reference\country\model\CountryDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\payment\model\PaymentModule.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderproduct\OrderProductPrice_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionValue.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\reference\zone\model\ZoneDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\BundlePromotion.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\OrderTotal_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\MerchantConfiguration.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductOptionValueDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderaccount\OrderAccount_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\tax\model\taxclass\TaxClass_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\manufacturer\QManufacturer.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotionTragetAge.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\CustomerGender.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\Permission.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\reference\country\model\City.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\zone\model\QZoneDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\file\DigitalProduct_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\PromotionTragetAge.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\complaint\model\QCustomerComplaint.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\utils\CloneUtils.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\relationship\ProductRelationship.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\UpSellingPromotion.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shoppingcart\model\ShoppingCartItem.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\TaxBasisCalculation.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shoppingcart\model\ShoppingCart.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\file\ProductImageSize.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\payments\model\QTransaction.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ContentFile.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\review\ProductReview_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ContentPosition.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\ShippingQuotePrePostProcessModule.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\CreditCardType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOption.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\zone\model\QZone.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\image\ProductImageDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderproduct\OrderProduct_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\Customer.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingOption.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\user\model\Permission_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\file\QDigitalProduct.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOptionSet_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\audit\AuditSection.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\currency\model\Currency_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\payment\CreditCard.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QSystemNotification.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\MerchantLog_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\TaxItem.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingOptionPriceType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\manufacturer\Manufacturer.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\generic\model\SalesManagerEntity.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\Order_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\image\QProductImageDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductOptionValue.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\merchant\model\MerchantStore_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\category\model\Category.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingSummary.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\CustomShippingQuoteItem.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\CustomerList.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\BasicPayment.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionSet.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\zone\model\Zone_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\PromotionDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\CreditCardPayment.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\MerchantConfigurationType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\SystemNotification.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingBasisType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\shipping\model\QShippingOrigin.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\tax\model\taxrate\QTaxRateDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderSummary.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\PermissionList.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\merchant\model\MerchantStore.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\price\QProductPrice.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\generic\exception\ServiceException.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\PromotionRule.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\manufacturer\ManufacturerDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\PromotionType_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderproduct\QOrderProductAttribute.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderTotalSummary.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\geozone\model\QGeoZoneDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderproduct\OrderProductAttribute_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\common\model\Billing_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\review\QProductReviewDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\filehistory\QFileHistory.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ContentDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderaccount\QOrderAccount.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\reference\language\model\Language.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\relationship\ProductRelationshipType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionValueDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\price\QProductPriceDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QMerchantConfiguration.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderaccount\OrderAccount.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\category\model\CategoryDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\audit\AuditListener.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\notification\EmailNotification_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\SystemNotification_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\country\model\CountryDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\zone\model\ZoneDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOption.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\shoppingcart\model\ShoppingCart_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\PromotionRule_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\user\model\User_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\PromotionTragetAge_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotionType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\OutputContentFile.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\price\ProductPriceDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionValueDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\UpSellingPromotion_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\common\model\QBilling.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\complaint\model\CustomerComplaint.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\availability\ProductAvailability.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QSystemConfiguration.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\notification\EmailTemplate_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderproduct\QOrderProductPrice.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\TaxConfiguration.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\shoppingcart\model\QShoppingCartItem.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\payments\model\Transaction_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\BundlePromotion_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\reference\geozone\model\GeoZone.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\Promotion.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\description\ProductDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerAttribute.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\review\QProductReview.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\category\model\CategoryDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderstatus\OrderStatusHistory.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\filehistory\FileHistory_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\Transaction.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\country\model\City_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\image\ProductImageDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotionRule.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QBounsType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\IntegrationException.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\notification\EmailTemplate.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\ModuleConfig.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\AttributeCriteria.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\image\ProductImage.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\InputContentFile.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionValue_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\review\ProductReview.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\tax\model\taxclass\QTaxClass.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\ContentType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\shoppingcart\model\ShoppingCartAttributeItem_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOptionValue.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderproduct\QOrderProduct.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\tax\model\taxrate\TaxRate_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\IntegrationModule.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\tax\model\taxrate\QTaxRate.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\shoppingcart\model\QShoppingCart.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QPromotionDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\tax\model\taxrate\TaxRate.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QCartPromotion.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\user\model\QGroup.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderproduct\OrderProductDownload.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Address.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\reference\currency\model\Currency.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\Promotion_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\type\ProductType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\type\ProductType_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\image\QProductImage.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderChannel.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\MerchantConfig.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\relationship\QProductRelationship.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingProduct.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\IntegrationModule_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\Product.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\system\model\SystemConfiguration_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\merchant\model\QMerchantStore.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\user\model\QPermission.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\IntegrationConfiguration.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOption_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderaccount\QOrderAccountProduct.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\constants\SchemaConstant.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\price\ProductPrice.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\Module.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerAttribute_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\notification\QEmailTemplate.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\payment\QCreditCard.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\attribute\ProductOptionType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\audit\Auditable.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\PermissionCriteria.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\content\model\QContent.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\relationship\ProductRelationship_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOption.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\generic\model\QSalesManagerEntity.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\PackageDetails.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\geozone\model\GeoZone_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\country\model\Country_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\complaint\model\CustomerComplaint_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\CustomerCriteria.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderValueType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\common\model\Description_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\promo\model\BounsType_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Criteria.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\SearchEntry.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\catalog\product\model\ProductCriteria.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\IndexProduct.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\StaticContentFile.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\category\model\QCategory.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\attribute\ProductOption_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductOption.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\Description.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\payments\model\TransactionType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\Group.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\Order.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\CartPromotion.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\SearchResponse.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\order\model\orderstatus\OrderStatusHistory_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderaccount\OrderAccountProduct.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shoppingcart\model\ShoppingCartAttributeItem.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingConfiguration.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderList.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\type\QProductType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\order\model\orderstatus\QOrderStatusHistory.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderproduct\OrderProductPrice.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderTotal.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\integration\shipping\model\CustomShippingQuotesConfiguration.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\promo\model\PromotionType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\common\model\audit\QAuditSection.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\reference\geozone\model\GeoZoneDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\shipping\model\ShippingOrigin_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\currency\model\QCurrency.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\modules\constants\Constants.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\reference\zone\model\Zone.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\shipping\model\ShippingQuote.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\OrderTotalItem.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\system\model\Environment.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\common\model\audit\AuditSection_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\image\ProductImage_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\content\model\ContentDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\category\model\Category_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\price\ProductPriceDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\common\model\Delivery_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionValue.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\shoppingcart\model\QShoppingCartAttributeItem.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\common\model\EntityList.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\content\model\FileContentType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\manufacturer\Manufacturer_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QBundlePromotion.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\search\model\SearchKeywords.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOptionDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\system\model\QIntegrationModule.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\Customer_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\catalog\product\model\review\ProductReviewDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\catalog\product\model\attribute\QProductOptionDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\reference\country\model\QCity.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\promo\model\QUpSellingPromotion.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\orderproduct\OrderProductAttribute.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\filehistory\FileHistory.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\customer\model\attribute\CustomerOptionType.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\user\model\User.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\customer\model\attribute\QCustomerOptionDescription.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\querydsl\com\salesmanager\core\business\notification\QEmailNotification.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\constants\MeasureUnit.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\target\generated-sources\apt\com\salesmanager\core\business\customer\model\attribute\CustomerOptionValueDescription_.java
+D:\my projects\workspace\clone\laVetrina\laVetrina\sm-core-model\src\main\java\com\salesmanager\core\business\order\model\OrderTotalType.java

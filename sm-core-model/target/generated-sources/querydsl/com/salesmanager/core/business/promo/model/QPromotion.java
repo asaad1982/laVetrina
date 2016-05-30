@@ -24,8 +24,6 @@ public class QPromotion extends EntityPathBase<Promotion> {
 
     public final com.salesmanager.core.business.generic.model.QSalesManagerEntity _super = new com.salesmanager.core.business.generic.model.QSalesManagerEntity(this);
 
-  
-
     public final DateTimePath<java.util.Date> endate = createDateTime("endate", java.util.Date.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
@@ -63,7 +61,6 @@ public class QPromotion extends EntityPathBase<Promotion> {
 
     public QPromotion(Class<? extends Promotion> type, PathMetadata<?> metadata, PathInits inits) {
         super(type, metadata, inits);
-       
         this.promotionRule = inits.isInitialized("promotionRule") ? new QPromotionRule(forProperty("promotionRule")) : null;
         this.promotionType = inits.isInitialized("promotionType") ? new QPromotionType(forProperty("promotionType")) : null;
     }
