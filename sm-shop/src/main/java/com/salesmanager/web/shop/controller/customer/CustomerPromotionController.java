@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.salesmanager.core.business.catalog.product.model.Product;
 import com.salesmanager.core.business.catalog.product.service.PricingService;
@@ -42,7 +43,7 @@ public class CustomerPromotionController {
 	private PricingService pricingService;
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerPromotionController.class);
-	@RequestMapping("/shop/promotion/hotdeals.html")
+	@RequestMapping(value="/shop/promotion/hotdeals.html", method=RequestMethod.GET)
 	public String displayHotDeals( Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
         MerchantStore store = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
 		

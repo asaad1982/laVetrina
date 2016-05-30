@@ -17,11 +17,14 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import org.springframework.mail.MailPreparationException;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessagePreparator;
-
+import com.salesmanager.core.utils.JavaMailSender;
+import com.salesmanager.core.utils.JavaMailSenderImpl;
+import com.salesmanager.core.utils.MailPreparationException;
+import com.salesmanager.core.utils.MimeMessagePreparator;
+//import org.springframework.mail.MailPreparationException;
+//import org.springframework.mail.javamail.JavaMailSender;
+//import org.springframework.mail.javamail.JavaMailSenderImpl;
+//import org.springframework.mail.javamail.MimeMessagePreparator;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
