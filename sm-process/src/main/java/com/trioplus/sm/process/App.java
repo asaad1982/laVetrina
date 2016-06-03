@@ -96,7 +96,7 @@ public class App {
 				mail.setTo(customer.getCustomerEmail());
 				mail.setSubject(prop.getProperty("mail.subject"));
 				SendHTMLEmail(mail,customer);
-				logger.debug("customer ID : " + customer.getId() +" mail has been ended successfully to customer");
+				logger.debug("customer ID : " + customer.getId() +" mail has been sent successfully to customer");
 			}
 
 		} catch (Exception e) {
