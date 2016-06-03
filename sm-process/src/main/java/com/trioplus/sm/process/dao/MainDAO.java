@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trioplus.sm.plus.process.exception.ProcessException;
 import org.springframework.transaction.annotation.Transactional;
-import com.trioplus.sm.process.model.CustomerShareCount;
-import com.trioplus.sm.process.model.CustomerShareLog;
+import com.trioplus.sm.process.model.CustomerShareCountModel;
+import com.trioplus.sm.process.model.CustomerShareLogModel;
 import com.trioplus.sm.process.model.CustomerSocialShareDiscount;
-import com.trioplus.sm.process.model.MerchantConfiguration;
-import com.trioplus.sm.process.model.SocialMediaConfig;
+import com.trioplus.sm.process.model.MerchantConfigurationModel;
+import com.trioplus.sm.process.model.SocialMediaConfigModel;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -24,7 +24,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-
+import java.util.UUID;
 
 @Repository("mainDao")
 @Transactional
@@ -49,13 +49,13 @@ public class MainDAO {
 	 * Get Social share configuration
 	 */
 
-	public SocialMediaConfig getConfig(Long merchantId, String key) throws ProcessException {
+	public SocialMediaConfigModel getConfig(Long merchantId, String key) throws ProcessException {
 
-		Criteria criteria = getSession().createCriteria(MerchantConfiguration.class);
+		Criteria criteria = getSession().createCriteria(MerchantConfigurationModel.class);
 		criteria.add(Restrictions.eq("id", merchantId));
 		criteria.add(Restrictions.eq("key", key));
-		MerchantConfiguration merchantConfig = (MerchantConfiguration) criteria.uniqueResult();
-		SocialMediaConfig config = new SocialMediaConfig();
+		MerchantConfigurationModel merchantConfig = (MerchantConfigurationModel) criteria.uniqueResult();
+		SocialMediaConfigModel config = new SocialMediaConfigModel();
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			config = mapper.readValue(merchantConfig.getValue(), config.getClass());
@@ -74,12 +74,12 @@ public class MainDAO {
 	 * @throws ProcessException
 	 */
 
-	public List<CustomerShareCount> getEligibleCustomers(SocialMediaConfig config) throws ProcessException {
+	public List<CustomerShareCountModel> getEligibleCustomers(SocialMediaConfigModel config) throws ProcessException {
 
 		try {
-			Criteria criteria = getSession().createCriteria(CustomerShareCount.class);
+			Criteria criteria = getSession().createCriteria(CustomerShareCountModel.class);
 			criteria.add(Restrictions.ge("count", new Long(config.getShareDiscountNumber())));
-			List<CustomerShareCount> elegibleCustomerList = criteria.list();
+			List<CustomerShareCountModel> elegibleCustomerList = criteria.list();
 			return elegibleCustomerList;
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
@@ -95,12 +95,15 @@ public class MainDAO {
 	 */
 	
 	
-	public void updateCustomer(CustomerShareCount customer, SocialMediaConfig config) {
+	public void updateCustomer(CustomerShareCountModel customer, SocialMediaConfigModel config) {
 
 		CustomerSocialShareDiscount entity = new CustomerSocialShareDiscount();
 
 		entity.setCustomerId(customer.getId());
-		entity.setCoupon("testserialnumber");
+		// Generate coupon number
+		String coupon = UUID.randomUUID().toString();
+		entity.setCoupon(coupon);
+		
 		entity.setCreationDate(new Date());
 		entity.setCouponStartDate(new Date());
 		entity.setDiscountPercentage(config.getDiscountPercent());
@@ -120,13 +123,13 @@ public class MainDAO {
 		entity.setCouponEndDate(cal.getTime());
 		
 		getSession().persist(entity);
-		Criteria criteria = getSession().createCriteria(CustomerShareLog.class);
+		Criteria criteria = getSession().createCriteria(CustomerShareLogModel.class);
 		criteria.add(Restrictions.eq("customerId", entity.getCustomerId()));
 		criteria.add(Restrictions.eq("discountSent",false));
 		
-		List<CustomerShareLog> CustomerSahreList = criteria.list();
+		List<CustomerShareLogModel> CustomerSahreList = criteria.list();
 		
-		for(CustomerShareLog shareLog :CustomerSahreList){
+		for(CustomerShareLogModel shareLog :CustomerSahreList){
 			
 			shareLog.setDiscountSent(true);
 			getSession().saveOrUpdate(shareLog);

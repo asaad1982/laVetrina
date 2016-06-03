@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="CUSTOMER_SHARE_VIEW")
-public class CustomerShareCount implements Serializable {
+public class CustomerShareCountModel implements Serializable {
 
 	public Long getId() {
 		return id;
@@ -41,8 +41,19 @@ public class CustomerShareCount implements Serializable {
 	private Long id;
 	
 
+public String getCustomerEmail() {
+	return customerEmail;
+}
+
+
+public void setCustomerEmail(String customerEmail) {
+	this.customerEmail = customerEmail;
+}
 @Column(name="count")
 private Long count;
+
+@Column(name="CUSTOMER_EMAIL")
+private String customerEmail;
 
 
 

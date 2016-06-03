@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
  * @author Administrator
  *
  */
-public class SocialMediaConfig  implements JSONAware  {
+public class SocialMediaConfigModel  implements JSONAware  {
 
 private Long shareDiscountNumber ;
 private Long shareDiscountIntervalUnit ;

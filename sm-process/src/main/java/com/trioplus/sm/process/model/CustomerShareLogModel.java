@@ -24,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="CUSTOMER_SHARE_LOG",schema="lavetrina")
-public class CustomerShareLog  {
+public class CustomerShareLogModel  {
 
 @Id
 @Column(name = "TRANSACTION_ID", unique=true, nullable=false)

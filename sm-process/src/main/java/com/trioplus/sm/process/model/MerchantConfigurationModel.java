@@ -30,7 +30,7 @@ import org.hibernate.annotations.Type;
 
 @Table(name = "MERCHANT_CONFIGURATION", schema= "lavetrina", uniqueConstraints=
 @UniqueConstraint(columnNames = {"MERCHANT_CONFIG_ID", "CONFIG_KEY"}))
-public class MerchantConfiguration  implements Serializable {
+public class MerchantConfigurationModel  implements Serializable {
 
 	/**
 	 * 
